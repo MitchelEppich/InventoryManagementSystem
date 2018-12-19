@@ -51,6 +51,9 @@ let colors = {
   "almost-transparent": "rgba(30, 30, 30, 0.5)",
   "almost-white": "rgba(255, 255, 255, 0.7)",
   "almost-black": "rgba(0,0,0,0.9)",
+  crimson: "#890000",
+  salmon: "rgba(210,128,114, 1)",
+  "salmon-light": "rgba(250,128,114, 1)",
 
   black: "#000",
   "grey-darkest": "#383838",
@@ -182,18 +185,12 @@ module.exports = {
   */
 
   screens: {
-    // xs: "140px",
-    // sm: "576px",
-    // md: "768px",
-    // lg: "992px",
-    // xl: "1200px"
-    xs: { min: "200px", max: "456px" },
-    sm: { min: "457px", max: "767px" },
-    md: { min: "768px", max: "991px" },
-    lg: { min: "992px", max: "1249px" },
-    xl: { min: "1250px", max: "1599px" },
-    xxl: { min: "1600px", max: "2099px" },
-    xxxl: { min: "2100px", max: "3999px" },
+    xs: { max: "321px" },
+    sm: { min: "322px", max: "415px" },
+    md: { min: "416px", max: "992px" },
+    lg: { min: "993px", max: "1367px" },
+    xl: { min: "1368px", max: "1599px" },
+    xxl: { min: "1600px"}
   },
 
   /*
@@ -520,9 +517,6 @@ module.exports = {
     "4/8": "50%",
     "7/8": "87.5%",
     "1/16": "6.25%",
-    newScreen: "80%",
-    full: "100%",
-    screen: "100vw",
     "100": "100px",
     "200": "200px",
     "250": "250px",
@@ -530,15 +524,12 @@ module.exports = {
     "400": "400px",
     "450": "450px",
     "550": "550px",
+    "600": "600px",
+    "700": "700px",
     "750": "750px",
-    logo: "100px",
-    container: "1080px",
-    searchBar: "325px",
-    mainCard: "550px",
-    imgCard: "90px",
-    hideLeft: "-1400px",
-    "10000": "10000px",
-    "500": "calc(100vh - 3rem)"
+    full: "100%",
+    screen: "100vw",
+    
   },
 
   /*
@@ -576,23 +567,18 @@ module.exports = {
     "48": "12rem",
     "64": "16rem",
     "100": "100px",
-    "140": "140px",
     "200": "200px",
     "250": "250px",
     "300": "300px",
-    "380": "380px",
     "400": "400px",
     "450": "450px",
     "550": "550px",
-    "650": "650px",
-    imgCard: "90px",
-    halfscreen: "940px",
-    newScreen: "770px",
+    "600": "600px",
+    "700": "700px",
+    "750": "750px",
     full: "100%",
-    screen: "100vh",
-    uploader: "400px",
-    "500": "calc(100vh - 3rem)",
-    navbar: "56px"
+    screen: "100vw",
+    
   },
 
   /*

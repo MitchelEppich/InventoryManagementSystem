@@ -1,5 +1,5 @@
 /*******************************************/
-/*Inventory/Home page, Renders all details of inventory*/
+/*Logs Page, Renders IMS logs*/
 /******************************************/
 
 import React, { Component } from "react";
@@ -10,7 +10,7 @@ import { Subscription } from "react-apollo";
 import gql from "graphql-tag";
 
 import Layout from "../HOC/Layout";
-import Inventory from "../components/Inventory";
+import Logs from "../components/Logs";
 
 
 class Index extends Component {
@@ -32,7 +32,7 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        <Inventory {...this.props} />
+        <Logs {...this.props} />
       </Layout>
     );
   }

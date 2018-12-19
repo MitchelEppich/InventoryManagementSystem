@@ -58,10 +58,15 @@
 .body,
 html {
   font-family: "DINPro-Medium", verdana;
+  font-weight: 200;
   color: #252525;
   font-size: 15px;
   padding: 0;
   margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 200;
 }
 
 a {

@@ -1,5 +1,5 @@
 /*******************************************/
-/*Inventory/Home page, Renders all details of inventory*/
+/*Login Page, User login form*/
 /******************************************/
 
 import React, { Component } from "react";
@@ -10,7 +10,7 @@ import { Subscription } from "react-apollo";
 import gql from "graphql-tag";
 
 import Layout from "../HOC/Layout";
-import Inventory from "../components/Inventory";
+import Login from "../components/Login";
 
 
 class Index extends Component {
@@ -31,9 +31,7 @@ class Index extends Component {
 
   render() {
     return (
-      <Layout>
-        <Inventory {...this.props} />
-      </Layout>
+        <Login {...this.props} />
     );
   }
 }

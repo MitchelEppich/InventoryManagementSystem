@@ -1,5 +1,6 @@
 /*******************************************/
-/*Inventory/Home page, Renders all details of inventory*/
+/*Reports page, Displays data analytics 
+    based on inventory history*/
 /******************************************/
 
 import React, { Component } from "react";
@@ -10,7 +11,7 @@ import { Subscription } from "react-apollo";
 import gql from "graphql-tag";
 
 import Layout from "../HOC/Layout";
-import Inventory from "../components/Inventory";
+import Reports from "../components/Reports";
 
 
 class Index extends Component {
@@ -32,7 +33,7 @@ class Index extends Component {
   render() {
     return (
       <Layout>
-        <Inventory {...this.props} />
+        <Reports {...this.props} />
       </Layout>
     );
   }

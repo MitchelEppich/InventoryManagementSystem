@@ -22,7 +22,9 @@ class Layout extends Component {
     return (
       <div>
         <Menu {...this.props} />
-        {this.props.children}
+        <div className="px-32 pt-24">
+          {this.props.children}
+        </div>
       </div>
     );
   }

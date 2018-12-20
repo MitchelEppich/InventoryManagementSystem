@@ -13,7 +13,7 @@ const index = props => {
   return (
     <div className="h-24 w-full px-64 pt-2 flex justify-between bg-crimson leading-normal text-white">
       <div>
-        <h1 className="xs:hidden sm:hidden md:hidden lg:hidden">Inventory Management System</h1>
+        <h1 onClick={() =>console.log(props)} className="xs:hidden sm:hidden md:hidden lg:hidden">Inventory Management System</h1>
         <h1 className="xl:hidden xxl:hidden">I.M.S.</h1>
         <h4>{props.user.currentUser ? "Welcome " + props.user.currentUser : "NOT LOGGED IN"}</h4>
       </div>

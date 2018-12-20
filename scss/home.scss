@@ -6,6 +6,21 @@
 @tailwind utilities;
 
 /****SCROLLBAR*****/
+::-webkit-scrollbar {
+  width: 1rem;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #F2F2F2;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cce0f4;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(210,128,114, 1);
+}
 
 /******MIXINS*******/
 @mixin element($element) {

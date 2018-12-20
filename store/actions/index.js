@@ -21,7 +21,9 @@ const imports = {
 };
 
 const actionTypes = {
-  SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN"
+  SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
+  TOGGLE_EDIT: "TOGGLE_EDIT",
+  SAVE: "SAVE"
 };
 
 const actions = {
@@ -30,6 +32,18 @@ const actions = {
       type: actionTypes.SET_VISIBLE_SCREEN,
       input: input
     };
+  },
+  toggleEdit: index => {
+    return {
+      type: actionTypes.TOGGLE_EDIT,
+      index: index
+    }
+  },
+  save: () => {
+    return {
+      type: actionTypes.SAVE,
+      editIndex: null
+    }
   }
 };
 

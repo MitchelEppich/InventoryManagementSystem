@@ -48,7 +48,9 @@ const mapDispatchToProps = dispatch => {
     // updateUser: input => dispatch(actions.updateUser(input)),
     // modifyUser: input => dispatch(actions.modifyUser(input)),
     // deleteUser: input => dispatch(actions.deleteUser(input)),
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+    toggleEdit: index => dispatch(actions.toggleEdit(index)),
+    save: () => dispatch(actions.save())
   };
 };
 

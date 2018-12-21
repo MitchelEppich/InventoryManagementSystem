@@ -28,14 +28,14 @@ const inventoryFilters = props => {
             </li>
             <li className="w-48 my-2 mx-auto">
                 <p>Qty(Packed):</p>
-                <input className="w-32 ml-8 text-crimson" type="number" />
-                <input className="w-32 ml-8 text-crimson" type="number" />
+                <input onChange={(e) => {props.updateFilters("qtyP", {min: e.target.value});console.log(props.misc.activeFilters["qtyP"])}} className="w-32 ml-8 pl-2 text-crimson" value={props.misc.activeFilters["qtyP"].min || undefined} placeholder="min" type="number" />
+                <input className="w-32 ml-8 pl-2 text-crimson" placeholder="max" type="number" />
                 <hr className="inventoryFilters__hr" />
             </li>
             <li className="w-48 my-2 mx-auto">
                 <p>Qty(Loose):</p>
-                <input className="w-32 ml-8 text-crimson" type="number" />
-                <input className="w-32 ml-8 text-crimson" type="number" />
+                <input className="w-32 ml-8 pl-2 text-crimson" placeholder="min" type="number" />
+                <input className="w-32 ml-8 pl-2 text-crimson" placeholder="max" type="number" />
                 <hr className="inventoryFilters__hr" />
             </li>
             <li className="w-48 my-2 mx-auto">
@@ -48,8 +48,8 @@ const inventoryFilters = props => {
                 <hr className="inventoryFilters__hr" />
             </li>
         </ul>
-        <button className="w-48 block p-1 my-2 mx-auto rounded-lg border border-crimson text-crimson">Apply</button>
-        <button className="w-48 block p-1 my-2 mx-auto rounded-lg border border-crimson text-crimson">Clear</button>
+        <button onClick={() => props.applyFilters()} className="w-48 block p-1 my-2 mx-auto rounded-lg hover:bg-salmon-light hover:text-white hover:border-white border border-crimson text-crimson">Apply</button>
+        <button onClick={() => props.clearFilters()} className="w-48 block p-1 my-2 mx-auto rounded-lg hover:bg-salmon-light hover:text-white hover:border-white border border-crimson text-crimson">Clear</button>
        
     </div>
   );

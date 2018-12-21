@@ -40,7 +40,7 @@ const index = props => {
     // a must be equal to b
     return 0;
   });
-  items = props.misc.inventory.map((item, index) => {
+  items = items.map((item, index) => {
     if(props.misc.searchValue && props.misc.searchValue.length > 0){
       if(JSON.stringify(item).toLowerCase().includes(props.misc.searchValue.toLowerCase())){
         return (

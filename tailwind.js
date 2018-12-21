@@ -65,6 +65,7 @@ let colors = {
   "grey-lighter": "#f1f5f8",
   "grey-lightest": "#f8fafc",
   white: "#ffffff",
+  "input-grey": "#e6e6e6",
 
   navbar: "#56859c",
 

@@ -256,6 +256,57 @@ const initialState = {
 
     },
   ],
+  logs: [
+    {
+      _id: 47378,
+      name: "Tony Tone",
+      action: "added 3 hunnid products",
+      machine: "computer?",
+      date: 20181120
+    },
+    {
+      _id: 47378,
+      name: "Tony Tone",
+      action: "added 3 hunnid products",
+      machine: "computer?",
+      date: 20181120
+    },
+    {
+      _id: 47378,
+      name: "Tony Tone",
+      action: "added 3 hunnid products",
+      machine: "computer?",
+      date: 20181120
+    },
+    {
+      _id: 47378,
+      name: "Tony Tone",
+      action: "added 3 hunnid products",
+      machine: "computer?",
+      date: 20181120
+    },
+    {
+      _id: 47378,
+      name: "Tony Tone",
+      action: "added 3 hunnid products",
+      machine: "computer?",
+      date: 20181120
+    },
+    {
+      _id: 47378,
+      name: "Tony Tone",
+      action: "added 3 hunnid products",
+      machine: "computer?",
+      date: 20181120
+    },
+    {
+      _id: 47378,
+      name: "Tony Tone",
+      action: "added 3 hunnid products",
+      machine: "computer?",
+      date: 20181120
+    }
+  ],
   currentEdit: {
     _id: null,
     qtyP: null,
@@ -275,8 +326,17 @@ const initialState = {
   },
   iHeadings: ["name", "id", "company", "status", "qty(packed)", "qty(loose)", "lower lim.", "upper lim.", "# sold", "R.O.P.", "N.O.E.", "location", "category", "price"],
   pHeadings: ["name", "id", "company", "description", "barcode", "category", "price"],
+  lHeadings: ["name", "action", "machine", "date"],
   orderBy: null,
-  orderByReverse: false
+  orderByReverse: false,
+  applyFilters: false,
+  activeFilters: {
+    qtyP: {},
+    qtyL: {},
+    company: {},
+    status: {},
+    category: {}
+  },
 
 };
 
@@ -311,11 +371,7 @@ const indexReducer = (state = initialState, action) => {
             }
           }
       }
-      return updateObject(state, {
-        currentEdit: {
-          ...state.currentEdit
-        }
-      });
+      return state
     case actionTypes.SUBMIT_INVENTORY_EDIT:
       for(let i = 0; i < state.inventory.length; i++){
         if(state.inventory[i]._id == action.currentEdit._id){
@@ -344,6 +400,33 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         searchValue: action.value
       });
+    case actionTypes.APPLY_FILTERS:
+      return updateObject(state, {
+        applyFilters: true
+      });
+    case actionTypes.CLEAR_FILTERS:
+      return updateObject(state, {
+        applyFilters: false,
+        activeFilters: {
+          qtyP: {},
+          qtyL: {},
+          company: {},
+          status: {},
+          category: {}
+        }
+      });
+    case actionTypes.UPDATE_FILTERS:
+      for (let key in state.activeFilters) {
+        if (state.activeFilters.hasOwnProperty(key)) {
+          if(key == action.name){
+            state.activeFilters[key] = {
+              ...state.activeFilters[key],
+              ...action.valueObj
+            }
+          }
+        }
+      }
+      return state
     default:
       return state;
   }

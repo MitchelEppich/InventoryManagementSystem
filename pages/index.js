@@ -53,7 +53,10 @@ const mapDispatchToProps = dispatch => {
     handleInventoryEdit: (key, value) => dispatch(actions.handleInventoryEdit(key, value)),
     submitInventoryEdit: (currentEdit) => dispatch(actions.submitInventoryEdit(currentEdit)),
     setOrderBy: orderBy => dispatch(actions.setOrderBy(orderBy)),
-    search: value => dispatch(actions.search(value))
+    search: value => dispatch(actions.search(value)),
+    applyFilters: () => dispatch(actions.applyFilters()),
+    clearFilters: () => dispatch(actions.clearFilters()),
+    updateFilters: (name, valueObj) => dispatch(actions.updateFilters(name, valueObj))
   };
 };
 

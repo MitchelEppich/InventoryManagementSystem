@@ -28,11 +28,11 @@ const index = props => {
         <Link href="/newproduct">
           <button className="h-8 px-3 mx-2 my-2 bg-salmon hover:bg-salmon-light uppercase text-white">New Product</button>
         </Link>
-        <Link href="/logs">
-          <button className="h-8 px-3 mx-2 my-2 bg-salmon hover:bg-salmon-light uppercase text-white">Logs</button>
-        </Link>
         <Link href="/reports">
           <button className="h-8 px-3 mx-2 my-2 bg-salmon hover:bg-salmon-light uppercase text-white">Reports</button>
+        </Link>
+        <Link href="/logs">
+          <button className="h-8 px-3 mx-2 my-2 bg-salmon hover:bg-salmon-light uppercase text-white">Logs</button>
         </Link>
         <Link href="/login">
           <button className="h-8 px-3 mx-2 my-2 bg-salmon hover:bg-salmon-light uppercase text-white">{props.user.currentUser ? "Logout" : "Login"}</button>

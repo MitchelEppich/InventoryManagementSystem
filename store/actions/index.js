@@ -26,7 +26,10 @@ const actionTypes = {
   HANDLE_INVENTORY_EDIT: "HANDLE_INVENTORY_EDIT",
   SUBMIT_INVENTORY_EDIT: "SUBMIT_INVENTORY_EDIT",
   SET_ORDER_BY: "SET_ORDER_BY",
-  SEARCH: "SEARCH"
+  SEARCH: "SEARCH",
+  APPLY_FILTERS: "APPLY_FILTERS",
+  CLEAR_FILTERS: "CLEAR_FILTERS",
+  UPDATE_FILTERS: "UPDATE_FILTERS"
 };
 
 const actions = {
@@ -66,6 +69,24 @@ const actions = {
     return {
       type: actionTypes.SEARCH,
       value: value
+    }
+  },
+  applyFilters: () => {
+    return {
+      type: actionTypes.APPLY_FILTERS
+    }
+  },
+  clearFilters: () => {
+    return {
+      type: actionTypes.CLEAR_FILTERS
+    }
+  },
+  updateFilters: (name, valueObj) => {
+    console.log(valueObj);
+    return {
+      type: actionTypes.UPDATE_FILTERS,
+      name: name,
+      valueObj: valueObj
     }
   }
 };

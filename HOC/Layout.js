@@ -14,7 +14,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 import Menu from "../components/Menu"
 
 class Layout extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+  }
 
   componentDidUpdate() {}
 

@@ -32,7 +32,7 @@ class Index extends Component {
 
   render() {
     return (
-      <Layout>
+      <Layout router={this.props.router}>
         <Reports {...this.props} />
       </Layout>
     );

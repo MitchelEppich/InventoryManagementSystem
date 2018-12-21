@@ -23,7 +23,10 @@ const imports = {
 const actionTypes = {
   SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
   TOGGLE_EDIT: "TOGGLE_EDIT",
-  SAVE: "SAVE"
+  HANDLE_INVENTORY_EDIT: "HANDLE_INVENTORY_EDIT",
+  SUBMIT_INVENTORY_EDIT: "SUBMIT_INVENTORY_EDIT",
+  SET_ORDER_BY: "SET_ORDER_BY",
+  SEARCH: "SEARCH"
 };
 
 const actions = {
@@ -33,16 +36,36 @@ const actions = {
       input: input
     };
   },
-  toggleEdit: index => {
+  toggleEdit: _id => {
     return {
       type: actionTypes.TOGGLE_EDIT,
-      index: index
+      _id
     }
   },
-  save: () => {
+  handleInventoryEdit: (key, value) => {
     return {
-      type: actionTypes.SAVE,
-      editIndex: null
+      type: actionTypes.HANDLE_INVENTORY_EDIT,
+      key: key,
+      value: value
+    }
+  },
+  submitInventoryEdit: (currentEdit) => {
+    //post to server
+    return {
+      type: actionTypes.SUBMIT_INVENTORY_EDIT,
+      currentEdit: currentEdit
+    }
+  },
+  setOrderBy: orderBy => {
+    return {
+      type: actionTypes.SET_ORDER_BY,
+      orderBy: orderBy
+    }
+  },
+  search: value => {
+    return {
+      type: actionTypes.SEARCH,
+      value: value
     }
   }
 };

@@ -18,9 +18,13 @@ const index = props => {
         <h4>{props.user.currentUser ? "Welcome " + props.user.currentUser : "NOT LOGGED IN"}</h4>
       </div>
       <div className="w-200 pt-4 flex flex-wrap justify-around xl:w-auto xxl:w-auto xl:justify-end xxl:justify-end">
-        <Link href="/products">
-          <button className="h-8 px-3 mx-2 my-2 bg-salmon hover:bg-salmon-light uppercase text-white">All Products</button>
+        <Link href="/">
+          <button className="h-8 px-3 mx-2 my-2 bg-salmon hover:bg-salmon-light uppercase text-white">Inventory</button>
         </Link>
+        <Link href="/products">
+          <button className="h-8 px-3 mx-2 my-2 bg-salmon hover:bg-salmon-light uppercase text-white">Product List</button>
+        </Link>
+    
         <Link href="/newproduct">
           <button className="h-8 px-3 mx-2 my-2 bg-salmon hover:bg-salmon-light uppercase text-white">New Product</button>
         </Link>

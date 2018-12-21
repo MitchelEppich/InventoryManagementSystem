@@ -15,11 +15,11 @@
 }
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #cce0f4;
+  background: rgba(210,128,114, 1);
 }
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(210,128,114, 1);
+  background: rgba(250,128,114, 1);
 }
 
 /******MIXINS*******/
@@ -98,6 +98,83 @@ input {
   border-radius: 5px;
 }
 
+///My Styles
+.inventoryFilters {
+  height: auto;
+  min-height: 8rem;
+  width: 16rem;
+  padding: 1rem 1rem;
+  background-color: white;
+  border: 1px solid #890000;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 10;
+  transform: translateY(3rem);
+
+  @include element("hr"){
+    width: 95%;
+    height: 1px;
+    border: 0.1px solid rgba(137,0,0,0.2);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////
+///IOENO///
 .checkbox {
   height: 20px;
   width: 20px;
@@ -122,6 +199,7 @@ input {
   -ms-user-select: none;
   user-select: none;
 }
+
 
 .qtd-tag {
   transform: scale(0.9);

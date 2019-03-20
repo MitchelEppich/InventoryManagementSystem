@@ -17,13 +17,13 @@ const resolvers = {
         }
       };
 
-      let body = toUrlEncoded({ ...input, CLIENT_ACR: "PFS" });
+      let body = toUrlEncoded({ ...input, CLIENT_ACR: "IMS" });
 
       return axios
-        .post("http://localhost:3000/api/user/", body, config)
+        .post("http://159.89.117.30/api/user/", body, config)
         .then(res => {
           let _user = res.data;
-          _user = inferPermissions(_user, "PFS");
+          _user = inferPermissions(_user, "IMS");
           return _user;
         });
     },
@@ -34,10 +34,10 @@ const resolvers = {
         }
       };
 
-      return axios.get("http://localhost:3000/api/user/", config).then(res => {
+      return axios.get("http://159.89.117.30/api/user/", config).then(res => {
         let _users = res.data;
         _users = _users.map(user => {
-          return inferPermissions(user, "PFS");
+          return inferPermissions(user, "IMS");
         });
         return _users;
       });
@@ -63,13 +63,13 @@ const resolvers = {
         }
       };
 
-      let body = toUrlEncoded({ ...input, CLIENT_ACR: "PFS" });
+      let body = toUrlEncoded({ ...input, CLIENT_ACR: "IMS" });
 
       return axios
-        .post("http://localhost:3000/api/user/verify/", body, config)
+        .post("http://159.89.117.30/api/user/verify/", body, config)
         .then(res => {
           let _user = res.data;
-          _user = inferPermissions(_user, "PFS");
+          _user = inferPermissions(_user, "IMS");
           return _user;
         });
     },
@@ -120,14 +120,14 @@ const resolvers = {
 
       let body = toUrlEncoded({
         ...input,
-        CLIENT_ACR: "PFS"
+        CLIENT_ACR: "IMS"
       });
 
       return axios
-        .post("http://localhost:3000/api/user/update/", body, config)
+        .post("http://159.89.117.30/api/user/update/", body, config)
         .then(res => {
           let _user = res.data;
-          _user = inferPermissions(_user, "PFS");
+          _user = inferPermissions(_user, "IMS");
           return _user;
         });
     }
@@ -135,7 +135,7 @@ const resolvers = {
   Custom: {
     publishUserUpdate: (_, { input }) => {
       let _user = input.userUpdate;
-      _user = inferPermissions(_user, "PFS");
+      _user = inferPermissions(_user, "IMS");
       pubsub.publish("userUpdate", { userUpdate: input.userUpdate });
     }
   }

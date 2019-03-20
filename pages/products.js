@@ -1,5 +1,6 @@
 /*******************************************/
-/*Inventory/Home page, Renders all details of inventory*/
+/*Products page, Renders all products
+    with relative data*/
 /******************************************/
 
 import React, { Component } from "react";
@@ -10,16 +11,16 @@ import { Subscription } from "react-apollo";
 import gql from "graphql-tag";
 
 import Layout from "../HOC/Layout";
-import Inventory from "../components/Inventory";
+import Products from "../components/Products";
 
 
 class Index extends Component {
-  componentDidMount() {
-    // this.props.fetchCredentials().then(res => {
-    //   if (res == null) return;
-    //   this.props.setVisibleScreen(null);
-    // });
-  }
+  // componentDidMount() {
+  //   this.props.fetchCredentials().then(res => {
+  //     if (res == null) return;
+  //     this.props.setVisibleScreen(null);
+  //   });
+  // }
   // componentDidUpdate(prevProps) {
   //   if (this.props.user.currentUser == null) {
   //     this.props.fetchCredentials().then(res => {
@@ -32,7 +33,7 @@ class Index extends Component {
   render() {
     return (
       <Layout router={this.props.router}>
-        <Inventory {...this.props} />
+        <Products {...this.props} />
       </Layout>
     );
   }
@@ -55,8 +56,7 @@ const mapDispatchToProps = dispatch => {
     setOrderBy: orderBy => dispatch(actions.setOrderBy(orderBy)),
     search: value => dispatch(actions.search(value)),
     applyFilters: () => dispatch(actions.applyFilters()),
-    clearFilters: () => dispatch(actions.clearFilters()),
-    updateFilters: (name, valueObj) => dispatch(actions.updateFilters(name, valueObj))
+    clearFilters: () => dispatch(actions.clearFilters())
   };
 };
 

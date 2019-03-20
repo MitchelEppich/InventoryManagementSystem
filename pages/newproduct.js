@@ -1,5 +1,5 @@
 /*******************************************/
-/*Inventory/Home page, Renders all details of inventory*/
+/*New Products page, Form to add new product*/
 /******************************************/
 
 import React, { Component } from "react";
@@ -10,16 +10,16 @@ import { Subscription } from "react-apollo";
 import gql from "graphql-tag";
 
 import Layout from "../HOC/Layout";
-import Inventory from "../components/Inventory";
+import NewProduct from "../components/NewProduct";
 
 
 class Index extends Component {
-  componentDidMount() {
-    // this.props.fetchCredentials().then(res => {
-    //   if (res == null) return;
-    //   this.props.setVisibleScreen(null);
-    // });
-  }
+  // componentDidMount() {
+  //   this.props.fetchCredentials().then(res => {
+  //     if (res == null) return;
+  //     this.props.setVisibleScreen(null);
+  //   });
+  // }
   // componentDidUpdate(prevProps) {
   //   if (this.props.user.currentUser == null) {
   //     this.props.fetchCredentials().then(res => {
@@ -32,7 +32,7 @@ class Index extends Component {
   render() {
     return (
       <Layout router={this.props.router}>
-        <Inventory {...this.props} />
+        <NewProduct {...this.props} />
       </Layout>
     );
   }
@@ -48,15 +48,7 @@ const mapDispatchToProps = dispatch => {
     // updateUser: input => dispatch(actions.updateUser(input)),
     // modifyUser: input => dispatch(actions.modifyUser(input)),
     // deleteUser: input => dispatch(actions.deleteUser(input)),
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    toggleEdit: _id => dispatch(actions.toggleEdit(_id)),
-    handleInventoryEdit: (key, value) => dispatch(actions.handleInventoryEdit(key, value)),
-    submitInventoryEdit: (currentEdit) => dispatch(actions.submitInventoryEdit(currentEdit)),
-    setOrderBy: orderBy => dispatch(actions.setOrderBy(orderBy)),
-    search: value => dispatch(actions.search(value)),
-    applyFilters: () => dispatch(actions.applyFilters()),
-    clearFilters: () => dispatch(actions.clearFilters()),
-    updateFilters: (name, valueObj) => dispatch(actions.updateFilters(name, valueObj))
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
   };
 };
 

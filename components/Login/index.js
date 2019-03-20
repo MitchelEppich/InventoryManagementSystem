@@ -8,7 +8,7 @@ import {
   faExclamationCircle
 } from "@fortawesome/free-solid-svg-icons";
 
-const Login = props => {
+const index = props => {
   return (
     <div
       className="bg-grey h-full w-full relative overflow-x-hidden overflow-y-hidden"
@@ -89,4 +89,4 @@ const Login = props => {
   );
 };
 
-export default Login;
+export default index;

@@ -6,6 +6,21 @@
 @tailwind utilities;
 
 /****SCROLLBAR*****/
+::-webkit-scrollbar {
+  width: 1rem;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  background: #F2F2F2;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(210,128,114, 1);
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(250,128,114, 1);
+}
 
 /******MIXINS*******/
 @mixin element($element) {
@@ -58,10 +73,15 @@
 .body,
 html {
   font-family: "DINPro-Medium", verdana;
+  font-weight: 200;
   color: #252525;
   font-size: 15px;
   padding: 0;
   margin: 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 200;
 }
 
 a {
@@ -78,6 +98,83 @@ input {
   border-radius: 5px;
 }
 
+///My Styles
+.inventoryFilters {
+  height: auto;
+  min-height: 8rem;
+  width: 16rem;
+  padding: 1rem 1rem;
+  background-color: white;
+  border: 1px solid #890000;
+  border-radius: 10px;
+  position: absolute;
+  z-index: 10;
+  transform: translateY(3rem);
+
+  @include element("hr"){
+    width: 95%;
+    height: 1px;
+    border: 0.1px solid rgba(137,0,0,0.2);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////
+///IOENO///
 .checkbox {
   height: 20px;
   width: 20px;
@@ -102,6 +199,7 @@ input {
   -ms-user-select: none;
   user-select: none;
 }
+
 
 .qtd-tag {
   transform: scale(0.9);

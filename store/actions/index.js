@@ -13,7 +13,7 @@ import fetch from "node-fetch";
 import User from "./user";
 import Nav from "./navigation";
 
-const uri = "http://localhost:3001/graphql";
+const uri = "http://localhost:3000/graphql";
 
 const imports = {
   ...User(uri),
@@ -21,7 +21,15 @@ const imports = {
 };
 
 const actionTypes = {
-  SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN"
+  SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
+  TOGGLE_EDIT: "TOGGLE_EDIT",
+  HANDLE_INVENTORY_EDIT: "HANDLE_INVENTORY_EDIT",
+  SUBMIT_INVENTORY_EDIT: "SUBMIT_INVENTORY_EDIT",
+  SET_ORDER_BY: "SET_ORDER_BY",
+  SEARCH: "SEARCH",
+  APPLY_FILTERS: "APPLY_FILTERS",
+  CLEAR_FILTERS: "CLEAR_FILTERS",
+  UPDATE_FILTERS: "UPDATE_FILTERS"
 };
 
 const actions = {
@@ -29,6 +37,56 @@ const actions = {
     return {
       type: actionTypes.SET_VISIBLE_SCREEN,
       input: input
+    };
+  },
+  toggleEdit: _id => {
+    return {
+      type: actionTypes.TOGGLE_EDIT,
+      _id
+    };
+  },
+  handleInventoryEdit: (key, value) => {
+    return {
+      type: actionTypes.HANDLE_INVENTORY_EDIT,
+      key: key,
+      value: value
+    };
+  },
+  submitInventoryEdit: currentEdit => {
+    //post to server
+    return {
+      type: actionTypes.SUBMIT_INVENTORY_EDIT,
+      currentEdit: currentEdit
+    };
+  },
+  setOrderBy: orderBy => {
+    return {
+      type: actionTypes.SET_ORDER_BY,
+      orderBy: orderBy
+    };
+  },
+  search: value => {
+    return {
+      type: actionTypes.SEARCH,
+      value: value
+    };
+  },
+  applyFilters: () => {
+    return {
+      type: actionTypes.APPLY_FILTERS
+    };
+  },
+  clearFilters: () => {
+    return {
+      type: actionTypes.CLEAR_FILTERS
+    };
+  },
+  updateFilters: (name, valueObj) => {
+    console.log(valueObj);
+    return {
+      type: actionTypes.UPDATE_FILTERS,
+      name: name,
+      valueObj: valueObj
     };
   }
 };

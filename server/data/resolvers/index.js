@@ -1,22 +1,27 @@
 const UserResolvers = require("./User");
+const StrainResolvers = require("./Strain");
 
 const User = UserResolvers.User;
+const Strain = StrainResolvers.Strain;
 
 const axios = require("axios");
 
 const resolvers = {
+  Strain,
+  User,
+  Query: {
+    ...UserResolvers.Query,
+    ...StrainResolvers.Query
+  },
+  Mutation: {
+    ...UserResolvers.Mutation,
+    ...StrainResolvers.Mutation
+  },
   Custom: {
     ...UserResolvers.Custom
   },
-  Query: {
-    ...UserResolvers.Query
-  },
-  ...User,
   Subscription: {
     ...UserResolvers.Subscription
-  },
-  Mutation: {
-    ...UserResolvers.Mutation
   }
 };
 

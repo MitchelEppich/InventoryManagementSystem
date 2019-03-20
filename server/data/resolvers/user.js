@@ -17,8 +17,7 @@ const resolvers = {
         }
       };
 
-      let body = toUrlEncoded({ ...input, CLIENT_ACR: "IMS" });
-
+      let body = toUrlEncoded({ ...input });
       return axios
         .post("http://159.89.117.30/api/user/", body, config)
         .then(res => {

@@ -94,12 +94,13 @@ const Main = props => {
           onClick={e => {
             props.setOrderFilter({ value: key, filter: _orderFilter });
           }}
-          className={`w-full inline-flex p-1 mt-1 hover:bg-blue hover:text-white cursor-pointer  ${_orderFilter.includes(key) ? "bg-blue text-white" : "bg-white text-blue-new" }`}
+          className={`w-full inline-flex p-1 mt-1 hover:bg-blue hover:text-white cursor-pointer  ${
+            _orderFilter.includes(key)
+              ? "bg-blue text-white"
+              : "bg-white text-blue-new"
+          }`}
         >
-          <p className="uppercase p-1 pl-6">
-            {key}
-           
-          </p>
+          <p className="uppercase p-1 pl-6">{key}</p>
         </div>
       );
     }
@@ -281,15 +282,10 @@ const Main = props => {
 
             <a
               onClick={() => {
+                console.log("clicked");
                 props.releaseCredentials({
                   username: props.user.currentUser.username
                 });
-                props.setVisibleScreen([
-                  props.misc.visibleScreen != null &&
-                  props.misc.visibleScreen.includes("login")
-                    ? null
-                    : "login"
-                ]);
               }}
               className={
                 "text-white p-2 bg-semi-transparent unselectable font-bold uppercase cursor-pointer px-4 hover:bg-white hover:text-blue"

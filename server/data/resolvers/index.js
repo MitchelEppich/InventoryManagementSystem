@@ -1,5 +1,5 @@
-const UserResolvers = require("./User");
-const StrainResolvers = require("./Strain");
+const UserResolvers = require("./user");
+const StrainResolvers = require("./strain");
 
 const User = UserResolvers.User;
 const Strain = StrainResolvers.Strain;

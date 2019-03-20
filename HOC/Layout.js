@@ -9,30 +9,55 @@ import React, { Component } from "react";
 import DevTools from "../store/DevTools";
 import { connect } from "react-redux";
 import actions from "../store/actions";
-import '@fortawesome/fontawesome-svg-core/styles.css'
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
-import Menu from "../components/Menu"
+import Menu from "../components/Menu";
+
+import Router from "next/router";
+
+const isClient = typeof document !== "undefined";
 
 class Layout extends Component {
   componentDidMount() {
+    if (!isClient) return;
+    this.props.fetchCredentials().then(res => {
+      if (res == null || res.admin == null) Router.push("/login");
+    });
   }
-
-  componentDidUpdate() {}
+  componentDidUpdate(prevProps) {
+    if (this.props.user.currentUser == null) {
+      this.props.fetchCredentials().then(res => {
+        if (res == null || res.admin == null) Router.push("/login");
+      });
+    }
+  }
 
   render() {
     return (
       <div>
-        <Menu {...this.props} />
-        <div className="px-32 pt-24">
-          {this.props.children}
-        </div>
+        {this.props.user.currentUser == null ? null : (
+          <div>
+            <Menu {...this.props} />
+            <div className="px-32 pt-24">{this.props.children}</div>
+          </div>
+        )}
       </div>
     );
   }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    releaseCredentials: input => dispatch(actions.releaseCredentials(input)),
+    fetchCredentials: () => dispatch(actions.fetchCredentials()),
+    // fetchUsers: input => dispatch(actions.fetchUsers(input)),
+    // verifyCredentials: input => dispatch(actions.verifyCredentials(input)),
+    // registerCredentials: input => dispatch(actions.registerCredentials(input)),
+    // updateUser: input => dispatch(actions.updateUser(input)),
+    // modifyUser: input => dispatch(actions.modifyUser(input)),
+    // deleteUser: input => dispatch(actions.deleteUser(input)),
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+  };
 };
 
 export default connect(

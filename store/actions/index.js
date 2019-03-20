@@ -14,6 +14,7 @@ import User from "./user";
 import Nav from "./navigation";
 
 const uri = "http://localhost:3000/graphql";
+// const uri = "http://138.197.158.74:80/graphql";
 
 const imports = {
   ...User(uri),

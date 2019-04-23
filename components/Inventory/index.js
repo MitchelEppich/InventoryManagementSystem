@@ -9,7 +9,6 @@ const index = props => {
   let iHeadings = props.misc.iHeadings.map((heading, index) => {
     let lastCol = "",
       bg = "bg-teal";
-    let width = heading.toLowerCase() == "name" ? "w-100" : "w-100";
     if (index == props.misc.iHeadings.length - 1) {
       lastCol = "";
     }
@@ -23,8 +22,7 @@ const index = props => {
           props.setOrderBy(index);
         }}
         className={
-          width +
-          " p-2 border border-salmon border-r-0 border-t-0 border-b-0 " +
+          "w-100 p-2 border border-teal border-r-0 border-t-0 border-b-0 " +
           bg +
           " hover:bg-teal-dark cursor-pointer text-xs text-white justify-center flex items-center uppercase" +
           lastCol
@@ -73,7 +71,7 @@ const index = props => {
       <div className="fixed flex justify-between bg-white shadow-md w-4/5 pt-1">
         <div
           onClick={() => props.setVisibleScreen("inventoryFilters")}
-          className=" w-150 ml-48 cursor-pointer text-crimson unselectable    "
+          className=" w-100 ml-48 cursor-pointer text-black unselectable    "
         >
           <h4 className="h-full uppercase leading-loose">
             Filter By

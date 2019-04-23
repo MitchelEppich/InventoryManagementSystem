@@ -47,13 +47,11 @@ const item = props => {
   });
   let subHeadings = props.misc.iSubHeadings.map((heading, index) => {
     return (
-      <span key={index} className="text-red w-150 px-2 py-2 text-sm">
+      <span key={index} className="text-black w-100 px-2 py-2 text-sm">
         {heading}
       </span>
     );
   });
-
-  console.log(props);
 
   return (
     <div
@@ -62,7 +60,7 @@ const item = props => {
         props.toggleShowAll(id);
       }}
       className={
-        "h-auto w-full flex flex-wrap justify-start bg-salmon-lighter border border-1 border-white hover:border-teal "
+        "h-auto w-full flex flex-wrap justify-start bg-grey-lightest border border-1 border-white hover:border-teal "
       }
     >
       {/* <div
@@ -72,17 +70,17 @@ const item = props => {
             props.submitInventoryEdit(props.misc.currentEdit);
           }
         }}
-        className=" w-100 pt-4 text-sm text-crimson text-center cursor-pointer"
+        className=" w-100 pt-4 text-sm text-black text-center cursor-pointer"
       >
         {editing ? "SAVE" : props.index + 1}
       </div> */}
-      <div className=" w-100 py-2 pl-2 text-sm text-crimson text-left">
+      <div className=" w-100 py-2 pl-2 text-sm text-black text-left">
         {props.name.replace("Cannabis Seeds", "")}
       </div>
-      <div className=" w-100 pt-3 text-sm text-crimson text-center flex flex-wrap">
+      <div className=" w-100 pt-3 text-sm text-black text-center flex flex-wrap">
         {companyCircles}
       </div>
-      <div className=" w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-100 pt-4 text-sm text-black text-center">
         {props.status}
       </div>
       {editing ? (
@@ -91,7 +89,7 @@ const item = props => {
             onChange={e => {
               props.handleInventoryEdit("qtyL", e.target.value);
             }}
-            className=" w-100 pt-1 text-sm text-crimson text-center"
+            className=" w-100 pt-1 text-sm text-black text-center"
             type="number"
             min="0"
             aria-label="quantityLoose"
@@ -102,7 +100,7 @@ const item = props => {
             onChange={e => {
               props.handleInventoryEdit("rop", e.target.value);
             }}
-            className=" w-100 pt-1 text-sm text-crimson text-center"
+            className=" w-100 pt-1 text-sm text-black text-center"
             type="number"
             min="0"
             aria-label="rop"
@@ -112,27 +110,27 @@ const item = props => {
         </form>
       ) : (
         <React.Fragment>
-          <div className=" w-100 pt-4 text-sm text-crimson text-center">
+          <div className=" w-100 pt-4 text-sm text-black text-center">
             {props.qtyL}
           </div>
-          <div className=" w-100 pt-4 text-sm text-crimson text-center">
+          <div className=" w-100 pt-4 text-sm text-black text-center">
             {props.rop}
           </div>
         </React.Fragment>
       )}
-      <div className=" w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-100 pt-4 text-sm text-black text-center">
         {props.noe}
       </div>
-      <div className=" w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-100 pt-4 text-sm text-black text-center">
         {props.sold}
       </div>
-      <div className=" w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-100 pt-4 text-sm text-black text-center">
         {props.breeder}
       </div>
-      <div className=" w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-100 pt-4 text-sm text-black text-center">
         {props.location}
       </div>
-      <div className=" w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-100 pt-4 text-sm text-black text-center">
         {props.category}
       </div>
       {showAll ? <div className="w-full flex pl-4">{subHeadings}</div> : null}

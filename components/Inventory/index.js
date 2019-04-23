@@ -8,13 +8,13 @@ import InventoryFilters from "./inventoryFilters";
 const index = props => {
   let iHeadings = props.misc.iHeadings.map((heading, index) => {
     let lastCol = "",
-      bg = "bg-crimson";
+      bg = "bg-teal";
     let width = heading.toLowerCase() == "name" ? "w-100" : "w-100";
     if (index == props.misc.iHeadings.length - 1) {
       lastCol = "";
     }
     if (props.misc.orderBy == index) {
-      bg = "bg-salmon-light";
+      bg = "bg-teal-dark";
     }
     return (
       <div
@@ -26,7 +26,7 @@ const index = props => {
           width +
           " p-2 border border-salmon border-r-0 border-t-0 border-b-0 " +
           bg +
-          " hover:bg-salmon-light cursor-pointer text-xs text-white justify-center flex items-center uppercase" +
+          " hover:bg-teal-dark cursor-pointer text-xs text-white justify-center flex items-center uppercase" +
           lastCol
         }
       >
@@ -100,7 +100,7 @@ const index = props => {
         props.misc.visibleScreen.includes("inventoryFilters") ? (
           <InventoryFilters {...props} />
         ) : null}
-        <div className=" w-300 mr-48 mb-2 text-crimson flex  ">
+        <div className=" w-300 mr-48 mb-2 text-grey flex  ">
           <h4 className="h-full w-1/3 uppercase leading-loose">Search:</h4>
           <input
             onChange={e => {
@@ -117,7 +117,7 @@ const index = props => {
             onClick={() => {
               props.setOrderBy(null);
             }}
-            className="h-8 w-100 bg-crimson pt-2 hover:bg-salmon-light cursor-pointer text-xs text-white text-center "
+            className="h-8 w-100 bg-teal pt-2 hover:bg-teal-dark cursor-pointer text-xs text-white text-center "
           >
             No
           </div> */}

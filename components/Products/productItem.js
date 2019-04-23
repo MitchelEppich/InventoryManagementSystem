@@ -52,7 +52,7 @@ const item = props => {
         }
       }}
       className={
-        "h-auto w-full flex flex-wrap justify-start bg-salmon-lighter border border-1 border-white hover:border-salmon-light " +
+        "h-auto w-full flex flex-wrap justify-start bg-teal-dark border border-1 border-white hover:border-teal-dark " +
         (editing ? "" : "cursor-pointer")
       }
     >

@@ -33,7 +33,7 @@ const index = props => {
         <input className="w-full h-12 uppercase pl-4 py-1 m-4 text-crimson" placeholder="# sold" type="number"/>
         <input className="w-full h-12 uppercase pl-4 py-1 m-4 text-crimson" placeholder="Re-order point" type="number"/>
         <input className="w-full h-12 uppercase pl-4 py-1 m-4 text-crimson" placeholder="location" type="text"/>
-        <input className="rounded-lg bg-white hover:bg-salmon-light hover:text-white hover:border-white border border-crimson w-full h-12 uppercase pl-4 py-1 m-4 text-crimson cursor-pointer" value="create" type="submit"/>
+        <input className="rounded-lg bg-white hover:bg-teal-dark hover:text-white hover:border-white border border-crimson w-full h-12 uppercase pl-4 py-1 m-4 text-crimson cursor-pointer" value="create" type="submit"/>
       </form>
     </div>
   );

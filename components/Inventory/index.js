@@ -9,7 +9,7 @@ const index = props => {
   let iHeadings = props.misc.iHeadings.map((heading, index) => {
     let lastCol = "",
       bg = "bg-teal";
-    let width = heading.toLowerCase() == "name" ? "w-100" : "w-100";
+    let width = heading.toLowerCase() == "name" ? "w-300" : "w-1/8";
     if (index == props.misc.iHeadings.length - 1) {
       lastCol = "";
     }
@@ -59,12 +59,28 @@ const index = props => {
           .toLowerCase()
           .includes(props.misc.searchValue.toLowerCase())
       ) {
-        return <Item key={index} {...props} {...item} index={index} />;
+        return (
+          <Item
+            key={index}
+            productView={false}
+            {...props}
+            {...item}
+            index={index}
+          />
+        );
       } else {
         return null;
       }
     } else {
-      return <Item key={index} {...props} {...item} index={index} />;
+      return (
+        <Item
+          key={index}
+          productView={false}
+          {...props}
+          {...item}
+          index={index}
+        />
+      );
     }
   });
 
@@ -95,8 +111,8 @@ const index = props => {
           />
         </div>
       </div>
-      <div className="h-600">
-        <div className="flex fixed">
+      <div className="h-600 w-full">
+        <div className="flex w-4/5 fixed -mt-1">
           {/* <div
             onClick={() => {
               props.setOrderBy(null);

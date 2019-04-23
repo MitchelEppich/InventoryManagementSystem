@@ -90,7 +90,7 @@ let colors = {
   "yellow-darkest": "#453411",
   "yellow-darker": "#684f1d",
   "yellow-dark": "#f2d024",
-  yellow: "#fff200",
+  yellow: "#fbd209",
   "yellow-light": "#fff382",
   "yellow-lighter": "#fff9c2",
   "yellow-lightest": "#fcfbeb",

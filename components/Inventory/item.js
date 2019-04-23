@@ -16,11 +16,11 @@ const item = props => {
       accronym;
     switch (val) {
       case "beaver seeds":
-        color = "bg-green";
+        color = "bg-green ";
         accronym = "BVR";
         break;
       case "crop king seeds":
-        color = "bg-red";
+        color = "bg-red text-white";
         accronym = "CKS";
         break;
       case "sonoma seeds":
@@ -35,19 +35,19 @@ const item = props => {
     return (
       <span
         key={index}
-        style={{ height: "30px", width: "30px" }}
+        style={{ height: "35px", width: "35px" }}
         className={
-          "mx-auto rounded-full shadow-md flex items-center justify-center text-xxs " +
+          "mx-auto rounded-full font-bold shadow-md flex items-center justify-center text-xs " +
           color
         }
       >
-        {val}
+        {accronym}
       </span>
     );
   });
   let subHeadings = props.misc.iSubHeadings.map((heading, index) => {
     return (
-      <span key={index} className="text-red w-150 px-2 py-2 text-sm">
+      <span key={index} className="text-grey w-1/8 px-2 py-2 text-sm uppercase">
         {heading}
       </span>
     );
@@ -56,16 +56,17 @@ const item = props => {
   console.log(props);
 
   return (
+    <div className="w-full">
     <div
       onClick={() => {
         let id = showAll ? null : props.index;
         props.toggleShowAll(id);
       }}
       className={
-        "h-auto w-full flex flex-wrap justify-start bg-salmon-lighter border border-1 border-white hover:border-salmon-light "
+        "h-auto w-full flex justify-start bg-white border border-1 border-grey-light py-2 hover:border-teal-light items-center "
       }
     >
-      <div
+      {/* <div
         onClick={e => {
           if (editing) {
             e.stopPropagation();
@@ -75,23 +76,23 @@ const item = props => {
         className=" w-100 pt-4 text-sm text-crimson text-center cursor-pointer"
       >
         {editing ? "SAVE" : props.index + 1}
-      </div>
-      <div className=" w-100 py-2 pl-2 text-sm text-crimson text-left">
+      </div> */}
+      <div className="w-300 py-2 pl-2 text-sm text-grey text-left">
         {props.name.replace("Cannabis Seeds", "")}
       </div>
-      <div className=" w-100 pt-3 text-sm text-crimson text-center flex flex-wrap">
+      <div className="w-1/8 pt-1 text-sm text-grey text-center flex flex-wrap">
         {companyCircles}
       </div>
-      <div className=" w-100 pt-4 text-sm text-crimson text-center">
+      <div className="w-1/8 pt-4 text-sm text-grey text-center">
         {props.status}
       </div>
       {editing ? (
-        <form className=" py-1 flex justify-between">
+        <form className="py-1 flex justify-between">
           <input
             onChange={e => {
               props.handleInventoryEdit("qtyL", e.target.value);
             }}
-            className=" w-100 pt-1 text-sm text-crimson text-center"
+            className="w-1/8 pt-1 text-sm text-grey text-center"
             type="number"
             min="0"
             aria-label="quantityLoose"
@@ -102,7 +103,7 @@ const item = props => {
             onChange={e => {
               props.handleInventoryEdit("rop", e.target.value);
             }}
-            className=" w-100 pt-1 text-sm text-crimson text-center"
+            className="w-1/8 pt-1 text-sm text-grey text-center"
             type="number"
             min="0"
             aria-label="rop"
@@ -112,30 +113,31 @@ const item = props => {
         </form>
       ) : (
         <React.Fragment>
-          <div className=" w-100 pt-4 text-sm text-crimson text-center">
+          <div className=" w-1/8 pt-4 text-sm text-grey text-center">
             {props.qtyL}
           </div>
-          <div className=" w-100 pt-4 text-sm text-crimson text-center">
+          <div className=" w-1/8 pt-4 text-sm text-grey text-center">
             {props.rop}
           </div>
         </React.Fragment>
       )}
-      <div className=" w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-1/8 pt-4 text-sm text-grey text-center">
         {props.noe}
       </div>
-      <div className=" w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-1/8 pt-4 text-sm text-grey text-center">
         {props.sold}
       </div>
-      <div className=" w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-1/8 pt-4 text-sm text-grey text-center">
         {props.breeder}
       </div>
-      <div className=" w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-1/8 pt-4 text-sm text-grey text-center">
         {props.location}
       </div>
-      <div className=" w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-1/8 pt-4 text-sm text-grey text-center">
         {props.category}
       </div>
-      {showAll ? <div className="w-full flex pl-4">{subHeadings}</div> : null}
+     
+    </div> {showAll ? <div className="w-full flex pl-4 bg-grey-light text-grey p-2">{subHeadings}</div> : null}
     </div>
   );
 };

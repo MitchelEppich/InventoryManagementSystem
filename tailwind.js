@@ -192,7 +192,7 @@ module.exports = {
     md: { min: "416px", max: "992px" },
     lg: { min: "993px", max: "1367px" },
     xl: { min: "1368px", max: "1599px" },
-    xxl: { min: "1600px"}
+    xxl: { min: "1600px" }
   },
 
   /*
@@ -524,18 +524,23 @@ module.exports = {
     "1/16": "6.25%",
     "15/16": "93.75%",
     "100": "100px",
+    "150": "150px",
     "200": "200px",
     "250": "250px",
     "300": "300px",
+    "350": "350px",
     "400": "400px",
     "450": "450px",
+    "500": "500px",
     "550": "550px",
     "600": "600px",
     "700": "700px",
     "750": "750px",
+    "1000": "1000px",
+    "1018": "1018px",
+    "1200": "1200px",
     full: "100%",
-    screen: "100vw",
-    
+    screen: "100vw"
   },
 
   /*
@@ -583,8 +588,7 @@ module.exports = {
     "700": "700px",
     "750": "750px",
     full: "100%",
-    screen: "100vw",
-    
+    screen: "100vw"
   },
 
   /*
@@ -624,8 +628,8 @@ module.exports = {
   minHeight: {
     "0": "0",
     full: "100%",
-    card: '500px',
-    mobileCard: '300px',
+    card: "500px",
+    mobileCard: "300px",
     screen: "100vh"
   },
 
@@ -654,6 +658,9 @@ module.exports = {
     "3xl": "80rem",
     "4xl": "90rem",
     "5xl": "100rem",
+    "1000": "1000px",
+    "1018": "1018px",
+    "1200": "1200px",
     full: "100%",
     sButton: "634px",
     uploadButton: "320px"
@@ -752,6 +759,7 @@ module.exports = {
     "24": "6rem",
     "32": "8rem",
     "40": "10rem",
+    "48": "12rem",
     "64": "16rem",
     "1/2": "50%",
     "50vw": "50vw"

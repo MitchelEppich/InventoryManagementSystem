@@ -16,7 +16,7 @@ const index = props => {
           onClick={() => console.log(props)}
           className="xs:hidden sm:hidden md:hidden lg:hidden"
         >
-          Inventory Management System
+          I.M.S.
         </h1>
         <h1 className="xl:hidden xxl:hidden">I.M.S.</h1>
         <h4>
@@ -25,7 +25,7 @@ const index = props => {
             : "NOT LOGGED IN"}
         </h4>
       </div>
-      <div className="w-200 pt-4 flex flex-wrap justify-around xl:w-auto xxl:w-auto xl:justify-end xxl:justify-end">
+      <div className=" pt-4 flex flex-wrap justify-around xl:w-auto xxl:w-auto xl:justify-end xxl:justify-end">
         <Link href="/">
           <button className="h-8 px-3 mx-2 my-2 bg-salmon hover:bg-salmon-light uppercase text-white">
             Inventory
@@ -56,7 +56,6 @@ const index = props => {
           <button
             className="h-8 px-3 mx-2 my-2 bg-salmon hover:bg-salmon-light uppercase text-white"
             onClick={() => {
-              console.log("clicked");
               props.releaseCredentials({
                 username: props.user.currentUser.username
               });

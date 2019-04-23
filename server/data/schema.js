@@ -7,8 +7,6 @@ type Query {
   allUsers(filter: UserFilter): [User]!
   strain(input: StrainInput!): Strain
   allStrains(filter: StrainFilter): [Strain]!
-  getFeaturedList: [Strain]!
-  getRelatedList(input: RelatedInput!): [Strain]!
 }
 type Strain {
   _id: String
@@ -36,7 +34,6 @@ type Strain {
   rating: Float
   reviews: [String]
   ratingQuantity: [Int]
-  featured: Boolean
   relationData: String
   releaseDate: String
   soldQuantity: [Int]

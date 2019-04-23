@@ -3,10 +3,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const StrainSchema = Schema({
+  // Company Information
   company: [String],
   website: [String],
-  name: String,
   alias: [String],
+  // Seed Information
+  name: String,
   price: [[Number]],
   description: String,
   effect: [Number],
@@ -23,13 +25,28 @@ const StrainSchema = Schema({
   pThc: [Number],
   pCbd: [Number],
   pCbn: [Number],
-  sotiId: String,
   country: [Number],
+  moreInfo: [String],
+  // User Information
+  reviews: { type: [String], default: [] },
+  // Database information
+  sotiId: String,
   sttId: String,
   releaseDate: Date,
-  isFeatured: Boolean,
-  seed: String,
-  seedFrom: { type: Date, default: new Date() }
+  // Inventory Information
+  qtyPacked: Number, // Ready to be shipped
+  qtyPackedMin: Number, // Minimum needed on hand
+  qtyPackedMax: Number, // Maximum to order for on hand
+  qtyPackedROP: Number, // When amount hits this, reorder
+  qtyPackedNOE: Number, // Estimation to order next round
+  qtyLoose: Number, // Ready to be packed
+  qtyLooseMin: Number, // Minimum needed on hand
+  qtyLooseMax: Number, // Maximum to order for on hand
+  qtyLooseROP: Number, // When amount hits this, reorder
+  qtyLooseNOE: Number, // Estimation to order next round
+  qtySold: Number, // Sold
+  location: String, // Location in warehouse
+  category: Number // Merchandise, Seed, or Catalogue
 });
 
 module.exports = StrainSchema;

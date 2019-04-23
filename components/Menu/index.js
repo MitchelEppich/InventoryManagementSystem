@@ -10,11 +10,11 @@ import {
 
 const index = props => {
   return (
-    <div className="h-24 w-full px-64 pt-2 flex justify-between bg-crimson leading-normal text-white">
+    <div className="h-24 w-full px-48 pt-2 flex justify-between bg-crimson leading-normal text-white">
       <div>
         <h1
           onClick={() => console.log(props)}
-          className="xs:hidden sm:hidden md:hidden lg:hidden"
+          className="xs:hidden sm:hidden md:hidden lg:hidden uppercase"
         >
           Inventory Management System
         </h1>
@@ -25,7 +25,7 @@ const index = props => {
             : "NOT LOGGED IN"}
         </h4>
       </div>
-      <div className="w-200 pt-4 flex flex-wrap justify-around xl:w-auto xxl:w-auto xl:justify-end xxl:justify-end">
+      <div className=" pt-4 flex flex-wrap justify-around xl:w-auto xxl:w-auto xl:justify-end xxl:justify-end">
         <Link href="/">
           <button className="h-8 px-3 mx-2 my-2 bg-salmon hover:bg-salmon-light uppercase text-white">
             Inventory

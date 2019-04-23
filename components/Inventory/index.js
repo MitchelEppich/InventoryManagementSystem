@@ -6,10 +6,10 @@ import Item from "./item";
 import InventoryFilters from "./inventoryFilters";
 
 const index = props => {
-  let tHeadings = props.misc.iHeadings.map((heading, index) => {
+  let iHeadings = props.misc.iHeadings.map((heading, index) => {
     let lastCol = "",
       bg = "bg-crimson";
-    let width = heading.toLowerCase() == "name" ? "w-1/8" : "w-1/16";
+    let width = heading.toLowerCase() == "name" ? "w-100" : "w-100";
     if (index == props.misc.iHeadings.length - 1) {
       lastCol = "";
     }
@@ -85,42 +85,46 @@ const index = props => {
   });
 
   return (
-    <div className="h-700 w-full flex flex-wrap justify-between content-center ">
-      <div
-        onClick={() => props.setVisibleScreen("inventoryFilters")}
-        className="h-8 w-32 mx-4 cursor-pointer text-crimson unselectable "
-      >
-        <h4 className="h-full uppercase leading-loose">
-          Filter By
-          <FontAwesomeIcon icon={faSlidersH} className="fa-lg ml-3" />
-        </h4>
-      </div>
-      {props.misc.visibleScreen != null &&
-      props.misc.visibleScreen.includes("inventoryFilters") ? (
-        <InventoryFilters {...props} />
-      ) : null}
-      <div className="h-8 w-64 mx-4 mb-2 text-crimson flex">
-        <h4 className="h-full w-1/3 uppercase leading-loose">Search:</h4>
-        <input
-          onChange={e => {
-            props.search(e.target.value);
-          }}
-          className="w-2/3"
-          type="text"
-        />
-      </div>
-      <div className="w-full pr-4 flex flex-wrap justify-between bg-crimson rounded-t-lg">
+    <div className="h-700 w-4/5 mx-auto overflow-scroll flex flex-wrap justify-between content-center">
+      <div className="fixed flex justify-between bg-white shadow-md w-4/5 pt-1">
         <div
-          onClick={() => {
-            props.setOrderBy(null);
-          }}
-          className="h-8 w-1/16 pt-2 hover:bg-salmon-light cursor-pointer text-xs text-white text-center rounded-tl-lg"
+          onClick={() => props.setVisibleScreen("inventoryFilters")}
+          className=" w-150 ml-48 cursor-pointer text-crimson unselectable    "
         >
-          Nº
+          <h4 className="h-full uppercase leading-loose">
+            Filter By
+            <FontAwesomeIcon icon={faSlidersH} className="fa-lg ml-3" />
+          </h4>
         </div>
-        {tHeadings}
+        {props.misc.visibleScreen != null &&
+        props.misc.visibleScreen.includes("inventoryFilters") ? (
+          <InventoryFilters {...props} />
+        ) : null}
+        <div className=" w-300 mr-48 mb-2 text-crimson flex  ">
+          <h4 className="h-full w-1/3 uppercase leading-loose">Search:</h4>
+          <input
+            onChange={e => {
+              props.search(e.target.value);
+            }}
+            className="w-2/3"
+            type="text"
+          />
+        </div>
       </div>
-      <div className="h-600 w-full overflow-y-scroll rounded-b-lg">{items}</div>
+      <div className="h-600">
+        <div className="flex fixed">
+          {/* <div
+            onClick={() => {
+              props.setOrderBy(null);
+            }}
+            className="h-8 w-100 bg-crimson pt-2 hover:bg-salmon-light cursor-pointer text-xs text-white text-center "
+          >
+            No
+          </div> */}
+          {iHeadings}
+        </div>
+        <div className="flex flex-wrap mt-6">{items}</div>
+      </div>
     </div>
   );
 };

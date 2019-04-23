@@ -9,13 +9,12 @@ import React, { Component } from "react";
 import DevTools from "../store/DevTools";
 import { connect } from "react-redux";
 import actions from "../store/actions";
-import '@fortawesome/fontawesome-svg-core/styles.css'
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
-import Menu from "../components/Menu"
+import Menu from "../components/Menu";
 
 class Layout extends Component {
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
   componentDidUpdate() {}
 
@@ -23,9 +22,7 @@ class Layout extends Component {
     return (
       <div>
         <Menu {...this.props} />
-        <div className="px-32 pt-24">
-          {this.props.children}
-        </div>
+        <div className="pt-24 overflow-hidden">{this.props.children}</div>
       </div>
     );
   }

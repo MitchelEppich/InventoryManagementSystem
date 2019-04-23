@@ -2,7 +2,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 
-import Item from "../Inventory/item";
+import ProductItem from "./productItem";
 import InventoryFilters from "../Inventory/inventoryFilters";
 
 const index = props => {
@@ -67,28 +67,12 @@ const index = props => {
           .toLowerCase()
           .includes(props.misc.searchValue.toLowerCase())
       ) {
-        return (
-          <Item
-            key={index}
-            productView={true}
-            {...props}
-            {...item}
-            index={index}
-          />
-        );
+        return <ProductItem key={index} {...props} {...item} index={index} />;
       } else {
         return null;
       }
     } else {
-      return (
-        <Item
-          key={index}
-          productView={true}
-          {...props}
-          {...item}
-          index={index}
-        />
-      );
+      return <ProductItem key={index} {...props} {...item} index={index} />;
     }
   });
 

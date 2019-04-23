@@ -13,7 +13,7 @@ const item = props => {
 
 
   return (
-    <div  className="h-auto w-full flex justify-between bg-salmon-lighter border border-1 border-white hover:border-salmon-light" >
+    <div  className="h-auto w-full flex justify-between bg-teal-dark border border-1 border-white hover:border-salmon-light" >
     <div className="h-full w-1/6 pt-2 text-sm text-crimson text-center">{props.index + 1}</div>
         <div className="h-full w-1/6 py-2 text-sm text-crimson text-center">{props.name}</div> 
         <div className="h-full w-1/3 py-2 text-sm text-crimson text-center">{props.action}</div> 

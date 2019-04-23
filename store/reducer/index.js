@@ -1853,7 +1853,8 @@ const initialState = {
     company: {},
     status: {},
     category: {}
-  }
+  },
+  showAllId: null
 };
 
 const indexReducer = (state = initialState, action) => {
@@ -1946,6 +1947,10 @@ const indexReducer = (state = initialState, action) => {
         }
       }
       return state;
+    case actionTypes.TOGGLE_SHOW_ALL:
+      return updateObject(state, {
+        showAllId: action.id
+      });
     default:
       return state;
   }

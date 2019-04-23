@@ -43,7 +43,8 @@ const mapDispatchToProps = dispatch => {
     applyFilters: () => dispatch(actions.applyFilters()),
     clearFilters: () => dispatch(actions.clearFilters()),
     updateFilters: (name, valueObj) =>
-      dispatch(actions.updateFilters(name, valueObj))
+      dispatch(actions.updateFilters(name, valueObj)),
+    toggleShowAll: id => dispatch(actions.toggleShowAll(id))
   };
 };
 

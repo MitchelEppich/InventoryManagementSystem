@@ -9,6 +9,7 @@ import {
 
 const item = props => {
   let productView = props.productView;
+  let showAll = props.misc.showAllId == props.index;
   let editing = props._id == props.misc.currentEdit._id ? true : false;
   let companyCircles = props.company.map((val, index) => {
     let color = "",
@@ -34,55 +35,63 @@ const item = props => {
     return (
       <span
         key={index}
+        style={{ height: "30px", width: "30px" }}
         className={
-          "w-5 h-5 pt-1 mx-auto rounded-full border border-crimson text-center text-xxs " +
+          "mx-auto rounded-full shadow-md flex items-center justify-center text-xxs " +
           color
         }
       >
-        {accronym}
+        {val}
+      </span>
+    );
+  });
+  let subHeadings = props.misc.iSubHeadings.map((heading, index) => {
+    return (
+      <span key={index} className="text-red w-150 px-2 py-2 text-sm">
+        {heading}
       </span>
     );
   });
 
+  console.log(props);
+
   return (
     <div
       onClick={() => {
-        if (!editing) {
-          props.toggleEdit(props._id);
-        }
+        let id = showAll ? null : props.index;
+        props.toggleShowAll(id);
       }}
       className={
-        "h-auto w-full flex flex-wrap justify-start bg-salmon-lighter border border-1 border-white hover:border-salmon-light " +
-        (editing ? "" : "cursor-pointer")
+        "h-auto w-full flex flex-wrap justify-start bg-salmon-lighter border border-1 border-white hover:border-salmon-light "
       }
     >
-      {/* <div
+      <div
         onClick={e => {
           if (editing) {
             e.stopPropagation();
             props.submitInventoryEdit(props.misc.currentEdit);
           }
         }}
-        className="h-full w-100 pt-4 text-sm text-crimson text-center cursor-pointer"
+        className=" w-100 pt-4 text-sm text-crimson text-center cursor-pointer"
       >
         {editing ? "SAVE" : props.index + 1}
-      </div> */}
-      <div className="h-full w-100 py-2 pl-2 text-sm text-crimson text-left">
+      </div>
+      <div className=" w-100 py-2 pl-2 text-sm text-crimson text-left">
         {props.name.replace("Cannabis Seeds", "")}
       </div>
-      <div className="h-full w-100 pt-3 text-sm text-crimson text-center flex flex-wrap">
+      <div className=" w-100 pt-3 text-sm text-crimson text-center flex flex-wrap">
         {companyCircles}
       </div>
-      <div className="h-full w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-100 pt-4 text-sm text-crimson text-center">
         {props.status}
       </div>
       {editing ? (
-        <form className="h-full py-1 flex justify-between">
+        <form className=" py-1 flex justify-between">
           <input
             onChange={e => {
               props.handleInventoryEdit("qtyL", e.target.value);
             }}
-            className="h-full w-100 pt-1 text-sm text-crimson text-center"
+            className=" w-100 pt-1 text-sm text-crimson text-center"
             type="number"
             min="0"
             aria-label="quantityLoose"
@@ -93,7 +102,7 @@ const item = props => {
             onChange={e => {
               props.handleInventoryEdit("rop", e.target.value);
             }}
-            className="h-full w-100 pt-1 text-sm text-crimson text-center"
+            className=" w-100 pt-1 text-sm text-crimson text-center"
             type="number"
             min="0"
             aria-label="rop"
@@ -103,29 +112,30 @@ const item = props => {
         </form>
       ) : (
         <React.Fragment>
-          <div className="h-full w-100 pt-4 text-sm text-crimson text-center">
+          <div className=" w-100 pt-4 text-sm text-crimson text-center">
             {props.qtyL}
           </div>
-          <div className="h-full w-100 pt-4 text-sm text-crimson text-center">
+          <div className=" w-100 pt-4 text-sm text-crimson text-center">
             {props.rop}
           </div>
         </React.Fragment>
       )}
-      <div className="h-full w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-100 pt-4 text-sm text-crimson text-center">
         {props.noe}
       </div>
-      <div className="h-full w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-100 pt-4 text-sm text-crimson text-center">
         {props.sold}
       </div>
-      <div className="h-full w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-100 pt-4 text-sm text-crimson text-center">
         {props.breeder}
       </div>
-      <div className="h-full w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-100 pt-4 text-sm text-crimson text-center">
         {props.location}
       </div>
-      <div className="h-full w-100 pt-4 text-sm text-crimson text-center">
+      <div className=" w-100 pt-4 text-sm text-crimson text-center">
         {props.category}
       </div>
+      {showAll ? <div className="w-full flex pl-4">{subHeadings}</div> : null}
     </div>
   );
 };

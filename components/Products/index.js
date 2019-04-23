@@ -8,7 +8,7 @@ import InventoryFilters from "../Inventory/inventoryFilters";
 const index = props => {
   let tHeadings = props.misc.pHeadings.map((heading, index) => {
     let lastCol = "",
-      bg = "bg-crimson";
+      bg = "bg-teal";
     let width;
     if (heading.toLowerCase() == "name") {
       width = "w-1/8";
@@ -21,7 +21,7 @@ const index = props => {
       lastCol = "";
     }
     if (props.misc.orderBy == index) {
-      bg = "bg-salmon-light";
+      bg = "bg-teal-dark";
     }
     return (
       <div
@@ -34,7 +34,7 @@ const index = props => {
           width +
           " pt-2 border border-salmon border-r-0 border-t-0 border-b-0 " +
           bg +
-          " hover:bg-salmon-light cursor-pointer text-xs text-white text-center uppercase" +
+          " hover:bg-teal-dark cursor-pointer text-xs text-white text-center uppercase" +
           lastCol
         }
       >
@@ -91,7 +91,7 @@ const index = props => {
       props.misc.visibleScreen.includes("inventoryFilters") ? (
         <InventoryFilters {...props} />
       ) : null}
-      <div className="h-8 w-64 mx-4 mb-2 text-crimson flex">
+      <div className="h-8 w-64 mx-4 mb-2 text-grey flex">
         <h4 className="h-full w-1/3 uppercase leading-loose">Search:</h4>
         <input
           onChange={e => {
@@ -101,12 +101,12 @@ const index = props => {
           type="text"
         />
       </div>
-      <div className="w-full pr-4 flex flex-wrap justify-between bg-crimson rounded-t-lg">
+      <div className="w-full pr-4 flex flex-wrap justify-between bg-teal rounded-t-lg">
         <div
           onClick={() => {
             props.setOrderBy(null);
           }}
-          className="h-8 w-1/16 pt-2 hover:bg-salmon-light cursor-pointer text-xs text-white text-center rounded-tl-lg"
+          className="h-8 w-1/16 pt-2 hover:bg-teal-dark cursor-pointer text-xs text-white text-center rounded-tl-lg"
         >
           No
         </div>

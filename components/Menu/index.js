@@ -21,7 +21,7 @@ const index = props => {
         <h1 className="xl:hidden xxl:hidden">I.M.S.</h1>
         <h4>
           {props.user.currentUser
-            ? "Welcome " + props.user.currentUser
+            ? "Welcome, " + props.user.currentUser.name
             : "NOT LOGGED IN"}
         </h4>
       </div>
@@ -53,7 +53,14 @@ const index = props => {
           </button>
         </Link>
         <Link href="/login">
-          <button className="h-8 px-3 mx-2 my-2 bg-teal-dark hover:bg-salmon-light uppercase text-white">
+          <button
+            className="h-8 px-3 mx-2 my-2 bg-teal-dark hover:bg-salmon-light uppercase text-white"
+            onClick={() => {
+              props.releaseCredentials({
+                username: props.user.currentUser.username
+              });
+            }}
+          >
             {props.user.currentUser ? "Logout" : "Login"}
           </button>
         </Link>

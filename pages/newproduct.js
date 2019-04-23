@@ -12,7 +12,6 @@ import gql from "graphql-tag";
 import Layout from "../HOC/Layout";
 import NewProduct from "../components/NewProduct";
 
-
 class Index extends Component {
   // componentDidMount() {
   //   this.props.fetchCredentials().then(res => {
@@ -44,7 +43,7 @@ const mapDispatchToProps = dispatch => {
     // fetchUsers: input => dispatch(actions.fetchUsers(input)),
     // verifyCredentials: input => dispatch(actions.verifyCredentials(input)),
     // registerCredentials: input => dispatch(actions.registerCredentials(input)),
-    // releaseCredentials: input => dispatch(actions.releaseCredentials(input)),
+    releaseCredentials: input => dispatch(actions.releaseCredentials(input)),
     // updateUser: input => dispatch(actions.updateUser(input)),
     // modifyUser: input => dispatch(actions.modifyUser(input)),
     // deleteUser: input => dispatch(actions.deleteUser(input)),

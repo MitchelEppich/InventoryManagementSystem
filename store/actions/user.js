@@ -38,7 +38,7 @@ const getActions = uri => {
         return makePromise(execute(link, operation))
           .then(data => {
             let user = data.data.user;
-            if (user == null) return;
+            if (user == null || user.admin == null) return;
             sessionStorage.setItem("token", user.token);
             dispatch({
               type: actionTypes.FETCH_CREDENTIALS,
@@ -65,7 +65,7 @@ const getActions = uri => {
         };
         return makePromise(execute(link, operation)).then(data => {
           let user = data.data.verifyCredentials;
-          if (user == null) return;
+          if (user == null || user.admin == null) return;
           sessionStorage.setItem("token", user.token);
           dispatch({
             type: actionTypes.VERIFY_CREDENTIALS,

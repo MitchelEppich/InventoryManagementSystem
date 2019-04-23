@@ -8,7 +8,13 @@ import {
   faExclamationCircle
 } from "@fortawesome/free-solid-svg-icons";
 
+import Router from "next/router";
+
+const isClient = typeof document !== "undefined";
+
 const index = props => {
+  if (!isClient) return null;
+
   return (
     <div
       className="bg-grey h-full w-full relative overflow-x-hidden overflow-y-hidden"
@@ -34,11 +40,12 @@ const index = props => {
 
             // Verify login credentials
             props.verifyCredentials({ username, badge }).then(res => {
+              console.log(res);
               if (res == null || res.token == null) {
                 let message = document.querySelector("#errorMessage");
                 message.classList.remove("hidden");
               } else {
-                props.setVisibleScreen(null);
+                Router.push("/");
               }
             });
           }}

@@ -17,47 +17,6 @@ const resolvers = {
     allStrains: (_, { filter }) => {
       let query = filter ? { $or: strainFilters(filter) } : {};
       return Strain.find(query);
-    },
-    getRelatedList: async (_, { input }) => {
-      let { sotiId, limit } = input;
-
-      let relation = decompress((await Strain.findOne({ sotiId })).relationData)
-        .split(" ")
-        .slice(0, limit)
-        .map(a => a.slice(0, 3));
-
-      let relatedStrains = await Strain.find({
-        sotiId: { $in: relation }
-      });
-
-      limit -= relatedStrains.length;
-
-      if (limit != 0) {
-        relatedStrains.push(
-          ...(await getRandomStrains(limit, {
-            sotiId: { $nin: relation }
-          }))
-        );
-      }
-
-      return randomize(relatedStrains);
-    },
-    getFeaturedList: async (_, { input }) => {
-      let limit = input.limit;
-      let featuredStrains = await Strain.find({
-        featured: true
-      }).limit(limit);
-
-      limit -= featuredStrains.length;
-      if (limit != 0) {
-        featuredStrains.push(
-          ...(await getRandomStrains(limit, {
-            $or: [{ featured: false }, { featured: undefined }]
-          }))
-        );
-      }
-
-      return randomize(featuredStrains);
     }
   },
   Mutation: {

@@ -3,35 +3,50 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const StrainSchema = Schema({
+  // Company Information
+  company: [String],
+  website: [String],
+  alias: [String],
+  // Seed Information
   name: String,
-  price: [Number],
-  strainImg: String,
-  packageImg: String,
+  price: [[Number]],
   description: String,
   effect: [Number],
   yield: [Number],
   genetic: Number,
-  flowerTime: String,
+  flowerTime: [Number],
   difficulty: Number,
   indica: Number,
   sativa: Number,
   ruderalis: Number,
-  type: Number, // Sativa, Indica, or Hybrid
-  env: String, // Indoor or Outdoor
-  og: [String], // Original genetics
-  pthc: [Number],
-  pcbd: [Number],
-  pcbn: [Number],
+  type: Number,
+  environment: Number,
+  relations: [String],
+  pThc: [Number],
+  pCbd: [Number],
+  pCbn: [Number],
   country: [Number],
-  sotiId: String,
-  rating: Number,
-  inStock: { type: Boolean, default: true },
-  soldQuantity: { type: [Number], default: [0, 0, 0] },
-  relationData: { type: String, default: "" },
+  moreInfo: [String],
+  // User Information
   reviews: { type: [String], default: [] },
-  ratingQuantity: { type: [Number], default: [0, 0, 0, 0, 0] },
-  featured: Boolean,
-  releaseDate: { type: Date, default: new Date() }
+  // Database information
+  sotiId: String,
+  sttId: String,
+  releaseDate: Date,
+  // Inventory Information
+  qtyPacked: Number, // Ready to be shipped
+  qtyPackedMin: Number, // Minimum needed on hand
+  qtyPackedMax: Number, // Maximum to order for on hand
+  qtyPackedROP: Number, // When amount hits this, reorder
+  qtyPackedNOE: Number, // Estimation to order next round
+  qtyLoose: Number, // Ready to be packed
+  qtyLooseMin: Number, // Minimum needed on hand
+  qtyLooseMax: Number, // Maximum to order for on hand
+  qtyLooseROP: Number, // When amount hits this, reorder
+  qtyLooseNOE: Number, // Estimation to order next round
+  qtySold: Number, // Sold
+  location: String, // Location in warehouse
+  category: Number // Merchandise, Seed, or Catalogue
 });
 
 module.exports = StrainSchema;

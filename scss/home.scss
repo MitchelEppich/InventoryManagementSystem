@@ -107,17 +107,17 @@ input {
 
 ///My Styles
 .inventoryFilters {
-  height: auto;
-  min-height: 8rem;
-  width: 16rem;
-  padding: 1rem 1rem;
-  background-color: white;
-  border: 1px solid #b50000;
-  border-radius: 10px;
-  position: absolute;
-  z-index: 10;
-  transform: translateY(3rem);
-
+     height: auto;
+    min-height: 8rem;
+    width: 16rem;
+    box-shadow: 1px 1px 14px rgba(70, 70, 70, 0.38);
+    padding: 1rem 1rem;
+    background-color: #ffffff;
+    border: 1px solid #49a292;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 132;
+    transform: translateY(3rem);
   @include element("hr") {
     width: 95%;
     height: 1px;

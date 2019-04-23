@@ -60,28 +60,12 @@ const index = props => {
           .toLowerCase()
           .includes(props.misc.searchValue.toLowerCase())
       ) {
-        return (
-          <Item
-            key={index}
-            productView={false}
-            {...props}
-            {...item}
-            index={index}
-          />
-        );
+        return <Item key={index} {...props} {...item} index={index} />;
       } else {
         return null;
       }
     } else {
-      return (
-        <Item
-          key={index}
-          productView={false}
-          {...props}
-          {...item}
-          index={index}
-        />
-      );
+      return <Item key={index} {...props} {...item} index={index} />;
     }
   });
 

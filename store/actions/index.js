@@ -29,7 +29,8 @@ const actionTypes = {
   SEARCH: "SEARCH",
   APPLY_FILTERS: "APPLY_FILTERS",
   CLEAR_FILTERS: "CLEAR_FILTERS",
-  UPDATE_FILTERS: "UPDATE_FILTERS"
+  UPDATE_FILTERS: "UPDATE_FILTERS",
+  TOGGLE_SHOW_ALL: "TOGGLE_SHOW_ALL"
 };
 
 const actions = {
@@ -82,11 +83,16 @@ const actions = {
     };
   },
   updateFilters: (name, valueObj) => {
-    console.log(valueObj);
     return {
       type: actionTypes.UPDATE_FILTERS,
       name: name,
       valueObj: valueObj
+    };
+  },
+  toggleShowAll: id => {
+    return {
+      type: actionTypes.TOGGLE_SHOW_ALL,
+      id: id
     };
   }
 };

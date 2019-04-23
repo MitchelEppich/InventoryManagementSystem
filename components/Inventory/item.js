@@ -62,10 +62,10 @@ const item = props => {
         props.toggleShowAll(id);
       }}
       className={
-        "h-auto w-full flex flex-wrap justify-start bg-salmon-lighter border border-1 border-white hover:border-salmon-light "
+        "h-auto w-full flex flex-wrap justify-start bg-salmon-lighter border border-1 border-white hover:border-teal "
       }
     >
-      <div
+      {/* <div
         onClick={e => {
           if (editing) {
             e.stopPropagation();
@@ -75,7 +75,7 @@ const item = props => {
         className=" w-100 pt-4 text-sm text-crimson text-center cursor-pointer"
       >
         {editing ? "SAVE" : props.index + 1}
-      </div>
+      </div> */}
       <div className=" w-100 py-2 pl-2 text-sm text-crimson text-left">
         {props.name.replace("Cannabis Seeds", "")}
       </div>

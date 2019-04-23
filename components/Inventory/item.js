@@ -75,13 +75,8 @@ const item = props => {
         className=" w-100 pt-4 text-sm text-crimson text-center cursor-pointer"
       >
         {editing ? "SAVE" : props.index + 1}
-<<<<<<< HEAD
-      </div> */}
+      </div>
       <div className=" w-100 py-2 pl-2 text-sm text-crimson text-left">
-=======
-      </div>{" "}
-      <div className="h-full w-100 py-2 pl-2 text-sm text-crimson text-left">
->>>>>>> 1f80de317adf6494aff98e439327b4c728136992
         {props.name.replace("Cannabis Seeds", "")}
       </div>
       <div className=" w-100 pt-3 text-sm text-crimson text-center flex flex-wrap">

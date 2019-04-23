@@ -23,11 +23,10 @@ const index = props => {
           props.setOrderBy(index);
         }}
         className={
-          "h-8 " +
           width +
-          " pt-2 border border-salmon border-r-0 border-t-0 border-b-0 " +
+          " p-2 border border-salmon border-r-0 border-t-0 border-b-0 " +
           bg +
-          " hover:bg-salmon-light cursor-pointer text-xs text-white text-center uppercase" +
+          " hover:bg-salmon-light cursor-pointer text-xs text-white justify-center flex items-center uppercase" +
           lastCol
         }
       >
@@ -70,8 +69,8 @@ const index = props => {
   });
 
   return (
-    <div className="h-700 max-w-1018 mx-auto overflow-scroll flex flex-wrap justify-between content-center">
-      <div className="fixed flex justify-between bg-white shadow-md w-full max-w-1018 pt-1">
+    <div className="h-700 w-4/5 mx-auto overflow-scroll flex flex-wrap justify-between content-center">
+      <div className="fixed flex justify-between bg-white shadow-md w-4/5 pt-1">
         <div
           onClick={() => props.setVisibleScreen("inventoryFilters")}
           className=" w-150 ml-48 cursor-pointer text-crimson unselectable    "
@@ -97,7 +96,7 @@ const index = props => {
         </div>
       </div>
       <div className="h-600">
-        <div className="flex">
+        <div className="flex fixed">
           {/* <div
             onClick={() => {
               props.setOrderBy(null);
@@ -108,7 +107,7 @@ const index = props => {
           </div> */}
           {iHeadings}
         </div>
-        <div className="flex flex-wrap">{items}</div>
+        <div className="flex flex-wrap mt-6">{items}</div>
       </div>
     </div>
   );

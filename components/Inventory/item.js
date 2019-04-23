@@ -35,12 +35,13 @@ const item = props => {
     return (
       <span
         key={index}
+        style={{ height: "30px", width: "30px" }}
         className={
-          "w-5 h-5 pt-1 mx-auto rounded-full border border-crimson text-center text-xxs " +
+          "mx-auto rounded-full shadow-md flex items-center justify-center text-xxs " +
           color
         }
       >
-        {accronym}
+        {val}
       </span>
     );
   });
@@ -52,6 +53,8 @@ const item = props => {
     );
   });
 
+  console.log(props);
+
   return (
     <div
       onClick={() => {
@@ -62,7 +65,7 @@ const item = props => {
         "h-auto w-full flex flex-wrap justify-start bg-salmon-lighter border border-1 border-white hover:border-salmon-light "
       }
     >
-      {/* <div
+      <div
         onClick={e => {
           if (editing) {
             e.stopPropagation();
@@ -72,8 +75,13 @@ const item = props => {
         className=" w-100 pt-4 text-sm text-crimson text-center cursor-pointer"
       >
         {editing ? "SAVE" : props.index + 1}
+<<<<<<< HEAD
       </div> */}
       <div className=" w-100 py-2 pl-2 text-sm text-crimson text-left">
+=======
+      </div>{" "}
+      <div className="h-full w-100 py-2 pl-2 text-sm text-crimson text-left">
+>>>>>>> 1f80de317adf6494aff98e439327b4c728136992
         {props.name.replace("Cannabis Seeds", "")}
       </div>
       <div className=" w-100 pt-3 text-sm text-crimson text-center flex flex-wrap">

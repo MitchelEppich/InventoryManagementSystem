@@ -51,8 +51,10 @@ let colors = {
   "almost-transparent": "rgba(30, 30, 30, 0.5)",
   "almost-white": "rgba(255, 255, 255, 0.7)",
   "almost-black": "rgba(0,0,0,0.9)",
-  crimson: "#890000",
-  salmon: "rgba(210,128,114, 1)",
+  crimson: "#49a292",
+  // crimson: "#890000",
+  salmon: "rgb(84, 144, 133)",
+  // salmon: "rgba(210,128,114, 1)",
   "salmon-light": "rgba(250,128,114, 1)",
   "salmon-lighter": "#fff3f2",
 
@@ -73,6 +75,7 @@ let colors = {
   "red-darker": "#621b18",
   "red-dark": "#cc1f1a",
   red: "#e3342f",
+  "red-new": "#b50000",
   "red-light": "#ef5753",
   "red-lighter": "#f9acaa",
   "red-lightest": "#fcebea",
@@ -540,7 +543,8 @@ module.exports = {
     "1018": "1018px",
     "1200": "1200px",
     full: "100%",
-    screen: "100vw"
+    screen: "100vw",
+    main: "90%"
   },
 
   /*

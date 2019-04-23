@@ -10,13 +10,13 @@ import {
 
 const index = props => {
   return (
-    <div className="h-24 w-full px-64 pt-2 flex justify-between bg-crimson leading-normal text-white">
+    <div className="h-24 w-full px-48 pt-2 flex justify-between bg-crimson leading-normal text-white">
       <div>
         <h1
           onClick={() => console.log(props)}
-          className="xs:hidden sm:hidden md:hidden lg:hidden"
+          className="xs:hidden sm:hidden md:hidden lg:hidden uppercase"
         >
-          I.M.S.
+          Inventory Management System
         </h1>
         <h1 className="xl:hidden xxl:hidden">I.M.S.</h1>
         <h4>

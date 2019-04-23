@@ -6,10 +6,10 @@ import Item from "./item";
 import InventoryFilters from "./inventoryFilters";
 
 const index = props => {
-  let tHeadings = props.misc.iHeadings.map((heading, index) => {
+  let iHeadings = props.misc.iHeadings.map((heading, index) => {
     let lastCol = "",
       bg = "bg-crimson";
-    let width = heading.toLowerCase() == "name" ? "w-150" : "w-150";
+    let width = heading.toLowerCase() == "name" ? "w-100" : "w-100";
     if (index == props.misc.iHeadings.length - 1) {
       lastCol = "";
     }
@@ -86,8 +86,8 @@ const index = props => {
   });
 
   return (
-    <div className="h-700 w-1200 mx-auto overflow-scroll flex flex-wrap justify-between content-center">
-      <div className="fixed flex justify-between bg-white shadow-md w-1200 pt-1">
+    <div className="h-700 max-w-1018 mx-auto overflow-scroll flex flex-wrap justify-between content-center">
+      <div className="fixed flex justify-between bg-white shadow-md w-full max-w-1018 pt-1">
         <div
           onClick={() => props.setVisibleScreen("inventoryFilters")}
           className=" w-150 ml-48 cursor-pointer text-crimson unselectable    "
@@ -112,17 +112,17 @@ const index = props => {
           />
         </div>
       </div>
-      <div className="h-600 ">
+      <div className="h-600">
         <div className="flex">
-          <div
+          {/* <div
             onClick={() => {
               props.setOrderBy(null);
             }}
             className="h-8 w-100 bg-crimson pt-2 hover:bg-salmon-light cursor-pointer text-xs text-white text-center "
           >
             No
-          </div>
-          {tHeadings}
+          </div> */}
+          {iHeadings}
         </div>
         <div className="flex flex-wrap">{items}</div>
       </div>

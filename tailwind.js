@@ -537,6 +537,7 @@ module.exports = {
     "700": "700px",
     "750": "750px",
     "1000": "1000px",
+    "1018": "1018px",
     "1200": "1200px",
     full: "100%",
     screen: "100vw"
@@ -657,6 +658,9 @@ module.exports = {
     "3xl": "80rem",
     "4xl": "90rem",
     "5xl": "100rem",
+    "1000": "1000px",
+    "1018": "1018px",
+    "1200": "1200px",
     full: "100%",
     sButton: "634px",
     uploadButton: "320px"

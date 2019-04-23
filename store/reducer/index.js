@@ -1813,20 +1813,26 @@ const initialState = {
   ],
   currentEdit: { _id: -1 },
   iHeadings: [
-    "name",
-    "id",
-    "company",
-    "status",
-    "qty(packed)",
-    "qty(loose)",
-    "lower lim.",
-    "upper lim.",
-    "# sold",
+    "Name",
+    "Companies",
+    "Status",
+    "Qty (Loose)",
     "R.O.P.",
     "N.O.E.",
-    "location",
-    "category",
-    "price"
+    "Sold (Total)",
+    "Breeder",
+    "Location",
+    "Category"
+  ],
+  iSubHeadings: [
+    "Company",
+    "Alias",
+    "ID",
+    "STTID",
+    "Sold (Packs)",
+    "Price (Packs)",
+    "Qty (Packs)",
+    "Status"
   ],
   pHeadings: [
     "name",

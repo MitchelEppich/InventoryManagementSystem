@@ -1,41 +1,68 @@
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPlus,
+  faCannabis,
+  faMailBulk,
+  faSeedling
+} from "@fortawesome/free-solid-svg-icons";
 
 const index = props => {
   return (
     <div className="w-full">
       <div className="w-full mx-auto text-center py-4">
         <h2 className="text-3xl font-bold uppercase text-teal">
-          Add New Product
+          Select an option to proceed:
         </h2>
       </div>
-      <div className="pb-24 full flex flex-wrap justify-between content-center rounded-b-lg">
+      <div className="w-main mx-auto justify-center flex mt-4 p-2">
+        <div className="border-2 w-150 rounded border-grey-lighter scale-items mx-2 text-center">
+          <div className="p-4">
+            <FontAwesomeIcon
+              icon={faSeedling}
+              className="text-grey-lighter fa-4x"
+            />
+          </div>
+          <div className="text-base uppercase text-white mt-3 bg-teal p-2">
+            Strains
+          </div>
+        </div>
+        <div className="border-2 w-150 rounded border-grey-lighter scale-items mx-2 text-center">
+          <div className="p-4">
+            <FontAwesomeIcon
+              icon={faMailBulk}
+              className="text-grey-lighter fa-4x"
+            />
+          </div>
+          <div className="text-base uppercase text-white mt-3 bg-teal p-2">
+            Merchandising
+          </div>
+        </div>
+      </div>
+      <div className="pb-24 pt-8 full flex flex-wrap justify-between content-center rounded-b-lg">
         <form
           className="w-4/5 mx-auto flex flex-wrap justify-start text-base text-grey"
           action="/products"
         >
-          <input
-            className="w-full p-2 uppercase pl-4 my-2 text-grey"
-            placeholder="name:"
-            type="text"
-          />
-          <div className="inline-flex w-full">
+          <div className="inline-flex w-full justify-between flex">
             <input
-              className="w-full p-2 uppercase pl-4 my-2 mr-1 text-grey"
-              placeholder="id:"
+              className="w-3/5 p-2 mx-1 uppercase pl-4 my-2 text-grey"
+              placeholder="name:"
               type="text"
             />
-            <select className="w-full uppercase p-2 ml-1 my-2 pl-4 text-grey-light border-2 border-input-grey rounded-lg">
-              <option value="seed" disabled>
-                Select a Category...
-              </option>
-              <option value="seed">Seed</option>
-              <option value="merchandise">Merchandise</option>
-              <option value="catalog">Catalog</option>
-            </select>
+            <input
+              className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
+              placeholder="Breeder:"
+              type="text"
+            />
+            <input
+              className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
+              placeholder="Origin:"
+              type="text"
+            />
           </div>
-          <div className="inline-flex w-full bg-white py-1 my-2 rounded flex items-center text-grey border-2 border-grey-lighter">
+
+          {/* <div className="inline-flex w-full bg-white py-1 my-2 rounded flex items-center text-grey border-2 border-grey-lighter">
             <p className="w-full uppercase pl-2 m-2 text-grey opacity-50 pr-8">
               Company:
             </p>
@@ -79,7 +106,7 @@ const index = props => {
               />
               BVR
             </label>
-          </div>
+          </div> */}
           <div className="inline-flex w-full flex items-center justify-between">
             <input
               className="w-2/3 p-2 uppercase pl-4 my-2 text-grey"
@@ -133,11 +160,14 @@ const index = props => {
             />
           </div>
           <div className="w-full inline-flex">
-            <input
-              className="w-full p-2 uppercase pl-4 mx-1 my-2 text-grey"
-              placeholder="Environment:"
-              type="text"
-            />
+            <select className="w-1/3 uppercase p-2 mx-2 pl-2 text-grey-light border-2 border-input-grey rounded-lg">
+              <option value="size" disabled>
+                Select a Environment...
+              </option>
+              <option value="Indoor">Indoor</option>
+              <option value="Outdoor">Outdoor</option>
+              <option value="Indoor-Outdoor">Indoor / Outdoor</option>
+            </select>
             <input
               className="w-full p-2 uppercase pl-4 mx-1 my-2 text-grey"
               placeholder="Genetic:"

@@ -11,6 +11,7 @@ import { updateObject } from "../utility";
 
 import userReducer from "./user";
 import navReducer from "./navigation";
+import newProductReducer from "./newProduct";
 
 const initialState = {
   visibleScreen: ["login"], // When [] show main screen
@@ -3340,5 +3341,6 @@ const indexReducer = (state = initialState, action) => {
 export default combineReducers({
   misc: indexReducer,
   user: userReducer,
-  nav: navReducer
+  nav: navReducer,
+  newProduct: newProductReducer
 });

@@ -39,15 +39,9 @@ class Index extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // fetchCredentials: () => dispatch(actions.fetchCredentials()),
-    // fetchUsers: input => dispatch(actions.fetchUsers(input)),
-    // verifyCredentials: input => dispatch(actions.verifyCredentials(input)),
-    // registerCredentials: input => dispatch(actions.registerCredentials(input)),
     releaseCredentials: input => dispatch(actions.releaseCredentials(input)),
-    // updateUser: input => dispatch(actions.updateUser(input)),
-    // modifyUser: input => dispatch(actions.modifyUser(input)),
-    // deleteUser: input => dispatch(actions.deleteUser(input)),
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+    toggleFormType: formType => dispatch(actions.toggleFormType(formType))
   };
 };
 

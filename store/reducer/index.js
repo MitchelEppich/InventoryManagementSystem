@@ -16,16 +16,31 @@ const initialState = {
   visibleScreen: ["login"], // When [] show main screen
   inventory: [
     {
-      company: ["sunwest genetics"],
-      price: [45, 70, 135],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Relaxed", "Happy", "Euphoric"],
       yield: [],
       flowerTime: [9, 11],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -51,16 +66,31 @@ const initialState = {
       images: ["../static/img/products/sunwest/sw-blue-dream.png"]
     },
     {
-      company: ["sunwest genetics"],
-      price: [45, 70, 135],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Relaxed", "Happy", "Focused"],
       yield: [],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -86,16 +116,31 @@ const initialState = {
       images: ["../static/img/products/sunwest/sw-bubblegum.png"]
     },
     {
-      company: ["sunwest genetics"],
-      price: [45, 70, 135],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Relaxed", "Happy", "Euphoric"],
       yield: [],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -121,16 +166,31 @@ const initialState = {
       images: ["../static/img/products/sunwest/sw-chemdog.png"]
     },
     {
-      company: ["sunwest genetics"],
-      price: [45, 70, 135],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Relaxed", "Happy", "Hungry"],
       yield: [],
       flowerTime: [8, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -156,16 +216,31 @@ const initialState = {
       images: ["../static/img/products/sunwest/sw-cheese.png"]
     },
     {
-      company: ["sunwest genetics"],
-      price: [45, 70, 135],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Happy", "Uplifting", "Relaxed"],
       yield: [],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -191,16 +266,31 @@ const initialState = {
       images: ["../static/img/products/sunwest/sw-girl-scout-cookies.png"]
     },
     {
-      company: ["sunwest genetics"],
-      price: [45, 70, 135],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Happy", "Energetic", "Creative"],
       yield: [],
       flowerTime: [7, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -227,16 +317,31 @@ const initialState = {
     },
 
     {
-      company: ["sunwest genetics"],
-      price: [45, 70, 135],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Energetic", "Creative", "Uplifting"],
       yield: [],
       flowerTime: [8, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -262,16 +367,31 @@ const initialState = {
       images: ["../static/img/products/sunwest/sw-kali-mist.png"]
     },
     {
-      company: ["sunwest genetics"],
-      price: [45, 70, 135],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Pure Indica High"],
       yield: [],
       flowerTime: [8],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -297,16 +417,31 @@ const initialState = {
       images: ["../static/img/products/sunwest/sw-master-kush.png"]
     },
     {
-      company: ["sunwest genetics"],
-      price: [45, 70, 135],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Relaxed", "Sleepy", "Happy"],
       yield: [],
       flowerTime: [8, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -332,16 +467,31 @@ const initialState = {
       images: ["../static/img/products/sunwest/sw-northern-lights.png"]
     },
     {
-      company: ["sunwest genetics"],
-      price: [45, 70, 135],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Relaxed", "Sleepy", "Happy"],
       yield: [],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -367,16 +517,31 @@ const initialState = {
       images: ["../static/img/products/sunwest/sw-purple-kush.png"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Mind High"],
       yield: [450, 500],
       flowerTime: [8, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -402,16 +567,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-blueberry.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body High"],
       yield: [350, 500],
       flowerTime: [9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -437,16 +617,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-blueberry.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body & Mind High"],
       yield: [150, 200],
       flowerTime: [7, 8],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -472,16 +667,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-cali-kush.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Mind & Body High"],
       yield: [250, 300],
       flowerTime: [7, 8],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -507,16 +717,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-blueberry.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body High"],
       yield: [400, 600],
       flowerTime: [8, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -542,16 +767,31 @@ const initialState = {
       images: "../static/img/products/sonoma/so-blueberry.jpg"
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Mind High"],
       yield: [300, 500],
       flowerTime: [9, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -577,16 +817,31 @@ const initialState = {
       images: "../static/img/products/sonoma/so-bruce-banner.jpg"
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body & Mind High"],
       yield: [400, 600],
       flowerTime: [9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -612,16 +867,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-bruce-banner.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body High"],
       yield: [300, 400],
       flowerTime: [10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -647,16 +917,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-cali-kush.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Creative"],
       yield: [400],
       flowerTime: [9, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -682,16 +967,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-cali-kush.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Mind High"],
       yield: [300, 400],
       flowerTime: [7, 8],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -717,16 +1017,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-chocolope.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body High"],
       yield: [400, 600],
       flowerTime: [7, 8],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -753,16 +1068,31 @@ const initialState = {
     },
 
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Mind High"],
       yield: [150, 250],
       flowerTime: [8, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -788,16 +1118,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-juicy-fruit.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body High"],
       yield: [200, 250],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -823,16 +1168,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-juicy-fruit.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body & Mind High"],
       yield: [400, 500],
       flowerTime: [9, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -858,16 +1218,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-northern-berry.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body & Mind High"],
       yield: [200, 250],
       flowerTime: [8, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -893,16 +1268,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-northern-berry.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body High"],
       yield: [400, 550],
       flowerTime: [9, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -928,16 +1318,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-northern-berry.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body & Mind High"],
       yield: [400, 600],
       flowerTime: [8, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -963,16 +1368,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-northern-berry.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body & Mind High"],
       yield: [400, 500],
       flowerTime: [9, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -998,16 +1418,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-northern-berry.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body High"],
       yield: [200, 250],
       flowerTime: [9, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1033,16 +1468,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-northern-berry.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Mind & Body High"],
       yield: [200, 300],
       flowerTime: [9, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1068,16 +1518,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-strawberry-cough.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Body High"],
       yield: [300, 500],
       flowerTime: [8, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1103,16 +1568,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-strawberry-cough.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Strong High"],
       yield: [400, 300],
       flowerTime: [8],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1138,16 +1618,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-strawberry-cough.jpg"]
     },
     {
-      company: ["sonoma seeds"],
-      price: [65, 120, 220, 420],
+      company: ["sunwest genetics", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Strong High"],
       yield: [250, 150],
       flowerTime: [8],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1173,16 +1668,31 @@ const initialState = {
       images: ["../static/img/products/sonoma/so-strawberry-cough.jpg"]
     },
     {
-      company: ["crop king seeds"],
-      price: [-1, 100, 200],
+      company: ["sonoma seeds", "crop king seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: [],
       yield: [200, 400],
       flowerTime: [8],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1208,16 +1718,31 @@ const initialState = {
       images: "../static/img/products/cks/cks-black-indica.png"
     },
     {
-      company: ["crop king seeds"],
-      price: [-1, 100, 200],
+      company: ["sonoma seeds", "crop king seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: [],
       yield: [300, 500],
       flowerTime: [9, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1243,16 +1768,31 @@ const initialState = {
       images: "../static/img/products/cks/cks-cali-og.png"
     },
     {
-      company: ["crop king seeds"],
-      price: [-1, 100, 200],
+      company: ["sonoma seeds", "crop king seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: [],
       yield: [100, 200],
       flowerTime: [9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1278,16 +1818,31 @@ const initialState = {
       images: "../static/img/products/cks/cks-early-miss.png"
     },
     {
-      company: ["crop king seeds"],
-      price: [-1, 100, 200],
+      company: ["sonoma seeds", "crop king seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: [],
       yield: [400, 500],
       flowerTime: [8, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1313,16 +1868,31 @@ const initialState = {
       images: "../static/img/products/cks/cks-white-banner.png"
     },
     {
-      company: ["crop king seeds"],
-      price: [-1, 100, 200],
+      company: ["sonoma seeds", "crop king seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: [],
       yield: [150, 250],
       flowerTime: [8],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1348,16 +1918,31 @@ const initialState = {
       images: "../static/img/products/cks/cks-train-wreck.png"
     },
     {
-      company: ["crop king seeds"],
-      price: [-1, 100, 200],
+      company: ["sonoma seeds", "crop king seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: [],
       yield: [500, 500],
       flowerTime: [9, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1383,16 +1968,31 @@ const initialState = {
       images: "../static/img/products/cks/cks-cbdutch-treat.png"
     },
     {
-      company: ["crop king seeds"],
-      price: [-1, 100, 200],
+      company: ["sonoma seeds", "crop king seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: [],
       yield: [100, 250],
       flowerTime: [7],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1418,16 +2018,31 @@ const initialState = {
       images: "../static/img/products/cks/cks-revolver.png"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Energetic", "giggly"],
       yield: [100, 250],
       flowerTime: [10, 11],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1459,16 +2074,31 @@ const initialState = {
       color: "#a195c3"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Creative", "aroused"],
       yield: [100, 250],
       flowerTime: [8, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1501,16 +2131,31 @@ const initialState = {
     },
 
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Happy", "Energetic"],
       yield: [100, 250],
       flowerTime: [8, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1542,16 +2187,31 @@ const initialState = {
       color: "#f1bed3"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Relaxed", "happy"],
       yield: [100, 250],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1583,16 +2243,31 @@ const initialState = {
       color: "#efc65f"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Sleepy", "relaxed"],
       yield: [100, 250],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1624,16 +2299,31 @@ const initialState = {
       color: "#e6ad77"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Energetic", "giggly"],
       yield: [100, 250],
       flowerTime: [7, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1665,16 +2355,31 @@ const initialState = {
       color: "#bb443f"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Happy", "euphoric"],
       yield: [100, 250],
       flowerTime: [11],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1706,16 +2411,31 @@ const initialState = {
       color: "#54a1b9"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Relaxed", "happy"],
       yield: [100, 250],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1747,16 +2467,31 @@ const initialState = {
       color: "#e4985f"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Happy", "uplifted"],
       yield: [100, 250],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1788,16 +2523,31 @@ const initialState = {
       color: "#a982b7"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Happy", "uplifting"],
       yield: [100, 250],
       flowerTime: [7, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1829,16 +2579,31 @@ const initialState = {
       color: "#93a8ad"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Energetic", "giggly"],
       yield: [100, 250],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1870,16 +2635,31 @@ const initialState = {
       color: "#17b4c0"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Happy", "energetic"],
       yield: [100, 250],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1911,16 +2691,31 @@ const initialState = {
       color: "#a3c7a6"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Energetic", "giggly"],
       yield: [100, 250],
       flowerTime: [10, 11],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1939,7 +2734,6 @@ const initialState = {
       ruderalis: 0,
       type: 2,
       environment: 0,
-
       sotiId: "PEA",
       sttId: 44,
       releaseDate: "2018-06-01T07:00:00.000Z",
@@ -1953,16 +2747,31 @@ const initialState = {
       color: "#fee38a"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Relaxed", "sleepy"],
       yield: [100, 250],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -1994,16 +2803,31 @@ const initialState = {
       color: "#b8b8bf"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Happy", "euphoric"],
       yield: [100, 250],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -2035,16 +2859,31 @@ const initialState = {
       color: "#8bd5d4"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Relaxed", "euphoric"],
       yield: [100, 250],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -2076,16 +2915,31 @@ const initialState = {
       color: "#db3e23"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Relaxed", "happy"],
       yield: [100, 250],
       flowerTime: [8, 10],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -2117,16 +2971,31 @@ const initialState = {
       color: "#b4d174"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Happy", "uplifting"],
       yield: [100, 250],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -2158,16 +3027,31 @@ const initialState = {
       color: "#e85d4d"
     },
     {
-      company: ["beaver seeds"],
-      price: [45, 65, 95],
+      company: ["beaver seeds", "sonoma seeds"],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Happy", "euphoric"],
       yield: [100, 250],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -2200,15 +3084,30 @@ const initialState = {
     },
     {
       company: ["beaver seeds", "sunwest genetics"],
-      price: [45, 65, 95],
+      price: [[65, 120, 220, 420], [50, 100, 150]],
       effect: ["Happy", "relaxed"],
       yield: [100, 250],
       flowerTime: [7, 9],
-      "qty(loose)": 1000,
-      "R.O.P.": 500,
-      status: "stocked",
-      "N.O.E.": 750,
-      "sold(total)": 10000,
+      qtyLoose: [1000, 2000],
+      qtyLooseROP: [500, 1000],
+      alias: ["Puple kush", "Cali Kush"],
+      qtyLooseNOE: [750, 1500],
+      qtyPacked: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedROP: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtyPackedNOE: [
+        [[50, 100, 200], [35, 65, 220]],
+        [[50, 100, 200], [35, 65, 220]]
+      ],
+      qtySold: [
+        [[500, 1200, 2400], [355, 665, 220]],
+        [[500, 1200, 2400], [355, 665, 220]]
+      ],
       breeder: "BB",
       location: "D9",
       category: "seed",
@@ -2293,26 +3192,27 @@ const initialState = {
   ],
   currentEdit: { _id: -1 },
   iHeadings: [
-    "Name",
-    "Companies",
-    "Status",
-    "Qty (loose)",
-    "R.O.P.",
-    "N.O.E.",
-    "Sold (Total)",
-    "Breeder",
-    "Location",
-    "Category"
+    "name",
+    "company",
+    "status",
+    "qtyLoose",
+    "qtyLooseROP",
+    "qtyLooseNOE",
+    "breeder",
+    "location",
+    "category"
   ],
   iSubHeadings: [
-    "Company",
-    "Alias",
-    "ID",
-    "STTID",
-    "Sold (Packs)",
-    "Price (Packs)",
-    "Qty (Packs)",
-    "Status"
+    "company",
+    "alias",
+    "sotiId",
+    "sttId",
+    "price",
+    "qtyPacked",
+    "qtyPackedROP",
+    "qtyPackedNOE",
+    "qtySold",
+    "status"
   ],
   pHeadings: [
     "name",

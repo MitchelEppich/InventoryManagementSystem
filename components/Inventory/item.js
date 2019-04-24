@@ -8,10 +8,72 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const item = props => {
-  let productView = props.productView;
-  let showAll = props.misc.showAllId == props.index;
+  let showAll = props.misc.showAllId == props.index; //show extra company specific data
   let editing = props._id == props.misc.currentEdit._id ? true : false;
+  let country = 0;
+  let iSubHeadings = props.misc.iSubHeadings;
+  let subHeadings = iSubHeadings.map((heading, index) => {
+    return (
+      <span
+        key={index}
+        className="text-grey w-1/8 px-2 py-2 text-sm capitalize"
+      >
+        {heading}
+      </span>
+    );
+  });
+  let companyData = [];
   let companyCircles = props.company.map((val, index) => {
+    companyData.push(
+      <div className="w-full flex pl-4 bg-grey-light text-grey p-2">
+        {iSubHeadings.map((heading, i) => {
+          if (["company", "alias"].includes(heading)) {
+            return (
+              <div className=" w-1/8 text-sm text-grey text-left pl-2">
+                {props[heading][index]}
+              </div>
+            );
+          }
+          if (["sotiId", "sttId"].includes(heading)) {
+            return (
+              <div className=" w-1/8 text-sm text-grey text-left pl-2">
+                {props[heading]}
+              </div>
+            );
+          }
+          if (heading == "price") {
+            return (
+              <div className=" w-1/8 text-sm text-grey text-left pl-2">
+                {props[heading][index].join("/")}
+              </div>
+            );
+          }
+          if (heading == "status") {
+            let packStatus = [5, 10, 25],
+              qty,
+              rop,
+              status;
+            packStatus = packStatus.map((packSize, j) => {
+              qty = props.qtyPacked[country][index][j];
+              rop = props.qtyPackedROP[country][index][j];
+              status =
+                rop / qty < 0.3 ? "low" : rop / qty > 0.8 ? "high" : "medium";
+              return status;
+            });
+            return (
+              <div className="w-1/8 text-sm text-grey text-left pl-2">
+                {packStatus.join("/")}
+              </div>
+            );
+          }
+          return (
+            <div className=" w-1/8 text-sm text-grey text-left pl-2">
+              {props[heading][country][index].join("/")}
+            </div>
+          );
+        })}
+      </div>
+    );
     let color = "",
       accronym;
     switch (val) {
@@ -45,21 +107,13 @@ const item = props => {
       </span>
     );
   });
-  let subHeadings = props.misc.iSubHeadings.map((heading, index) => {
-    return (
-      <span key={index} className="text-grey w-1/8 px-2 py-2 text-sm uppercase">
-        {heading}
-      </span>
-    );
-  });
 
-  let editable = ["qty(loose)", "R.O.P."];
+  let editable = ["qtyLoose", "qtyLooseROP"];
   let itemColumns = [
     "status",
-    "qty(loose)",
-    "R.O.P.",
-    "N.O.E.",
-    "sold(total)",
+    "qtyLoose",
+    "qtyLooseROP",
+    "qtyLooseNOE",
     "breeder",
     "location",
     "category"
@@ -79,8 +133,15 @@ const item = props => {
         />
       );
     }
+    if (["qtyLoose", "qtyLooseROP", "qtyLooseNOE"].includes(column)) {
+      return (
+        <div className=" w-1/8 text-sm text-grey text-center">
+          {props[column][country]}
+        </div>
+      );
+    }
     return (
-      <div className=" w-1/8  text-sm text-grey text-center">
+      <div className=" w-1/8 text-sm text-grey text-center">
         {props[column]}
       </div>
     );
@@ -106,9 +167,12 @@ const item = props => {
         {itemColumns}
       </div>
       {showAll ? (
-        <div className="w-full flex pl-4 bg-grey-light text-grey p-2">
-          {subHeadings}
-        </div>
+        <React.Fragment>
+          <div className="w-full flex pl-4 bg-grey-light text-grey p-2">
+            {subHeadings}
+          </div>
+          {companyData}
+        </React.Fragment>
       ) : null}
     </div>
   );

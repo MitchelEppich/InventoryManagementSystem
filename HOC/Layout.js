@@ -18,30 +18,30 @@ import Router from "next/router";
 const isClient = typeof document !== "undefined";
 
 class Layout extends Component {
-  componentDidMount() {
-    if (!isClient) return;
-    this.props.fetchCredentials().then(res => {
-      console.log("DID MOUNT", res);
-      if (res == null) Router.push("/login");
-    });
-  }
-  componentDidUpdate(prevProps) {
-    if (this.props.user.currentUser == null) {
-      this.props.fetchCredentials().then(res => {
-        if (res == null) Router.push("/login");
-      });
-    }
-  }
+  // componentDidMount() {
+  //   if (!isClient) return;
+  //   this.props.fetchCredentials().then(res => {
+  //     console.log("DID MOUNT", res);
+  //     if (res == null) Router.push("/login");
+  //   });
+  // }
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.user.currentUser == null) {
+  //     this.props.fetchCredentials().then(res => {
+  //       if (res == null) Router.push("/login");
+  //     });
+  //   }
+  // }
 
   render() {
     return (
       <div>
-        {this.props.user.currentUser == null ? null : (
-          <div>
-            <Menu {...this.props} />
-            <div className="pt-24 overflow-hidden">{this.props.children}</div>
-          </div>
-        )}
+        {/* {this.props.user.currentUser == null ? null : ( */}
+        <div>
+          <Menu {...this.props} />
+          <div className="pt-24 overflow-hidden">{this.props.children}</div>
+        </div>
+        {/* )} */}
       </div>
     );
   }

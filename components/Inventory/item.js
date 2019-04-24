@@ -53,6 +53,39 @@ const item = props => {
     );
   });
 
+  let editable = ["qty(loose)", "R.O.P."];
+  let itemColumns = [
+    "status",
+    "qty(loose)",
+    "R.O.P.",
+    "N.O.E.",
+    "sold(total)",
+    "breeder",
+    "location",
+    "category"
+  ].map((column, index) => {
+    if (editable.includes(column) && editing) {
+      return (
+        <input
+          onChange={e => {
+            props.handleInventoryEdit(column, e.target.value);
+          }}
+          className="w-1/8 pt-1 text-sm text-grey text-center"
+          type="number"
+          min="0"
+          aria-label={props[column]}
+          name={props[column]}
+          defaultValue={props[column]}
+        />
+      );
+    }
+    return (
+      <div className=" w-1/8  text-sm text-grey text-center">
+        {props[column]}
+      </div>
+    );
+  });
+
   return (
     <div className="w-full">
       <div
@@ -64,77 +97,14 @@ const item = props => {
           "h-auto w-full flex justify-start bg-white border border-1 border-grey-light py-2 hover:border-teal-light items-center "
         }
       >
-        {/* <div
-        onClick={e => {
-          if (editing) {
-            e.stopPropagation();
-            props.submitInventoryEdit(props.misc.currentEdit);
-          }
-        }}
-        className=" w-100 pt-4 text-sm text-black text-center cursor-pointer"
-      >
-        {editing ? "SAVE" : props.index + 1}
-      </div> */}
         <div className="w-300 py-2 pl-2 text-sm text-grey text-left">
           {props.name.replace("Cannabis Seeds", "")}
         </div>
         <div className="w-1/8 pt-1 text-sm text-grey text-center flex flex-wrap">
           {companyCircles}
         </div>
-        <div className="w-1/8 pt-4 text-sm text-grey text-center">
-          {props.status}
-        </div>
-        {editing ? (
-          <form className="py-1 flex justify-between">
-            <input
-              onChange={e => {
-                props.handleInventoryEdit("qtyL", e.target.value);
-              }}
-              className="w-1/8 pt-1 text-sm text-grey text-center"
-              type="number"
-              min="0"
-              aria-label="quantityLoose"
-              name="qtyL"
-              defaultValue={props.qtyL}
-            />
-            <input
-              onChange={e => {
-                props.handleInventoryEdit("rop", e.target.value);
-              }}
-              className="w-1/8 pt-1 text-sm text-grey text-center"
-              type="number"
-              min="0"
-              aria-label="rop"
-              name="rop"
-              defaultValue={props.rop}
-            />
-          </form>
-        ) : (
-          <React.Fragment>
-            <div className=" w-1/8 pt-4 text-sm text-grey text-center">
-              {props.qtyL}
-            </div>
-            <div className=" w-1/8 pt-4 text-sm text-grey text-center">
-              {props.rop}
-            </div>
-          </React.Fragment>
-        )}
-        <div className=" w-1/8 pt-4 text-sm text-grey text-center">
-          {props.noe}
-        </div>
-        <div className=" w-1/8 pt-4 text-sm text-grey text-center">
-          {props.sold}
-        </div>
-        <div className=" w-1/8 pt-4 text-sm text-grey text-center">
-          {props.breeder}
-        </div>
-        <div className=" w-1/8 pt-4 text-sm text-grey text-center">
-          {props.location}
-        </div>
-        <div className=" w-1/8 pt-4 text-sm text-grey text-center">
-          {props.category}
-        </div>
-      </div>{" "}
+        {itemColumns}
+      </div>
       {showAll ? (
         <div className="w-full flex pl-4 bg-grey-light text-grey p-2">
           {subHeadings}

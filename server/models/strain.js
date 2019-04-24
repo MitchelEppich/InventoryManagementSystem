@@ -34,18 +34,14 @@ const StrainSchema = Schema({
   sttId: String,
   releaseDate: Date,
   // Inventory Information
-  qtyPacked: Number, // Ready to be shipped
-  qtyPackedMin: Number, // Minimum needed on hand
-  qtyPackedMax: Number, // Maximum to order for on hand
-  qtyPackedROP: Number, // When amount hits this, reorder
-  qtyPackedNOE: Number, // Estimation to order next round
+  qtyPacked: [[Number]], // Ready to be shipped
+  qtyPackedROP: [[Number]], // When amount hits this, reorder
+  qtyPackedNOE: [[Number]], // Estimation to order next round
   qtyLoose: Number, // Ready to be packed
-  qtyLooseMin: Number, // Minimum needed on hand
-  qtyLooseMax: Number, // Maximum to order for on hand
   qtyLooseROP: Number, // When amount hits this, reorder
   qtyLooseNOE: Number, // Estimation to order next round
-  qtySold: Number, // Sold
-  location: String, // Location in warehouse
+  qtySold: [[Number]], // Sold
+  location: [String], // Location in warehouse
   category: Number // Merchandise, Seed, or Catalogue
 });
 

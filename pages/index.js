@@ -16,6 +16,9 @@ class Index extends Component {
   render() {
     return (
       <Layout router={this.props.router}>
+        <div className="w-full mx-auto text-center py-4 mb-4">
+          <h2 className="text-3xl font-bold uppercase text-teal">Inventory</h2>
+        </div>
         <Inventory {...this.props} />
       </Layout>
     );

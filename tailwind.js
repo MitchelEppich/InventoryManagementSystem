@@ -51,7 +51,7 @@ let colors = {
   "almost-transparent": "rgba(30, 30, 30, 0.5)",
   "almost-white": "rgba(255, 255, 255, 0.7)",
   "almost-black": "rgba(0,0,0,0.9)",
-  
+
   // crimson: "#890000",
   // salmon: "rgba(210,128,114, 1)",
   "salmon-light": "rgba(250,128,114, 1)",
@@ -62,8 +62,8 @@ let colors = {
   "grey-darker": "#606f7b",
   "grey-dark": "#8795a1",
   grey: "#202020",
-  "grey-light": "#dae1e7",
-  "grey-lighter": "#f1f5f8",
+  "grey-light": "#909090",
+  "grey-lighter": "#e6e6e6",
   "grey-lightest": "#f8fafc",
   white: "#ffffff",
   "input-grey": "#e6e6e6",

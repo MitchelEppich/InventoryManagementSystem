@@ -21,13 +21,14 @@ class Layout extends Component {
   componentDidMount() {
     if (!isClient) return;
     this.props.fetchCredentials().then(res => {
-      if (res == null || res.admin == null) Router.push("/login");
+      console.log("DID MOUNT", res);
+      if (res == null) Router.push("/login");
     });
   }
   componentDidUpdate(prevProps) {
     if (this.props.user.currentUser == null) {
       this.props.fetchCredentials().then(res => {
-        if (res == null || res.admin == null) Router.push("/login");
+        if (res == null) Router.push("/login");
       });
     }
   }

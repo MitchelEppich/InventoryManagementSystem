@@ -1,4 +1,4 @@
-const { Strain } = require("../../models");
+const { Strain, Stock } = require("../../models");
 
 const { strainFilters, decompress } = require("./functions");
 
@@ -21,6 +21,16 @@ const resolvers = {
   },
   Mutation: {
     createStrain: (_, { input }) => {
+      // Create strain data
+      let $ = { ...input };
+
+      let stock = new Stock({
+        ...$.stock
+      })._id;
+
+      $.stock = stock;
+
+      // Create Strain
       let strain = new Strain({
         ...input
       });

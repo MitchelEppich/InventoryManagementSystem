@@ -28,15 +28,13 @@ let Type = `
 
 let Input = `
     input VariantInput {
-        company: CompanyInput
+        company: String
         sotiId: String
         sttId: String
         name: String
         description: [String]
         summary: String
-        reviews: ReviewInput
         releaseDate: String
-        attributes: AttributeInput
     }
 `;
 

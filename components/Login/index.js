@@ -17,7 +17,7 @@ const index = props => {
 
   return (
     <div
-      className="bg-grey h-full w-full relative overflow-x-hidden overflow-y-hidden"
+      className="bg-teal h-full w-full relative overflow-x-hidden overflow-y-hidden"
       style={{
         position: "fixed",
         zIndex: "100"
@@ -85,7 +85,7 @@ const index = props => {
             </div>
             <button
               type="submit"
-              className="bg-grey text-white mt-2 p-2 text-center mx-auto w-2/3 justify-center cursor-pointer hover:bg-grey-dark"
+              className="bg-teal text-white mt-2 p-2 text-center mx-auto w-2/3 justify-center cursor-pointer hover:bg-grey-dark"
             >
               Login
             </button>

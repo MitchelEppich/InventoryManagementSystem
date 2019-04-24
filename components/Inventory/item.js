@@ -16,7 +16,7 @@ const item = props => {
       accronym;
     switch (val) {
       case "beaver seeds":
-        color = "bg-green ";
+        color = "bg-green text-white";
         accronym = "BVR";
         break;
       case "crop king seeds":
@@ -92,7 +92,7 @@ const item = props => {
             onChange={e => {
               props.handleInventoryEdit("qtyL", e.target.value);
             }}
-            className="w-1/8 pt-1 text-sm text-grey text-center"
+            className="w-100 pt-1 text-sm text-grey text-center"
             type="number"
             min="0"
             aria-label="quantityLoose"
@@ -103,7 +103,7 @@ const item = props => {
             onChange={e => {
               props.handleInventoryEdit("rop", e.target.value);
             }}
-            className="w-1/8 pt-1 text-sm text-grey text-center"
+            className="w-100 pt-1 text-sm text-grey text-center"
             type="number"
             min="0"
             aria-label="rop"

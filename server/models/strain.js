@@ -10,7 +10,7 @@ const StrainSchema = Schema({
   // Seed Information
   name: String,
   price: [[Number]],
-  description: String,
+  description: [String],
   effect: [Number],
   yield: [Number],
   genetic: Number,
@@ -26,22 +26,23 @@ const StrainSchema = Schema({
   pCbd: [Number],
   pCbn: [Number],
   country: [Number],
-  moreInfo: [String],
+  moreInfo: [[String]],
+  breeder: [String],
   // User Information
   reviews: { type: [String], default: [] },
   // Database information
-  sotiId: String,
-  sttId: String,
-  releaseDate: Date,
+  sotiId: [String],
+  sttId: [String],
+  releaseDate: [Date],
   // Inventory Information
-  qtyPacked: [[Number]], // Ready to be shipped
-  qtyPackedROP: [[Number]], // When amount hits this, reorder
-  qtyPackedNOE: [[Number]], // Estimation to order next round
-  qtyLoose: Number, // Ready to be packed
-  qtyLooseROP: Number, // When amount hits this, reorder
-  qtyLooseNOE: Number, // Estimation to order next round
-  qtySold: [[Number]], // Sold
-  location: [String], // Location in warehouse
+  qtyPacked: [[[Number]]], // Ready to be shipped
+  qtyPackedROP: [[[Number]]], // When amount hits this, reorder
+  qtyPackedNOE: [[[Number]]], // Estimation to order next round
+  qtyLoose: [Number], // Ready to be packed
+  qtyLooseROP: [Number], // When amount hits this, reorder
+  qtyLooseNOE: [Number], // Estimation to order next round
+  qtySold: [[[Number]]], // Sold
+  location: [[String]], // Location in warehouse
   category: Number // Merchandise, Seed, or Catalogue
 });
 

@@ -10,34 +10,46 @@ type Query {
 }
 type Strain {
   _id: String
+  company: [String]
+  website: [String]
+  alias: [String]
+
   name: String
-  price: [Float]
-  strainImg: String
-  packageImg: String
-  description: String
+  price: [[Float]]
+  description: [String]
   effect: [Int]
-  genetic: Int
   yield: [Int]
-  flowerTime: String
+  genetic: Int
+  flowerTime: [Int]
   difficulty: Int
-  type: Int
-  og: [String]
-  pthc: [Float]
-  pcbd: [Float]
-  pcbn: [Float]
-  country: [Int]
-  sotiId: String
   indica: Float
   sativa: Float
   ruderalis: Float
-  env: String
-  rating: Float
+  type: Int
+  environment: Int
+  relations: [String]
+  pThc: Float
+  pCbd: Float
+  pCbn: Float
+  country: [Int]
+  moreInfo: [[String]]
+  breeder: [String]
+
   reviews: [String]
-  ratingQuantity: [Int]
-  relationData: String
-  releaseDate: String
-  soldQuantity: [Int]
-  inStock: Boolean
+
+  sotiId: [String]
+  sttId: [String]
+  releaseDate: [String]
+
+  qtyPacked: [[[Int]]]
+  qtyPackedROP: [[[Int]]]
+  qtyPackedNOE: [[[Int]]]
+  qtyLoose: [Int]
+  qtyLooseROP: [Int]
+  qtyLooseNOE: [Int]
+  qtySold: [[[Int]]]
+  location: [[String]]
+  category: Int
 }
 type User {
   _id: String
@@ -71,32 +83,46 @@ input StrainFilter {
   nameContains: String
 }
 input StrainInput {
- name: String
-  price: [Float]
-  strainImg: String
-  packageImg: String
-  description: String
+  company: [String]
+  website: [String]
+  alias: [String]
+
+  name: String
+  price: [[Float]]
+  description: [String]
   effect: [Int]
-  genetic: Int
   yield: [Int]
-  flowerTime: String
+  genetic: Int
+  flowerTime: [Int]
   difficulty: Int
-  type: Int
-  og: [String]
-  pthc: [Float]
-  pcbd: [Float]
-  pcbn: [Float]
-  country: [Int]
-  sotiId: String
   indica: Float
   sativa: Float
   ruderalis: Float
-  env: String
-  review: String
-  featured: Boolean
-  relationData: String,
-  response: String
-  releaseDate: String
+  type: Int
+  environment: Int
+  relations: [String]
+  pThc: Float
+  pCbd: Float
+  pCbn: Float
+  country: [Int]
+  moreInfo: [[String]]
+  breeder: [String]
+
+  reviews: [String]
+
+  sotiId: [String]
+  sttId: [String]
+  releaseDate: [String]
+
+  qtyPacked: [[[Int]]]
+  qtyPackedROP: [[[Int]]]
+  qtyPackedNOE: [[[Int]]]
+  qtyLoose: [Int]
+  qtyLooseROP: [Int]
+  qtyLooseNOE: [Int]
+  qtySold: [[[Int]]]
+  location: [[String]]
+  category: Int
 }
 input UserInput {
   id: String

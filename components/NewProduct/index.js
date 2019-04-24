@@ -1,4 +1,3 @@
-import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MerchForm from "./merchForm";
 import StrainForm from "./strainForm";
@@ -29,7 +28,10 @@ const index = props => {
         </h2>
       </div>
       <div className="w-main mx-auto justify-center flex mt-4 p-2">
-        <div className="border-2 w-150 rounded border-grey-lighter scale-items mx-2 text-center">
+        <div
+          onClick={() => props.toggleFormType("strain")}
+          className="border-2 w-150 rounded border-grey-lighter scale-items mx-2 text-center"
+        >
           <div className="p-4">
             <FontAwesomeIcon
               icon={faSeedling}
@@ -40,7 +42,10 @@ const index = props => {
             Strains
           </div>
         </div>
-        <div className="border-2 w-150 rounded border-grey-lighter scale-items mx-2 text-center">
+        <div
+          onClick={() => props.toggleFormType("merch")}
+          className="border-2 w-150 rounded border-grey-lighter scale-items mx-2 text-center"
+        >
           <div className="p-4">
             <FontAwesomeIcon
               icon={faMailBulk}

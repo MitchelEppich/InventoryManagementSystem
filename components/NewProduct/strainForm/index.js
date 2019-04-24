@@ -1,3 +1,11 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlus,
+  faCannabis,
+  faMailBulk,
+  faSeedling
+} from "@fortawesome/free-solid-svg-icons";
+
 const index = props => {
   return (
     <form

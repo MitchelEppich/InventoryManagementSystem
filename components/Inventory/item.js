@@ -16,7 +16,7 @@ const item = props => {
       accronym;
     switch (val) {
       case "beaver seeds":
-        color = "bg-green ";
+        color = "bg-green text-white";
         accronym = "BVR";
         break;
       case "crop king seeds":

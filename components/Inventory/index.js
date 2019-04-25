@@ -89,7 +89,7 @@ const index = props => {
       <div className="fixed flex justify-between bg-white shadow-md w-4/5 pt-1">
         <div
           onClick={() => props.setVisibleScreen("inventoryFilters")}
-          className=" w-100 ml-48 cursor-pointer text-black unselectable    "
+          className="w-150 ml-48 cursor-pointer text-black unselectable"
         >
           <h4 className="h-full uppercase leading-loose">
             Filter By
@@ -100,7 +100,7 @@ const index = props => {
         props.misc.visibleScreen.includes("inventoryFilters") ? (
           <InventoryFilters {...props} />
         ) : null}
-        <div className=" w-300 mr-48 mb-2 text-grey flex  ">
+        <div className="w-300 mr-48 mb-2 text-grey flex">
           <h4 className="h-full w-1/3 uppercase leading-loose">Search:</h4>
           <input
             onChange={e => {

@@ -7,19 +7,19 @@ const index = props => {
   let companyVariantButtons = props.newProduct.companies.map(
     (company, index) => {
       return (
-        <input
+        <a
+          href={`#${company.name}`}
           key={index}
-          className="w-150 h-150 rounded bg-grey-lighter cursor-pointer"
-          name={company.name}
-          value={company.name}
-          type="button"
+          className="w-150 h-150 rounded bg-grey-lighter justify-center cursor-pointer text-grey flex items-center"
           onClick={() => {
             props.toggleCompanyVariant({
               company: company.name,
               variants: props.newProduct.variants
             });
           }}
-        />
+        >
+          <img src={company.logo} className="w-150 h-auto scale-items" />
+        </a>
       );
     }
   );
@@ -51,6 +51,7 @@ const index = props => {
           className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="Breeder"
           type="text"
+          value={props.newProduct.info.breeder}
           onChange={e => {
             props.updateNewProduct({
               info: props.newProduct.info,
@@ -80,6 +81,7 @@ const index = props => {
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="THC %"
           type="number"
+          value={props.newProduct.info.thc}
           onChange={e => {
             props.updateNewProduct({
               info: props.newProduct.info,
@@ -92,6 +94,7 @@ const index = props => {
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="CBD %"
           type="number"
+          value={props.newProduct.info.cbd}
           onChange={e => {
             props.updateNewProduct({
               info: props.newProduct.info,
@@ -104,6 +107,7 @@ const index = props => {
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="CBN %"
           type="number"
+          value={props.newProduct.info.cbn}
           onChange={e => {
             props.updateNewProduct({
               info: props.newProduct.info,
@@ -116,6 +120,7 @@ const index = props => {
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="Sativa %"
           type="number"
+          value={props.newProduct.info.sativa}
           onChange={e => {
             props.updateNewProduct({
               info: props.newProduct.info,
@@ -128,6 +133,7 @@ const index = props => {
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="Indica %"
           type="number"
+          value={props.newProduct.info.indica}
           onChange={e => {
             props.updateNewProduct({
               info: props.newProduct.info,
@@ -140,6 +146,7 @@ const index = props => {
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="Ruderalis %"
           type="number"
+          value={props.newProduct.info.ruderalis}
           onChange={e => {
             props.updateNewProduct({
               info: props.newProduct.info,

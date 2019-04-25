@@ -1,10 +1,7 @@
 const index = props => {
   return (
     <div className="w-full">
-      <p className="uppercase bg-teal w-full  p-2 mt-3 mb-2 text-center font-bold text-white text-xl">
-        Prices {"&"} Packs
-      </p>
-      <div className="inline-flex w-full flex items-center justify-between">
+      <div className="inline-flex w-full flex items-center justify-between px-4 py-2">
         <input
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"
           placeholder="price"

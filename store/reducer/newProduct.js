@@ -30,6 +30,7 @@ const initialState = {
     {
       name: "Crop King Seeds",
       abr: "CKS",
+      logo: "../../static/img/logos/cks-logo.jpg",
       alias: "",
       sotiId: "",
       sttId: "",
@@ -40,6 +41,7 @@ const initialState = {
     {
       name: "Sonoma Seeds",
       abr: "SON",
+      logo: "../../static/img/logos/sonoma-logo.jpg",
       alias: "",
       sotiId: "",
       sttId: "",
@@ -50,6 +52,7 @@ const initialState = {
     {
       name: "Sunwest Genetics",
       abr: "SWG",
+      logo: "../../static/img/logos/sunwest-logo.jpg",
       alias: "",
       sotiId: "",
       sttId: "",
@@ -60,6 +63,7 @@ const initialState = {
     {
       name: "Beaver Seeds",
       abr: "BVR",
+      logo: "../../static/img/logos/beaver-logo.jpg",
       alias: "",
       sotiId: "",
       sttId: "",
@@ -70,6 +74,7 @@ const initialState = {
     {
       name: "Mary Jane's Garden",
       abr: "MJG",
+      logo: "../../static/img/logos/mjg-logo.jpg",
       alias: "",
       sotiId: "",
       sttId: "",

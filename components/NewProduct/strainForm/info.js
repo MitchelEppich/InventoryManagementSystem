@@ -14,21 +14,19 @@ const index = props => {
           value={company.name}
           type="button"
           onClick={() => {
-            let removed = false;
-            let newVariants = props.newProduct.variants.filter(variant => {
-              variant != company.name;
-              // removed = true;
+            props.toggleCompanyVariant({
+              company: company.name,
+              variants: props.newProduct.variants
             });
-            props.addCompanyVariant(
-              removed ? newVariants : [...newVariants, company.name]
-            );
           }}
         />
       );
     }
   );
   let variants = props.newProduct.variants.map((variant, index) => {
-    return <Variant key={index} {...props} />;
+    return (
+      <Variant key={index} variant={variant} variantIndex={index} {...props} />
+    );
   });
   return (
     <React.Fragment>
@@ -144,34 +142,6 @@ const index = props => {
           type="text"
         />
       </div>
-      {/* <div className="inline-flex w-full flex items-center justify-between">
-        <input
-          className="w-2/3 p-2 uppercase pl-4 my-2 text-grey"
-          placeholder="price:"
-          type="number"
-        />
-        <select className="w-1/3 uppercase p-2 mx-2 pl-2 text-grey-light border-2 border-input-grey rounded-lg">
-          <option value="size" disabled>
-            Select a Pack Size...
-          </option>
-          <option value="5">5 Packs</option>
-          <option value="10">10 Packs</option>
-          <option value="15">15 Packs</option>
-          <option value="25">25 Packs</option>
-          <option value="50">50 Packs</option>
-        </select>
-        <div className="w-10 bg-teal p-2 flex items-center justify-center cursor-pointer hover:bg-teal-dark rounded-full">
-          <FontAwesomeIcon icon={faPlus} className="text-white fa-lg" />
-        </div>
-      </div> */}
-
-      {/* <textarea
-        cols="4"
-        rows="80"
-        className="w-full h-32 uppercase pl-4 py-3  my-2 text-grey border-input-grey border-2 rounded-lg overflow-y-hidden"
-        placeholder="description:"
-      /> */}
-
       <p className="uppercase bg-teal w-full  p-2 mt-3 mb-2 text-center font-bold text-white text-xl">
         Stock Control:
       </p>

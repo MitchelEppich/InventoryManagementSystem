@@ -11,7 +11,8 @@ import fetch from "node-fetch";
 const actionTypes = {
   TOGGLE_FORM_TYPE: "TOGGLE_FORM_TYPE",
   TOGGLE_ENV_INPUTS: "TOGGLE_ENV_INPUTS",
-  ADD_COMPANY_VARIANT: "ADD_COMPANY_VARIANT"
+  TOGGLE_COMPANY_VARIANT: "TOGGLE_COMPANY_VARIANT",
+  TOGGLE_PACK_INPUT: "TOGGLE_PACK_INPUT"
 };
 
 const getActions = uri => {
@@ -28,10 +29,26 @@ const getActions = uri => {
         envType: envType
       };
     },
-    addCompanyVariant: newVariants => {
+    toggleCompanyVariant: newVariantsObj => {
+      let newVariant = newVariantsObj.company,
+        oldVariants = newVariantsObj.variants,
+        removed = false;
+      let newVariants = oldVariants.filter(variant => {
+        if (variant == newVariant) {
+          removed = true;
+          return false;
+        }
+        return true;
+      });
       return {
-        type: actionTypes.ADD_COMPANY_VARIANT,
-        newVariants: newVariants
+        type: actionTypes.TOGGLE_COMPANY_VARIANT,
+        newVariants: removed ? newVariants : [...newVariants, newVariant]
+      };
+    },
+    togglePackInput: newCompanies => {
+      return {
+        type: actionTypes.TOGGLE_PACK_INPUT,
+        newCompanies: newCompanies
       };
     }
   };

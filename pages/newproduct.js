@@ -43,8 +43,10 @@ const mapDispatchToProps = dispatch => {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
     toggleFormType: formType => dispatch(actions.toggleFormType(formType)),
     toggleEnvInputs: envType => dispatch(actions.toggleEnvInputs(envType)),
-    addCompanyVariant: newVariants =>
-      dispatch(actions.addCompanyVariant(newVariants))
+    toggleCompanyVariant: newVariantsObj =>
+      dispatch(actions.toggleCompanyVariant(newVariantsObj)),
+    togglePackInput: newCompanies =>
+      dispatch(actions.togglePackInput(newCompanies))
   };
 };
 

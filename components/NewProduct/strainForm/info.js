@@ -326,6 +326,7 @@ const index = props => {
           name="location"
           value={props.newProduct.info.location}
           onChange={e => {
+            //TODO:check if contents exists on focus/blur!!!
             props.updateNewProduct({
               type: "info",
               info: {
@@ -364,11 +365,15 @@ const index = props => {
             name="stockAmount"
             value={props.newProduct.info.stockAmount}
             onChange={e => {
+              let stock = props.newProduct.info.stock;
+              let newStock = stock[props.newProduct.distro];
+              newStock.amount = e.target.value;
+              stock.splice(props.newProduct.distro, 1, newStock);
               props.updateNewProduct({
                 type: "info",
                 info: {
                   ...props.newProduct.info,
-                  stockAmount: e.target.value
+                  stock: stock
                 }
               });
             }}
@@ -380,12 +385,15 @@ const index = props => {
             type="number"
             name="stockROP"
             onChange={e => {
-              
+              let stock = props.newProduct.info.stock;
+              let newStock = stock[props.newProduct.distro];
+              newStock.rop = e.target.value;
+              stock.splice(props.newProduct.distro, 1, newStock);
               props.updateNewProduct({
                 type: "info",
                 info: {
                   ...props.newProduct.info,
-                  stockROP: e.target.value
+                  stock: stock
                 }
               });
             }}

@@ -73,25 +73,33 @@ const getActions = uri => {
       ////////////////////////////////////////////
       //STOCK NEEDS TO BE DEALT WITH (DISTRIBUTORS)
       ////////////////////////////////////////////
+      let distro = data.distro;
       let newVariants = data.companies.map((company, index) => {
         let newAttributes = company.packs.map((pack, index) => {
+          let stock = [
+            {
+              amount: null,
+              rop: null,
+              noe: null
+            },
+            {
+              amount: null,
+              rop: null,
+              noe: null
+            }
+          ];
+          stock.splice(distro, 1, {
+            amount: pack.amount,
+            rop: pack.rop,
+            noe: pack.rop + pack.rop * 0.3
+          });
           return {
             price: pack.price,
             size: pack.packSize,
-            stock: [
-              {
-                amount: pack.amount,
-                rop: pack.rop,
-                noe: pack.rop + pack.rop * 0.3
-              },
-              {
-                amount: null,
-                rop: null,
-                noe: null
-              }
-            ]
+            stock: stock
           };
         });
+        //TODO: test
         delete company.packs;
         return {
           ...company,
@@ -99,8 +107,13 @@ const getActions = uri => {
           attributes: [...newAttributes]
         };
       });
-      let dataObj = {
+      let newLocation = ["", ""];
+      newLocation.splice(distro, 1, data.info.location);
+      //TODO: test
+      delete data.info.location;
+      let newProduct = {
         ...data.info,
+        location: [...newLocation],
         variants: [...newVariants],
         stock: newStock
       };

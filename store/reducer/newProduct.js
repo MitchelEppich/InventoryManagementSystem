@@ -6,10 +6,10 @@ const initialState = {
     strainName: "",
     category: 0,
     breeder: "",
-    origin: "",
-    thc: 0,
-    cbd: 0,
-    cbn: 0,
+    origin: [],
+    thc: [],
+    cbd: [],
+    cbn: [],
     sativa: 0,
     indica: 0,
     ruderalis: 0,
@@ -22,9 +22,18 @@ const initialState = {
     flowerTime: 0,
     location: [],
     effect: [],
-    stockAmount: 0,
-    stockLoose: 0,
-    stockNoe: 0
+    stock: [
+      {
+        amount: 0,
+        rop: 0,
+        noe: 0
+      },
+      {
+        amount: 0,
+        rop: 0,
+        noe: 0
+      }
+    ]
   },
   variants: [],
   companies: [

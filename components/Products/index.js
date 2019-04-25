@@ -11,11 +11,11 @@ const index = props => {
       bg = "bg-teal";
     let width;
     if (heading.toLowerCase() == "name") {
-      width = "w-1/8";
+      width = "w-1/6";
     } else if (heading.toLowerCase() == "description") {
       width = "w-1/2";
     } else {
-      width = "w-1/16";
+      width = "w-24";
     }
     if (index == props.misc.pHeadings.length - 1) {
       lastCol = "";
@@ -30,12 +30,10 @@ const index = props => {
           props.setOrderBy(index);
         }}
         className={
-          "h-8 " +
           width +
-          " pt-2 border border-salmon border-r-0 border-t-0 border-b-0 " +
+          " p-2 border border-salmon border-r-0 border-t-0 border-b-0 " +
           bg +
-          " hover:bg-teal-dark cursor-pointer text-xs text-white text-center uppercase" +
-          lastCol
+          " hover:bg-teal-dark cursor-pointer text-sm text-white text-center uppercase"
         }
       >
         {heading}
@@ -77,7 +75,7 @@ const index = props => {
   });
 
   return (
-    <div className="h-700 w-full flex flex-wrap justify-between content-center ">
+    <div className="h-700 w-4/5 mx-auto flex flex-wrap justify-between content-center">
       <div
         onClick={() => props.setVisibleScreen("inventoryFilters")}
         className="h-8 w-32 mx-4 cursor-pointer text-crimson unselectable "
@@ -101,15 +99,15 @@ const index = props => {
           type="text"
         />
       </div>
-      <div className="w-full pr-4 flex flex-wrap justify-between bg-teal rounded-t-lg">
-        <div
+      <div className="w-full pr-4 flex overflow-hidden justify-between bg-teal rounded-t-lg rounded-tl-lg">
+        {/* <div
           onClick={() => {
             props.setOrderBy(null);
           }}
           className="h-8 w-1/16 pt-2 hover:bg-teal-dark cursor-pointer text-xs text-white text-center rounded-tl-lg"
         >
           No
-        </div>
+        </div> */}
         {tHeadings}
       </div>
       <div className="h-600 w-full overflow-y-scroll rounded-b-lg">{items}</div>

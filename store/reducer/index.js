@@ -3220,7 +3220,7 @@ const initialState = {
     "id",
     "company",
     "description",
-    "barcode",
+    // "barcode",
     "category",
     "price"
   ],

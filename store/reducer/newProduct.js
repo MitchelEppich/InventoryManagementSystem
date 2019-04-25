@@ -2,27 +2,29 @@ import actionTypes from "../actions";
 import { updateObject } from "../utility";
 
 const initialState = {
-  strainName: "",
-  breeder: "",
-  origin: "",
-  thc: 0,
-  cbd: 0,
-  cbn: 0,
-  sativa: 0,
-  indica: 0,
-  ruderalis: 0,
-  type: "",
-  environment: "",
-  yieldIndoor: 0,
-  yieldOutdoor: 0,
-  yieldBoth: 0,
-  difficulty: "",
-  flowerTime: 0,
-  location: "",
-  effects: [],
-  qtyLoose: 0,
-  ROP: 0,
-  qtySold: 0,
+  info: {
+    strainName: "",
+    breeder: "",
+    origin: "",
+    thc: 0,
+    cbd: 0,
+    cbn: 0,
+    sativa: 0,
+    indica: 0,
+    ruderalis: 0,
+    type: "",
+    environment: "",
+    yieldInside: 0,
+    yieldOutside: 0,
+    yieldBoth: 0,
+    difficulty: "",
+    flowerTime: 0,
+    location: "",
+    effects: [],
+    qtyLoose: 0,
+    looseROP: 0,
+    qtySold: 0
+  },
   variants: [],
   companies: [
     {
@@ -88,6 +90,8 @@ export default (state = initialState, action) => {
       return updateObject(state, { variants: action.newVariants });
     case actionTypes.TOGGLE_PACK_INPUT:
       return updateObject(state, { companies: action.newCompanies });
+    case actionTypes.UPDATE_NEW_PRODUCT:
+      return updateObject(state, { info: action.info });
     default:
       return state;
   }

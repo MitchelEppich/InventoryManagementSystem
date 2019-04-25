@@ -37,14 +37,38 @@ const index = props => {
         <input
           className="w-3/5 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="Strain Name"
+          value={props.newProduct.info.strainName}
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "strainName",
+              value: e.target.value
+            });
+          }}
           type="text"
         />
         <input
           className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="Breeder"
           type="text"
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "breeder",
+              value: e.target.value
+            });
+          }}
         />
-        <select className="w-1/5 uppercase text-grey-light p-2 h-10 mx-1 my-2 pl-4   border-2 border-input-grey">
+        <select
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "origin",
+              value: e.target.value
+            });
+          }}
+          className="w-1/5 uppercase text-grey-light p-2 h-10 mx-1 my-2 pl-4   border-2 border-input-grey"
+        >
           <option value="seed">Origin...</option>
           <option value="spain">Spain</option>
           <option value="usa">USA</option>
@@ -56,36 +80,87 @@ const index = props => {
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="THC %"
           type="number"
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "thc",
+              value: e.target.value
+            });
+          }}
         />
         <input
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="CBD %"
           type="number"
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "cbd",
+              value: e.target.value
+            });
+          }}
         />
         <input
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="CBN %"
           type="number"
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "cbn",
+              value: e.target.value
+            });
+          }}
         />
         <input
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="Sativa %"
           type="number"
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "sativa",
+              value: e.target.value
+            });
+          }}
         />
         <input
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="Indica %"
           type="number"
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "indica",
+              value: e.target.value
+            });
+          }}
         />
         <input
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="Ruderalis %"
           type="number"
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "ruderalis",
+              value: e.target.value
+            });
+          }}
         />
       </div>
       <div className="w-full inline-flex my-2">
-        <select className="w-1/3 uppercase p-2 mx-1 h-10 pl-2 text-grey-light border-2 border-input-grey">
-          <option value="size" disabled>
+        <select
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "genetics",
+              value: e.target.value
+            });
+          }}
+          className="w-1/3 uppercase p-2 mx-1 h-10 pl-2 text-grey-light border-2 border-input-grey"
+        >
+          <option value="genetics" disabled>
             Genetic
           </option>
           <option value="Feminized">Feminized</option>
@@ -95,7 +170,16 @@ const index = props => {
           <option value="Mix">Mix</option>
           <option value="CBD">CBD</option>
         </select>
-        <select className="w-1/3 uppercase p-2 mx-1 h-10 pl-2 text-grey-light border-2 border-input-grey">
+        <select
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "environment",
+              value: e.target.value
+            });
+          }}
+          className="w-1/3 uppercase p-2 mx-1 h-10 pl-2 text-grey-light border-2 border-input-grey"
+        >
           <option value="size" disabled>
             Select a Environment...
           </option>
@@ -107,20 +191,53 @@ const index = props => {
           className="w-1/5 p-2 uppercase pl-4 mx-1 text-grey"
           placeholder="Yield Inside"
           type="number"
+          value={props.newProduct.info.yieldInside}
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "yieldInside",
+              value: e.target.value
+            });
+          }}
         />
         <input
           className="w-1/5 p-2 uppercase pl-4 mx-1 text-grey"
           placeholder="Yield Outside"
           type="number"
+          value={props.newProduct.info.yieldOutside}
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "yieldOutside",
+              value: e.target.value
+            });
+          }}
         />
         <input
           className="w-1/5 p-2 uppercase pl-4 mx-1 text-grey"
           placeholder="Yield Both"
           type="number"
+          value={props.newProduct.info.yieldBoth}
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "yieldBoth",
+              value: e.target.value
+            });
+          }}
         />
       </div>
       <div className="w-full inline-flex my-2">
-        <select className="w-1/5 uppercase p-2 mx-1 h-10 text-grey-light border-2 border-input-grey">
+        <select
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "difficulty",
+              value: e.target.value
+            });
+          }}
+          className="w-1/5 uppercase p-2 mx-1 h-10 text-grey-light border-2 border-input-grey"
+        >
           <option value="size" disabled>
             Difficult...
           </option>
@@ -133,16 +250,40 @@ const index = props => {
           className="w-1/5 p-2 uppercase pl-4 mx-1 text-grey"
           placeholder="Flower Time"
           type="text"
+          value={props.newProduct.info.flowerTime}
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "flowerTime",
+              value: e.target.value
+            });
+          }}
         />
         <input
           className="w-1/5 p-2 uppercase pl-4 mx-1 text-grey"
           placeholder="Location"
           type="text"
+          value={props.newProduct.info.location}
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "location",
+              value: e.target.value
+            });
+          }}
         />
         <input
           className="w-2/5 p-2 uppercase pl-4 mx-1 text-grey"
           placeholder="Effects (use `,` to separate)"
           type="text"
+          value={props.newProduct.info.effects}
+          onChange={e => {
+            props.updateNewProduct({
+              info: props.newProduct.info,
+              key: "effects",
+              value: e.target.value
+            });
+          }}
         />
       </div>
       <div className="w-full my-4">
@@ -154,16 +295,26 @@ const index = props => {
             className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
             placeholder="qty (loose)"
             type="number"
+            value={props.newProduct.info.qtyLoose}
+            onChange={e => {
+              props.updateNewProduct({
+                info: props.newProduct.info,
+                key: "qtyLoose",
+                value: e.target.value
+              });
+            }}
           />
           <input
             className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
             placeholder="ROP"
             type="number"
-          />
-          <input
-            className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
-            placeholder="# sold"
-            type="number"
+            onChange={e => {
+              props.updateNewProduct({
+                info: props.newProduct.info,
+                key: "looseROP",
+                value: e.target.value
+              });
+            }}
           />
         </div>
       </div>

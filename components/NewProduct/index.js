@@ -1,12 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MerchForm from "./merchForm";
 import StrainForm from "./strainForm";
-import {
-  faPlus,
-  faCannabis,
-  faMailBulk,
-  faSeedling
-} from "@fortawesome/free-solid-svg-icons";
+import { faMailBulk, faSeedling } from "@fortawesome/free-solid-svg-icons";
 
 const index = props => {
   let formType;

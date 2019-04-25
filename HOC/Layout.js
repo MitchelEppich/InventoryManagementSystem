@@ -10,21 +10,26 @@ import DevTools from "../store/DevTools";
 import { connect } from "react-redux";
 import actions from "../store/actions";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-
 import Menu from "../components/Menu";
-
 import Router from "next/router";
-
+const dev = process.env.NODE_ENV !== "production";
 const isClient = typeof document !== "undefined";
 
 class Layout extends Component {
-  // componentDidMount() {
-  //   if (!isClient) return;
-  //   this.props.fetchCredentials().then(res => {
-  //     console.log("DID MOUNT", res);
-  //     if (res == null) Router.push("/login");
-  //   });
-  // }
+  componentDidMount() {
+    // if (!isClient) return;
+    // this.props.fetchCredentials().then(res => {
+    //   console.log("DID MOUNT", res);
+    //   if (res == null) Router.push("/login");
+    // });
+    if (dev) {
+      window.addEventListener("keypress", e => {
+        if (e.shiftKey && e.code === "KeyP") {
+          console.log(this.props);
+        }
+      });
+    }
+  }
   // componentDidUpdate(prevProps) {
   //   if (this.props.user.currentUser == null) {
   //     this.props.fetchCredentials().then(res => {

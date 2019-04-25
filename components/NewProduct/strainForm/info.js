@@ -308,6 +308,7 @@ const index = props => {
             className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
             placeholder="ROP"
             type="number"
+            value={props.newProduct.info.looseROP}
             onChange={e => {
               props.updateNewProduct({
                 info: props.newProduct.info,

@@ -29,21 +29,21 @@ const item = props => {
         {iSubHeadings.map((heading, i) => {
           if (["company", "alias"].includes(heading)) {
             return (
-              <div className=" w-1/8 text-sm text-grey text-left pl-2">
+              <div key={i} className=" w-1/8 text-sm text-grey text-left pl-2">
                 {props[heading][index]}
               </div>
             );
           }
           if (["sotiId", "sttId"].includes(heading)) {
             return (
-              <div className=" w-1/8 text-sm text-grey text-left pl-2">
+              <div key={i} className=" w-1/8 text-sm text-grey text-left pl-2">
                 {props[heading]}
               </div>
             );
           }
           if (heading == "price") {
             return (
-              <div className=" w-1/8 text-sm text-grey text-left pl-2">
+              <div key={i} className=" w-1/8 text-sm text-grey text-left pl-2">
                 {props[heading][index].join("/")}
               </div>
             );
@@ -61,13 +61,16 @@ const item = props => {
               return status;
             });
             return (
-              <div className="w-1/8 text-sm text-grey text-left pl-2">
+              <div key={i} className="w-1/8 text-sm text-grey text-left pl-2">
                 {packStatus.join("/")}
               </div>
             );
           }
           return (
-            <div className=" w-1/8 text-sm text-grey text-left pl-2">
+            <div
+              key={index}
+              className=" w-1/8 text-sm text-grey text-left pl-2"
+            >
               {props[heading][country][index].join("/")}
             </div>
           );

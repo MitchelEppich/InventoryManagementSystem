@@ -13,7 +13,8 @@ const actionTypes = {
   TOGGLE_ENV_INPUTS: "TOGGLE_ENV_INPUTS",
   TOGGLE_COMPANY_VARIANT: "TOGGLE_COMPANY_VARIANT",
   TOGGLE_PACK_INPUT: "TOGGLE_PACK_INPUT",
-  UPDATE_NEW_PRODUCT: "UPDATE_NEW_PRODUCT"
+  UPDATE_NEW_PRODUCT: "UPDATE_NEW_PRODUCT",
+  SUBMIT_NEW_PRODUCT_FORM: "SUBMIT_NEW_PRODUCT_FORM"
 };
 
 const getActions = uri => {
@@ -21,7 +22,8 @@ const getActions = uri => {
     toggleFormType: formType => {
       return {
         type: actionTypes.TOGGLE_FORM_TYPE,
-        formType: formType
+        formType: formType,
+        category: formType == "strain" ? 0 : 1
       };
     },
     toggleEnvInputs: envType => {
@@ -53,14 +55,58 @@ const getActions = uri => {
       };
     },
     updateNewProduct: obj => {
-      let info = obj.info,
-        key = obj.key,
-        value = obj.value;
-      info[key] = value;
-      console.log(info);
+      switch (obj.type) {
+        case "info":
+          return {
+            type: actionTypes.UPDATE_NEW_PRODUCT,
+            info: obj.info
+          };
+        case "companies":
+          return {
+            type: actionTypes.UPDATE_NEW_PRODUCT,
+            companies: obj.companies
+          };
+      }
+    },
+    submitNewProductForm: data => {
+      console.log(data);
+      ////////////////////////////////////////////
+      //STOCK NEEDS TO BE DEALT WITH (DISTRIBUTORS)
+      ////////////////////////////////////////////
+      let newVariants = data.companies.map((company, index) => {
+        let newAttributes = company.packs.map((pack, index) => {
+          return {
+            price: pack.price,
+            size: pack.packSize,
+            stock: [
+              {
+                amount: pack.amount,
+                rop: pack.rop,
+                noe: pack.rop + pack.rop * 0.3
+              },
+              {
+                amount: null,
+                rop: null,
+                noe: null
+              }
+            ]
+          };
+        });
+        delete company.packs;
+        return {
+          ...company,
+          releaseDate: "2018-06-01T07:00:00.000Z",
+          attributes: [...newAttributes]
+        };
+      });
+      let dataObj = {
+        ...data.info,
+        variants: [...newVariants],
+        stock: newStock
+      };
+
       return {
-        type: actionTypes.UPDATE_NEW_PRODUCT,
-        info: info
+        type: actionTypes.SUBMIT_NEW_PRODUCT_FORM
       };
     }
   };

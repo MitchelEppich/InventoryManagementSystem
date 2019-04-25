@@ -38,35 +38,46 @@ const index = props => {
           className="w-3/5 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="Strain Name"
           value={props.newProduct.info.strainName}
+          name="strainName"
+          type="text"
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "strainName",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                strainName: e.target.value
+              }
             });
           }}
-          type="text"
         />
         <input
           className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="Breeder"
+          value={props.newProduct.info.breeder}
           type="text"
+          name="breeder"
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "breeder",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                breeder: e.target.value
+              }
             });
           }}
         />
         <select
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "origin",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                origin: e.target.value
+              }
             });
           }}
+          name="origin"
+          value={props.newProduct.info.origin}
           className="w-1/5 uppercase text-grey-light p-2 h-10 mx-1 my-2 pl-4   border-2 border-input-grey"
         >
           <option value="seed">Origin...</option>
@@ -79,72 +90,97 @@ const index = props => {
         <input
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="THC %"
+          value={props.newProduct.info.thc}
           type="number"
+          name="thc"
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "thc",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                thc: e.target.value
+              }
             });
           }}
         />
         <input
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="CBD %"
+          value={props.newProduct.info.cbd}
           type="number"
+          name="cbd"
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "cbd",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                cbd: e.target.value
+              }
             });
           }}
         />
         <input
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="CBN %"
+          value={props.newProduct.info.cbn || "CBN%"}
           type="number"
+          name="cbn"
+          min="0"
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "cbn",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                cbn: e.target.value
+              }
             });
           }}
         />
         <input
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="Sativa %"
+          value={props.newProduct.info.sativa}
           type="number"
+          name="sativa"
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "sativa",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                sativa: e.target.value
+              }
             });
           }}
         />
         <input
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="Indica %"
+          value={props.newProduct.info.indica}
           type="number"
+          name="indica"
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "indica",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                indica: e.target.value
+              }
             });
           }}
         />
         <input
           className="w-1/6 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="Ruderalis %"
+          value={props.newProduct.info.ruderalis}
           type="number"
+          name="ruderalis"
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "ruderalis",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                ruderalis: e.target.value
+              }
             });
           }}
         />
@@ -153,11 +189,15 @@ const index = props => {
         <select
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "genetics",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                genetics: e.target.value
+              }
             });
           }}
+          name="genetics"
+          value={props.newProduct.info.genetics}
           className="w-1/3 uppercase p-2 mx-1 h-10 pl-2 text-grey-light border-2 border-input-grey"
         >
           <option value="genetics" disabled>
@@ -173,11 +213,15 @@ const index = props => {
         <select
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "environment",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                environment: e.target.value
+              }
             });
           }}
+          name="environment"
+          value={props.newProduct.info.environment}
           className="w-1/3 uppercase p-2 mx-1 h-10 pl-2 text-grey-light border-2 border-input-grey"
         >
           <option value="size" disabled>
@@ -191,12 +235,15 @@ const index = props => {
           className="w-1/5 p-2 uppercase pl-4 mx-1 text-grey"
           placeholder="Yield Inside"
           type="number"
+          name="yieldInside"
           value={props.newProduct.info.yieldInside}
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "yieldInside",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                yieldInside: e.target.value
+              }
             });
           }}
         />
@@ -204,12 +251,15 @@ const index = props => {
           className="w-1/5 p-2 uppercase pl-4 mx-1 text-grey"
           placeholder="Yield Outside"
           type="number"
+          name="yieldOutside"
           value={props.newProduct.info.yieldOutside}
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "yieldOutside",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                yieldOutside: e.target.value
+              }
             });
           }}
         />
@@ -217,12 +267,15 @@ const index = props => {
           className="w-1/5 p-2 uppercase pl-4 mx-1 text-grey"
           placeholder="Yield Both"
           type="number"
+          name="yieldBoth"
           value={props.newProduct.info.yieldBoth}
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "yieldBoth",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                yieldBoth: e.target.value
+              }
             });
           }}
         />
@@ -231,11 +284,15 @@ const index = props => {
         <select
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "difficulty",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                difficulty: e.target.value
+              }
             });
           }}
+          name="difficulty"
+          value={props.newProduct.info.difficulty}
           className="w-1/5 uppercase p-2 mx-1 h-10 text-grey-light border-2 border-input-grey"
         >
           <option value="size" disabled>
@@ -250,12 +307,15 @@ const index = props => {
           className="w-1/5 p-2 uppercase pl-4 mx-1 text-grey"
           placeholder="Flower Time"
           type="text"
+          name="flowerTime"
           value={props.newProduct.info.flowerTime}
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "flowerTime",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                flowerTime: e.target.value
+              }
             });
           }}
         />
@@ -263,25 +323,31 @@ const index = props => {
           className="w-1/5 p-2 uppercase pl-4 mx-1 text-grey"
           placeholder="Location"
           type="text"
+          name="location"
           value={props.newProduct.info.location}
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "location",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                location: e.target.value
+              }
             });
           }}
         />
         <input
           className="w-2/5 p-2 uppercase pl-4 mx-1 text-grey"
-          placeholder="Effects (use `,` to separate)"
+          placeholder="effect (use `,` to separate)"
           type="text"
-          value={props.newProduct.info.effects}
+          name="effect"
+          value={props.newProduct.info.effect}
           onChange={e => {
             props.updateNewProduct({
-              info: props.newProduct.info,
-              key: "effects",
-              value: e.target.value
+              type: "info",
+              info: {
+                ...props.newProduct.info,
+                effect: e.target.value
+              }
             });
           }}
         />
@@ -295,24 +361,32 @@ const index = props => {
             className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
             placeholder="qty (loose)"
             type="number"
-            value={props.newProduct.info.qtyLoose}
+            name="stockAmount"
+            value={props.newProduct.info.stockAmount}
             onChange={e => {
               props.updateNewProduct({
-                info: props.newProduct.info,
-                key: "qtyLoose",
-                value: e.target.value
+                type: "info",
+                info: {
+                  ...props.newProduct.info,
+                  stockAmount: e.target.value
+                }
               });
             }}
           />
           <input
             className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
             placeholder="ROP"
+            value={props.newProduct.info.stockROP}
             type="number"
+            name="stockROP"
             onChange={e => {
+              
               props.updateNewProduct({
-                info: props.newProduct.info,
-                key: "looseROP",
-                value: e.target.value
+                type: "info",
+                info: {
+                  ...props.newProduct.info,
+                  stockROP: e.target.value
+                }
               });
             }}
           />

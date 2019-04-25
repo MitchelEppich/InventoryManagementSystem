@@ -4,6 +4,7 @@ import { updateObject } from "../utility";
 const initialState = {
   info: {
     strainName: "",
+    category: 0,
     breeder: "",
     origin: "",
     thc: 0,
@@ -19,71 +20,70 @@ const initialState = {
     yieldBoth: 0,
     difficulty: "",
     flowerTime: 0,
-    location: "",
-    effects: [],
-    qtyLoose: 0,
-    looseROP: 0,
-    qtySold: 0
+    location: [],
+    effect: [],
+    stockAmount: 0,
+    stockLoose: 0,
+    stockNoe: 0
   },
   variants: [],
   companies: [
     {
       name: "Crop King Seeds",
-      abr: "CKS",
       alias: "",
       sotiId: "",
-      sttId: "",
+      sttId: 0,
       summary: "",
       description: "",
-      packs: [{}]
+      packs: [{ stock: [{}, {}] }]
     },
     {
       name: "Sonoma Seeds",
-      abr: "SON",
       alias: "",
       sotiId: "",
-      sttId: "",
+      sttId: 0,
       summary: "",
       description: "",
-      packs: [{}]
+      packs: [{ stock: [{}, {}] }]
     },
     {
       name: "Sunwest Genetics",
-      abr: "SWG",
       alias: "",
       sotiId: "",
-      sttId: "",
+      sttId: 0,
       summary: "",
       description: "",
-      packs: [{}]
+      packs: [{ stock: [{}, {}] }]
     },
     {
       name: "Beaver Seeds",
-      abr: "BVR",
       alias: "",
       sotiId: "",
-      sttId: "",
+      sttId: 0,
       summary: "",
       description: "",
-      packs: []
+      packs: [{ stock: [{}, {}] }]
     },
     {
       name: "Mary Jane's Garden",
-      abr: "MJG",
       alias: "",
       sotiId: "",
-      sttId: "",
+      sttId: 0,
       summary: "",
       description: "",
-      packs: [{}]
+      packs: [{ stock: [{}, {}] }]
     }
-  ]
+  ],
+  distro: 0
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.TOGGLE_FORM_TYPE:
-      return updateObject(state, { formType: action.formType });
+      return updateObject(state, {
+        formType: action.formType,
+        category: action.category
+      });
     case actionTypes.TOGGLE_ENV_INPUTS:
       return updateObject(state, { envType: action.envType });
     case actionTypes.TOGGLE_COMPANY_VARIANT:
@@ -91,7 +91,10 @@ export default (state = initialState, action) => {
     case actionTypes.TOGGLE_PACK_INPUT:
       return updateObject(state, { companies: action.newCompanies });
     case actionTypes.UPDATE_NEW_PRODUCT:
-      return updateObject(state, { info: action.info });
+      return updateObject(state, {
+        info: action.info != null ? action.info : state.info,
+        companies: action.companies != null ? action.companies : state.companies
+      });
     default:
       return state;
   }

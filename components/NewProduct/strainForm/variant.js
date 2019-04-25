@@ -4,8 +4,9 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import PackInfo from "./packInfo";
 
 const index = props => {
-  let companyVariant = props.newProduct.companies[props.variantIndex];
-  let packs = companyVariant.packs.map((pack, index) => {
+  let companies = props.newProduct.companies;
+  let company = companies[props.variantIndex];
+  let packs = company.packs.map((pack, index) => {
     return (
       <PackInfo
         key={index}
@@ -26,17 +27,47 @@ const index = props => {
         <input
           className="w-3/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="Alias (E.G. 'Super Silver Haze Feminized') "
+          value={company.alias}
           type="text"
+          name="alias"
+          onChange={e => {
+            company.alias = e.target.value;
+            companies.splice(props.variantIndex, 1, company);
+            props.updateNewProduct({
+              type: "companies",
+              companies: companies
+            });
+          }}
         />
         <input
           className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="SOTI ID"
-          type="number"
+          value={company.sotiId}
+          type="text"
+          name="sotiId"
+          onChange={e => {
+            company.sotiId = e.target.value;
+            companies.splice(props.variantIndex, 1, company);
+            props.updateNewProduct({
+              type: "companies",
+              companies: companies
+            });
+          }}
         />
         <input
           className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="STT ID"
+          value={company.sttId}
+          name="sttId"
           type="number"
+          onChange={e => {
+            company.sttId = e.target.value;
+            companies.splice(props.variantIndex, 1, company);
+            props.updateNewProduct({
+              type: "companies",
+              companies: companies
+            });
+          }}
         />
       </div>
 
@@ -45,12 +76,32 @@ const index = props => {
         rows="80"
         className="w-full h-32 uppercase pl-4 py-3  my-2 text-grey border-input-grey border-2 rounded-lg overflow-y-hidden"
         placeholder="Summary"
+        name="summary"
+        value={company.summary}
+        onChange={e => {
+          company.summary = e.target.value;
+          companies.splice(props.variantIndex, 1, company);
+          props.updateNewProduct({
+            type: "companies",
+            companies: companies
+          });
+        }}
       />
       <textarea
         cols="4"
         rows="80"
         className="w-full h-32 uppercase pl-4 py-3  my-2 text-grey border-input-grey border-2 rounded-lg overflow-y-hidden"
         placeholder="description"
+        name="description"
+        value={company.description}
+        onChange={e => {
+          company.description = e.target.value;
+          companies.splice(props.variantIndex, 1, company);
+          props.updateNewProduct({
+            type: "companies",
+            companies: companies
+          });
+        }}
       />
       {packs}
       <div className="w-full flex justify-end mt-4">
@@ -58,7 +109,7 @@ const index = props => {
           onClick={e => {
             e.preventDefault();
             let newCompanies = props.newProduct.companies;
-            newCompanies[props.variantIndex].packs.push({});
+            newCompanies[props.variantIndex].packs.push({ stock: [{}, {}] });
             props.togglePackInput(newCompanies);
           }}
           className="inline-flex items-center flex bg-grey-lighter px-6 justify-end text-right cursor-pointer scale-items"

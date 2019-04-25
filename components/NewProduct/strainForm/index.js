@@ -6,7 +6,7 @@ const index = props => {
       className="w-4/5 mx-auto flex flex-wrap justify-start text-base text-grey"
       onSubmit={e => {
         e.preventDefault();
-        props.submitNewProductForm(props.newProduct);
+        props.creatNewProduct(props.newProduct);
       }}
     >
       <Info {...props} />

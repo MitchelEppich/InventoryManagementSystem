@@ -68,7 +68,7 @@ const getActions = uri => {
           };
       }
     },
-    submitNewProductForm: data => {
+    creatNewProduct: data => {
       console.log(data);
       ////////////////////////////////////////////
       //STOCK NEEDS TO BE DEALT WITH (DISTRIBUTORS)

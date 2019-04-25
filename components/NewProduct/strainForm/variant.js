@@ -17,9 +17,9 @@ const index = props => {
   return (
     <div className="border border-black m-1 w-full">
       <label>{props.variant}</label>
-      <input type="text" />
-      <input type="text" />
-      <input type="number" />
+      <input type="text" placeholder="Alias" />
+      <input type="text" placeholder="sotiId" />
+      <input type="number" placeholder="sttId" />
       <textarea placeholder="Summary" />
       <textarea placeholder="Description" />
       <div className="flex flex-wrap w-full">{packs}</div>

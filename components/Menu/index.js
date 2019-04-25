@@ -14,7 +14,7 @@ const index = props => {
       <div>
         <h1
           onClick={() => console.log(props)}
-          className="xs:hidden sm:hidden md:hidden lg:hidden uppercase text-xl"
+          className="xs:hidden sm:hidden md:hidden lg:hidden uppercase text-3xl"
         >
           Inventory M. System
         </h1>

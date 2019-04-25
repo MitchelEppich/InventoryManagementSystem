@@ -2,10 +2,13 @@ import actionTypes from "../actions";
 import { updateObject } from "../utility";
 
 const initialState = {
-  strainName: null,
+  info: {
+    strainName: "",
+    breeder: ""
+  },
   variants: [],
   companies: [
-    { name: "Crop King Seeds", abr: "CKS", alias: null, packs: [{}] },
+    { name: "Crop King Seeds", abr: "CKS", alias: "", packs: [{}] },
     { name: "Sonoma Seeds", abr: "SON", packs: [{}] },
     { name: "Sunwest Genetics", abr: "SWG", packs: [{}] },
     { name: "Beaver Seeds", abr: "BVR", packs: [] },
@@ -23,6 +26,8 @@ export default (state = initialState, action) => {
       return updateObject(state, { variants: action.newVariants });
     case actionTypes.TOGGLE_PACK_INPUT:
       return updateObject(state, { companies: action.newCompanies });
+    case actionTypes.UPDATE_NEW_PRODUCT:
+      return updateObject(state, { info: action.info });
     default:
       return state;
   }

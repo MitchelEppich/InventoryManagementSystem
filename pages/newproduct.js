@@ -46,7 +46,8 @@ const mapDispatchToProps = dispatch => {
     toggleCompanyVariant: newVariantsObj =>
       dispatch(actions.toggleCompanyVariant(newVariantsObj)),
     togglePackInput: newCompanies =>
-      dispatch(actions.togglePackInput(newCompanies))
+      dispatch(actions.togglePackInput(newCompanies)),
+    updateNewProduct: obj => dispatch(actions.updateNewProduct(obj))
   };
 };
 

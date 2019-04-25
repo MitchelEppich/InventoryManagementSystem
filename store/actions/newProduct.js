@@ -12,7 +12,8 @@ const actionTypes = {
   TOGGLE_FORM_TYPE: "TOGGLE_FORM_TYPE",
   TOGGLE_ENV_INPUTS: "TOGGLE_ENV_INPUTS",
   TOGGLE_COMPANY_VARIANT: "TOGGLE_COMPANY_VARIANT",
-  TOGGLE_PACK_INPUT: "TOGGLE_PACK_INPUT"
+  TOGGLE_PACK_INPUT: "TOGGLE_PACK_INPUT",
+  UPDATE_NEW_PRODUCT: "UPDATE_NEW_PRODUCT"
 };
 
 const getActions = uri => {
@@ -49,6 +50,17 @@ const getActions = uri => {
       return {
         type: actionTypes.TOGGLE_PACK_INPUT,
         newCompanies: newCompanies
+      };
+    },
+    updateNewProduct: obj => {
+      let info = obj.info,
+        key = obj.key,
+        value = obj.value;
+      info[key] = value;
+      console.log(info);
+      return {
+        type: actionTypes.UPDATE_NEW_PRODUCT,
+        info: info
       };
     }
   };

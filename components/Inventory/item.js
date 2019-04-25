@@ -24,8 +24,9 @@ const item = props => {
   });
   let companyData = [];
   let companyCircles = props.company.map((val, index) => {
+    console.log(val);
     companyData.push(
-      <div className="w-full flex pl-4 bg-grey-light text-grey p-2">
+      <div className="w-full flex pl-4 bg-white text-grey p-2 my-1">
         {iSubHeadings.map((heading, i) => {
           if (["company", "alias"].includes(heading)) {
             return (
@@ -158,7 +159,7 @@ const item = props => {
           props.toggleShowAll(id);
         }}
         className={
-          "h-auto w-full flex justify-start bg-white border border-1 border-grey-light py-2 hover:border-teal-light items-center "
+          "h-auto w-full flex justify-start bg-white border border-1 border-grey-lighter py-2 hover:border-teal-light items-center "
         }
       >
         <div className="w-300 py-2 pl-2 text-sm text-grey text-left">
@@ -171,7 +172,7 @@ const item = props => {
       </div>
       {showAll ? (
         <React.Fragment>
-          <div className="w-full flex pl-4 bg-grey-light text-grey p-2">
+          <div className="w-full flex pl-4 bg-grey-lighter text-grey p-2">
             {subHeadings}
           </div>
           {companyData}

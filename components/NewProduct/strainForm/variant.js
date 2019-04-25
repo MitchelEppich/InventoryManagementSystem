@@ -53,16 +53,21 @@ const index = props => {
         placeholder="description"
       />
       {packs}
-      <div
-        onClick={e => {
-          e.preventDefault();
-          let newCompanies = props.newProduct.companies;
-          newCompanies[props.variantIndex].packs.push({});
-          props.togglePackInput(newCompanies);
-        }}
-        className="w-10 bg-teal p-2 flex items-center justify-center cursor-pointer hover:bg-teal-dark rounded-full"
-      >
-        <FontAwesomeIcon icon={faPlus} className="text-white fa-lg" />
+      <div className="w-full flex justify-end mt-4">
+        <div
+          onClick={e => {
+            e.preventDefault();
+            let newCompanies = props.newProduct.companies;
+            newCompanies[props.variantIndex].packs.push({});
+            props.togglePackInput(newCompanies);
+          }}
+          className="inline-flex items-center flex bg-grey-lighter px-6 justify-end text-right cursor-pointer scale-items"
+        >
+          <div className="-ml-8 w-10 bg-teal p-2 flex items-center justify-center cursor-pointer hover:bg-teal-dark rounded-full">
+            <FontAwesomeIcon icon={faPlus} className="text-white fa-lg" />
+          </div>
+          <div className="p-2 uppercase font-bold ml-2">Add More</div>
+        </div>
       </div>
     </div>
   );

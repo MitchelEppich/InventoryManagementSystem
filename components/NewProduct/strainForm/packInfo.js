@@ -1,4 +1,3 @@
-
 const index = props => {
   return (
     <div className="w-full">
@@ -38,7 +37,7 @@ const index = props => {
         </select>
         <input
           type="button"
-          className="bg-red"
+          className="bg-red text-white uppercase p-2 rounded border-0 hover:bg-red-dark cursor-pointer"
           value="Remove"
           onClick={e => {
             e.preventDefault();

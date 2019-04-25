@@ -2,13 +2,79 @@ import actionTypes from "../actions";
 import { updateObject } from "../utility";
 
 const initialState = {
+  strainName: "",
+  breeder: "",
+  origin: "",
+  thc: 0,
+  cbd: 0,
+  cbn: 0,
+  sativa: 0,
+  indica: 0,
+  ruderalis: 0,
+  type: "",
+  environment: "",
+  yieldIndoor: 0,
+  yieldOutdoor: 0,
+  yieldBoth: 0,
+  difficulty: "",
+  flowerTime: 0,
+  location: "",
+  effects: [],
+  qtyLoose: 0,
+  ROP: 0,
+  qtySold: 0,
   variants: [],
   companies: [
-    { name: "Crop King Seeds", abr: "CKS", packs: [{}] },
-    { name: "Sonoma Seeds", abr: "SON", packs: [{}] },
-    { name: "Sunwest Genetics", abr: "SWG", packs: [{}] },
-    { name: "Beaver Seeds", abr: "BVR", packs: [] },
-    { name: "Mary Jane's Garden", abr: "MJG", packs: [{}] }
+    {
+      name: "Crop King Seeds",
+      abr: "CKS",
+      alias: "",
+      sotiId: "",
+      sttId: "",
+      summary: "",
+      description: "",
+      packs: [{}]
+    },
+    {
+      name: "Sonoma Seeds",
+      abr: "SON",
+      alias: "",
+      sotiId: "",
+      sttId: "",
+      summary: "",
+      description: "",
+      packs: [{}]
+    },
+    {
+      name: "Sunwest Genetics",
+      abr: "SWG",
+      alias: "",
+      sotiId: "",
+      sttId: "",
+      summary: "",
+      description: "",
+      packs: [{}]
+    },
+    {
+      name: "Beaver Seeds",
+      abr: "BVR",
+      alias: "",
+      sotiId: "",
+      sttId: "",
+      summary: "",
+      description: "",
+      packs: []
+    },
+    {
+      name: "Mary Jane's Garden",
+      abr: "MJG",
+      alias: "",
+      sotiId: "",
+      sttId: "",
+      summary: "",
+      description: "",
+      packs: [{}]
+    }
   ]
 };
 

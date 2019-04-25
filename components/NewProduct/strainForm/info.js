@@ -9,7 +9,7 @@ const index = props => {
       return (
         <input
           key={index}
-          className="w-200 h-200 rounded bg-grey-lighter  cursor-pointer"
+          className="w-150 h-150 rounded bg-grey-lighter cursor-pointer"
           name={company.name}
           value={company.name}
           type="button"
@@ -30,6 +30,9 @@ const index = props => {
   });
   return (
     <React.Fragment>
+      <p className="uppercase bg-teal w-full  p-2 mt-3 mb-2 text-center font-bold text-white text-xl">
+        General Information
+      </p>
       <div className="inline-flex w-full justify-between flex">
         <input
           className="w-3/5 p-2 mx-1 uppercase pl-4 my-2 text-grey"
@@ -41,7 +44,7 @@ const index = props => {
           placeholder="Breeder"
           type="text"
         />
-        <select className="w-1/5 uppercase text-grey-light p-2 mx-1 my-2 pl-4   border-2 border-input-grey rounded-lg">
+        <select className="w-1/5 uppercase text-grey-light p-2 h-10 mx-1 my-2 pl-4   border-2 border-input-grey">
           <option value="seed">Origin...</option>
           <option value="spain">Spain</option>
           <option value="usa">USA</option>
@@ -81,7 +84,7 @@ const index = props => {
         />
       </div>
       <div className="w-full inline-flex my-2">
-        <select className="w-1/3 uppercase p-2 mx-1 pl-2 text-grey-light border-2 border-input-grey rounded-lg">
+        <select className="w-1/3 uppercase p-2 mx-1 h-10 pl-2 text-grey-light border-2 border-input-grey">
           <option value="size" disabled>
             Genetic
           </option>
@@ -92,7 +95,7 @@ const index = props => {
           <option value="Mix">Mix</option>
           <option value="CBD">CBD</option>
         </select>
-        <select className="w-1/3 uppercase p-2 mx-1 pl-2 text-grey-light border-2 border-input-grey rounded-lg">
+        <select className="w-1/3 uppercase p-2 mx-1 h-10 pl-2 text-grey-light border-2 border-input-grey">
           <option value="size" disabled>
             Select a Environment...
           </option>
@@ -117,7 +120,7 @@ const index = props => {
         />
       </div>
       <div className="w-full inline-flex my-2">
-        <select className="w-1/5 uppercase p-2 mx-1 text-grey-light border-2 border-input-grey rounded-lg">
+        <select className="w-1/5 uppercase p-2 mx-1 h-10 text-grey-light border-2 border-input-grey">
           <option value="size" disabled>
             Difficult...
           </option>
@@ -142,52 +145,35 @@ const index = props => {
           type="text"
         />
       </div>
-      <p className="uppercase bg-teal w-full  p-2 mt-3 mb-2 text-center font-bold text-white text-xl">
-        Stock Control:
-      </p>
-      <div className="w-full inline-flex">
-        <input
-          className="w-full p-2 uppercase pl-4 mx-1 my-2 text-grey"
-          placeholder="qty (packed):"
-          type="number"
-        />
-        <input
-          className="w-full p-2 uppercase pl-4 mx-1 my-2 text-grey"
-          placeholder="qty (loose):"
-          type="number"
-        />
-        <input
-          className="w-full p-2 uppercase pl-4 mx-1 my-2 text-grey"
-          placeholder="lower limit:"
-          type="number"
-        />
-        <input
-          className="w-full p-2 uppercase pl-4 mx-1 my-2 text-grey"
-          placeholder="upper limit:"
-          type="number"
-        />
+      <div className="w-full my-4">
+        <p className="uppercase bg-teal w-full  p-2 mt-3 mb-2 text-center font-bold text-white text-xl">
+          Stock Control
+        </p>
+        <div className="w-full inline-flex">
+          <input
+            className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
+            placeholder="qty (loose)"
+            type="number"
+          />
+          <input
+            className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
+            placeholder="ROP"
+            type="number"
+          />
+          <input
+            className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
+            placeholder="# sold"
+            type="number"
+          />
+        </div>
       </div>
-      <div className="inline-flex w-full">
-        <input
-          className="w-full p-2 uppercase pl-4 mx-1 my-2 text-grey"
-          placeholder="# sold:"
-          type="number"
-        />
-        <input
-          className="w-full p-2 uppercase pl-4 mx-1 my-2 text-grey"
-          placeholder="Re-order point:"
-          type="number"
-        />
-        <input
-          className="w-full p-2 uppercase pl-4 mx-1 my-2 text-grey"
-          placeholder="location:"
-          type="text"
-        />
-      </div>
+
       <p className="uppercase bg-teal w-full  p-2 mt-3 mb-2 text-center font-bold text-white text-xl">
-        Company Variants:
+        Which Company Sells?
       </p>
-      <div className="flex justify-between w-full">{companyVariantButtons}</div>
+      <div className="flex justify-around w-full my-4">
+        {companyVariantButtons}
+      </div>
       {variants}
     </React.Fragment>
   );

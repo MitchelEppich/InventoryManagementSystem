@@ -4,11 +4,11 @@ import { updateObject } from "../utility";
 const initialState = {
   variants: [],
   companies: [
-    { name: "Crop King Seeds", abr: "CKS", packs: [] },
-    { name: "Sonoma Seeds", abr: "SON", packs: [] },
-    { name: "Sunwest Genetics", abr: "SWG", packs: [] },
+    { name: "Crop King Seeds", abr: "CKS", packs: [{}] },
+    { name: "Sonoma Seeds", abr: "SON", packs: [{}] },
+    { name: "Sunwest Genetics", abr: "SWG", packs: [{}] },
     { name: "Beaver Seeds", abr: "BVR", packs: [] },
-    { name: "Mary Jane's Garden", abr: "MJG", packs: [] }
+    { name: "Mary Jane's Garden", abr: "MJG", packs: [{}] }
   ]
 };
 

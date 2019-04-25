@@ -19,6 +19,7 @@ let Type = `
         phone: [String]
         socials: [String]
         email: String
+        name: String
     }
 `;
 
@@ -29,6 +30,7 @@ let Input = `
         phone: [String]
         socials: [String]
         email: String
+        name: String
     }
 `;
 

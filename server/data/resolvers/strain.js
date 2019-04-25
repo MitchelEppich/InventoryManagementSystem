@@ -1,6 +1,11 @@
-const { Strain, Stock } = require("../../models");
+const { Strain } = require("../../models");
 
-const { strainFilters, decompress } = require("./functions");
+const { strainFilters } = require("./functions");
+
+const mongoose = require("mongoose");
+
+const Stock = require("./stock");
+const Variant = require("./variant");
 
 // const { PubSub, withFilter } = require("graphql-subscriptions");
 
@@ -9,10 +14,21 @@ const { strainFilters, decompress } = require("./functions");
 const moment = require("moment");
 
 const resolvers = {
-  Strain: {},
+  Strain: {
+    variants(strain) {
+      return Variant.Query.variant(null, {
+        input: {
+          _id: { $in: strain.variants }
+        }
+      });
+    },
+    stock(strain) {
+      return Stock.Query.stock(null, { input: { _id: { $in: strain.stock } } });
+    }
+  },
   Query: {
     strain: (_, { input }) => {
-      return Strain.findOne(input);
+      return Strain.find(input);
     },
     allStrains: (_, { filter }) => {
       let query = filter ? { $or: strainFilters(filter) } : {};
@@ -20,22 +36,46 @@ const resolvers = {
     }
   },
   Mutation: {
-    createStrain: (_, { input }) => {
+    createStrain: async (_, { input }) => {
       // Create strain data
       let $ = { ...input };
 
-      let stock = new Stock({
-        ...$.stock
-      })._id;
-
+      // Create Stock Objects
+      let stock = [];
+      for (let _ of $.stock) {
+        stock.push(
+          mongoose.Types.ObjectId(
+            (await Stock.Mutation.createStock(null, {
+              input: {
+                ..._
+              }
+            }))._id
+          )
+        );
+      }
       $.stock = stock;
+
+      // Create Variant Objects
+      let variants = [];
+      for (_ of $.variants) {
+        variants.push(
+          mongoose.Types.ObjectId(
+            (await Variant.Mutation.createVariant(null, {
+              input: {
+                ..._
+              }
+            }))._id
+          )
+        );
+      }
+      $.variants = variants;
 
       // Create Strain
       let strain = new Strain({
-        ...input
+        ...$
       });
 
-      strain.save();
+      await strain.save();
 
       return strain.toObject();
     },

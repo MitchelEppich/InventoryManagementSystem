@@ -58,28 +58,28 @@ let Input = `
         sativa: Float
         ruderalis: Float
         environment: Int
-        location: String
+        location: [String]
 
         variants: [StrainVariantInput]
 
-        stock: StrainStockInput
+        stock: [StrainStockInput]
     }
 
     input StrainVariantInput {
-        company: String
-        sotiId: String
         name: String
-        description: String
+        sotiId: String
+        alias: String
+        description: [String]
         summary: String
         releaseDate: String
         sttId: String
-        attribute: StrainAttributeInput
+        attributes: [StrainAttributeInput]
     }
 
     input StrainAttributeInput {
         price: Float
         size: Int
-        stock: StrainStockInput
+        stock: [StrainStockInput]
     }
 
     input StrainStockInput {

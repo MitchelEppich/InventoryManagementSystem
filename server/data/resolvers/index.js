@@ -1,29 +1,36 @@
-const UserResolvers = require("./user");
-const StrainResolvers = require("./strain");
+const User = require("./user");
+const Strain = require("./strain");
+const Variant = require("./variant");
+const Stock = require("./stock");
+const Company = require("./company");
+const Review = require("./review");
+const Attribute = require("./attribute");
+const Distributor = require("./distributor");
 
-const User = UserResolvers.User;
-const Strain = StrainResolvers.Strain;
-
-const axios = require("axios");
-
-const resolvers = {
-  Strain,
+let imports = [
   User,
-  Query: {
-    ...UserResolvers.Query,
-    ...StrainResolvers.Query
-  },
-  Mutation: {
-    ...UserResolvers.Mutation,
-    ...StrainResolvers.Mutation
-  },
-  Custom: {
-    ...UserResolvers.Custom
-  },
-  Subscription: {
-    ...UserResolvers.Subscription
+  Strain,
+  Variant,
+  Stock,
+  Company,
+  Review,
+  Attribute,
+  Distributor
+];
+
+let resolvers = {};
+
+for (let i = 0; i < imports.length; i++) {
+  let _ = imports[i];
+  if (_ == null) continue;
+  let $ = Object.keys(_);
+  for (let x of $) {
+    let value = _[x];
+    if (value == undefined || Object.keys(value).length == 0) continue;
+    if (resolvers[x] == null) resolvers[x] = {};
+    resolvers[x] = { ...resolvers[x], ...value };
   }
-};
+}
 
 const toUrlEncoded = obj =>
   Object.keys(obj)

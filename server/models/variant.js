@@ -9,7 +9,7 @@ const VariantSchema = Schema({
   },
   sotiId: String,
   sttId: String,
-  name: String,
+  alias: String,
   description: [String],
   summary: String,
   reviews: [

@@ -16,7 +16,7 @@ let Type = `
         _id: String
         price: Float
         size: Int
-        stock: Stock
+        stock: [Stock]
     }
 `;
 
@@ -24,7 +24,7 @@ let Input = `
     input AttributeInput {
         price: Float
         size: Int
-        stock: StockInput
+        stock: [String]
     }
 `;
 

@@ -24,7 +24,6 @@ const item = props => {
   });
   let companyData = [];
   let companyCircles = props.company.map((val, index) => {
-    console.log(val);
     companyData.push(
       <div className="w-full flex pl-4 bg-white text-grey p-2 my-1">
         {iSubHeadings.map((heading, i) => {

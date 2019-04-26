@@ -7,31 +7,34 @@ const initialState = {
     category: 0,
     breeder: "",
     origin: [],
-    thc: [],
-    cbd: [],
-    cbn: [],
+    thc: [0, 0],
+    cbd: [0, 0],
+    cbn: [0, 0],
     sativa: 0,
     indica: 0,
     ruderalis: 0,
     type: "",
-    environment: "",
+    genetics: 0,
+    environment: 0,
     yieldInside: 0,
     yieldOutside: 0,
     yieldBoth: 0,
-    difficulty: "",
-    flowerTime: 0,
-    location: [],
+    difficulty: 0,
+    flowerTime: [0, 0],
+    location: ["", ""],
     effect: [],
     stock: [
       {
         amount: 0,
         rop: 0,
-        noe: 0
+        noe: 0,
+        sold: 0
       },
       {
         amount: 0,
         rop: 0,
-        noe: 0
+        noe: 0,
+        sold: 0
       }
     ]
   },
@@ -43,8 +46,17 @@ const initialState = {
       sotiId: "",
       sttId: 0,
       summary: "",
-      description: "",
-      packs: [{ stock: [{}, {}] }]
+      description: [],
+      packs: [
+        {
+          price: 0,
+          size: 0,
+          stock: [
+            { amount: 0, rop: 0, noe: 0, sold: 0 },
+            { amount: 0, rop: 0, noe: 0, sold: 0 }
+          ]
+        }
+      ]
     },
     {
       name: "Sonoma Seeds",
@@ -52,8 +64,17 @@ const initialState = {
       sotiId: "",
       sttId: 0,
       summary: "",
-      description: "",
-      packs: [{ stock: [{}, {}] }]
+      description: [],
+      packs: [
+        {
+          price: 0,
+          size: 0,
+          stock: [
+            { amount: 0, rop: 0, noe: 0, sold: 0 },
+            { amount: 0, rop: 0, noe: 0, sold: 0 }
+          ]
+        }
+      ]
     },
     {
       name: "Sunwest Genetics",
@@ -61,8 +82,17 @@ const initialState = {
       sotiId: "",
       sttId: 0,
       summary: "",
-      description: "",
-      packs: [{ stock: [{}, {}] }]
+      description: [],
+      packs: [
+        {
+          price: 0,
+          size: 0,
+          stock: [
+            { amount: 0, rop: 0, noe: 0, sold: 0 },
+            { amount: 0, rop: 0, noe: 0, sold: 0 }
+          ]
+        }
+      ]
     },
     {
       name: "Beaver Seeds",
@@ -70,17 +100,53 @@ const initialState = {
       sotiId: "",
       sttId: 0,
       summary: "",
-      description: "",
-      packs: [{ stock: [{}, {}] }]
+      description: [],
+      packs: [
+        {
+          price: 0,
+          size: 0,
+          stock: [
+            { amount: 0, rop: 0, noe: 0, sold: 0 },
+            { amount: 0, rop: 0, noe: 0, sold: 0 }
+          ]
+        }
+      ]
     },
     {
-      name: "Mary Jane's Garden",
+      name: "Mary Janes Garden",
       alias: "",
       sotiId: "",
       sttId: 0,
       summary: "",
-      description: "",
-      packs: [{ stock: [{}, {}] }]
+      description: [],
+      packs: [
+        {
+          price: 0,
+          size: 0,
+          stock: [
+            { amount: 0, rop: 0, noe: 0, sold: 0 },
+            { amount: 0, rop: 0, noe: 0, sold: 0 }
+          ]
+        }
+      ]
+    },
+    {
+      name: "MJ Seeds Canada",
+      alias: "",
+      sotiId: "",
+      sttId: 0,
+      summary: "",
+      description: [],
+      packs: [
+        {
+          price: 0,
+          size: 0,
+          stock: [
+            { amount: 0, rop: 0, noe: 0, sold: 0 },
+            { amount: 0, rop: 0, noe: 0, sold: 0 }
+          ]
+        }
+      ]
     }
   ],
   distro: 0

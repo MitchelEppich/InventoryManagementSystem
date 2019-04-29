@@ -281,12 +281,12 @@ const index = props => {
               type: "info",
               info: {
                 ...props.newProduct.info,
-                genetics: parseFloat(e.target.value)
+                genetic: parseFloat(e.target.value)
               }
             });
           }}
-          name="genetics"
-          value={props.newProduct.info.genetics}
+          name="genetic"
+          value={props.newProduct.info.genetic}
           className="w-1/3 uppercase p-1 mx-1 my-2 pl-2 text-grey-light border-2 border-input-grey"
         >
           <option>Genetics</option>
@@ -303,7 +303,7 @@ const index = props => {
               type: "info",
               info: {
                 ...props.newProduct.info,
-                difficulty: e.target.value
+                difficulty: parseInt(e.target.value)
               }
             });
           }}
@@ -323,7 +323,7 @@ const index = props => {
               type: "info",
               info: {
                 ...props.newProduct.info,
-                environment: e.target.value
+                environment: parseInt(e.target.value)
               }
             });
           }}
@@ -428,11 +428,11 @@ const index = props => {
           placeholder="Location"
           type="text"
           name="location"
-          value={props.newProduct.info.location[distro]}
+          value={props.newProduct.info.location[0].section}
           onChange={e => {
             //TODO:check if contents exists on focus/blur!!!
             let newLocation = props.newProduct.info.location;
-            newLocation.splice(distro, 1, e.target.value);
+            newLocation[0].section = e.target.value;
             props.updateNewProduct({
               type: "info",
               info: {

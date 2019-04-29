@@ -124,9 +124,9 @@ const mutation = {
       $sativa: Float
       $ruderalis: Float
       $environment: Int
-      $location: [String]
-      $variants: [StrainVariantInput]
-      $stock: [StrainStockInput]
+      $location: [LocationInput]
+      $variants: [VariantInput]
+      $stock: [StockInput]
     ) {
       createStrain(
         input: {
@@ -151,6 +151,7 @@ const mutation = {
           stock: $stock
         }
       ) {
+        _id
         name
         category
         breeder
@@ -167,9 +168,19 @@ const mutation = {
         sativa
         ruderalis
         environment
-        location
+        location {
+          _id
+          aisle
+          section
+          color
+          distributor {
+            country
+          }
+        }
         variants {
+          _id
           company {
+            _id
             assetsUrl
             website
             phone
@@ -183,9 +194,11 @@ const mutation = {
           releaseDate
           sttId
           attributes {
+            _id
             price
             size
             stock {
+              _id
               amount
               rop
               noe
@@ -194,6 +207,7 @@ const mutation = {
           }
         }
         stock {
+          _id
           amount
           rop
           noe

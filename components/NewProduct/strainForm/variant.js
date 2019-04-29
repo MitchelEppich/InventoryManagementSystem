@@ -57,7 +57,7 @@ const index = props => {
         <input
           className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="STT ID"
-          value={company.sttId || "STT ID"}
+          value={company.sttId || ""}
           name="sttId"
           type="text"
           onChange={e => {

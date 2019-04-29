@@ -43,15 +43,15 @@ const index = props => {
         <input
           className="w-3/5 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="Strain Name"
-          value={props.newProduct.info.strainName}
-          name="strainName"
+          value={props.newProduct.info.name}
+          name="name"
           type="text"
           onChange={e => {
             props.updateNewProduct({
               type: "info",
               info: {
                 ...props.newProduct.info,
-                strainName: e.target.value
+                name: e.target.value
               }
             });
           }}
@@ -78,7 +78,7 @@ const index = props => {
               type: "info",
               info: {
                 ...props.newProduct.info,
-                origin: e.target.value
+                origin: [parseInt(e.target.value)]
               }
             });
           }}
@@ -86,9 +86,13 @@ const index = props => {
           className="w-1/5 uppercase text-grey-light p-2 h-10 mx-1 my-2 pl-4  border-2 border-input-grey"
         >
           <option>Origin...</option>
-          <option value="spain">Spain</option>
-          <option value="usa">USA</option>
-          <option value="mexico">Mexico</option>
+          <option value="0">Canada</option>
+          <option value="1">USA</option>
+          <option value="2">Spain</option>
+          <option value="3">Netherlands</option>
+          <option value="4">United Kingdom</option>
+          <option value="5">South Africa</option>
+          <option value="6">Central America</option>
         </select>
       </div>
       <div className="flex w-full ">
@@ -380,13 +384,16 @@ const index = props => {
               placeholder="Yield (Indoor)"
               type="number"
               name="yieldInside"
-              value={props.newProduct.info.yieldInside || "Yield (Indoor)"}
+              value={props.newProduct.info.yield[0] || "Yield (Indoor)"}
               onChange={e => {
                 props.updateNewProduct({
                   type: "info",
                   info: {
                     ...props.newProduct.info,
-                    yieldInside: parseInt(e.target.value)
+                    yield: [
+                      parseInt(e.target.value),
+                      props.newProduct.info.yield[1]
+                    ]
                   }
                 });
               }}
@@ -398,13 +405,16 @@ const index = props => {
               placeholder="Yield (Outdoor)"
               type="number"
               name="yieldOutside"
-              value={props.newProduct.info.yieldOutside || "Yield (Outdoor)"}
+              value={props.newProduct.info.yield[1] || "Yield (Outdoor)"}
               onChange={e => {
                 props.updateNewProduct({
                   type: "info",
                   info: {
                     ...props.newProduct.info,
-                    yieldOutside: parseInt(e.target.value)
+                    yield: [
+                      props.newProduct.info.yield[0],
+                      parseInt(e.target.value)
+                    ]
                   }
                 });
               }}
@@ -427,7 +437,7 @@ const index = props => {
               type: "info",
               info: {
                 ...props.newProduct.info,
-                newLocation
+                location: newLocation
               }
             });
           }}
@@ -479,14 +489,15 @@ const index = props => {
           placeholder="effects (use commas to separate)"
           type="text"
           name="effect"
-          value={props.newProduct.info.effect.join(",") || ""}
+          // value={props.newProduct.info.effect.join(",") || ""}
           onChange={e => {
             let newEffect = e.target.value.split(",");
             props.updateNewProduct({
               type: "info",
               info: {
                 ...props.newProduct.info,
-                effect: [...newEffect]
+                effect: null
+                // effect: [...newEffect]
               }
             });
           }}

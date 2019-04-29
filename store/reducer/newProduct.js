@@ -3,7 +3,7 @@ import { updateObject } from "../utility";
 
 const initialState = {
   info: {
-    strainName: "",
+    name: "",
     category: 0,
     breeder: "",
     origin: [],
@@ -13,12 +13,9 @@ const initialState = {
     sativa: 0,
     indica: 0,
     ruderalis: 0,
-    type: "",
-    genetics: 0,
+    genetic: 0,
     environment: -1,
-    yieldInside: 0,
-    yieldOutside: 0,
-    yieldBoth: 0,
+    yield: [],
     difficulty: 0,
     flowerTime: [0, 0],
     location: ["", ""],
@@ -27,14 +24,12 @@ const initialState = {
       {
         amount: 0,
         rop: 0,
-        noe: 0,
-        sold: 0
+        noe: 0
       },
       {
         amount: 0,
         rop: 0,
-        noe: 0,
-        sold: 0
+        noe: 0
       }
     ]
   },
@@ -52,8 +47,8 @@ const initialState = {
           price: 0,
           size: 0,
           stock: [
-            { amount: 0, rop: 0, noe: 0, sold: 0 },
-            { amount: 0, rop: 0, noe: 0, sold: 0 }
+            { amount: 0, rop: 0, noe: 0 },
+            { amount: 0, rop: 0, noe: 0 }
           ]
         }
       ]
@@ -70,8 +65,8 @@ const initialState = {
           price: 0,
           size: 0,
           stock: [
-            { amount: 0, rop: 0, noe: 0, sold: 0 },
-            { amount: 0, rop: 0, noe: 0, sold: 0 }
+            { amount: 0, rop: 0, noe: 0 },
+            { amount: 0, rop: 0, noe: 0}
           ]
         }
       ]
@@ -88,8 +83,8 @@ const initialState = {
           price: 0,
           size: 0,
           stock: [
-            { amount: 0, rop: 0, noe: 0, sold: 0 },
-            { amount: 0, rop: 0, noe: 0, sold: 0 }
+            { amount: 0, rop: 0, noe: 0 },
+            { amount: 0, rop: 0, noe: 0 }
           ]
         }
       ]
@@ -106,8 +101,8 @@ const initialState = {
           price: 0,
           size: 0,
           stock: [
-            { amount: 0, rop: 0, noe: 0, sold: 0 },
-            { amount: 0, rop: 0, noe: 0, sold: 0 }
+            { amount: 0, rop: 0, noe: 0 },
+            { amount: 0, rop: 0, noe: 0 }
           ]
         }
       ]
@@ -124,8 +119,8 @@ const initialState = {
           price: 0,
           size: 0,
           stock: [
-            { amount: 0, rop: 0, noe: 0, sold: 0 },
-            { amount: 0, rop: 0, noe: 0, sold: 0 }
+            { amount: 0, rop: 0, noe: 0 },
+            { amount: 0, rop: 0, noe: 0 }
           ]
         }
       ]
@@ -142,8 +137,8 @@ const initialState = {
           price: 0,
           size: 0,
           stock: [
-            { amount: 0, rop: 0, noe: 0, sold: 0 },
-            { amount: 0, rop: 0, noe: 0, sold: 0 }
+            { amount: 0, rop: 0, noe: 0 },
+            { amount: 0, rop: 0, noe: 0 }
           ]
         }
       ]

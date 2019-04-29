@@ -59,9 +59,9 @@ const index = props => {
           placeholder="STT ID"
           value={company.sttId || "STT ID"}
           name="sttId"
-          type="number"
+          type="text"
           onChange={e => {
-            company.sttId = parseInt(e.target.value);
+            company.sttId = e.target.value;
             companies.splice(props.variantIndex, 1, company);
             props.updateNewProduct({
               type: "companies",

@@ -29,9 +29,10 @@ const index = props => {
     }
   );
   let variants = props.newProduct.variants.map((variant, index) => {
-    return (
-      <Variant key={index} variant={variant} variantIndex={index} {...props} />
-    );
+    let i = props.newProduct.companies.findIndex((company, index) => {
+      return company.name == variant;
+    });
+    return <Variant key={i} variant={variant} variantIndex={i} {...props} />;
   });
   return (
     <React.Fragment>
@@ -96,13 +97,14 @@ const index = props => {
           <input
             className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
             placeholder="LOW"
-            value={props.newProduct.info.thc[0] || "THC%"}
+            // value={props.newProduct.info.thc[0] || "THC%"}
             type="number"
+            step="0.01"
             name="thc"
-            min="0"
+            min="0.01"
             onChange={e => {
               let newInfo = props.newProduct.info;
-              newInfo.thc.splice(0, 1, e.target.value);
+              newInfo.thc.splice(0, 1, parseFloat(e.target.value));
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -114,13 +116,14 @@ const index = props => {
           <input
             className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
             placeholder="HIGH"
-            value={props.newProduct.info.thc[1] || "THC%"}
+            // value={props.newProduct.info.thc[1] || "THC%"}
             type="number"
+            step="0.01"
             name="thc"
             min="0"
             onChange={e => {
               let newInfo = props.newProduct.info;
-              newInfo.thc.splice(1, 1, e.target.value);
+              newInfo.thc.splice(1, 1, parseFloat(e.target.value));
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -135,13 +138,14 @@ const index = props => {
           <input
             className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
             placeholder="LOW"
-            value={props.newProduct.info.cbd[0] || "CBD%"}
+            // value={props.newProduct.info.cbd[0] || "CBD%"}
             type="number"
+            step="0.01"
             name="cbd"
             min="0"
             onChange={e => {
               let newInfo = props.newProduct.info;
-              newInfo.cbd.splice(0, 1, e.target.value);
+              newInfo.cbd.splice(0, 1, parseFloat(e.target.value));
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -153,13 +157,14 @@ const index = props => {
           <input
             className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
             placeholder="HIGH"
-            value={props.newProduct.info.cbd[1] || "CBD%"}
+            // value={props.newProduct.info.cbd[1] || "CBD%"}
             type="number"
+            step="0.01"
             name="cbd"
             min="0"
             onChange={e => {
               let newInfo = props.newProduct.info;
-              newInfo.cbd.splice(1, 1, e.target.value);
+              newInfo.cbd.splice(1, 1, parseFloat(e.target.value));
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -174,13 +179,14 @@ const index = props => {
           <input
             className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
             placeholder="LOW"
-            value={props.newProduct.info.cbn[0] || "CBN%"}
+            // value={props.newProduct.info.cbn[0] || "CBN%"}
             type="number"
+            step="0.01"
             name="cbn"
             min="0"
             onChange={e => {
               let newInfo = props.newProduct.info;
-              newInfo.cbn.splice(0, 1, e.target.value);
+              newInfo.cbn.splice(0, 1, parseFloat(e.target.value));
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -192,13 +198,14 @@ const index = props => {
           <input
             className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
             placeholder="HIGH"
-            value={props.newProduct.info.cbn[1] || "CBN%"}
+            // value={props.newProduct.info.cbn[1] || "CBN%"}
             type="number"
+            step="0.01"
             name="cbn"
             min="0"
             onChange={e => {
               let newInfo = props.newProduct.info;
-              newInfo.cbn.splice(1, 1, e.target.value);
+              newInfo.cbn.splice(1, 1, parseFloat(e.target.value));
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -214,15 +221,16 @@ const index = props => {
         <input
           className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="Sativa %"
-          value={props.newProduct.info.sativa || "Sativa%"}
+          // value={props.newProduct.info.sativa || "Sativa%"}
           type="number"
+          step="0.1"
           name="sativa"
           onChange={e => {
             props.updateNewProduct({
               type: "info",
               info: {
                 ...props.newProduct.info,
-                sativa: e.target.value
+                sativa: parseFloat(e.target.value) / 100
               }
             });
           }}
@@ -230,15 +238,16 @@ const index = props => {
         <input
           className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="Indica %"
-          value={props.newProduct.info.indica || "Indica%"}
+          // value={props.newProduct.info.indica || "Indica%"}
           type="number"
+          step="0.1"
           name="indica"
           onChange={e => {
             props.updateNewProduct({
               type: "info",
               info: {
                 ...props.newProduct.info,
-                indica: e.target.value
+                indica: parseFloat(e.target.value) / 100
               }
             });
           }}
@@ -246,15 +255,16 @@ const index = props => {
         <input
           className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="Ruderalis %"
-          value={props.newProduct.info.ruderalis || "Ruderalis%"}
+          // value={props.newProduct.info.ruderalis || "Ruderalis%"}
           type="number"
+          step="0.1"
           name="ruderalis"
           onChange={e => {
             props.updateNewProduct({
               type: "info",
               info: {
                 ...props.newProduct.info,
-                ruderalis: e.target.value
+                ruderalis: parseFloat(e.target.value) / 100
               }
             });
           }}
@@ -267,7 +277,7 @@ const index = props => {
               type: "info",
               info: {
                 ...props.newProduct.info,
-                genetics: e.target.value
+                genetics: parseFloat(e.target.value)
               }
             });
           }}
@@ -336,7 +346,7 @@ const index = props => {
             value={props.newProduct.info.flowerTime[0] || "FT"}
             onChange={e => {
               let newInfo = props.newProduct.info;
-              newInfo.flowerTime.splice(0, 1, e.target.value);
+              newInfo.flowerTime.splice(0, 1, parseInt(e.target.value));
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -353,7 +363,7 @@ const index = props => {
             value={props.newProduct.info.flowerTime[1] || "FT"}
             onChange={e => {
               let newInfo = props.newProduct.info;
-              newInfo.flowerTime.splice(1, 1, e.target.value);
+              newInfo.flowerTime.splice(1, 1, parseInt(e.target.value));
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -364,9 +374,9 @@ const index = props => {
           />
         </div>
         <div className="w-1/2 flex">
-          {env == "indoor" || env == "indoor/outdoor" ? (
+          {env == 1 || env == 0 ? (
             <input
-              className="w-1/2 uppercase p-2 mx-1 my-2 text-grey border-2 border-input-grey"
+              className="w-full uppercase p-2 mx-1 my-2 text-grey border-2 border-input-grey"
               placeholder="Yield (Indoor)"
               type="number"
               name="yieldInside"
@@ -376,15 +386,15 @@ const index = props => {
                   type: "info",
                   info: {
                     ...props.newProduct.info,
-                    yieldInside: e.target.value
+                    yieldInside: parseInt(e.target.value)
                   }
                 });
               }}
             />
           ) : null}
-          {env == "outdoor" || env == "indoor/outdoor" ? (
+          {env == 2 || env == 0 ? (
             <input
-              className="w-1/2 uppercase p-2 mx-1 my-2 text-grey border-2 border-input-grey"
+              className="w-full uppercase p-2 mx-1 my-2 text-grey border-2 border-input-grey"
               placeholder="Yield (Outdoor)"
               type="number"
               name="yieldOutside"
@@ -394,7 +404,7 @@ const index = props => {
                   type: "info",
                   info: {
                     ...props.newProduct.info,
-                    yieldOutside: e.target.value
+                    yieldOutside: parseInt(e.target.value)
                   }
                 });
               }}
@@ -431,7 +441,7 @@ const index = props => {
           onChange={e => {
             let stock = props.newProduct.info.stock;
             let newStock = stock[props.newProduct.distro];
-            newStock.amount = e.target.value;
+            newStock.amount = parseInt(e.target.value);
             stock.splice(props.newProduct.distro, 1, newStock);
             props.updateNewProduct({
               type: "info",
@@ -451,7 +461,7 @@ const index = props => {
           onChange={e => {
             let stock = props.newProduct.info.stock;
             let newStock = stock[props.newProduct.distro];
-            newStock.rop = e.target.value;
+            newStock.rop = parseInt(e.target.value);
             stock.splice(props.newProduct.distro, 1, newStock);
             props.updateNewProduct({
               type: "info",

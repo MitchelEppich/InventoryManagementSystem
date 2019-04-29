@@ -73,6 +73,7 @@ const getActions = uri => {
       let type = 1;
       type = data.info.sativa > 60 ? 0 : type;
       type = data.info.indice < 60 ? 2 : type;
+      
 
       //company variants
       let newVariants = data.companies.map((company, index) => {

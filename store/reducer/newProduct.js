@@ -15,7 +15,7 @@ const initialState = {
     ruderalis: 0,
     type: "",
     genetics: 0,
-    environment: 0,
+    environment: -1,
     yieldInside: 0,
     yieldOutside: 0,
     yieldBoth: 0,

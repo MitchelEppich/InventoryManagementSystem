@@ -13,7 +13,7 @@ const index = props => {
         <select
           name="size"
           onChange={e => {
-            company.packs[props.packIndex].size = e.target.value;
+            company.packs[props.packIndex].size = parseInt(e.target.value);
             companies.splice(props.variantIndex, 1, company);
             props.updateNewProduct({
               type: "companies",
@@ -36,7 +36,7 @@ const index = props => {
           type="number"
           name="price"
           onChange={e => {
-            company.packs[props.packIndex].price = e.target.value;
+            company.packs[props.packIndex].price = parseFloat(e.target.value);
             companies.splice(props.variantIndex, 1, company);
             props.updateNewProduct({
               type: "companies",
@@ -51,8 +51,9 @@ const index = props => {
           type="number"
           name="amount"
           onChange={e => {
-            company.packs[props.packIndex].stock[distro].amount =
-              e.target.value;
+            company.packs[props.packIndex].stock[distro].amount = parseInt(
+              e.target.value
+            );
             companies.splice(props.variantIndex, 1, company);
             props.updateNewProduct({
               type: "companies",
@@ -67,7 +68,9 @@ const index = props => {
           type="number"
           name="rop"
           onChange={e => {
-            company.packs[props.packIndex].stock[distro].rop = e.target.value;
+            company.packs[props.packIndex].stock[distro].rop = parseInt(
+              e.target.value
+            );
             companies.splice(props.variantIndex, 1, company);
             props.updateNewProduct({
               type: "companies",

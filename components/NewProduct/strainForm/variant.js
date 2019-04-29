@@ -21,7 +21,7 @@ const index = props => {
   return (
     <div className="w-full">
       <p className="uppercase bg-teal w-full  p-2 mt-3 mb-2 text-center font-bold text-white text-xl">
-        {props.variant}
+        {props.variant.name}
       </p>
       <div className="inline-flex w-full">
         <input
@@ -61,7 +61,7 @@ const index = props => {
           name="sttId"
           type="number"
           onChange={e => {
-            company.sttId = e.target.value;
+            company.sttId = parseInt(e.target.value);
             companies.splice(props.variantIndex, 1, company);
             props.updateNewProduct({
               type: "companies",

@@ -18,7 +18,7 @@ const initialState = {
     yield: [],
     difficulty: 0,
     flowerTime: [0, 0],
-    location: ["", ""],
+    location: [{ distributor: "", aisle: "", section: "", color: "" }],
     effect: [],
     stock: [
       {
@@ -46,10 +46,7 @@ const initialState = {
         {
           price: 0,
           size: 0,
-          stock: [
-            { amount: 0, rop: 0, noe: 0 },
-            { amount: 0, rop: 0, noe: 0 }
-          ]
+          stock: [{ amount: 0, rop: 0, noe: 0 }, { amount: 0, rop: 0, noe: 0 }]
         }
       ]
     },
@@ -64,10 +61,7 @@ const initialState = {
         {
           price: 0,
           size: 0,
-          stock: [
-            { amount: 0, rop: 0, noe: 0 },
-            { amount: 0, rop: 0, noe: 0}
-          ]
+          stock: [{ amount: 0, rop: 0, noe: 0 }, { amount: 0, rop: 0, noe: 0 }]
         }
       ]
     },
@@ -82,10 +76,7 @@ const initialState = {
         {
           price: 0,
           size: 0,
-          stock: [
-            { amount: 0, rop: 0, noe: 0 },
-            { amount: 0, rop: 0, noe: 0 }
-          ]
+          stock: [{ amount: 0, rop: 0, noe: 0 }, { amount: 0, rop: 0, noe: 0 }]
         }
       ]
     },
@@ -100,10 +91,7 @@ const initialState = {
         {
           price: 0,
           size: 0,
-          stock: [
-            { amount: 0, rop: 0, noe: 0 },
-            { amount: 0, rop: 0, noe: 0 }
-          ]
+          stock: [{ amount: 0, rop: 0, noe: 0 }, { amount: 0, rop: 0, noe: 0 }]
         }
       ]
     },
@@ -118,10 +106,7 @@ const initialState = {
         {
           price: 0,
           size: 0,
-          stock: [
-            { amount: 0, rop: 0, noe: 0 },
-            { amount: 0, rop: 0, noe: 0 }
-          ]
+          stock: [{ amount: 0, rop: 0, noe: 0 }, { amount: 0, rop: 0, noe: 0 }]
         }
       ]
     },
@@ -136,10 +121,7 @@ const initialState = {
         {
           price: 0,
           size: 0,
-          stock: [
-            { amount: 0, rop: 0, noe: 0 },
-            { amount: 0, rop: 0, noe: 0 }
-          ]
+          stock: [{ amount: 0, rop: 0, noe: 0 }, { amount: 0, rop: 0, noe: 0 }]
         }
       ]
     }

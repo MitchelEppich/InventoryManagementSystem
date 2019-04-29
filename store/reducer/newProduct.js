@@ -18,7 +18,14 @@ const initialState = {
     yield: [],
     difficulty: 0,
     flowerTime: [0, 0],
-    location: [{ distributor: "", aisle: "", section: "", color: "" }],
+    location: [
+      {
+        distributor: "5cc74ef13ec3eb9a6da5820d",
+        aisle: "",
+        section: "",
+        color: ""
+      }
+    ],
     effect: [],
     stock: [
       {

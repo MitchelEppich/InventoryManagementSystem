@@ -93,10 +93,25 @@ const getActions = uri => {
         ...data.info,
         variants: newVariants
       };
-      console.log(newProduct);
+      console.log("BEFORE POST", newProduct);
 
-      return {
-        type: actionTypes.SUBMIT_NEW_PRODUCT_FORM
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: mutation.createProduct,
+          variables: { ...newProduct }
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            let returnData = data.data.createStrain;
+            console.log("AFTER POST", returnData);
+            dispatch({
+              type: actionTypes.SUBMIT_NEW_PRODUCT_FORM,
+              newStrain: returnData
+            });
+          })
+          .catch(error => console.log(error));
       };
     }
   };

@@ -111,40 +111,40 @@ const item = props => {
   //   );
   // });
 
-  let itemColumns = [
-    "status",
-    "stock",
-    "ROP (Loose)",
-    "NOE (Loose)",
-    "breeder",
-    "location",
-    "category"
-  ].map((column, index) => {
-    let val = props[column] || "";
-    if (["location"].includes(column)) {
-      val = props[column][distro];
-    }
-    if (["stock", "ROP (Loose)", "NOE (Loose)"].includes(column)) {
-      if (column == "stock") {
-        val = props[column].amount;
-      }
-      if (column == "ROP (Loose)") {
-        val = props["stock"].rop;
-      }
-      if (column == "NOE (Loose)") {
-        val = props["stock"].noe;
-      }
-    }
-    return <div className=" w-1/8 text-sm text-grey text-center">{val}</div>;
-  });
+  // let itemColumns = [
+  //   "status",
+  //   "stock",
+  //   "ROP (Loose)",
+  //   "NOE (Loose)",
+  //   "breeder",
+  //   "location",
+  //   "category"
+  // ].map((column, index) => {
+  //   let val = props[column] || "";
+  //   if (["location"].includes(column)) {
+  //     val = props[column][distro];
+  //   }
+  //   if (["stock", "ROP (Loose)", "NOE (Loose)"].includes(column)) {
+  //     if (column == "stock") {
+  //       val = props[column].amount;
+  //     }
+  //     if (column == "ROP (Loose)") {
+  //       val = props["stock"].rop;
+  //     }
+  //     if (column == "NOE (Loose)") {
+  //       val = props["stock"].noe;
+  //     }
+  //   }
+  //   return <div className=" w-1/8 text-sm text-grey text-center">{val}</div>;
+  // });
 
   return (
     <div className="w-full">
       <div
-        onClick={() => {
-          let id = showAll ? null : props.index;
-          props.toggleShowAll(id);
-        }}
+        // onClick={() => {
+        //   let id = showAll ? null : props.index;
+        //   props.toggleShowAll(id);
+        // }}
         className={
           "h-auto w-full flex justify-start bg-white border border-1 border-grey-lighter py-2 hover:border-teal-light items-center "
         }
@@ -152,19 +152,19 @@ const item = props => {
         <div className="w-300 py-2 pl-2 text-sm text-grey text-left">
           {props.name.replace("Cannabis Seeds", "")}
         </div>
-        <div className="w-1/8 pt-1 text-sm text-grey text-center flex flex-wrap">
+        {/* <div className="w-1/8 pt-1 text-sm text-grey text-center flex flex-wrap">
           {companyCircles}
-        </div>
-        {itemColumns}
+        </div> */}
+        {/* {itemColumns} */}
       </div>
-      {showAll ? (
+      {/* {showAll ? (
         <React.Fragment>
           <div className="w-full flex pl-4 bg-grey-lighter text-grey p-2">
             {subHeadings}
           </div>
           {companyData}
         </React.Fragment>
-      ) : null}
+      ) : null} */}
     </div>
   );
 };

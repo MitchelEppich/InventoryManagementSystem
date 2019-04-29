@@ -33,7 +33,8 @@ const StrainSchema = Schema({
       ref: "Stock"
     }
   ],
-  location: [String]
+  location: [String],
+  updatedAt: { type: Date, default: new Date() }
 });
 
 module.exports = StrainSchema;

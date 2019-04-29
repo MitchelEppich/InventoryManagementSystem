@@ -6,7 +6,8 @@ const StockSchema = Schema({
   amount: Number,
   rop: Number,
   noe: Number,
-  sold: Number
+  sold: Number,
+  updatedAt: { type: Date, default: new Date() }
 });
 
 module.exports = StockSchema;

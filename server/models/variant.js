@@ -24,7 +24,8 @@ const VariantSchema = Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Attribute"
     }
-  ]
+  ],
+  updatedAt: { type: Date, default: new Date() }
 });
 
 module.exports = VariantSchema;

@@ -26,7 +26,19 @@ const resolvers = {
 
       return company.toObject();
     },
-    updateCompany: async (_, { input }) => {}
+    updateCompany: async (_, { input }) => {
+      let $ = { ...input };
+
+      let company = await Company.findOneAndUpdate(
+        { _id: $._id },
+        {
+          $set: { ...$ }
+        },
+        { new: true }
+      );
+
+      return company;
+    }
   },
   Subscription: {}
 };

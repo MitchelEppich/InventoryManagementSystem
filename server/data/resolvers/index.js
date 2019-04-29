@@ -1,21 +1,23 @@
 const User = require("./user");
 const Strain = require("./strain");
 const Variant = require("./variant");
+const Attribute = require("./attribute");
 const Stock = require("./stock");
 const Company = require("./company");
 const Review = require("./review");
-const Attribute = require("./attribute");
 const Distributor = require("./distributor");
+const Location = require("./location");
 
 let imports = [
   User,
   Strain,
   Variant,
+  Attribute,
   Stock,
   Company,
   Review,
-  Attribute,
-  Distributor
+  Distributor,
+  Location
 ];
 
 let resolvers = {};
@@ -31,7 +33,6 @@ for (let i = 0; i < imports.length; i++) {
     resolvers[x] = { ...resolvers[x], ...value };
   }
 }
-
 const toUrlEncoded = obj =>
   Object.keys(obj)
     .map(k => encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]))

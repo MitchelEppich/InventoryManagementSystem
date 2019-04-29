@@ -48,7 +48,7 @@ const index = props => {
             />
           </div>
           <div className="text-base uppercase text-white mt-3 bg-teal p-2">
-            Merchandising
+            Merchandise
           </div>
         </div>
       </div>

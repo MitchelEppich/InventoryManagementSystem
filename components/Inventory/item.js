@@ -10,7 +10,7 @@ import {
 const item = props => {
   let showAll = props.misc.showAllId == props.index; //show extra company specific data
   let editing = props._id == props.misc.currentEdit._id ? true : false;
-  let country = 0;
+  let distro = props.misc.distro;
   let iSubHeadings = props.misc.iSubHeadings;
   let subHeadings = iSubHeadings.map((heading, index) => {
     return (
@@ -23,132 +23,119 @@ const item = props => {
     );
   });
   let companyData = [];
-  let companyCircles = props.company.map((val, index) => {
-    console.log(val);
-    companyData.push(
-      <div className="w-full flex pl-4 bg-white text-grey p-2 my-1">
-        {iSubHeadings.map((heading, i) => {
-          if (["company", "alias"].includes(heading)) {
-            return (
-              <div key={i} className=" w-1/8 text-sm text-grey text-left pl-2">
-                {props[heading][index]}
-              </div>
-            );
-          }
-          if (["sotiId", "sttId"].includes(heading)) {
-            return (
-              <div key={i} className=" w-1/8 text-sm text-grey text-left pl-2">
-                {props[heading]}
-              </div>
-            );
-          }
-          if (heading == "price") {
-            return (
-              <div key={i} className=" w-1/8 text-sm text-grey text-left pl-2">
-                {props[heading][index].join("/")}
-              </div>
-            );
-          }
-          if (heading == "status") {
-            let packStatus = [5, 10, 25],
-              qty,
-              rop,
-              status;
-            packStatus = packStatus.map((packSize, j) => {
-              qty = props.qtyPacked[country][index][j];
-              rop = props.qtyPackedROP[country][index][j];
-              status =
-                rop / qty < 0.3 ? "low" : rop / qty > 0.8 ? "high" : "medium";
-              return status;
-            });
-            return (
-              <div key={i} className="w-1/8 text-sm text-grey text-left pl-2">
-                {packStatus.join("/")}
-              </div>
-            );
-          }
-          return (
-            <div
-              key={index}
-              className=" w-1/8 text-sm text-grey text-left pl-2"
-            >
-              {props[heading][country][index].join("/")}
-            </div>
-          );
-        })}
-      </div>
-    );
-    let color = "",
-      accronym;
-    switch (val) {
-      case "beaver seeds":
-        color = "bg-green text-white";
-        accronym = "BVR";
-        break;
-      case "crop king seeds":
-        color = "bg-red text-white";
-        accronym = "CKS";
-        break;
-      case "sonoma seeds":
-        color = "bg-white";
-        accronym = "SON";
-        break;
-      case "sunwest genetics":
-        color = "bg-yellow";
-        accronym = "SWG";
-        break;
-    }
-    return (
-      <span
-        key={index}
-        style={{ height: "35px", width: "35px" }}
-        className={
-          "mx-auto rounded-full font-bold shadow-md flex items-center justify-center text-xs " +
-          color
-        }
-      >
-        {accronym}
-      </span>
-    );
-  });
+  // let companyCircles = props.company.map((val, index) => {
+  //   companyData.push(
+  //     <div className="w-full flex pl-4 bg-white text-grey p-2 my-1">
+  //       {iSubHeadings.map((heading, i) => {
+  //         if (["company", "alias"].includes(heading)) {
+  //           return (
+  //             <div key={i} className=" w-1/8 text-sm text-grey text-left pl-2">
+  //               {props[heading][index]}
+  //             </div>
+  //           );
+  //         }
+  //         if (["sotiId", "sttId"].includes(heading)) {
+  //           return (
+  //             <div key={i} className=" w-1/8 text-sm text-grey text-left pl-2">
+  //               {props[heading]}
+  //             </div>
+  //           );
+  //         }
+  //         if (heading == "price") {
+  //           return (
+  //             <div key={i} className=" w-1/8 text-sm text-grey text-left pl-2">
+  //               {props[heading][index].join("/")}
+  //             </div>
+  //           );
+  //         }
+  //         if (heading == "status") {
+  //           let packStatus = [5, 10, 25],
+  //             qty,
+  //             rop,
+  //             status;
+  //           packStatus = packStatus.map((packSize, j) => {
+  //             qty = props.qtyPacked[distro][index][j];
+  //             rop = props.qtyPackedROP[distro][index][j];
+  //             status =
+  //               rop / qty < 0.3 ? "low" : rop / qty > 0.8 ? "high" : "medium";
+  //             return status;
+  //           });
+  //           return (
+  //             <div key={i} className="w-1/8 text-sm text-grey text-left pl-2">
+  //               {packStatus.join("/")}
+  //             </div>
+  //           );
+  //         }
+  //         return (
+  //           <div
+  //             key={index}
+  //             className=" w-1/8 text-sm text-grey text-left pl-2"
+  //           >
+  //             {props[heading][distro][index].join("/")}
+  //           </div>
+  //         );
+  //       })}
+  //     </div>
+  //   );
+  //   let color = "",
+  //     accronym;
+  //   switch (val) {
+  //     case "beaver seeds":
+  //       color = "bg-green text-white";
+  //       accronym = "BVR";
+  //       break;
+  //     case "crop king seeds":
+  //       color = "bg-red text-white";
+  //       accronym = "CKS";
+  //       break;
+  //     case "sonoma seeds":
+  //       color = "bg-white";
+  //       accronym = "SON";
+  //       break;
+  //     case "sunwest genetics":
+  //       color = "bg-yellow";
+  //       accronym = "SWG";
+  //       break;
+  //   }
+  //   return (
+  //     <span
+  //       key={index}
+  //       style={{ height: "35px", width: "35px" }}
+  //       className={
+  //         "mx-auto rounded-full font-bold shadow-md flex items-center justify-center text-xs " +
+  //         color
+  //       }
+  //     >
+  //       {accronym}
+  //     </span>
+  //   );
+  // });
 
-  let editable = ["qtyLoose", "qtyLooseROP"];
   let itemColumns = [
     "status",
-    "qtyLoose",
-    "qtyLooseROP",
-    "qtyLooseNOE",
+    "stock",
+    "ROP (Loose)",
+    "NOE (Loose)",
     "breeder",
     "location",
     "category"
   ].map((column, index) => {
-    if (editable.includes(column) && editing) {
-      return (
-        <input
-          onChange={e => {
-            props.handleInventoryEdit(column, e.target.value);
-          }}
-          className="w-1/8 pt-1 text-sm text-grey text-center"
-          type="number"
-          min="0"
-          aria-label={props[column]}
-          name={props[column]}
-          defaultValue={props[column]}
-        />
-      );
+    let val = props[column] || "";
+    if (["location"].includes(column)) {
+      val = props[column][distro];
     }
-    if (["qtyLoose", "qtyLooseROP", "qtyLooseNOE"].includes(column)) {
-      return (
-        <div className=" w-1/8 text-sm text-grey text-center">
-          {props[column][country]}
-        </div>
-      );
+    if (["stock", "ROP (Loose)", "NOE (Loose)"].includes(column)) {
+      if (column == "stock") {
+        val = props[column].amount;
+      }
+      if (column == "ROP (Loose)") {
+        val = props["stock"].rop;
+      }
+      if (column == "NOE (Loose)") {
+        val = props["stock"].noe;
+      }
     }
-    return (
-      <div className=" w-1/8 text-sm text-grey text-center">
-        {props[column]}
-      </div>
-    );
+    return <div className=" w-1/8 text-sm text-grey text-center">{val}</div>;
   });
 
   return (

@@ -141,7 +141,7 @@ svg {
   margin-right: 5px;
   background-color: #eee;
   border-radius: 50%;
-  vertical-align: text-top;
+  vertical-align: text-;
 }
 
 .checkbox:checked {
@@ -232,4 +232,78 @@ svg {
   100% {
     background-color: #215177;
   }
+}
+
+.logo {
+  @include modifier("cropkingseeds") {
+    background: url("../static/images/cropkingseeds.png") 20px 10px / auto 130px
+      no-repeat;
+    @include modifier("greyed") {
+      background: linear-gradient(
+          rgba(180, 180, 180, 0.517),
+          rgba(180, 180, 180, 0.517)
+        ),
+        url("../static/images/cropkingseeds.png") 20px 10px / auto 130px
+          no-repeat;
+    }
+  }
+  @include modifier("sonomaseeds") {
+    background: url("../static/images/sonomaseeds.png") 25px 15px / auto 130px
+      no-repeat;
+    @include modifier("greyed") {
+      background: linear-gradient(
+          rgba(180, 180, 180, 0.517),
+          rgba(180, 180, 180, 0.517)
+        ),
+        url("../static/images/sonomaseeds.png") 25px 15px / auto 130px no-repeat;
+    }
+  }
+  @include modifier("sunwestgenetics") {
+    background: url("../static/images/sunwestgenetics.png") 23px 10px / auto
+      130px no-repeat;
+    @include modifier("greyed") {
+      background: linear-gradient(
+          rgba(180, 180, 180, 0.517),
+          rgba(180, 180, 180, 0.517)
+        ),
+        url("../static/images/sunwestgenetics.png") 23px 10px / auto 130px
+          no-repeat;
+    }
+  }
+  @include modifier("beaverseeds") {
+    background: url("../static/images/beaverseeds.png") 10px 10px / auto 130px
+      no-repeat;
+    @include modifier("greyed") {
+      background: linear-gradient(
+          rgba(180, 180, 180, 0.517),
+          rgba(180, 180, 180, 0.517)
+        ),
+        url("../static/images/beaverseeds.png") 10px 10px / auto 130px no-repeat;
+    }
+  }
+  @include modifier("maryjanesgarden") {
+    background: url("../static/images/maryjanesgarden.png") 10px 10px / auto
+      130px no-repeat;
+    @include modifier("greyed") {
+      background: linear-gradient(
+          rgba(180, 180, 180, 0.517),
+          rgba(180, 180, 180, 0.517)
+        ),
+        url("../static/images/maryjanesgarden.png") 10px 10px / auto 130px
+          no-repeat;
+    }
+  }
+  @include modifier("mjseedscanada") {
+    background: url("../static/images/mjseedscanada.png") 10px 40px / 130px auto
+      no-repeat;
+    @include modifier("greyed") {
+      background: linear-gradient(
+          rgba(180, 180, 180, 0.517),
+          rgba(180, 180, 180, 0.517)
+        ),
+        url("../static/images/mjseedscanada.png") 10px 40px / 130px auto
+          no-repeat;
+    }
+  }
+  background-size: 130px 130px;
 }

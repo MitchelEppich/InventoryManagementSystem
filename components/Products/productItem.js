@@ -10,40 +10,40 @@ import {
 const item = props => {
   let productView = props.productView;
   let editing = props._id == props.misc.currentEdit._id ? true : false;
-  let companyCircles = props.company.map((val, index) => {
-    let color = "",
-      accronym;
-    switch (val) {
-      case "beaver seeds":
-        color = "bg-green text-white";
-        accronym = "BVR";
-        break;
-      case "crop king seeds":
-        color = "bg-red text-white";
-        accronym = "CKS";
-        break;
-      case "sonoma seeds":
-        color = "bg-white";
-        accronym = "SON";
-        break;
-      case "sunwest genetics":
-        color = "bg-yellow";
-        accronym = "SWG";
-        break;
-    }
-    return (
-      <span
-        key={index}
-        style={{ height: "35px", width: "35px" }}
-        className={
-          "mx-auto rounded-full font-bold shadow-md flex items-center justify-center text-xs " +
-          color
-        }
-      >
-        {accronym}
-      </span>
-    );
-  });
+  // let companyCircles = props.company.map((val, index) => {
+  //   let color = "",
+  //     accronym;
+  //   switch (val) {
+  //     case "beaver seeds":
+  //       color = "bg-green text-white";
+  //       accronym = "BVR";
+  //       break;
+  //     case "crop king seeds":
+  //       color = "bg-red text-white";
+  //       accronym = "CKS";
+  //       break;
+  //     case "sonoma seeds":
+  //       color = "bg-white";
+  //       accronym = "SON";
+  //       break;
+  //     case "sunwest genetics":
+  //       color = "bg-yellow";
+  //       accronym = "SWG";
+  //       break;
+  //   }
+  //   return (
+  //     <span
+  //       key={index}
+  //       style={{ height: "35px", width: "35px" }}
+  //       className={
+  //         "mx-auto rounded-full font-bold shadow-md flex items-center justify-center text-xs " +
+  //         color
+  //       }
+  //     >
+  //       {accronym}
+  //     </span>
+  //   );
+  // });
 
   return (
     <div
@@ -157,9 +157,9 @@ const item = props => {
           <div className="h-full w-24 pt-4 text-sm text-grey text-center">
             {props._id}
           </div>
-          <div className="h-full w-1/6 pt-3 text-sm text-grey text-center flex flex-wrap">
+          {/* <div className="h-full w-1/6 pt-3 text-sm text-grey text-center flex flex-wrap">
             {companyCircles}
-          </div>
+          </div> */}
           <div className="h-full w-1/2 py-2 px-8 text-sm text-grey text-left">
             {props.description}
           </div>

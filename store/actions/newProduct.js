@@ -69,41 +69,29 @@ const getActions = uri => {
       }
     },
     creatNewProduct: data => {
-      console.log(data);
-      ////////////////////////////////////////////
-      //STOCK NEEDS TO BE DEALT WITH (DISTRIBUTORS)
-      ////////////////////////////////////////////
+      // let distro = data.distro; //distro index
+      let type = 1;
+      type = data.info.sativa > 60 ? 0 : type;
+      type = data.info.indice < 60 ? 2 : type;
+      
+
+      //company variants
       let newVariants = data.companies.map((company, index) => {
-        let newAttributes = company.packs.map((pack, index) => {
-          return {
-            price: pack.price,
-            size: pack.packSize,
-            stock: [
-              {
-                amount: pack.amount,
-                rop: pack.rop,
-                noe: pack.rop + pack.rop * 0.3
-              },
-              {
-                amount: null,
-                rop: null,
-                noe: null
-              }
-            ]
-          };
-        });
+        let newAttributes = company.packs;
         delete company.packs;
         return {
           ...company,
           releaseDate: "2018-06-01T07:00:00.000Z",
-          attributes: [...newAttributes]
+          attributes: newAttributes
         };
       });
-      let dataObj = {
+
+      let newProduct = {
         ...data.info,
-        variants: [...newVariants],
-        stock: newStock
+        variants: newVariants,
+        type: type
       };
+      console.log(newProduct);
 
       return {
         type: actionTypes.SUBMIT_NEW_PRODUCT_FORM

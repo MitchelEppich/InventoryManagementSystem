@@ -21,12 +21,12 @@ const index = props => {
   return (
     <div className="w-full">
       <p className="uppercase bg-teal w-full  p-2 mt-3 mb-2 text-center font-bold text-white text-xl">
-        Adding Variations to {props.variant}
+        {props.variant.name}
       </p>
       <div className="inline-flex w-full">
         <input
           className="w-3/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
-          placeholder="Alias (E.G. 'Super Silver Haze Feminized') "
+          placeholder="Alias (E.G. 'Super Silver Haze') "
           value={company.alias}
           type="text"
           name="alias"
@@ -57,11 +57,11 @@ const index = props => {
         <input
           className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="STT ID"
-          value={company.sttId}
+          value={company.sttId || "STT ID"}
           name="sttId"
           type="number"
           onChange={e => {
-            company.sttId = e.target.value;
+            company.sttId = parseInt(e.target.value);
             companies.splice(props.variantIndex, 1, company);
             props.updateNewProduct({
               type: "companies",
@@ -91,11 +91,11 @@ const index = props => {
         cols="4"
         rows="80"
         className="w-full h-32 uppercase pl-4 py-3  my-2 text-grey border-input-grey border-2 rounded-lg overflow-y-hidden"
-        placeholder="description"
+        placeholder="description (separate paragraphs *)"
         name="description"
-        value={company.description}
+        value={company.description.join("*")}
         onChange={e => {
-          company.description = e.target.value;
+          company.description = e.target.value.split("*");
           companies.splice(props.variantIndex, 1, company);
           props.updateNewProduct({
             type: "companies",
@@ -109,7 +109,14 @@ const index = props => {
           onClick={e => {
             e.preventDefault();
             let newCompanies = props.newProduct.companies;
-            newCompanies[props.variantIndex].packs.push({ stock: [{}, {}] });
+            newCompanies[props.variantIndex].packs.push({
+              size: 0,
+              price: 0,
+              stock: [
+                { amount: 0, rop: 0, noe: 0, sold: 0 },
+                { amount: 0, rop: 0, noe: 0, sold: 0 }
+              ]
+            });
             props.togglePackInput(newCompanies);
           }}
           className="inline-flex items-center flex bg-grey-lighter px-6 justify-end text-right cursor-pointer scale-items"

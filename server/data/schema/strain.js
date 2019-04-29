@@ -36,12 +36,13 @@ let Type = `
         relations: [String]
         variants: [Variant]
         stock: [Stock]
-        location: [String]
+        location: [Location]
     }
 `;
 
 let Input = `
     input StrainInput {
+        _id: String
         name: String
         category: Int
         breeder: String
@@ -58,34 +59,13 @@ let Input = `
         sativa: Float
         ruderalis: Float
         environment: Int
-        location: [String]
+        location: [LocationInput]
 
-        variants: [StrainVariantInput]
+        variants: [VariantInput]
 
-        stock: [StrainStockInput]
-    }
+        stock: [StockInput]
 
-    input StrainVariantInput {
-        name: String
-        sotiId: String
-        alias: String
-        description: [String]
-        summary: String
-        releaseDate: String
-        sttId: String
-        attributes: [StrainAttributeInput]
-    }
-
-    input StrainAttributeInput {
-        price: Float
-        size: Int
-        stock: [StrainStockInput]
-    }
-
-    input StrainStockInput {
-        amount: Int
-        rop: Int
-        noe: Int
+        updatedAt: String
     }
 `;
 

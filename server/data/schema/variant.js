@@ -28,6 +28,7 @@ let Type = `
 
 let Input = `
     input VariantInput {
+        _id: String
         name: String
         sotiId: String
         sttId: String
@@ -35,7 +36,8 @@ let Input = `
         description: [String]
         summary: String
         releaseDate: String
-        attributes: [String]
+        attributes: [AttributeInput]
+        updatedAt: String
     }
 `;
 

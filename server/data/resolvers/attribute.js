@@ -6,12 +6,10 @@ const { Attribute } = require("../../models");
 
 const mongoose = require("mongoose");
 
-const Stock = require("./stock");
-
 const resolvers = {
   Attribute: {
     async stock(attribute) {
-      return Stock.Query.stock(null, {
+      return require("./stock").Query.stock(null, {
         input: { _id: { $in: attribute.stock } }
       });
     }
@@ -30,10 +28,11 @@ const resolvers = {
 
       // Create Stock Objects
       let stock = [];
+
       for (let _ of $.stock) {
         stock.push(
           mongoose.Types.ObjectId(
-            (await Stock.Mutation.createStock(null, {
+            (await require("./stock").Mutation.createStock(null, {
               input: {
                 ..._
               }
@@ -51,7 +50,47 @@ const resolvers = {
 
       return attribute.toObject();
     },
-    updateAttribute: async (_, { input }) => {}
+    updateAttribute: async (_, { input }) => {
+      let $ = {
+        ...input
+      };
+
+      // Update Stock Objects
+      let newStocks = [];
+      if ($.stock != null) {
+        for (_ of $.stock) {
+          let id = mongoose.Types.ObjectId(
+            (await require("./stock").Mutation.updateStock(null, {
+              input: {
+                ..._
+              }
+            }))._id
+          );
+          if (_.id == null) newStocks.push(id);
+        }
+        delete $.stock;
+      }
+
+      if ($._id == null) $._id = new mongoose.mongo.ObjectID();
+
+      let attribute = await Attribute.findOneAndUpdate(
+        {
+          _id: $._id
+        },
+        {
+          $set: {
+            ...$
+          },
+          $push: { stock: newStocks }
+        },
+        {
+          new: true,
+          upsert: true
+        }
+      );
+
+      return attribute;
+    }
   },
   Subscription: {}
 };

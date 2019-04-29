@@ -9,6 +9,7 @@ const Company = require("./company");
 const Review = require("./review");
 const Attribute = require("./attribute");
 const Distributor = require("./distributor");
+const Location = require("./location");
 
 let imports = [
   User,
@@ -18,7 +19,8 @@ let imports = [
   Company,
   Review,
   Attribute,
-  Distributor
+  Distributor,
+  Location
 ];
 
 let definitions = {};

@@ -10,7 +10,8 @@ const AttributeSchema = Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Stock"
     }
-  ]
+  ],
+  updatedAt: { type: Date, default: new Date() }
 });
 
 module.exports = AttributeSchema;

@@ -25,6 +25,7 @@ let Type = `
 
 let Input = `
     input CompanyInput {
+        _id: String
         assetsUrl: String
         website: [String]
         phone: [String]

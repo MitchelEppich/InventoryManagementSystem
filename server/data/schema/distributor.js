@@ -14,14 +14,12 @@ let Subscription = `
 let Type = `
     type Distributor {
         _id: String
-        index: Int
         country: String
     }
 `;
 
 let Input = `
     input DistributorInput {
-        index: Int
         country: String
     }
 `;

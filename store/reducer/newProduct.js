@@ -25,11 +25,6 @@ const initialState = {
         amount: 0,
         rop: 0,
         noe: 0
-      },
-      {
-        amount: 0,
-        rop: 0,
-        noe: 0
       }
     ]
   },

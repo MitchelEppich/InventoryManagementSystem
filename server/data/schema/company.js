@@ -1,6 +1,6 @@
 let Query = `
     company(input: CompanyInput!): Company
-    allCompanys: [Company]!
+    allCompanies: [Company]!
 `;
 
 let Mutation = `

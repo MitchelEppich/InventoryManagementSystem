@@ -10,7 +10,7 @@ const resolvers = {
     company: (_, { input }) => {
       return Company.find(input);
     },
-    allCompanys: _ => {
+    allCompanies: _ => {
       return Company.find({});
     }
   },

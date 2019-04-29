@@ -93,7 +93,6 @@ const getActions = uri => {
         ...data.info,
         variants: newVariants
       };
-      console.log("BEFORE POST", newProduct);
 
       return async dispatch => {
         const link = new HttpLink({ uri, fetch: fetch });
@@ -105,7 +104,6 @@ const getActions = uri => {
         await makePromise(execute(link, operation))
           .then(data => {
             let returnData = data.data.createStrain;
-            console.log("AFTER POST", returnData);
             dispatch({
               type: actionTypes.SUBMIT_NEW_PRODUCT_FORM,
               newStrain: returnData

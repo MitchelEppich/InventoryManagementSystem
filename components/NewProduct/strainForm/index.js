@@ -1,11 +1,12 @@
 import Info from "./info";
-
+import Router from "next/router";
 const index = props => {
   return (
     <form
       className="w-4/5 mx-auto flex flex-wrap justify-start text-base text-grey"
       onSubmit={e => {
         e.preventDefault();
+        Router.push("/");
         props.creatNewProduct(props.newProduct);
       }}
     >

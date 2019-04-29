@@ -14,157 +14,206 @@ const item = props => {
   let iSubHeadings = props.misc.iSubHeadings;
   let subHeadings = iSubHeadings.map((heading, index) => {
     return (
-      <span
-        key={index}
-        className="text-grey w-1/8 px-2 py-2 text-sm capitalize"
-      >
+      <span key={index} className="text-grey w-32 p-2 text-xs uppercase">
         {heading}
       </span>
     );
   });
   let companyData = [];
-  // let companyCircles = props.company.map((val, index) => {
-  //   companyData.push(
-  //     <div className="w-full flex pl-4 bg-white text-grey p-2 my-1">
-  //       {iSubHeadings.map((heading, i) => {
-  //         if (["company", "alias"].includes(heading)) {
-  //           return (
-  //             <div key={i} className=" w-1/8 text-sm text-grey text-left pl-2">
-  //               {props[heading][index]}
-  //             </div>
-  //           );
-  //         }
-  //         if (["sotiId", "sttId"].includes(heading)) {
-  //           return (
-  //             <div key={i} className=" w-1/8 text-sm text-grey text-left pl-2">
-  //               {props[heading]}
-  //             </div>
-  //           );
-  //         }
-  //         if (heading == "price") {
-  //           return (
-  //             <div key={i} className=" w-1/8 text-sm text-grey text-left pl-2">
-  //               {props[heading][index].join("/")}
-  //             </div>
-  //           );
-  //         }
-  //         if (heading == "status") {
-  //           let packStatus = [5, 10, 25],
-  //             qty,
-  //             rop,
-  //             status;
-  //           packStatus = packStatus.map((packSize, j) => {
-  //             qty = props.qtyPacked[distro][index][j];
-  //             rop = props.qtyPackedROP[distro][index][j];
-  //             status =
-  //               rop / qty < 0.3 ? "low" : rop / qty > 0.8 ? "high" : "medium";
-  //             return status;
-  //           });
-  //           return (
-  //             <div key={i} className="w-1/8 text-sm text-grey text-left pl-2">
-  //               {packStatus.join("/")}
-  //             </div>
-  //           );
-  //         }
-  //         return (
-  //           <div
-  //             key={index}
-  //             className=" w-1/8 text-sm text-grey text-left pl-2"
-  //           >
-  //             {props[heading][distro][index].join("/")}
-  //           </div>
-  //         );
-  //       })}
-  //     </div>
-  //   );
-  //   let color = "",
-  //     accronym;
-  //   switch (val) {
-  //     case "beaver seeds":
-  //       color = "bg-green text-white";
-  //       accronym = "BVR";
-  //       break;
-  //     case "crop king seeds":
-  //       color = "bg-red text-white";
-  //       accronym = "CKS";
-  //       break;
-  //     case "sonoma seeds":
-  //       color = "bg-white";
-  //       accronym = "SON";
-  //       break;
-  //     case "sunwest genetics":
-  //       color = "bg-yellow";
-  //       accronym = "SWG";
-  //       break;
-  //   }
-  //   return (
-  //     <span
-  //       key={index}
-  //       style={{ height: "35px", width: "35px" }}
-  //       className={
-  //         "mx-auto rounded-full font-bold shadow-md flex items-center justify-center text-xs " +
-  //         color
-  //       }
-  //     >
-  //       {accronym}
-  //     </span>
-  //   );
-  // });
+  let companyCircles = props.variants.map((val, index) => {
+    let color = "",
+      accronym;
+    [
+      { name: "beaver seeds", color: "bg-green text-white", accronym: "BVR" },
+      { name: "crop king seeds", color: "bg-red text-white", accronym: "CKS" },
+      { name: "sonoma seeds", color: "bg-white", accronym: "SON" },
+      { name: "sunwest genetics", color: "bg-yellow", accronym: "SWG" }
+    ].map((company, index) => {
+      if (
+        val.company.website[0]
+          .toLowerCase()
+          .includes(company.name.replace(/ /g, "").toLowerCase())
+      ) {
+        color = company.color;
+        accronym = company.accronym;
+      }
+      return;
+    });
 
-  // let itemColumns = [
-  //   "status",
-  //   "stock",
-  //   "ROP (Loose)",
-  //   "NOE (Loose)",
-  //   "breeder",
-  //   "location",
-  //   "category"
-  // ].map((column, index) => {
-  //   let val = props[column] || "";
-  //   if (["location"].includes(column)) {
-  //     val = props[column][distro];
-  //   }
-  //   if (["stock", "ROP (Loose)", "NOE (Loose)"].includes(column)) {
-  //     if (column == "stock") {
-  //       val = props[column].amount;
-  //     }
-  //     if (column == "ROP (Loose)") {
-  //       val = props["stock"].rop;
-  //     }
-  //     if (column == "NOE (Loose)") {
-  //       val = props["stock"].noe;
-  //     }
-  //   }
-  //   return <div className=" w-1/8 text-sm text-grey text-center">{val}</div>;
-  // });
+    companyData.push(
+      <div className="w-full flex pl-4 bg-white text-grey py-2">
+        {iSubHeadings.map((heading, i) => {
+          if (heading == "company") {
+            return (
+              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
+                <span
+                  key={index}
+                  style={{ height: "25px", width: "25px" }}
+                  className={
+                    " rounded-full font-bold shadow-md flex items-center justify-center text-xs " +
+                    color
+                  }
+                >
+                  {accronym}
+                </span>
+              </div>
+            );
+          }
+          if (["sotiId", "sttId"].includes(heading)) {
+            return (
+              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
+                {val[heading]}
+              </div>
+            );
+          }
+          if (heading == "alias") {
+            return (
+              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
+                {val[heading].replace("Cannabis Seeds", "")}
+              </div>
+            );
+          }
+          if (heading == "price") {
+            let prices = val.attributes.map((attr, index) => {
+              return "$" + attr.price;
+            });
+            return (
+              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
+                {prices.join(" / ")}
+              </div>
+            );
+          }
+          if (heading == "qty (packed)") {
+            let qtys = val.attributes.map((attr, index) => {
+              return attr.stock[distro].amount;
+            });
+            return (
+              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
+                {qtys.join(" / ")}
+              </div>
+            );
+          }
+          if (heading == "rop (packed)") {
+            let qtys = val.attributes.map((attr, index) => {
+              return attr.stock[distro].rop;
+            });
+            return (
+              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
+                {qtys.join(" / ")}
+              </div>
+            );
+          }
+          if (heading == "noe (packed)") {
+            let qtys = val.attributes.map((attr, index) => {
+              return attr.stock[distro].noe;
+            });
+            return (
+              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
+                {qtys.join(" / ")}
+              </div>
+            );
+          }
+          if (heading == "status") {
+            let packStatus = val.attributes,
+              qty,
+              rop,
+              status;
+            packStatus = packStatus.map((packSize, j) => {
+              qty = packSize.stock[distro].amount;
+              rop = packSize.stock[distro].rop;
+              status = qty > rop ? "high" : "low";
+              return status;
+            });
+            return (
+              <div key={i} className="w-32 text-sm text-grey text-left p-2">
+                {packStatus.join("/")}
+              </div>
+            );
+          }
+          return (
+            <div key={index} className=" w-32 text-sm text-grey text-left p-2">
+              {val[heading]}
+            </div>
+          );
+        })}
+      </div>
+    );
+
+    return (
+      <span
+        key={index}
+        style={{ height: "25px", width: "25px" }}
+        className={
+          " rounded-full font-bold shadow-md flex items-center justify-center text-xs " +
+          color
+        }
+      >
+        {accronym}
+      </span>
+    );
+  });
+
+  let itemColumns = props.misc.iHeadings.map((column, index) => {
+    let val = props[column] || "";
+    switch (column) {
+      case "name":
+        return null;
+      case "company":
+        val = companyCircles;
+        break;
+      case "status":
+        val =
+          props["stock"][distro].amount > props["stock"][distro].rop
+            ? "stocked"
+            : "low";
+        break;
+      case "location":
+        val = props[column][distro].section;
+        break;
+      case "ROP (Loose)":
+        val = props["stock"][distro].rop;
+      case "NOE (Loose)":
+        val = props["stock"][distro].noe;
+        break;
+      case "qty (Loose)":
+        val = props["stock"][distro].amount;
+        break;
+      case "breeder":
+        val = props[column];
+        break;
+      case "category":
+        val = props[column] == 0 ? "strain" : "merch";
+        break;
+      default:
+        break;
+    }
+    return <div className="w-28 p-2 text-sm text-grey text-left">{val}</div>;
+  });
 
   return (
     <div className="w-full">
       <div
-        // onClick={() => {
-        //   let id = showAll ? null : props.index;
-        //   props.toggleShowAll(id);
-        // }}
+        onClick={() => {
+          let id = showAll ? null : props.index;
+          props.toggleShowAll(id);
+        }}
         className={
           "h-auto w-full flex justify-start bg-white border border-1 border-grey-lighter py-2 hover:border-teal-light items-center "
         }
       >
-        <div className="w-300 py-2 pl-2 text-sm text-grey text-left">
+        <div className="w-48 p-2 text-sm text-grey text-left">
           {props.name.replace("Cannabis Seeds", "")}
         </div>
-        {/* <div className="w-1/8 pt-1 text-sm text-grey text-center flex flex-wrap">
-          {companyCircles}
-        </div> */}
-        {/* {itemColumns} */}
+        {itemColumns}
       </div>
-      {/* {showAll ? (
+      {showAll ? (
         <React.Fragment>
-          <div className="w-full flex pl-4 bg-grey-lighter text-grey p-2">
+          <div className="w-full flex bg-grey-lighter text-grey py-2 pl-4">
             {subHeadings}
           </div>
           {companyData}
         </React.Fragment>
-      ) : null} */}
+      ) : null}
     </div>
   );
 };

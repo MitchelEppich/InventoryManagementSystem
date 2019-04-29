@@ -9,7 +9,7 @@ const index = props => {
   let iHeadings = props.misc.iHeadings.map((heading, index) => {
     let lastCol = "",
       bg = "bg-teal";
-    let width = heading.toLowerCase() == "name" ? "w-300" : "w-1/8";
+    let width = heading.toLowerCase() == "name" ? "w-48" : "w-28";
     if (index == props.misc.iHeadings.length - 1) {
       lastCol = "";
     }
@@ -26,7 +26,7 @@ const index = props => {
           width +
           " p-2 border border-teal border-r-0 border-t-0 border-b-0 " +
           bg +
-          " hover:bg-teal-dark cursor-pointer text-xs text-white justify-center flex items-center uppercase" +
+          " hover:bg-teal-dark cursor-pointer text-xs text-white flex uppercase" +
           lastCol
         }
       >
@@ -112,7 +112,7 @@ const index = props => {
         </div>
       </div>
       <div className="h-600 w-full">
-        <div className="flex w-4/5 fixed -mt-1">
+        <div className="flex w-4/5 fixed -mt-1 bg-teal pr-4">
           {/* <div
             onClick={() => {
               props.setOrderBy(null);

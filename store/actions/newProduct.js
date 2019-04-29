@@ -103,7 +103,104 @@ const getActions = uri => {
 };
 const query = {};
 
-const mutation = {};
+const mutation = {
+  createProduct: gql`
+    mutation(
+      $name: String
+      $category: Int
+      $breeder: String
+      $origin: [Int]
+      $cbd: [Float]
+      $thc: [Float]
+      $cbn: [Float]
+      $effect: [Int]
+      $yield: [Int]
+      $genetic: Int
+      $flowerTime: [Int]
+      $difficulty: Int
+      $indica: Float
+      $sativa: Float
+      $ruderalis: Float
+      $environment: Int
+      $location: [String]
+      $variants: [StrainVariantInput]
+      $stock: [StrainStockInput]
+    ) {
+      createStrain(
+        input: {
+          name: $name
+          category: $category
+          breeder: $breeder
+          origin: $origin
+          cbd: $cbd
+          thc: $thc
+          cbn: $cbn
+          effect: $effect
+          yield: $yield
+          genetic: $genetic
+          flowerTime: $flowerTime
+          difficulty: $difficulty
+          indica: $indica
+          sativa: $sativa
+          ruderalis: $ruderalis
+          environment: $environment
+          location: $location
+          variants: $variants
+          stock: $stock
+        }
+      ) {
+        name
+        category
+        breeder
+        origin
+        cbd
+        thc
+        cbn
+        effect
+        yield
+        genetic
+        flowerTime
+        difficulty
+        indica
+        sativa
+        ruderalis
+        environment
+        location
+        variants {
+          company {
+            assetsUrl
+            website
+            phone
+            socials
+            email
+          }
+          sotiId
+          alias
+          description
+          summary
+          releaseDate
+          sttId
+          attributes {
+            price
+            size
+            stock {
+              amount
+              rop
+              noe
+              sold
+            }
+          }
+        }
+        stock {
+          amount
+          rop
+          noe
+          sold
+        }
+      }
+    }
+  `
+};
 
 export default uri => {
   const actions = getActions(uri);

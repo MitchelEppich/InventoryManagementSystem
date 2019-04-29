@@ -36,7 +36,7 @@ const initialState = {
   variants: [],
   companies: [
     {
-      name: "Crop King Seeds",
+      name: "crop king seeds",
       alias: "",
       sotiId: "",
       sttId: 0,
@@ -46,12 +46,12 @@ const initialState = {
         {
           price: 0,
           size: 0,
-          stock: [{ amount: 0, rop: 0, noe: 0 }, { amount: 0, rop: 0, noe: 0 }]
+          stock: [{ amount: 0, rop: 0, noe: 0 }]
         }
       ]
     },
     {
-      name: "Sonoma Seeds",
+      name: "sonoma seeds",
       alias: "",
       sotiId: "",
       sttId: 0,
@@ -61,12 +61,12 @@ const initialState = {
         {
           price: 0,
           size: 0,
-          stock: [{ amount: 0, rop: 0, noe: 0 }, { amount: 0, rop: 0, noe: 0 }]
+          stock: [{ amount: 0, rop: 0, noe: 0 }]
         }
       ]
     },
     {
-      name: "Sunwest Genetics",
+      name: "sunwest genetics",
       alias: "",
       sotiId: "",
       sttId: 0,
@@ -76,12 +76,12 @@ const initialState = {
         {
           price: 0,
           size: 0,
-          stock: [{ amount: 0, rop: 0, noe: 0 }, { amount: 0, rop: 0, noe: 0 }]
+          stock: [{ amount: 0, rop: 0, noe: 0 }]
         }
       ]
     },
     {
-      name: "Beaver Seeds",
+      name: "beaver seeds",
       alias: "",
       sotiId: "",
       sttId: 0,
@@ -91,12 +91,12 @@ const initialState = {
         {
           price: 0,
           size: 0,
-          stock: [{ amount: 0, rop: 0, noe: 0 }, { amount: 0, rop: 0, noe: 0 }]
+          stock: [{ amount: 0, rop: 0, noe: 0 }]
         }
       ]
     },
     {
-      name: "Mary Janes Garden",
+      name: "mary janes garden",
       alias: "",
       sotiId: "",
       sttId: 0,
@@ -106,12 +106,12 @@ const initialState = {
         {
           price: 0,
           size: 0,
-          stock: [{ amount: 0, rop: 0, noe: 0 }, { amount: 0, rop: 0, noe: 0 }]
+          stock: [{ amount: 0, rop: 0, noe: 0 }]
         }
       ]
     },
     {
-      name: "MJ Seeds Canada",
+      name: "mj seeds canada",
       alias: "",
       sotiId: "",
       sttId: 0,
@@ -121,7 +121,7 @@ const initialState = {
         {
           price: 0,
           size: 0,
-          stock: [{ amount: 0, rop: 0, noe: 0 }, { amount: 0, rop: 0, noe: 0 }]
+          stock: [{ amount: 0, rop: 0, noe: 0 }]
         }
       ]
     }

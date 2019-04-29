@@ -21,7 +21,7 @@ const index = props => {
   return (
     <div className="w-full">
       <p className="uppercase bg-teal w-full  p-2 mt-3 mb-2 text-center font-bold text-white text-xl">
-        {props.variant.name}
+        {props.variant}
       </p>
       <div className="inline-flex w-full">
         <input
@@ -57,7 +57,7 @@ const index = props => {
         <input
           className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
           placeholder="STT ID"
-          value={company.sttId || "STT ID"}
+          value={company.sttId || ""}
           name="sttId"
           type="text"
           onChange={e => {
@@ -93,9 +93,9 @@ const index = props => {
         className="w-full h-32 uppercase pl-4 py-3  my-2 text-grey border-input-grey border-2 rounded-lg overflow-y-hidden"
         placeholder="description (separate paragraphs *)"
         name="description"
-        value={company.description.join("*")}
+        value={company.description.join("\n")}
         onChange={e => {
-          company.description = e.target.value.split("*");
+          company.description = e.target.value.split("\n");
           companies.splice(props.variantIndex, 1, company);
           props.updateNewProduct({
             type: "companies",

@@ -78,7 +78,7 @@ const resolvers = {
               }
             }))._id
           );
-          if (_.id == null) newAttributes.push(id);
+          if (_._id == null) newAttributes.push(id);
         }
         delete $.attributes;
       }
@@ -93,6 +93,27 @@ const resolvers = {
         },
         { new: true, upsert: true }
       );
+
+      return variant;
+    },
+    deleteVariant: async (_, { input }) => {
+      let $ = { ...input };
+
+      if ($._id == null) return null;
+
+      let variant = await Variant.findOneAndDelete({ _id: $._id });
+
+      if (variant == null) return null;
+
+      if (variant.attributes != null) {
+        for (_ of variant.attributes) {
+          require("./attribute").Mutation.deleteAttribute(null, {
+            input: {
+              _id: _
+            }
+          });
+        }
+      }
 
       return variant;
     }

@@ -6,6 +6,7 @@ let Query = `
 let Mutation = `
     createCompany(input: CompanyInput): Company
     updateCompany(input: CompanyInput): Company
+    deleteCompany(input: CompanyInput): Company
 `;
 
 let Subscription = `

@@ -6,6 +6,7 @@ let Query = `
 let Mutation = `
     createStock(input: StockInput): Stock
     updateStock(input: StockInput): Stock
+    deleteStock(input: StockInput): Stock
 `;
 
 let Subscription = `

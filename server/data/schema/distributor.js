@@ -6,6 +6,7 @@ let Query = `
 let Mutation = `
     createDistributor(input: DistributorInput): Distributor
     updateDistributor(input: DistributorInput): Distributor
+    deleteDistributor(input: DistributorInput): Distributor
 `;
 
 let Subscription = `

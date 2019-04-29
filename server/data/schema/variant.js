@@ -6,6 +6,7 @@ let Query = `
 let Mutation = `
     createVariant(input: VariantInput): Variant
     updateVariant(input: VariantInput): Variant
+    deleteVariant(input: VariantInput): Variant
 `;
 
 let Subscription = `

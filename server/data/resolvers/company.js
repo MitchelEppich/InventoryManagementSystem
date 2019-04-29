@@ -29,6 +29,8 @@ const resolvers = {
     updateCompany: async (_, { input }) => {
       let $ = { ...input };
 
+      if ($._id == null) return null;
+
       let company = await Company.findOneAndUpdate(
         { _id: $._id },
         {
@@ -36,6 +38,15 @@ const resolvers = {
         },
         { new: true }
       );
+
+      return company;
+    },
+    deleteCompany: async (_, { input }) => {
+      let $ = { ...input };
+
+      if ($._id == null) return null;
+
+      let company = await Company.findOneAndDelete({ _id: $._id });
 
       return company;
     }

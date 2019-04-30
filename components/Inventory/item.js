@@ -50,7 +50,7 @@ const item = props => {
     });
 
     companyData.push(
-      <div className="w-full flex pl-4 bg-white text-grey py-2">
+      <div className="w-full flex pl-4 bg-teal-lightest text-grey py-2">
         {iSubHeadings.map((heading, i) => {
           if (heading == "company") {
             return (

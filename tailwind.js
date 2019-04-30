@@ -111,7 +111,7 @@ let colors = {
   teal: "#49a292",
   "teal-light": "#64d5ca",
   "teal-lighter": "#a0f0ed",
-  "teal-lightest": "#e8fffe",
+  "teal-lightest": "#ace0d7",
 
   "blue-darkest": "#12283a",
   "blue-darker": "#0a2942",

@@ -1,19 +1,19 @@
 const index = props => {
   let companies = props.newProduct.companies;
   let company = companies[props.variantIndex];
-  let pack = company.packs[props.packIndex];
+  let pack = company.attributes[props.packIndex];
   let distro = props.newProduct.distro;
 
   return (
     <div className="w-full">
       <p className="uppercase bg-grey-light w-full  p-2 mt-3 mb-2 text-center font-bold text-white text-xl">
-        Pack Variant {props.packIndex + 1 + "/" + company.packs.length}
+        Pack Variant {props.packIndex + 1 + "/" + company.attributes.length}
       </p>
       <div className="inline-flex w-full flex items-center justify-between">
         <select
           name="size"
           onChange={e => {
-            company.packs[props.packIndex].size = parseInt(e.target.value);
+            company.attributes[props.packIndex].size = parseInt(e.target.value);
             companies.splice(props.variantIndex, 1, company);
             props.updateNewProduct({
               type: "companies",
@@ -36,7 +36,9 @@ const index = props => {
           type="number"
           name="price"
           onChange={e => {
-            company.packs[props.packIndex].price = parseFloat(e.target.value);
+            company.attributes[props.packIndex].price = parseFloat(
+              e.target.value
+            );
             companies.splice(props.variantIndex, 1, company);
             props.updateNewProduct({
               type: "companies",
@@ -51,7 +53,7 @@ const index = props => {
           type="number"
           name="amount"
           onChange={e => {
-            company.packs[props.packIndex].stock[distro].amount = parseInt(
+            company.attributes[props.packIndex].stock[distro].amount = parseInt(
               e.target.value
             );
             companies.splice(props.variantIndex, 1, company);
@@ -68,10 +70,10 @@ const index = props => {
           type="number"
           name="rop"
           onChange={e => {
-            company.packs[props.packIndex].stock[distro].rop = parseInt(
+            company.attributes[props.packIndex].stock[distro].rop = parseInt(
               e.target.value
             );
-            company.packs[props.packIndex].stock[distro].noe = parseInt(
+            company.attributes[props.packIndex].stock[distro].noe = parseInt(
               e.target.value
             );
             companies.splice(props.variantIndex, 1, company);

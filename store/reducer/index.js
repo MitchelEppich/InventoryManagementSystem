@@ -352,6 +352,10 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         showAllId: action.id
       });
+    case actionTypes.SUBMIT_NEW_PRODUCT_FORM:
+      return updateObject(state, {
+        inventory: [...state.inventory, action.newStrain]
+      });
     default:
       return state;
   }

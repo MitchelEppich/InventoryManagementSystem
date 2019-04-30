@@ -6,7 +6,7 @@ import PackInfo from "./packInfo";
 const index = props => {
   let companies = props.newProduct.companies;
   let company = companies[props.variantIndex];
-  let packs = company.packs.map((pack, index) => {
+  let packs = company.attributes.map((pack, index) => {
     return (
       <PackInfo
         key={index}

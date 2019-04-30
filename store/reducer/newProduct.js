@@ -44,7 +44,7 @@ const initialState = {
       sttId: 0,
       summary: "",
       description: [],
-      packs: [
+      attributes: [
         {
           price: 0,
           size: 0,
@@ -59,7 +59,7 @@ const initialState = {
       sttId: 0,
       summary: "",
       description: [],
-      packs: [
+      attributes: [
         {
           price: 0,
           size: 0,
@@ -74,7 +74,7 @@ const initialState = {
       sttId: 0,
       summary: "",
       description: [],
-      packs: [
+      attributes: [
         {
           price: 0,
           size: 0,
@@ -89,7 +89,7 @@ const initialState = {
       sttId: 0,
       summary: "",
       description: [],
-      packs: [
+      attributes: [
         {
           price: 0,
           size: 0,
@@ -104,7 +104,7 @@ const initialState = {
       sttId: 0,
       summary: "",
       description: [],
-      packs: [
+      attributes: [
         {
           price: 0,
           size: 0,
@@ -119,7 +119,7 @@ const initialState = {
       sttId: 0,
       summary: "",
       description: [],
-      packs: [
+      attributes: [
         {
           price: 0,
           size: 0,

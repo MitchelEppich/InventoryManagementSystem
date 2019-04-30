@@ -17,11 +17,18 @@ const item = props => {
   let subHeadings = iSubHeadings.map((heading, index) => {
     if (heading == "alias") {
       return (
-        <span key={index} className="text-grey w-48 p-2 text-xs uppercase">
+        <span key={index} className="text-grey w-64 p-2 text-xs uppercase">
           {heading}
         </span>
       );
     }
+    // if (heading == "price") {
+    //   return (
+    //     <span key={index} className="text-grey w-48 p-2 text-xs uppercase">
+    //       {heading}
+    //     </span>
+    //   );
+    // }
     return (
       <span key={index} className="text-grey w-32 p-2 text-xs uppercase">
         {heading}
@@ -70,57 +77,63 @@ const item = props => {
           }
           if (["sotiId", "sttId"].includes(heading)) {
             return (
-              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
+              <div
+                key={i}
+                className=" w-32 text-sm uppercase text-grey text-left p-2"
+              >
                 {val[heading]}
               </div>
             );
           }
           if (heading == "alias") {
             return (
-              <div key={i} className=" w-48 text-sm text-grey text-left p-2">
+              <div
+                key={i}
+                className=" w-64 text-sm uppercase text-grey text-left p-2"
+              >
                 {val[heading].replace("Cannabis Seeds", "")}
               </div>
             );
           }
           if (heading == "price") {
             let prices = val.attributes.map((attr, index) => {
-              return "$" + attr.price;
+              return (
+                <div key={i} className=" text-sm text-grey text-left p-2">
+                  $ {attr.price}
+                </div>
+              );
             });
-            return (
-              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
-                {prices.join(" / ")}
-              </div>
-            );
+            return <div className="w-32">{prices}</div>;
           }
           if (heading == "qty (packed)") {
             let qtys = val.attributes.map((attr, index) => {
-              return attr.stock[distro].amount;
+              return (
+                <div key={i} className=" pl-8 text-sm text-grey text-left p-2">
+                  {attr.stock[distro].amount}
+                </div>
+              );
             });
-            return (
-              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
-                {qtys.join(" / ")}
-              </div>
-            );
+            return <div className="w-32">{qtys}</div>;
           }
           if (heading == "rop (packed)") {
             let qtys = val.attributes.map((attr, index) => {
-              return attr.stock[distro].rop;
+              return (
+                <div key={i} className=" pl-8 text-sm text-grey text-left p-2">
+                  {attr.stock[distro].rop}
+                </div>
+              );
             });
-            return (
-              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
-                {qtys.join(" / ")}
-              </div>
-            );
+            return <div className="w-32">{qtys}</div>;
           }
           if (heading == "noe (packed)") {
             let qtys = val.attributes.map((attr, index) => {
-              return attr.stock[distro].noe;
+              return (
+                <div key={i} className=" pl-8 text-sm text-grey text-left p-2">
+                  {attr.stock[distro].noe}
+                </div>
+              );
             });
-            return (
-              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
-                {qtys.join(" / ")}
-              </div>
-            );
+            return <div className="w-32">{qtys}</div>;
           }
           if (heading == "status") {
             let packStatus = val.attributes,
@@ -130,17 +143,40 @@ const item = props => {
             packStatus = packStatus.map((packSize, j) => {
               qty = packSize.stock[distro].amount;
               rop = packSize.stock[distro].rop;
-              status = qty > rop ? "high" : "low";
-              return status;
+              status =
+                qty > rop ? (
+                  <p className="inline-flex">
+                    High
+                    <span
+                      style={{ height: "16px", width: "16px" }}
+                      className="ml-2 rounded-full font-bold shadow-md flex items-center justify-center text-xs bg-green"
+                    >
+                      {" "}
+                    </span>
+                  </p>
+                ) : (
+                  <p className="inline-flex">
+                    Low
+                    <span
+                      style={{ height: "16px", width: "16px" }}
+                      className="ml-2 rounded-full font-bold shadow-md flex items-center justify-center text-xs bg-red-dark"
+                    >
+                      {" "}
+                    </span>
+                  </p>
+                );
+              return (
+                <div
+                  key={i}
+                  className="text-sm uppercase text-grey text-left p-2"
+                >
+                  {status}
+                </div>
+              );
+
+              status;
             });
-            return (
-              <div
-                key={i}
-                className="w-32 text-sm uppercase text-grey text-left p-2"
-              >
-                {packStatus.join("/")}
-              </div>
-            );
+            return <div className="w-32">{packStatus}</div>;
           }
           return (
             <div

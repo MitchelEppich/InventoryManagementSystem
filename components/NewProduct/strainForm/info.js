@@ -110,6 +110,13 @@ const index = props => {
             onChange={e => {
               let newInfo = props.newProduct.info;
               newInfo.thc.splice(0, 1, parseFloat(e.target.value));
+              if (
+                e.target.value == null ||
+                e.target.value == NaN ||
+                e.target.value == ""
+              ) {
+                newInfo.thc.splice(0, 1);
+              }
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -129,6 +136,13 @@ const index = props => {
             onChange={e => {
               let newInfo = props.newProduct.info;
               newInfo.thc.splice(1, 1, parseFloat(e.target.value));
+              if (
+                e.target.value == null ||
+                e.target.value == NaN ||
+                e.target.value == ""
+              ) {
+                newInfo.thc.splice(1, 1);
+              }
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -151,6 +165,13 @@ const index = props => {
             onChange={e => {
               let newInfo = props.newProduct.info;
               newInfo.cbd.splice(0, 1, parseFloat(e.target.value));
+              if (
+                e.target.value == null ||
+                e.target.value == NaN ||
+                e.target.value == ""
+              ) {
+                newInfo.cbd.splice(0, 1);
+              }
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -170,6 +191,13 @@ const index = props => {
             onChange={e => {
               let newInfo = props.newProduct.info;
               newInfo.cbd.splice(1, 1, parseFloat(e.target.value));
+              if (
+                e.target.value == null ||
+                e.target.value == NaN ||
+                e.target.value == ""
+              ) {
+                newInfo.cbd.splice(1, 1);
+              }
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -192,6 +220,13 @@ const index = props => {
             onChange={e => {
               let newInfo = props.newProduct.info;
               newInfo.cbn.splice(0, 1, parseFloat(e.target.value));
+              if (
+                e.target.value == null ||
+                e.target.value == NaN ||
+                e.target.value == ""
+              ) {
+                newInfo.cbn.splice(0, 1);
+              }
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -211,6 +246,13 @@ const index = props => {
             onChange={e => {
               let newInfo = props.newProduct.info;
               newInfo.cbn.splice(1, 1, parseFloat(e.target.value));
+              if (
+                e.target.value == null ||
+                e.target.value == NaN ||
+                e.target.value == ""
+              ) {
+                newInfo.cbn.splice(1, 1);
+              }
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -352,6 +394,13 @@ const index = props => {
             onChange={e => {
               let newInfo = props.newProduct.info;
               newInfo.flowerTime.splice(0, 1, parseInt(e.target.value));
+              if (
+                e.target.value == null ||
+                e.target.value == NaN ||
+                e.target.value == ""
+              ) {
+                newInfo.flowerTime.splice(0, 1);
+              }
               props.updateNewProduct({
                 type: "info",
                 info: {
@@ -369,6 +418,13 @@ const index = props => {
             onChange={e => {
               let newInfo = props.newProduct.info;
               newInfo.flowerTime.splice(1, 1, parseInt(e.target.value));
+              if (
+                e.target.value == null ||
+                e.target.value == NaN ||
+                e.target.value == ""
+              ) {
+                newInfo.flowerTime.splice(1, 1);
+              }
               props.updateNewProduct({
                 type: "info",
                 info: {

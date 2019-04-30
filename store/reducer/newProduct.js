@@ -7,9 +7,9 @@ const initialState = {
     category: 0,
     breeder: "",
     origin: [],
-    thc: [0, 0],
-    cbd: [0, 0],
-    cbn: [0, 0],
+    thc: [0],
+    cbd: [0],
+    cbn: [0],
     sativa: 0,
     indica: 0,
     ruderalis: 0,
@@ -17,7 +17,7 @@ const initialState = {
     environment: -1,
     yield: [],
     difficulty: 0,
-    flowerTime: [0, 0],
+    flowerTime: [0],
     location: [
       {
         distributor: "5cc74ef13ec3eb9a6da5820d",

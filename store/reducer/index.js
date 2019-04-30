@@ -356,6 +356,10 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         inventory: [...state.inventory, action.newStrain]
       });
+    case actionTypes.GET_ALL_INVENTORY:
+      return updateObject(state, {
+        inventory: action.inventory
+      });
     default:
       return state;
   }

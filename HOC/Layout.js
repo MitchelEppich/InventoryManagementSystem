@@ -16,6 +16,9 @@ const dev = process.env.NODE_ENV !== "production";
 const isClient = typeof document !== "undefined";
 
 class Layout extends Component {
+  componentWillMount() {
+    this.props.getAllInventory();
+  }
   componentDidMount() {
     // if (!isClient) return;
     // this.props.fetchCredentials().then(res => {
@@ -62,7 +65,8 @@ const mapDispatchToProps = dispatch => {
     // updateUser: input => dispatch(actions.updateUser(input)),
     // modifyUser: input => dispatch(actions.modifyUser(input)),
     // deleteUser: input => dispatch(actions.deleteUser(input)),
-    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input))
+    setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
+    getAllInventory: () => dispatch(actions.getAllInventory())
   };
 };
 

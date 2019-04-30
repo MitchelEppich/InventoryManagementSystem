@@ -9,7 +9,7 @@ const VariantSchema = Schema({
   },
   sotiId: String,
   sttId: String,
-  name: String,
+  alias: String,
   description: [String],
   summary: String,
   reviews: [
@@ -24,7 +24,8 @@ const VariantSchema = Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Attribute"
     }
-  ]
+  ],
+  updatedAt: { type: Date, default: new Date() }
 });
 
 module.exports = VariantSchema;

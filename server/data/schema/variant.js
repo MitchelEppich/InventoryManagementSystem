@@ -17,26 +17,27 @@ let Type = `
         company: Company
         sotiId: String
         sttId: String
-        name: String
+        alias: String
         description: [String]
         summary: String
         reviews: Review
         releaseDate: String
-        attributes: Attribute
+        attributes: [Attribute]
     }
 `;
 
 let Input = `
     input VariantInput {
-        company: CompanyInput
+        _id: String
+        name: String
         sotiId: String
         sttId: String
-        name: String
+        alias: String
         description: [String]
         summary: String
-        reviews: ReviewInput
         releaseDate: String
-        attributes: AttributeInput
+        attributes: [AttributeInput]
+        updatedAt: String
     }
 `;
 

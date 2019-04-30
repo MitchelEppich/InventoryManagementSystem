@@ -36,12 +36,13 @@ let Type = `
         relations: [String]
         variants: [Variant]
         stock: [Stock]
-        location: [String]
+        location: [Location]
     }
 `;
 
 let Input = `
     input StrainInput {
+        _id: String
         name: String
         category: Int
         breeder: String
@@ -57,12 +58,14 @@ let Input = `
         indica: Float
         sativa: Float
         ruderalis: Float
-        type: Int
         environment: Int
-        relations: [String]
+        location: [LocationInput]
+
         variants: [VariantInput]
+
         stock: [StockInput]
-        location: [String]
+
+        updatedAt: String
     }
 `;
 

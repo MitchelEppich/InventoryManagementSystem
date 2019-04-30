@@ -18,15 +18,21 @@ let Type = `
         rop: Int
         noe: Int
         sold: Int
+        distributor: String
+        updatedAt: String
     }
 `;
 
 let Input = `
     input StockInput {
+        _id: String
+        type: String
         amount: Int
         rop: Int
         noe: Int
         sold: Int
+        distributor: String
+        updatedAt: String
     }
 `;
 

@@ -4,7 +4,7 @@ component wraps each page. Naturally this
 component has the navigation bar.*/
 /**************************************/
 
-import "../scss/home.scss";
+import "../scss/universal.scss";
 import React, { Component } from "react";
 import DevTools from "../store/DevTools";
 import { connect } from "react-redux";

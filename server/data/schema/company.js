@@ -19,16 +19,19 @@ let Type = `
         phone: [String]
         socials: [String]
         email: String
+        name: String
     }
 `;
 
 let Input = `
     input CompanyInput {
+        _id: String
         assetsUrl: String
         website: [String]
         phone: [String]
         socials: [String]
         email: String
+        name: String
     }
 `;
 

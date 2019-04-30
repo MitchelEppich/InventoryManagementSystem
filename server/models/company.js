@@ -7,7 +7,8 @@ const CompanySchema = Schema({
   website: [String],
   phone: [String],
   socials: [String],
-  email: String
+  email: String,
+  name: String
 });
 
 module.exports = CompanySchema;

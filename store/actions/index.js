@@ -33,7 +33,8 @@ const actionTypes = {
   APPLY_FILTERS: "APPLY_FILTERS",
   CLEAR_FILTERS: "CLEAR_FILTERS",
   UPDATE_FILTERS: "UPDATE_FILTERS",
-  TOGGLE_SHOW_ALL: "TOGGLE_SHOW_ALL"
+  TOGGLE_SHOW_ALL: "TOGGLE_SHOW_ALL",
+  GET_ALL_INVENTORY: "GET_ALL_INVENTORY"
 };
 
 const actions = {
@@ -96,6 +97,24 @@ const actions = {
     return {
       type: actionTypes.TOGGLE_SHOW_ALL,
       id: id
+    };
+  },
+  getAllInventory: () => {
+    return async dispatch => {
+      const link = new HttpLink({ uri, fetch: fetch });
+      const operation = {
+        query: query.getAllStrains
+      };
+
+      await makePromise(execute(link, operation))
+        .then(data => {
+          let strains = data.data.allStrains;
+          dispatch({
+            type: actionTypes.GET_ALL_INVENTORY,
+            inventory: strains
+          });
+        })
+        .catch(error => console.log(error));
     };
   }
 };

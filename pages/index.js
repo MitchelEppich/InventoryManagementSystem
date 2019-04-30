@@ -13,6 +13,9 @@ import Layout from "../HOC/Layout";
 import Inventory from "../components/Inventory";
 
 class Index extends Component {
+  componentWillMount() {
+    this.props.getAllInventory();
+  }
   render() {
     return (
       <Layout router={this.props.router}>
@@ -47,7 +50,8 @@ const mapDispatchToProps = dispatch => {
     clearFilters: () => dispatch(actions.clearFilters()),
     updateFilters: (name, valueObj) =>
       dispatch(actions.updateFilters(name, valueObj)),
-    toggleShowAll: id => dispatch(actions.toggleShowAll(id))
+    toggleShowAll: id => dispatch(actions.toggleShowAll(id)),
+    getAllInventory: () => dispatch(actions.getAllInventory())
   };
 };
 

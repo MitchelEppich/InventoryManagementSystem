@@ -6,6 +6,7 @@ let Query = `
 let Mutation = `
     createAttribute(input: AttributeInput): Attribute
     updateAttribute(input: AttributeInput): Attribute
+    deleteAttribute(input: AttributeInput): Attribute
 `;
 
 let Subscription = `

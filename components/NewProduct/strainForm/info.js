@@ -473,6 +473,7 @@ const index = props => {
             let stock = props.newProduct.info.stock;
             let newStock = stock[props.newProduct.distro];
             newStock.rop = parseInt(e.target.value);
+            newStock.noe = parseInt(e.target.value);
             stock.splice(props.newProduct.distro, 1, newStock);
             props.updateNewProduct({
               type: "info",

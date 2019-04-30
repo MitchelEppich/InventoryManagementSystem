@@ -71,6 +71,9 @@ const index = props => {
             company.packs[props.packIndex].stock[distro].rop = parseInt(
               e.target.value
             );
+            company.packs[props.packIndex].stock[distro].noe = parseInt(
+              e.target.value
+            );
             companies.splice(props.variantIndex, 1, company);
             props.updateNewProduct({
               type: "companies",

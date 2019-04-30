@@ -78,9 +78,10 @@ const getActions = uri => {
       let newVariants = data.companies
         .map((company, index) => {
           let newAttributes = company.packs;
-          delete company.packs;
+          let newCompany = company;
+          delete newCompany.packs;
           return {
-            ...company,
+            ...newCompany,
             releaseDate: "2018-06-01T07:00:00.000Z",
             attributes: newAttributes
           };

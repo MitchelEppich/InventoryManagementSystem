@@ -66,7 +66,7 @@ const resolvers = {
               }
             }))._id
           );
-          if (_.id == null) newStocks.push(id);
+          if (_._id == null) newStocks.push(id);
         }
         delete $.stock;
       }
@@ -88,6 +88,29 @@ const resolvers = {
           upsert: true
         }
       );
+
+      return attribute;
+    },
+    deleteAttribute: async (_, { input }) => {
+      let $ = {
+        ...input
+      };
+
+      if ($._id == null) return null;
+
+      let attribute = await Attribute.findOneAndDelete({ _id: $._id });
+
+      if (attribute == null) return null;
+
+      if (attribute.stock != null) {
+        for (_ of attribute.stock) {
+          require("./stock").Mutation.deleteStock(null, {
+            input: {
+              _id: _
+            }
+          });
+        }
+      }
 
       return attribute;
     }

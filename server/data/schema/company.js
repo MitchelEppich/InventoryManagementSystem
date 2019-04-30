@@ -1,11 +1,12 @@
 let Query = `
     company(input: CompanyInput!): Company
-    allCompanys: [Company]!
+    allCompanies: [Company]!
 `;
 
 let Mutation = `
     createCompany(input: CompanyInput): Company
     updateCompany(input: CompanyInput): Company
+    deleteCompany(input: CompanyInput): Company
 `;
 
 let Subscription = `

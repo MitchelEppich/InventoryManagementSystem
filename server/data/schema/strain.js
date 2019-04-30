@@ -6,8 +6,7 @@ let Query = `
 let Mutation = `
     createStrain(input: StrainInput): Strain
     updateStrain(input: StrainInput): Strain
-
-    typeToDom: [Strain]
+    deleteStrain(input: StrainInput): Strain
 `;
 
 let Subscription = `

@@ -138,7 +138,10 @@ const item = props => {
             );
           }
           return (
-            <div key={index} className=" w-32 text-sm text-grey text-left p-2">
+            <div
+              key={index}
+              className=" w-32 text-sm text-grey text-left p-2 uppercase"
+            >
               {val[heading]}
             </div>
           );
@@ -194,7 +197,14 @@ const item = props => {
       default:
         break;
     }
-    return <div className="w-28 p-2 text-sm text-grey text-left">{val}</div>;
+    return (
+      <div
+        key={index}
+        className="w-28 p-2 text-sm text-grey text-left uppercase"
+      >
+        {val}
+      </div>
+    );
   });
 
   return (
@@ -208,7 +218,7 @@ const item = props => {
           "h-auto w-full flex justify-start bg-white border border-1 border-grey-lighter py-2 hover:border-teal-light items-center "
         }
       >
-        <div className="w-48 p-2 text-sm text-grey text-left">
+        <div className="w-48 p-2 text-sm text-grey text-left uppercase">
           {props.name.replace("Cannabis Seeds", "")}
         </div>
         {itemColumns}

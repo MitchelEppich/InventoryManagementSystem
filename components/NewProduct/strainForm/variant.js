@@ -6,7 +6,7 @@ import PackInfo from "./packInfo";
 const index = props => {
   let companies = props.newProduct.companies;
   let company = companies[props.variantIndex];
-  let packs = company.attributes.map((pack, index) => {
+  let attributes = company.attributes.map((pack, index) => {
     return (
       <PackInfo
         key={index}
@@ -103,13 +103,13 @@ const index = props => {
           });
         }}
       />
-      {packs}
+      {attributes}
       <div className="w-full flex justify-end mt-4">
         <div
           onClick={e => {
             e.preventDefault();
             let newCompanies = props.newProduct.companies;
-            newCompanies[props.variantIndex].packs.push({
+            newCompanies[props.variantIndex].attributes.push({
               size: 0,
               price: 0,
               stock: [

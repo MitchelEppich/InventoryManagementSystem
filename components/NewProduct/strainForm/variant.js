@@ -114,7 +114,6 @@ const index = props => {
               size: 0,
               price: 0,
               stock: [
-                { amount: 0, rop: 0, noe: 0, sold: 0 },
                 { amount: 0, rop: 0, noe: 0, sold: 0 }
               ]
             });

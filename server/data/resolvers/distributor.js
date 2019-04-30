@@ -29,6 +29,8 @@ const resolvers = {
     updateDistributor: async (_, { input }) => {
       let $ = { ...input };
 
+      if ($._id == null) return null;
+
       let distributor = await Distributor.findOneAndUpdate(
         { _id: $._id },
         {
@@ -36,6 +38,15 @@ const resolvers = {
         },
         { new: true }
       );
+
+      return distributor;
+    },
+    deleteDistributor: async (_, { input }) => {
+      let $ = { ...input };
+
+      if ($._id == null) return null;
+
+      let distributor = await Distributor.findOneAndDelete({ _id: $._id });
 
       return distributor;
     }

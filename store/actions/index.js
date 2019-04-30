@@ -100,9 +100,230 @@ const actions = {
   }
 };
 
-const query = {};
+const query = {
+  getAllCompanies: gql`
+    query {
+      allCompanies {
+        _id
+        assetsUrl
+        website
+        phone
+        socials
+        email
+        name
+      }
+    }
+  `,
+  getAllStrains: gql`
+    query {
+      allStrains {
+        _id
+        name
+        category
+        breeder
+        origin
+        cbd
+        thc
+        cbn
+        effect
+        yield
+        genetic
+        flowerTime
+        difficulty
+        indica
+        sativa
+        ruderalis
+        environment
+        location {
+          _id
+          aisle
+          section
+          color
+          distributor {
+            country
+          }
+        }
+        variants {
+          _id
+          company {
+            _id
+            assetsUrl
+            website
+            phone
+            socials
+            email
+          }
+          sotiId
+          alias
+          description
+          summary
+          releaseDate
+          sttId
+          attributes {
+            _id
+            price
+            size
+            stock {
+              _id
+              amount
+              rop
+              noe
+              sold
+            }
+          }
+        }
+        stock {
+          _id
+          amount
+          rop
+          noe
+          sold
+        }
+      }
+    }
+  `,
+  getAllAttributes: gql`
+    query {
+      allAttributes {
+        _id
+        price
+        size
+        stock {
+          _id
+          amount
+          rop
+          noe
+          sold
+          distributor
+          updatedAt
+        }
+        updatedAt
+      }
+    }
+  `,
+  getAllVariants: gql`
+    query {
+      allVariants {
+        _id
+        company {
+          _id
+          assetsUrl
+          email
+          name
+        }
+        sotiId
+        sttId
+        alias
+        summary
+        releaseDate
+        description
+        reviews {
+          _id
+          name
+          body
+          email
+          rating
+          approved
+          createdAt
+        }
+        attributes {
+          _id
+          price
+          size
+          updatedAt
+        }
+      }
+    }
+  `,
+  getAllStocks: gql`
+    query {
+      allStocks {
+        _id
+        amount
+        rop
+        noe
+        sold
+        distributor
+        updatedAt
+      }
+    }
+  `,
+  getAllLocations: gql`
+    query {
+      allLocations {
+        _id
+        distributor {
+          _id
+          country
+        }
+        aisle
+        color
+        section
+        updatedAt
+      }
+    }
+  `,
+  getAllDistributors: gql`
+    query {
+      allDistributors {
+        _id
+        country
+      }
+    }
+  `
+};
 
-const mutation = {};
+const mutation = {
+  deleteCompany: gql`
+    mutation($_id: String) {
+      deleteCompany(input: { _id: $_id }) {
+        _id
+      }
+    }
+  `,
+  deleteVariant: gql`
+    mutation($_id: String) {
+      deleteVariant(input: { _id: $_id }) {
+        _id
+      }
+    }
+  `,
+  deleteAttribute: gql`
+    mutation($_id: String) {
+      deleteAttribute(input: { _id: $_id }) {
+        _id
+      }
+    }
+  `,
+  deleteDistributor: gql`
+    mutation($_id: String) {
+      deleteDistributor(input: { _id: $_id }) {
+        _id
+      }
+    }
+  `,
+  deleteStrain: gql`
+    mutation($_id: String) {
+      deleteStrain(input: { _id: $_id }) {
+        _id
+      }
+    }
+  `,
+  deleteStock: gql`
+    mutation($_id: String) {
+      deleteStock(input: { _id: $_id }) {
+        _id
+      }
+    }
+  `,
+  deleteLocation: gql`
+    mutation($_id: String) {
+      deleteLocation(input: { _id: $_id }) {
+        _id
+      }
+    }
+  `
+};
 
 export default {
   // TYPES

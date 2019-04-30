@@ -6,6 +6,7 @@ let Query = `
 let Mutation = `
     createLocation(input: LocationInput): Location
     updateLocation(input: LocationInput): Location
+    deleteLocation(input: LocationInput): Location
 `;
 
 let Subscription = `

@@ -50,6 +50,15 @@ const resolvers = {
       );
 
       return location;
+    },
+    deleteLocation: async (_, { input }) => {
+      let $ = { ...input };
+
+      if ($._id == null) return null;
+
+      let location = await Location.findOneAndDelete({ _id: $._id });
+
+      return location;
     }
   },
   Subscription: {}

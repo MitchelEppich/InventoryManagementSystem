@@ -62,6 +62,15 @@ const resolvers = {
       );
 
       return stock;
+    },
+    deleteStock: async (_, { input }) => {
+      let $ = { ...input };
+
+      if ($._id == null) return null;
+
+      let stock = await Stock.findOneAndDelete({ _id: $._id });
+
+      return stock;
     }
   },
   Subscription: {}

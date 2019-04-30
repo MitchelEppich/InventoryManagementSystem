@@ -113,7 +113,7 @@ const resolvers = {
               }
             }))._id
           );
-          if (_.id == null) newLocations.push(id);
+          if (_._id == null) newLocations.push(id);
         }
         delete $.location;
       }
@@ -129,7 +129,7 @@ const resolvers = {
               }
             }))._id
           );
-          if (_.id == null) newStocks.push(id);
+          if (_._id == null) newStocks.push(id);
         }
         delete $.stock;
       }
@@ -145,7 +145,7 @@ const resolvers = {
               }
             }))._id
           );
-          if (_.id == null) newVariants.push(id);
+          if (_._id == null) newVariants.push(id);
         }
         delete $.variants;
       }
@@ -171,37 +171,51 @@ const resolvers = {
 
       return strain;
     },
-    typeToDom: async (_, { input }) => {
-      let _strains = await Strain.find({});
+    deleteStrain: async (_, { input }) => {
+      let $ = {
+        ...input
+      };
 
-      for (let strain of _strains) {
-        strain.strainImg = "/plant/cannabis-plant.png";
-        // strain.strainImg = "/packages/" + strain.sotiId.toUpperCase() + ".png";
+      if ($._id == null) return null;
 
-        strain.save();
+      let strain = await Strain.findOneAndDelete({ _id: $._id });
+
+      if (strain == null) return null;
+
+      if (strain.location != null) {
+        for (_ of strain.location) {
+          require("./location").Mutation.deleteLocation(null, {
+            input: {
+              _id: _
+            }
+          });
+        }
       }
 
-      return _strains;
+      if (strain.variants != null) {
+        for (_ of strain.variants) {
+          require("./variant").Mutation.deleteVariant(null, {
+            input: {
+              _id: _
+            }
+          });
+        }
+      }
+
+      if (strain.stock != null) {
+        for (_ of strain.stock) {
+          require("./stock").Mutation.deleteStock(null, {
+            input: {
+              _id: _
+            }
+          });
+        }
+      }
+
+      return strain;
     }
   },
   Subscription: {}
-};
-
-let randomize = arr => {
-  return arr.sort((a, b) => {
-    return Math.random() - 0.5;
-  });
-};
-
-let getRandomStrains = async (limit, match) => {
-  return await Strain.aggregate([
-    {
-      $sample: { size: limit }
-    },
-    {
-      $match: match
-    }
-  ]);
 };
 
 module.exports = resolvers;

@@ -13,6 +13,13 @@ const item = props => {
   let distro = props.misc.distro;
   let iSubHeadings = props.misc.iSubHeadings;
   let subHeadings = iSubHeadings.map((heading, index) => {
+    if (heading == "alias") {
+      return (
+        <span key={index} className="text-grey w-48 p-2 text-xs uppercase">
+          {heading}
+        </span>
+      );
+    }
     return (
       <span key={index} className="text-grey w-32 p-2 text-xs uppercase">
         {heading}
@@ -68,7 +75,7 @@ const item = props => {
           }
           if (heading == "alias") {
             return (
-              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
+              <div key={i} className=" w-48 text-sm text-grey text-left p-2">
                 {val[heading].replace("Cannabis Seeds", "")}
               </div>
             );

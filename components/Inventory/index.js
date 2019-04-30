@@ -64,7 +64,7 @@ const index = props => {
             key={index}
             productView={false}
             {...props}
-            {...item}
+            item={item}
             index={index}
           />
         );
@@ -77,7 +77,7 @@ const index = props => {
           key={index}
           productView={false}
           {...props}
-          {...item}
+          item={item}
           index={index}
         />
       );

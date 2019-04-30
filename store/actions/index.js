@@ -44,10 +44,47 @@ const actions = {
       input: input
     };
   },
-  toggleEdit: _id => {
+  toggleEdit: props => {
+    let item = props.item;
+    let companies = item.variants;
+    let oldCompanies = props.newProduct.companies.map((company, index) => {
+      let oldCompanyReplacement;
+      companies.map((newCompany, index) => {
+        if (newCompany._id == company.id) {
+          oldCompanyReplacement = newCompany;
+          return;
+        }
+      });
+      return oldCompanyReplacement;
+    });
+
+    delete item.variants;
+    let info = { ...item };
+    // let info = {
+    //   name: item.name,
+    //   category: item.category,
+    //   breeder: item.breeder,
+    //   origin: item.origin,
+    //   thc: [...item.thc],
+    //   cbd: [...item.cbd],
+    //   cbn: [...item.cbn],
+    //   sativa: item.sativa * 100,
+    //   indica: item.indica * 100,
+    //   ruderalis: item.ruderalis * 100,
+    //   genetic: item.genetic,
+    //   environment: item.environment,
+    //   yield: [...item.yield],
+    //   difficulty: item.difficulty,
+    //   flowerTime: [...item.flowerTime],
+    //   location: [...item.location],
+    //   effect: [...item.effect],
+    //   stock: [...item.stock]
+    // };
+
     return {
       type: actionTypes.TOGGLE_EDIT,
-      _id
+      info: info,
+      companies: oldCompanies
     };
   },
   handleInventoryEdit: (key, value) => {

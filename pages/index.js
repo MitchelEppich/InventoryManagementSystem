@@ -39,7 +39,7 @@ const mapDispatchToProps = dispatch => {
     // modifyUser: input => dispatch(actions.modifyUser(input)),
     // deleteUser: input => dispatch(actions.deleteUser(input)),
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    toggleEdit: _id => dispatch(actions.toggleEdit(_id)),
+    toggleEdit: props => dispatch(actions.toggleEdit(props)),
     handleInventoryEdit: (key, value) =>
       dispatch(actions.handleInventoryEdit(key, value)),
     submitInventoryEdit: currentEdit =>
@@ -51,6 +51,7 @@ const mapDispatchToProps = dispatch => {
     updateFilters: (name, valueObj) =>
       dispatch(actions.updateFilters(name, valueObj)),
     toggleShowAll: id => dispatch(actions.toggleShowAll(id)),
+    toggleFormType: formType => dispatch(actions.toggleFormType(formType)),
     getAllInventory: () => dispatch(actions.getAllInventory())
   };
 };

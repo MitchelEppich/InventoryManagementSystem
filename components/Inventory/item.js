@@ -8,10 +8,10 @@ import {
   faAngleDown,
   faAngleUp
 } from "@fortawesome/free-solid-svg-icons";
+import Router from "next/router";
 
 const item = props => {
   let showAll = props.misc.showAllId == props.index; //show extra company specific data
-  let editing = props._id == props.misc.currentEdit._id ? true : false;
   let distro = props.misc.distro;
   let iSubHeadings = props.misc.iSubHeadings;
   let subHeadings = iSubHeadings.map((heading, index) => {
@@ -36,7 +36,7 @@ const item = props => {
     );
   });
   let companyData = [];
-  let companyCircles = props.variants.map((val, index) => {
+  let companyCircles = props.item.variants.map((val, index) => {
     let color = "",
       accronym;
     [
@@ -205,7 +205,7 @@ const item = props => {
   });
 
   let itemColumns = props.misc.iHeadings.map((column, index) => {
-    let val = props[column] || "";
+    let val = props.item[column] || "";
     switch (column) {
       case "name":
         return null;
@@ -214,26 +214,26 @@ const item = props => {
         break;
       case "status":
         val =
-          props["stock"][distro].amount > props["stock"][distro].rop
+          props.item["stock"][distro].amount > props.item["stock"][distro].rop
             ? "stocked"
             : "low";
         break;
       case "location":
-        val = props[column][distro].section;
+        val = props.item[column][distro].section;
         break;
       case "ROP (Loose)":
-        val = props["stock"][distro].rop;
+        val = props.item["stock"][distro].rop;
       case "NOE (Loose)":
-        val = props["stock"][distro].noe;
+        val = props.item["stock"][distro].noe;
         break;
       case "qty (Loose)":
-        val = props["stock"][distro].amount;
+        val = props.item["stock"][distro].amount;
         break;
       case "breeder":
-        val = props[column];
+        val = props.item[column];
         break;
       case "category":
-        val = props[column] == 0 ? "strain" : "merch";
+        val = props.item[column] == 0 ? "strain" : "merch";
         break;
       default:
         break;
@@ -260,7 +260,7 @@ const item = props => {
         }
       >
         <div className="w-1/3 p-2 text-sm text-grey text-left">
-          {props.name.replace("Cannabis Seeds", "")}
+          {props.item.name.replace("Cannabis Seeds", "")}
         </div>
         {itemColumns}
         <div>
@@ -272,7 +272,14 @@ const item = props => {
       </div>
       {showAll ? (
         <React.Fragment>
-          <div className="w-full flex bg-grey-lighter text-grey py-2 pl-4">
+          <div
+            onClick={() => {
+              props.toggleFormType("strain");
+              Router.push("/newProduct");
+              props.toggleEdit(props);
+            }}
+            className="w-full flex bg-grey-lighter text-grey py-2 pl-4"
+          >
             {subHeadings}
           </div>
           {companyData}

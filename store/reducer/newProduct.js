@@ -42,6 +42,7 @@ const initialState = {
       alias: "",
       sotiId: "",
       sttId: 0,
+      id: "5cc1f75d0955774cbc422e8e",
       summary: "",
       description: [],
       attributes: [
@@ -57,6 +58,7 @@ const initialState = {
       alias: "",
       sotiId: "",
       sttId: 0,
+      id: "5cc770893ec3eb9a6db06d4b",
       summary: "",
       description: [],
       attributes: [
@@ -72,6 +74,7 @@ const initialState = {
       alias: "",
       sotiId: "",
       sttId: 0,
+      id: "5cc8c51aaf7c8c62bc9f822e",
       summary: "",
       description: [],
       attributes: [
@@ -87,6 +90,7 @@ const initialState = {
       alias: "",
       sotiId: "",
       sttId: 0,
+      id: "",
       summary: "",
       description: [],
       attributes: [
@@ -102,6 +106,7 @@ const initialState = {
       alias: "",
       sotiId: "",
       sttId: 0,
+      id: "",
       summary: "",
       description: [],
       attributes: [
@@ -117,6 +122,7 @@ const initialState = {
       alias: "",
       sotiId: "",
       sttId: 0,
+      id: "",
       summary: "",
       description: [],
       attributes: [
@@ -148,6 +154,11 @@ export default (state = initialState, action) => {
       return updateObject(state, {
         info: action.info != null ? action.info : state.info,
         companies: action.companies != null ? action.companies : state.companies
+      });
+    case actionTypes.TOGGLE_EDIT:
+      return updateObject(state, {
+        info: action.info,
+        companies: action.companies
       });
     default:
       return state;

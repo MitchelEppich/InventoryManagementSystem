@@ -130,13 +130,6 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         visibleScreen: [...state.visibleScreen]
       });
-    case actionTypes.TOGGLE_EDIT:
-      return updateObject(state, {
-        currentEdit: {
-          ...state.currentEdit,
-          _id: action._id
-        }
-      });
     case actionTypes.HANDLE_INVENTORY_EDIT:
       for (let key in state.currentEdit) {
         if (state.currentEdit.hasOwnProperty(key)) {

@@ -333,9 +333,9 @@ const index = props => {
           className="w-1/3 uppercase p-1 mx-1 my-2 pl-2 text-grey-light border-2 border-input-grey"
         >
           <option>Environment</option>
+          <option value="0">Indoor / Outdoor</option>
           <option value="1">Indoor</option>
           <option value="2">Outdoor</option>
-          <option value="0">Indoor / Outdoor</option>
         </select>
       </div>
       <div className="w-full flex">

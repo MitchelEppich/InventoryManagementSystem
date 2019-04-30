@@ -23,7 +23,7 @@ const index = props => {
               : "logo--" +
                 company.name.replace(/ /g, "").toLowerCase() +
                 "--greyed"
-          } h-150 w-150 rounded shadow-lg cursor-pointer`}
+          } h-150 w-150 rounded cursor-pointer`}
         />
       );
     }

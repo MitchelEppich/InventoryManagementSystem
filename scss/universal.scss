@@ -238,22 +238,26 @@ svg {
   @include modifier("cropkingseeds") {
     background: url("../static/images/cropkingseeds.png") 20px 10px / auto 130px
       no-repeat;
+    border: 3px solid #49a292;
     @include modifier("greyed") {
+      border: 3px solid transparent;
       background: linear-gradient(
-          rgba(180, 180, 180, 0.517),
-          rgba(180, 180, 180, 0.517)
+          rgba(180, 180, 180, 0.317),
+          rgba(180, 180, 180, 0.217)
         ),
-        url("../static/images/cropkingseeds.png") 20px 10px / auto 130px
+        url("../static/images/cropkingseeds.png") 20px 10px / auto 120px
           no-repeat;
     }
   }
   @include modifier("sonomaseeds") {
     background: url("../static/images/sonomaseeds.png") 25px 15px / auto 130px
       no-repeat;
+    border: 3px solid #49a292;
     @include modifier("greyed") {
+      border: 3px solid white;
       background: linear-gradient(
-          rgba(180, 180, 180, 0.517),
-          rgba(180, 180, 180, 0.517)
+          rgba(180, 180, 180, 0.317),
+          rgba(180, 180, 180, 0.217)
         ),
         url("../static/images/sonomaseeds.png") 25px 15px / auto 130px no-repeat;
     }
@@ -261,10 +265,12 @@ svg {
   @include modifier("sunwestgenetics") {
     background: url("../static/images/sunwestgenetics.png") 23px 10px / auto
       130px no-repeat;
+    border: 3px solid #49a292;
     @include modifier("greyed") {
+      border: 3px solid white;
       background: linear-gradient(
-          rgba(180, 180, 180, 0.517),
-          rgba(180, 180, 180, 0.517)
+          rgba(180, 180, 180, 0.317),
+          rgba(180, 180, 180, 0.217)
         ),
         url("../static/images/sunwestgenetics.png") 23px 10px / auto 130px
           no-repeat;
@@ -273,10 +279,12 @@ svg {
   @include modifier("beaverseeds") {
     background: url("../static/images/beaverseeds.png") 10px 10px / auto 130px
       no-repeat;
+    border: 3px solid #49a292;
     @include modifier("greyed") {
+      border: 3px solid white;
       background: linear-gradient(
-          rgba(180, 180, 180, 0.517),
-          rgba(180, 180, 180, 0.517)
+          rgba(180, 180, 180, 0.317),
+          rgba(180, 180, 180, 0.217)
         ),
         url("../static/images/beaverseeds.png") 10px 10px / auto 130px no-repeat;
     }
@@ -284,10 +292,12 @@ svg {
   @include modifier("maryjanesgarden") {
     background: url("../static/images/maryjanesgarden.png") 10px 10px / auto
       130px no-repeat;
+    border: 3px solid #49a292;
     @include modifier("greyed") {
+      border: 3px solid white;
       background: linear-gradient(
-          rgba(180, 180, 180, 0.517),
-          rgba(180, 180, 180, 0.517)
+          rgba(180, 180, 180, 0.317),
+          rgba(180, 180, 180, 0.217)
         ),
         url("../static/images/maryjanesgarden.png") 10px 10px / auto 130px
           no-repeat;
@@ -296,10 +306,12 @@ svg {
   @include modifier("mjseedscanada") {
     background: url("../static/images/mjseedscanada.png") 10px 40px / 130px auto
       no-repeat;
+    border: 3px solid #49a292;
     @include modifier("greyed") {
+      border: 3px solid white;
       background: linear-gradient(
           rgba(180, 180, 180, 0.517),
-          rgba(180, 180, 180, 0.517)
+          rgba(180, 180, 180, 0.217)
         ),
         url("../static/images/mjseedscanada.png") 10px 40px / 130px auto
           no-repeat;

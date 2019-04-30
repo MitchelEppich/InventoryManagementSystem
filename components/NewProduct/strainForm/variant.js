@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 import PackInfo from "./packInfo";
 
@@ -10,6 +10,7 @@ const index = props => {
     return (
       <PackInfo
         key={index}
+        id={index}
         varientIndex={props.variantIndex}
         pack={pack}
         packIndex={index}
@@ -55,7 +56,7 @@ const index = props => {
           }}
         />
         <input
-          className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
+          className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-0 text-grey"
           placeholder="STT ID"
           value={company.sttId || ""}
           name="sttId"
@@ -119,12 +120,12 @@ const index = props => {
             });
             props.togglePackInput(newCompanies);
           }}
-          className="inline-flex items-center flex bg-grey-lighter px-6 justify-end text-right cursor-pointer scale-items"
+          className="inline-flex items-center flex bg-grey-lighter px-6 justify-end text-right cursor-pointer scale-items mr-5"
         >
-          <div className="-ml-8 w-10 bg-teal p-2 flex items-center justify-center cursor-pointer hover:bg-teal-dark rounded-full">
+          <div className="-ml-8 w-10 bg-teal p-2 flex items-center justify-center cursor-pointer hover:bg-teal-dark rounded-full ">
             <FontAwesomeIcon icon={faPlus} className="text-white fa-lg" />
           </div>
-          <div className="p-2 uppercase font-bold ml-2">Add More</div>
+          <div className="p-2 uppercase font-bold ml-2">Add More Options</div>
         </div>
       </div>
     </div>

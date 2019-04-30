@@ -9,7 +9,7 @@ const index = props => {
   let iHeadings = props.misc.iHeadings.map((heading, index) => {
     let lastCol = "",
       bg = "bg-teal";
-    let width = heading.toLowerCase() == "name" ? "w-48" : "w-28";
+    let width = heading.toLowerCase() == "name" ? "w-1/3" : "w-28";
     if (index == props.misc.iHeadings.length - 1) {
       lastCol = "";
     }

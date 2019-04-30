@@ -4,7 +4,9 @@ import {
   faMinus,
   faInfo,
   faUserLock,
-  faExclamationCircle
+  faExclamationCircle,
+  faAngleDown,
+  faAngleUp
 } from "@fortawesome/free-solid-svg-icons";
 
 const item = props => {
@@ -132,13 +134,19 @@ const item = props => {
               return status;
             });
             return (
-              <div key={i} className="w-32 text-sm text-grey text-left p-2">
+              <div
+                key={i}
+                className="w-32 text-sm uppercase text-grey text-left p-2"
+              >
                 {packStatus.join("/")}
               </div>
             );
           }
           return (
-            <div key={index} className=" w-32 text-sm text-grey text-left p-2">
+            <div
+              key={index}
+              className=" w-32 text-sm uppercase text-grey text-left p-2"
+            >
               {val[heading]}
             </div>
           );
@@ -205,13 +213,19 @@ const item = props => {
           props.toggleShowAll(id);
         }}
         className={
-          "h-auto w-full flex justify-start bg-white border border-1 border-grey-lighter py-2 hover:border-teal-light items-center "
+          "h-auto w-full flex justify-start bg-white border border-1 border-grey-lighter py-2 uppercase hover:border-teal-light items-center "
         }
       >
-        <div className="w-48 p-2 text-sm text-grey text-left">
+        <div className="w-1/3 p-2 text-sm text-grey text-left">
           {props.name.replace("Cannabis Seeds", "")}
         </div>
         {itemColumns}
+        <div>
+          <FontAwesomeIcon
+            icon={showAll ? faAngleUp : faAngleDown}
+            className="fa-2x pr-2 -ml-2 mr-2"
+          />
+        </div>
       </div>
       {showAll ? (
         <React.Fragment>

@@ -201,10 +201,76 @@ const query = {
       }
     }
   `,
-  getAllVariants: gql``,
-  getAllStocks: gql``,
-  getAllLocations: gql``,
-  getAllDistributors: gql``
+  getAllVariants: gql`
+    query {
+      allVariants {
+        _id
+        company {
+          _id
+          assetsUrl
+          email
+          name
+        }
+        sotiId
+        sttId
+        alias
+        summary
+        releaseDate
+        description
+        reviews {
+          _id
+          name
+          body
+          email
+          rating
+          approved
+          createdAt
+        }
+        attributes {
+          _id
+          price
+          size
+          updatedAt
+        }
+      }
+    }
+  `,
+  getAllStocks: gql`
+    query {
+      allStocks {
+        _id
+        amount
+        rop
+        noe
+        sold
+        distributor
+        updatedAt
+      }
+    }
+  `,
+  getAllLocations: gql`
+    query {
+      allLocations {
+        _id
+        distributor {
+          _id
+          country
+        }
+        aisle
+        color
+        section
+        updatedAt
+      }
+    }
+  `,
+  getAllDistributors: gql`
+    query {
+      allDistributors {
+        _id
+        country
+      }
+    }
+  `
 };
 
 const mutation = {

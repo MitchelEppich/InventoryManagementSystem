@@ -10,10 +10,8 @@ const index = props => {
     let lastCol = "",
       bg = "bg-teal";
     let width;
-    if (heading.toLowerCase() == "name") {
+    if (heading.toLowerCase() == "alias") {
       width = "w-1/6";
-    } else if (heading.toLowerCase() == "description") {
-      width = "w-1/2";
     } else {
       width = "w-24";
     }
@@ -40,24 +38,40 @@ const index = props => {
       </div>
     );
   });
-  let items = props.misc.inventory.sort((a, b) => {
-    if (props.misc.orderBy != null) {
-      if (
-        a[Object.keys(a)[props.misc.orderBy + 1]] <
-        b[Object.keys(b)[props.misc.orderBy + 1]]
-      ) {
-        return props.misc.orderByReverse ? 1 : -1;
+  let items = [].concat
+    .apply(
+      [],
+      props.misc.inventory.map(a =>
+        a.variants.map(b => {
+          return {
+            ...b,
+            breeder: a.breeder,
+            name: a.name,
+            location: a.location,
+            stock: a.stock
+          };
+        })
+      )
+    )
+    .sort((a, b) => {
+      if (props.misc.orderBy != null) {
+        if (
+          a[Object.keys(a)[props.misc.orderBy + 1]] <
+          b[Object.keys(b)[props.misc.orderBy + 1]]
+        ) {
+          return props.misc.orderByReverse ? 1 : -1;
+        }
+        if (
+          a[Object.keys(a)[props.misc.orderBy + 1]] >
+          b[Object.keys(b)[props.misc.orderBy + 1]]
+        ) {
+          return props.misc.orderByReverse ? -1 : 1;
+        }
       }
-      if (
-        a[Object.keys(a)[props.misc.orderBy + 1]] >
-        b[Object.keys(b)[props.misc.orderBy + 1]]
-      ) {
-        return props.misc.orderByReverse ? -1 : 1;
-      }
-    }
-    // a must be equal to b
-    return 0;
-  });
+      // a must be equal to b
+      return 0;
+    });
+
   items = items.map((item, index) => {
     if (props.misc.searchValue && props.misc.searchValue.length > 0) {
       if (

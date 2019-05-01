@@ -7,6 +7,42 @@ import {
   faExclamationCircle
 } from "@fortawesome/free-solid-svg-icons";
 
+import moment from "moment";
+
+let CompanyCircle = _ => {
+  let color = "",
+    accronym;
+  [
+    { name: "beaver seeds", color: "bg-green text-white", accronym: "BVR" },
+    { name: "crop king seeds", color: "bg-red text-white", accronym: "CKS" },
+    { name: "sonoma seeds", color: "bg-white", accronym: "SON" },
+    { name: "sunwest genetics", color: "bg-yellow", accronym: "SWG" }
+  ].map((company, index) => {
+    if (_.toLowerCase().includes(company.name.toLowerCase())) {
+      color = company.color;
+      accronym = company.accronym;
+    }
+    return;
+  });
+
+  return (
+    <div
+      key={Math.random() * 1000000}
+      className=" w-32 text-sm text-grey text-left p-2"
+    >
+      <span
+        style={{ height: "25px", width: "25px" }}
+        className={
+          " rounded-full font-bold shadow-md flex items-center justify-center text-xs " +
+          color
+        }
+      >
+        {accronym}
+      </span>
+    </div>
+  );
+};
+
 const item = props => {
   let productView = props.productView;
   let editing = props._id == props.misc.currentEdit._id ? true : false;
@@ -153,26 +189,38 @@ const item = props => {
       ) : (
         <div className="w-full inline-flex flex justify-around">
           <div className="h-full w-1/6 py-2 text-base capitalize text-grey text-left pl-3">
-            {props.name.replace("Cannabis Seeds", "")}
+            {props.alias.toLowerCase().replace("cannabis seeds", "")}
           </div>
-          <div className="h-full w-24 pt-4 text-sm text-grey text-center">
-            {props._id}
+          <div className="h-full w-10 pt-4 text-sm uppercase text-grey text-center">
+            {CompanyCircle(props.company.name)}
           </div>
-          {/* <div className="h-full w-1/6 pt-3 text-sm text-grey text-center flex flex-wrap">
-            {companyCircles}
-          </div> */}
-          <div className="h-full w-1/2 py-2 px-8 text-sm text-grey text-left">
-            {props.variants[0].description}
+          <div className="h-full w-10 pt-4 text-sm uppercase text-grey text-center">
+            {props.sotiId}
           </div>
-          {/* <div className="h-full w-100 pt-4 text-sm text-grey text-center">
-            {props.barcode}
-          </div> */}
-          <div className="h-full w-1/6 pt-4 text-sm text-grey text-center">
+          <div className="h-full w-10 pt-4 text-sm text-grey text-center">
+            {props.sttId}
+          </div>
+          <div className="h-full w-48 pt-4 text-sm capitalize text-grey text-center">
+            {props.name}
+          </div>
+          <div className="h-full w-24 pt-4 text-sm uppercase text-grey text-center">
+            {props.breeder}
+          </div>
+          <div className="h-full w-24 pt-4 text-sm uppercase text-grey text-center">
+            {props.location[0].section}
+          </div>
+          <div className="h-full w-24 pt-4 text-sm uppercase text-grey text-center">
+            {props.stock[0].sold || 0}
+          </div>
+          <div className="h-full w-48 pt-4 text-sm capitalize text-grey text-center">
+            {moment(props.releaseDate).format("LLL")}
+          </div>
+          {/* <div className="h-full w-1/6 pt-4 text-sm text-grey text-center">
             {props.category}
-          </div>
-          <div className="h-full w-1/6 pt-4 text-sm text-grey text-center">
+        </div>*/}
+          {/*<div className="h-full w-1/6 pt-4 text-sm text-grey text-center">
             ${props.price}
-          </div>
+          </div>{" "} */}
         </div>
       )}
     </div>

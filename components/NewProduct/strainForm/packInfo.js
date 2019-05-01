@@ -34,7 +34,7 @@ const index = props => {
         <input
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"
           placeholder="price"
-          value={pack.price || "Price"}
+          value={pack.price || ""}
           type="number"
           name="price"
           onChange={e => {
@@ -51,7 +51,7 @@ const index = props => {
         <input
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"
           placeholder="amount"
-          value={pack.stock[distro].amount || "Amount"}
+          value={pack.stock[distro].amount || ""}
           type="number"
           name="amount"
           onChange={e => {
@@ -68,7 +68,7 @@ const index = props => {
         <input
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"
           placeholder="ROP"
-          value={pack.stock[distro].rop || "ROP"}
+          value={pack.stock[distro].rop || ""}
           type="number"
           name="rop"
           onChange={e => {

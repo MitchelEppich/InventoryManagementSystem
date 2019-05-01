@@ -150,7 +150,8 @@ const initialState = {
   variants: [],
   companies: initialCompanies,
   distro: 0,
-  editMode: false
+  editMode: false,
+  formType: null
 };
 
 export default (state = initialState, action) => {
@@ -189,7 +190,8 @@ export default (state = initialState, action) => {
         info: initialInfo,
         editMode: false,
         distro: 0,
-        variants: []
+        variants: [],
+        formType: null
       });
     default:
       return state;

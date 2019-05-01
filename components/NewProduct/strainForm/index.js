@@ -13,9 +13,7 @@ const index = props => {
         } else {
           props.createNewProduct(props.newProduct);
         }
-        const form = e.target;
-        const formData = new window.FormData(form);
-        form.reset();
+        props.resetStore();
       }}
     >
       <Info {...props} />

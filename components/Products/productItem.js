@@ -57,6 +57,7 @@ const item = props => {
         (editing ? "" : "cursor-pointer")
       }
     >
+      {console.log(props)}
       {/* <div
         onClick={e => {
           if (editing) {
@@ -75,7 +76,7 @@ const item = props => {
             onChange={e => {
               props.handleInventoryEdit("name", e.target.value);
             }}
-            className="h-full w-200 pt-1 text-sm text-grey text-center"
+            className="h-full w-200 pt-1 text-sm capitalize text-grey text-center"
             type="text"
             min="0"
             aria-label="name"
@@ -113,7 +114,7 @@ const item = props => {
             min="0"
             aria-label="description"
             name="description"
-            defaultValue={props.description}
+            defaultValue={props.variants[0].description}
           />
           {/* <input
             onChange={e => {
@@ -151,7 +152,7 @@ const item = props => {
         </form>
       ) : (
         <div className="w-full inline-flex flex justify-around">
-          <div className="h-full w-1/6 py-2 text-base text-grey text-left pl-3">
+          <div className="h-full w-1/6 py-2 text-base capitalize text-grey text-left pl-3">
             {props.name.replace("Cannabis Seeds", "")}
           </div>
           <div className="h-full w-24 pt-4 text-sm text-grey text-center">
@@ -161,7 +162,7 @@ const item = props => {
             {companyCircles}
           </div> */}
           <div className="h-full w-1/2 py-2 px-8 text-sm text-grey text-left">
-            {props.description}
+            {props.variants[0].description}
           </div>
           {/* <div className="h-full w-100 pt-4 text-sm text-grey text-center">
             {props.barcode}

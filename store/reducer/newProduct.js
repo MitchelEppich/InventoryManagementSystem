@@ -183,6 +183,14 @@ export default (state = initialState, action) => {
       });
     case actionTypes.SUBMIT_EDIT_PRODUCT_FORM:
       return updateObject(state, { companies: initialCompanies });
+    case actionTypes.RESET_STORE:
+      return updateObject(state, {
+        companies: initialCompanies,
+        info: initialInfo,
+        editMode: false,
+        distro: 0,
+        variants: []
+      });
     default:
       return state;
   }

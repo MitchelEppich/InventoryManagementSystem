@@ -15,7 +15,8 @@ const actionTypes = {
   TOGGLE_PACK_INPUT: "TOGGLE_PACK_INPUT",
   UPDATE_NEW_PRODUCT: "UPDATE_NEW_PRODUCT",
   SUBMIT_NEW_PRODUCT_FORM: "SUBMIT_NEW_PRODUCT_FORM",
-  SUBMIT_EDIT_PRODUCT_FORM: "SUBMIT_EDIT_PRODUCT_FORM"
+  SUBMIT_EDIT_PRODUCT_FORM: "SUBMIT_EDIT_PRODUCT_FORM",
+  RESET_STORE: "RESET_STORE"
 };
 
 const getActions = uri => {
@@ -68,6 +69,11 @@ const getActions = uri => {
             companies: obj.companies
           };
       }
+    },
+    resetStore: () => {
+      return {
+        type: actionTypes.RESET_STORE
+      };
     },
     editProduct: data => {
       let newCompanies = data.companies;

@@ -27,6 +27,11 @@ class Index extends Component {
   //     });
   //   }
   // }
+  componentWillMount() {
+    if (!this.props.newProduct.editMode) {
+      this.props.resetStore();
+    }
+  }
 
   render() {
     return (
@@ -49,7 +54,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.togglePackInput(newCompanies)),
     updateNewProduct: obj => dispatch(actions.updateNewProduct(obj)),
     editProduct: data => dispatch(actions.editProduct(data)),
-    createNewProduct: data => dispatch(actions.createNewProduct(data))
+    createNewProduct: data => dispatch(actions.createNewProduct(data)),
+    resetStore: () => dispatch(actions.resetStore())
   };
 };
 

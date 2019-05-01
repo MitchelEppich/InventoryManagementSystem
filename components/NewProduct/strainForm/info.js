@@ -85,6 +85,7 @@ const index = props => {
             });
           }}
           name="origin"
+          value={props.newProduct.info.origin}
           className="w-1/5 uppercase text-grey-light p-2 h-10 mx-1 my-2 pl-4  border-2 border-input-grey"
         >
           <option>Origin...</option>
@@ -511,7 +512,7 @@ const index = props => {
           type="number"
           name="stockAmount"
           min="0"
-          value={props.newProduct.info.stockAmount}
+          value={props.newProduct.info.stock[0].amount}
           onChange={e => {
             let stock = props.newProduct.info.stock;
             let newStock = stock[props.newProduct.distro];
@@ -529,7 +530,7 @@ const index = props => {
         <input
           className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
           placeholder="ROP"
-          value={props.newProduct.info.stockROP}
+          value={props.newProduct.info.stock[0].rop}
           type="number"
           min="0"
           name="stockROP"

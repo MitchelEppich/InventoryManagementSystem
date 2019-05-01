@@ -12,6 +12,7 @@ const index = props => {
       <div className="inline-flex w-full flex items-center justify-between">
         <select
           name="size"
+          value={pack.size}
           onChange={e => {
             company.attributes[props.packIndex].size = parseInt(e.target.value);
             companies.splice(props.variantIndex, 1, company);

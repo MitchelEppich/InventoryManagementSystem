@@ -276,7 +276,7 @@ const item = props => {
     return (
       <div
         key={genKey()}
-        className="w-28 p-2 text-sm text-grey text-left uppercase"
+        className="w-28 p-2 text-sm text-grey text-left uppercase flex"
       >
         {val}
       </div>

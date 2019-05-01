@@ -113,7 +113,7 @@ const getActions = uri => {
           .catch(error => console.log(error));
       };
     },
-    creatNewProduct: data => {
+    createNewProduct: data => {
       // let distro = data.distro; //distro index
       let type = 1;
       type = data.info.sativa > 60 ? 0 : type;

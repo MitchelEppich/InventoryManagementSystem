@@ -66,7 +66,8 @@ const mapDispatchToProps = dispatch => {
     // modifyUser: input => dispatch(actions.modifyUser(input)),
     // deleteUser: input => dispatch(actions.deleteUser(input)),
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
-    getAllInventory: () => dispatch(actions.getAllInventory())
+    getAllInventory: () => dispatch(actions.getAllInventory()),
+    toggleEditMode: props => dispatch(actions.toggleEditMode(props))
   };
 };
 

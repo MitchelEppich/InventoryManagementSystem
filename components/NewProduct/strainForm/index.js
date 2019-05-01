@@ -3,6 +3,7 @@ import Router from "next/router";
 const index = props => {
   return (
     <form
+      id="form"
       className="w-4/5 mx-auto flex flex-wrap justify-start text-base text-grey"
       onSubmit={e => {
         e.preventDefault();
@@ -12,12 +13,15 @@ const index = props => {
         } else {
           props.createNewProduct(props.newProduct);
         }
+        const form = e.target;
+        const formData = new window.FormData(form);
+        form.reset();
       }}
     >
       <Info {...props} />
       <input
         className="rounded-lg bg-grey-light p-3 mt-8 border-white hover:bg-teal-dark w-full uppercase pl-4 text-xl  text-white cursor-pointer"
-        value="create"
+        value={props.newProduct.editMode ? "save" : "create"}
         type="submit"
       />
     </form>

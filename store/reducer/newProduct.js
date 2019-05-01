@@ -136,7 +136,7 @@ const initialState = {
     }
   ],
   distro: 0,
-  editMode: true
+  editMode: false
 };
 
 export default (state = initialState, action) => {
@@ -161,7 +161,11 @@ export default (state = initialState, action) => {
       return updateObject(state, {
         info: action.info,
         companies: action.companies,
-        editMode: true
+        editMode: action.editMode
+      });
+    case actionTypes.TOGGLE_EDIT_MODE:
+      return updateObject(state, {
+        editMode: action.editMode
       });
     default:
       return state;

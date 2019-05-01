@@ -67,7 +67,9 @@ const resolvers = {
       return variant.toObject();
     },
     updateVariant: async (_, { input }) => {
-      let $ = { ...input };
+      let $ = {
+        ...input
+      };
       let newAttributes = [];
       if ($.attributes != null) {
         for (_ of $.attributes) {
@@ -83,15 +85,34 @@ const resolvers = {
         delete $.attributes;
       }
 
+      // Updated Company ID
+      $.company = mongoose.Types.ObjectId(
+        (await require("./company").Query.company(null, {
+          input: {
+            name: $.name
+          }
+        }))[0]._id
+      );
+      delete $.name;
+
       if ($._id == null) $._id = new mongoose.mongo.ObjectID();
 
       let variant = await Variant.findOneAndUpdate(
-        { _id: $._id },
         {
-          $set: { ...$ },
-          $push: { attributes: newAttributes }
+          _id: $._id
         },
-        { new: true, upsert: true }
+        {
+          $set: {
+            ...$
+          },
+          $push: {
+            attributes: newAttributes
+          }
+        },
+        {
+          new: true,
+          upsert: true
+        }
       );
 
       return variant;

@@ -56,7 +56,7 @@ const item = props => {
 
     companyData.push(
       <div
-        key={val}
+        key={genKey()}
         className="w-full flex pl-4 bg-teal-lightest text-grey py-2"
       >
         {iSubHeadings.map((heading, i) => {

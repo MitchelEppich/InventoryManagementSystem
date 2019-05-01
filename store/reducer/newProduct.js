@@ -35,11 +35,13 @@ let initialInfo = {
 };
 let initialCompanies = [
   {
-    company: { name: "crop king seeds" },
+    company: {
+      _id: "5cc1f75d0955774cbc422e8e",
+      name: "crop king seeds"
+    },
     alias: "",
     sotiId: "",
     sttId: 0,
-    _id: "5cc1f75d0955774cbc422e8e",
     summary: "",
     description: [],
     attributes: [
@@ -51,12 +53,14 @@ let initialCompanies = [
     ]
   },
   {
-    company: { name: "sonoma seeds" },
+    company: {
+      _id: "5cc770893ec3eb9a6db06d4b",
+      name: "sonoma seeds"
+    },
     alias: "",
     sotiId: "",
     sttId: 0,
     // _id: "",
-    _id: "5cc770893ec3eb9a6db06d4b",
     summary: "",
     description: [],
     attributes: [
@@ -68,11 +72,13 @@ let initialCompanies = [
     ]
   },
   {
-    company: { name: "sunwest genetics" },
+    company: {
+      _id: "5cc771403ec3eb9a6db0be7e",
+      name: "sunwest genetics"
+    },
     alias: "",
     sotiId: "",
     sttId: 0,
-    _id: "5cc771403ec3eb9a6db0be7e",
     summary: "",
     description: [],
     attributes: [
@@ -84,11 +90,13 @@ let initialCompanies = [
     ]
   },
   {
-    company: { name: "beaver seeds" },
+    company: {
+      _id: "5cc76df43ec3eb9a6dafa9ac",
+      name: "beaver seeds"
+    },
     alias: "",
     sotiId: "",
     sttId: 0,
-    _id: "5cc76df43ec3eb9a6dafa9ac",
     summary: "",
     description: [],
     attributes: [
@@ -100,11 +108,13 @@ let initialCompanies = [
     ]
   },
   {
-    company: { name: "mary janes garden" },
+    company: {
+      _id: "5cc772bd3ec3eb9a6db1295d",
+      name: "mary janes garden"
+    },
     alias: "",
     sotiId: "",
     sttId: 0,
-    _id: "5cc772bd3ec3eb9a6db1295d",
     summary: "",
     description: [],
     attributes: [
@@ -116,11 +126,13 @@ let initialCompanies = [
     ]
   },
   {
-    company: { name: "mj seeds canada" },
+    company: {
+      _id: "5cc76f1c3ec3eb9a6db001cc",
+      name: "mj seeds canada"
+    },
     alias: "",
     sotiId: "",
     sttId: 0,
-    _id: "5cc76f1c3ec3eb9a6db001cc",
     summary: "",
     description: [],
     attributes: [

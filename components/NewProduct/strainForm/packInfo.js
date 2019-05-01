@@ -92,7 +92,10 @@ const index = props => {
           onClick={e => {
             e.preventDefault();
             let newCompanies = props.newProduct.companies;
-            newCompanies[props.variantIndex].packs.splice(props.packIndex, 1);
+            newCompanies[props.variantIndex].attributes.splice(
+              props.packIndex,
+              1
+            );
             props.togglePackInput(newCompanies);
           }}
         />

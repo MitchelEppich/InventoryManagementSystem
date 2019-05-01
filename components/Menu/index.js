@@ -44,7 +44,7 @@ const index = props => {
             }}
             className="p-2 px-3 m-1 bg-teal hover:bg-teal-dark uppercase text-white"
           >
-            Add Products
+            Add Product
           </button>
         </Link>
         <Link href="/reports">

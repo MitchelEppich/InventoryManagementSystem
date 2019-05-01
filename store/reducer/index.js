@@ -92,13 +92,15 @@ const initialState = {
     "status"
   ],
   pHeadings: [
-    "name",
-    "id",
+    "alias",
     "company",
-    "description",
-    // "barcode",
-    "category",
-    "price"
+    "soti id",
+    "stt id",
+    "strain",
+    "breeder",
+    "location",
+    "sold",
+    "release date"
   ],
   lHeadings: ["name", "action", "machine", "date"],
   orderBy: null,

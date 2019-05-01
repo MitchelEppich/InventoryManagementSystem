@@ -47,39 +47,17 @@ const actions = {
   toggleEdit: props => {
     let item = props.item;
     let companies = item.variants;
-    let oldCompanies = props.newProduct.companies.map((company, index) => {
-      let oldCompanyReplacement;
-      companies.map((newCompany, index) => {
-        if (newCompany._id == company.id) {
-          oldCompanyReplacement = newCompany;
-          return;
-        }
+    let oldCompanies = props.newProduct.companies;
+    for (let i = 0; i < companies.length; i++) {
+      let index = oldCompanies.findIndex(company => {
+        return company.id == companies[i].company._id;
       });
-      return oldCompanyReplacement;
-    });
+      console.log(index);
+      if (index) oldCompanies.splice(index, 1, companies[i]);
+    }
 
-    delete item.variants;
+    // delete item.variants;
     let info = { ...item };
-    // let info = {
-    //   name: item.name,
-    //   category: item.category,
-    //   breeder: item.breeder,
-    //   origin: item.origin,
-    //   thc: [...item.thc],
-    //   cbd: [...item.cbd],
-    //   cbn: [...item.cbn],
-    //   sativa: item.sativa * 100,
-    //   indica: item.indica * 100,
-    //   ruderalis: item.ruderalis * 100,
-    //   genetic: item.genetic,
-    //   environment: item.environment,
-    //   yield: [...item.yield],
-    //   difficulty: item.difficulty,
-    //   flowerTime: [...item.flowerTime],
-    //   location: [...item.location],
-    //   effect: [...item.effect],
-    //   stock: [...item.stock]
-    // };
 
     return {
       type: actionTypes.TOGGLE_EDIT,
@@ -142,7 +120,6 @@ const actions = {
       const operation = {
         query: query.getAllStrains
       };
-
       await makePromise(execute(link, operation))
         .then(data => {
           let strains = data.data.allStrains;
@@ -197,6 +174,7 @@ const query = {
           color
           distributor {
             country
+            _id
           }
         }
         variants {
@@ -208,6 +186,7 @@ const query = {
             phone
             socials
             email
+            name
           }
           sotiId
           alias

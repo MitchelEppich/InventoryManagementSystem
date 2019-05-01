@@ -13,7 +13,7 @@ import Layout from "../HOC/Layout";
 import Inventory from "../components/Inventory";
 
 class Index extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getAllInventory();
   }
   render() {

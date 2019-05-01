@@ -12,16 +12,18 @@ const index = props => {
         <div
           onClick={() => {
             props.toggleCompanyVariant({
-              company: company.name,
+              company: company.company.name,
               variants: props.newProduct.variants
             });
           }}
           key={index}
           className={`${
-            props.newProduct.variants.includes(company.name)
-              ? "logo--" + company.name.replace(/ /g, "").toLowerCase() + ""
+            props.newProduct.variants.includes(company.company.name)
+              ? "logo--" +
+                company.company.name.replace(/ /g, "").toLowerCase() +
+                ""
               : "logo--" +
-                company.name.replace(/ /g, "").toLowerCase() +
+                company.company.name.replace(/ /g, "").toLowerCase() +
                 "--greyed"
           } h-150 w-150 rounded cursor-pointer`}
         />
@@ -30,7 +32,7 @@ const index = props => {
   );
   let variants = props.newProduct.variants.map((variant, index) => {
     let i = props.newProduct.companies.findIndex((company, index) => {
-      return company.name == variant;
+      return company.company.name == variant;
     });
     return <Variant key={i} variant={variant} variantIndex={i} {...props} />;
   });

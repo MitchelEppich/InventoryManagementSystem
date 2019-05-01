@@ -38,7 +38,7 @@ const initialState = {
   variants: [],
   companies: [
     {
-      name: "crop king seeds",
+      company: { name: "crop king seeds" },
       alias: "",
       sotiId: "",
       sttId: 0,
@@ -54,10 +54,11 @@ const initialState = {
       ]
     },
     {
-      name: "sonoma seeds",
+      company: { name: "sonoma seeds" },
       alias: "",
       sotiId: "",
       sttId: 0,
+      // id: "",
       id: "5cc770893ec3eb9a6db06d4b",
       summary: "",
       description: [],
@@ -70,11 +71,11 @@ const initialState = {
       ]
     },
     {
-      name: "sunwest genetics",
+      company: { name: "sunwest genetics" },
       alias: "",
       sotiId: "",
       sttId: 0,
-      id: "5cc8c51aaf7c8c62bc9f822e",
+      id: "5cc771403ec3eb9a6db0be7e",
       summary: "",
       description: [],
       attributes: [
@@ -86,11 +87,11 @@ const initialState = {
       ]
     },
     {
-      name: "beaver seeds",
+      company: { name: "beaver seeds" },
       alias: "",
       sotiId: "",
       sttId: 0,
-      id: "",
+      id: "5cc76df43ec3eb9a6dafa9ac",
       summary: "",
       description: [],
       attributes: [
@@ -102,11 +103,11 @@ const initialState = {
       ]
     },
     {
-      name: "mary janes garden",
+      company: { name: "mary janes garden" },
       alias: "",
       sotiId: "",
       sttId: 0,
-      id: "",
+      id: "5cc772bd3ec3eb9a6db1295d",
       summary: "",
       description: [],
       attributes: [
@@ -118,11 +119,11 @@ const initialState = {
       ]
     },
     {
-      name: "mj seeds canada",
+      company: { name: "mj seeds canada" },
       alias: "",
       sotiId: "",
       sttId: 0,
-      id: "",
+      id: "5cc76f1c3ec3eb9a6db001cc",
       summary: "",
       description: [],
       attributes: [
@@ -134,7 +135,8 @@ const initialState = {
       ]
     }
   ],
-  distro: 0
+  distro: 0,
+  editMode: true
 };
 
 export default (state = initialState, action) => {
@@ -158,7 +160,8 @@ export default (state = initialState, action) => {
     case actionTypes.TOGGLE_EDIT:
       return updateObject(state, {
         info: action.info,
-        companies: action.companies
+        companies: action.companies,
+        editMode: true
       });
     default:
       return state;

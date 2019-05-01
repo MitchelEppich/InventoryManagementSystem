@@ -14,7 +14,8 @@ const actionTypes = {
   TOGGLE_COMPANY_VARIANT: "TOGGLE_COMPANY_VARIANT",
   TOGGLE_PACK_INPUT: "TOGGLE_PACK_INPUT",
   UPDATE_NEW_PRODUCT: "UPDATE_NEW_PRODUCT",
-  SUBMIT_NEW_PRODUCT_FORM: "SUBMIT_NEW_PRODUCT_FORM"
+  SUBMIT_NEW_PRODUCT_FORM: "SUBMIT_NEW_PRODUCT_FORM",
+  SUBMIT_EDIT_PRODUCT_FORM: "SUBMIT_EDIT_PRODUCT_FORM"
 };
 
 const getActions = uri => {
@@ -67,6 +68,50 @@ const getActions = uri => {
             companies: obj.companies
           };
       }
+    },
+    editProduct: data => {
+      let newCompanies = data.companies;
+      newCompanies = newCompanies
+        .map((company, index) => {
+          console.log(company.company.name);
+          let newCompany = {
+            alias: company.alias,
+            sotiId: company.sotiId,
+            sttId: company.sttId,
+            summary: company.summary,
+            description: company.description,
+            attributes: company.attributes,
+            name: company.company.name,
+            _id: company._id ? company._id : null
+          };
+          return newCompany;
+        })
+        .filter(company => {
+          return company.alias != "";
+        });
+      let info = data.info;
+      info.location[0].distributor = info.location[0].distributor._id;
+      let product = {
+        ...info,
+        variants: newCompanies
+      };
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: mutation.updateProduct,
+          variables: { ...product }
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            // let returnData = data.data.createStrain;
+            dispatch({
+              type: actionTypes.SUBMIT_EDIT_PRODUCT_FORM
+              // newStrain: returnData
+            });
+          })
+          .catch(error => console.log(error));
+      };
     },
     creatNewProduct: data => {
       // let distro = data.distro; //distro index
@@ -141,6 +186,118 @@ const mutation = {
     ) {
       createStrain(
         input: {
+          name: $name
+          category: $category
+          breeder: $breeder
+          origin: $origin
+          cbd: $cbd
+          thc: $thc
+          cbn: $cbn
+          effect: $effect
+          yield: $yield
+          genetic: $genetic
+          flowerTime: $flowerTime
+          difficulty: $difficulty
+          indica: $indica
+          sativa: $sativa
+          ruderalis: $ruderalis
+          environment: $environment
+          location: $location
+          variants: $variants
+          stock: $stock
+        }
+      ) {
+        _id
+        name
+        category
+        breeder
+        origin
+        cbd
+        thc
+        cbn
+        effect
+        yield
+        genetic
+        flowerTime
+        difficulty
+        indica
+        sativa
+        ruderalis
+        environment
+        location {
+          _id
+          aisle
+          section
+          color
+          distributor {
+            country
+          }
+        }
+        variants {
+          _id
+          company {
+            _id
+            assetsUrl
+            website
+            phone
+            socials
+            email
+          }
+          sotiId
+          alias
+          description
+          summary
+          releaseDate
+          sttId
+          attributes {
+            _id
+            price
+            size
+            stock {
+              _id
+              amount
+              rop
+              noe
+              sold
+            }
+          }
+        }
+        stock {
+          _id
+          amount
+          rop
+          noe
+          sold
+        }
+      }
+    }
+  `,
+  updateProduct: gql`
+    mutation(
+      $_id: String
+      $name: String
+      $category: Int
+      $breeder: String
+      $origin: [Int]
+      $cbd: [Float]
+      $thc: [Float]
+      $cbn: [Float]
+      $effect: [Int]
+      $yield: [Int]
+      $genetic: Int
+      $flowerTime: [Int]
+      $difficulty: Int
+      $indica: Float
+      $sativa: Float
+      $ruderalis: Float
+      $environment: Int
+      $location: [LocationInput]
+      $variants: [VariantInput]
+      $stock: [StockInput]
+    ) {
+      updateStrain(
+        input: {
+          _id: $_id
           name: $name
           category: $category
           breeder: $breeder

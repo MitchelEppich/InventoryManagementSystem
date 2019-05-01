@@ -7,7 +7,11 @@ const index = props => {
       onSubmit={e => {
         e.preventDefault();
         Router.push("/");
-        props.creatNewProduct(props.newProduct);
+        if (props.newProduct.editMode) {
+          props.editProduct(props.newProduct);
+        } else {
+          props.createNewProduct(props.newProduct);
+        }
       }}
     >
       <Info {...props} />

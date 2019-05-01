@@ -102,7 +102,7 @@ const resolvers = {
       let $ = {
         ...input
       };
-
+      console.log($);
       let newLocations = [];
       if ($.location != null) {
         for (_ of $.location) {

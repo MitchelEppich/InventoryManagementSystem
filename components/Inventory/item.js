@@ -17,7 +17,7 @@ const item = props => {
   let subHeadings = iSubHeadings.map((heading, index) => {
     if (heading == "alias") {
       return (
-        <span key={index} className="text-grey w-64 p-2 text-xs uppercase">
+        <span key={heading} className="text-grey w-64 p-2 text-xs uppercase">
           {heading}
         </span>
       );
@@ -30,13 +30,15 @@ const item = props => {
     //   );
     // }
     return (
-      <span key={index} className="text-grey w-32 p-2 text-xs uppercase">
+      <span key={heading} className="text-grey w-32 p-2 text-xs uppercase">
         {heading}
       </span>
     );
   });
   let companyData = [];
+  if (props.item.variants == null) return null;
   let companyCircles = props.item.variants.map((val, index) => {
+    // console.log(val);
     let color = "",
       accronym;
     [
@@ -45,11 +47,7 @@ const item = props => {
       { name: "sonoma seeds", color: "bg-white", accronym: "SON" },
       { name: "sunwest genetics", color: "bg-yellow", accronym: "SWG" }
     ].map((company, index) => {
-      if (
-        val.company.website[0]
-          .toLowerCase()
-          .includes(company.name.replace(/ /g, "").toLowerCase())
-      ) {
+      if (val.company.name.toLowerCase().includes(company.name.toLowerCase())) {
         color = company.color;
         accronym = company.accronym;
       }
@@ -57,13 +55,18 @@ const item = props => {
     });
 
     companyData.push(
-      <div className="w-full flex pl-4 bg-teal-lightest text-grey py-2">
+      <div
+        key={val}
+        className="w-full flex pl-4 bg-teal-lightest text-grey py-2"
+      >
         {iSubHeadings.map((heading, i) => {
           if (heading == "company") {
             return (
-              <div key={i} className=" w-32 text-sm text-grey text-left p-2">
+              <div
+                key={Math.random() * 1000000}
+                className=" w-32 text-sm text-grey text-left p-2"
+              >
                 <span
-                  key={index}
                   style={{ height: "25px", width: "25px" }}
                   className={
                     " rounded-full font-bold shadow-md flex items-center justify-center text-xs " +
@@ -78,7 +81,7 @@ const item = props => {
           if (["sotiId", "sttId"].includes(heading)) {
             return (
               <div
-                key={i}
+                key={Math.random() * 1000000}
                 className=" w-32 text-sm uppercase text-grey text-left p-2"
               >
                 {val[heading]}
@@ -88,7 +91,7 @@ const item = props => {
           if (heading == "alias") {
             return (
               <div
-                key={i}
+                key={Math.random() * 1000000}
                 className=" w-64 text-sm uppercase text-grey text-left p-2"
               >
                 {val[heading].replace("Cannabis Seeds", "")}
@@ -98,42 +101,70 @@ const item = props => {
           if (heading == "price") {
             let prices = val.attributes.map((attr, index) => {
               return (
-                <div key={i} className=" text-sm text-grey text-left p-2">
+                <div
+                  key={Math.random() * 1000000}
+                  className=" text-sm text-grey text-left p-2"
+                >
                   $ {attr.price}
                 </div>
               );
             });
-            return <div className="w-32">{prices}</div>;
+            return (
+              <div key={Math.random() * 1000000} className="w-32">
+                {prices}
+              </div>
+            );
           }
           if (heading == "qty (packed)") {
             let qtys = val.attributes.map((attr, index) => {
               return (
-                <div key={i} className=" pl-8 text-sm text-grey text-left p-2">
+                <div
+                  key={Math.random() * 1000000}
+                  className=" pl-8 text-sm text-grey text-left p-2"
+                >
                   {attr.stock[distro].amount}
                 </div>
               );
             });
-            return <div className="w-32">{qtys}</div>;
+            return (
+              <div key={Math.random() * 1000000} className="w-32">
+                {qtys}
+              </div>
+            );
           }
           if (heading == "rop (packed)") {
             let qtys = val.attributes.map((attr, index) => {
               return (
-                <div key={i} className=" pl-8 text-sm text-grey text-left p-2">
+                <div
+                  key={Math.random() * 1000000}
+                  className=" pl-8 text-sm text-grey text-left p-2"
+                >
                   {attr.stock[distro].rop}
                 </div>
               );
             });
-            return <div className="w-32">{qtys}</div>;
+            return (
+              <div key={Math.random() * 1000000} className="w-32">
+                {qtys}
+              </div>
+            );
           }
           if (heading == "noe (packed)") {
             let qtys = val.attributes.map((attr, index) => {
               return (
-                <div key={i} className=" pl-8 text-sm text-grey text-left p-2">
+                <div
+                  key={Math.random() * 1000000}
+                  className=" pl-8 text-sm text-grey text-left p-2"
+                >
                   {attr.stock[distro].noe}
                 </div>
               );
             });
-            return <div className="w-32">{qtys}</div>;
+            return (
+              <div key={Math.random() * 1000000} className="w-32">
+                {qtys}
+              </div>
+            );
           }
           if (heading == "status") {
             let packStatus = val.attributes,
@@ -167,7 +198,7 @@ const item = props => {
                 );
               return (
                 <div
-                  key={i}
+                  key={Math.random() * 1000000}
                   className="text-sm uppercase text-grey text-left p-2"
                 >
                   {status}
@@ -176,11 +207,15 @@ const item = props => {
 
               status;
             });
-            return <div className="w-32">{packStatus}</div>;
+            return (
+              <div key={Math.random() * 1000000} className="w-32">
+                {packStatus}
+              </div>
+            );
           }
           return (
             <div
-              key={index}
+              key={Math.random() * 1000000}
               className=" w-32 text-sm uppercase text-grey text-left p-2"
             >
               {val[heading]}
@@ -192,7 +227,7 @@ const item = props => {
 
     return (
       <span
-        key={index}
+        key={Math.random() * 1000000}
         style={{ height: "25px", width: "25px" }}
         className={
           " rounded-full font-bold shadow-md flex items-center justify-center text-xs " +
@@ -210,7 +245,7 @@ const item = props => {
       case "name":
         return null;
       case "company":
-        val = companyCircles;
+        // val = companyCircles;
         break;
       case "status":
         val =
@@ -240,7 +275,7 @@ const item = props => {
     }
     return (
       <div
-        key={index}
+        key={Math.random() * 1000000}
         className="w-28 p-2 text-sm text-grey text-left uppercase"
       >
         {val}

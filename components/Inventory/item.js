@@ -9,6 +9,7 @@ import {
   faAngleUp
 } from "@fortawesome/free-solid-svg-icons";
 import Router from "next/router";
+import { genKey } from "../scripts";
 
 const item = props => {
   let showAll = props.misc.showAllId == props.index; //show extra company specific data
@@ -38,7 +39,6 @@ const item = props => {
   let companyData = [];
   if (props.item.variants == null) return null;
   let companyCircles = props.item.variants.map((val, index) => {
-    // console.log(val);
     let color = "",
       accronym;
     [
@@ -63,7 +63,7 @@ const item = props => {
           if (heading == "company") {
             return (
               <div
-                key={Math.random() * 1000000}
+                key={genKey()}
                 className=" w-32 text-sm text-grey text-left p-2"
               >
                 <span
@@ -81,7 +81,7 @@ const item = props => {
           if (["sotiId", "sttId"].includes(heading)) {
             return (
               <div
-                key={Math.random() * 1000000}
+                key={genKey()}
                 className=" w-32 text-sm uppercase text-grey text-left p-2"
               >
                 {val[heading]}
@@ -91,7 +91,7 @@ const item = props => {
           if (heading == "alias") {
             return (
               <div
-                key={Math.random() * 1000000}
+                key={genKey()}
                 className=" w-64 text-sm uppercase text-grey text-left p-2"
               >
                 {val[heading].replace("Cannabis Seeds", "")}
@@ -102,7 +102,7 @@ const item = props => {
             let prices = val.attributes.map((attr, index) => {
               return (
                 <div
-                  key={Math.random() * 1000000}
+                  key={genKey()}
                   className=" text-sm text-grey text-left p-2"
                 >
                   $ {attr.price}
@@ -110,7 +110,7 @@ const item = props => {
               );
             });
             return (
-              <div key={Math.random() * 1000000} className="w-32">
+              <div key={genKey()} className="w-32">
                 {prices}
               </div>
             );
@@ -119,7 +119,7 @@ const item = props => {
             let qtys = val.attributes.map((attr, index) => {
               return (
                 <div
-                  key={Math.random() * 1000000}
+                  key={genKey()}
                   className=" pl-8 text-sm text-grey text-left p-2"
                 >
                   {attr.stock[distro].amount}
@@ -127,7 +127,7 @@ const item = props => {
               );
             });
             return (
-              <div key={Math.random() * 1000000} className="w-32">
+              <div key={genKey()} className="w-32">
                 {qtys}
               </div>
             );
@@ -136,7 +136,7 @@ const item = props => {
             let qtys = val.attributes.map((attr, index) => {
               return (
                 <div
-                  key={Math.random() * 1000000}
+                  key={genKey()}
                   className=" pl-8 text-sm text-grey text-left p-2"
                 >
                   {attr.stock[distro].rop}
@@ -144,7 +144,7 @@ const item = props => {
               );
             });
             return (
-              <div key={Math.random() * 1000000} className="w-32">
+              <div key={genKey()} className="w-32">
                 {qtys}
               </div>
             );
@@ -153,7 +153,7 @@ const item = props => {
             let qtys = val.attributes.map((attr, index) => {
               return (
                 <div
-                  key={Math.random() * 1000000}
+                  key={genKey()}
                   className=" pl-8 text-sm text-grey text-left p-2"
                 >
                   {attr.stock[distro].noe}
@@ -161,7 +161,7 @@ const item = props => {
               );
             });
             return (
-              <div key={Math.random() * 1000000} className="w-32">
+              <div key={genKey()} className="w-32">
                 {qtys}
               </div>
             );
@@ -198,7 +198,7 @@ const item = props => {
                 );
               return (
                 <div
-                  key={Math.random() * 1000000}
+                  key={genKey()}
                   className="text-sm uppercase text-grey text-left p-2"
                 >
                   {status}
@@ -208,14 +208,14 @@ const item = props => {
               status;
             });
             return (
-              <div key={Math.random() * 1000000} className="w-32">
+              <div key={genKey()} className="w-32">
                 {packStatus}
               </div>
             );
           }
           return (
             <div
-              key={Math.random() * 1000000}
+              key={genKey()}
               className=" w-32 text-sm uppercase text-grey text-left p-2"
             >
               {val[heading]}
@@ -227,7 +227,7 @@ const item = props => {
 
     return (
       <span
-        key={Math.random() * 1000000}
+        key={genKey()}
         style={{ height: "25px", width: "25px" }}
         className={
           " rounded-full font-bold shadow-md flex items-center justify-center text-xs " +
@@ -245,7 +245,7 @@ const item = props => {
       case "name":
         return null;
       case "company":
-        // val = companyCircles;
+        val = companyCircles;
         break;
       case "status":
         val =
@@ -275,7 +275,7 @@ const item = props => {
     }
     return (
       <div
-        key={Math.random() * 1000000}
+        key={genKey()}
         className="w-28 p-2 text-sm text-grey text-left uppercase"
       >
         {val}

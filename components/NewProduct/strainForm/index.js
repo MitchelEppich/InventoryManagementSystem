@@ -17,7 +17,7 @@ const index = props => {
       <Info {...props} />
       <input
         className="rounded-lg bg-grey-light p-3 mt-8 border-white hover:bg-teal-dark w-full uppercase pl-4 text-xl  text-white cursor-pointer"
-        value="create"
+        value={props.newProduct.editMode ? "Save" : "create"}
         type="submit"
       />
     </form>

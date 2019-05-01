@@ -163,7 +163,11 @@ export default (state = initialState, action) => {
       return updateObject(state, {
         info: action.info,
         companies: action.companies,
-        editMode: true
+        editMode: action.editMode
+      });
+    case actionTypes.TOGGLE_EDIT_MODE:
+      return updateObject(state, {
+        editMode: action.editMode
       });
     case actionTypes.SUBMIT_EDIT_PRODUCT_FORM:
       return updateObject(state, { companies: initialCompanies });

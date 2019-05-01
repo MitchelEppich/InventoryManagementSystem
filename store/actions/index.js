@@ -25,6 +25,7 @@ const imports = {
 
 const actionTypes = {
   SET_VISIBLE_SCREEN: "SET_VISIBLE_SCREEN",
+  TOGGLE_EDIT_MODE: "TOGGLE_EDIT_MODE",
   TOGGLE_EDIT: "TOGGLE_EDIT",
   HANDLE_INVENTORY_EDIT: "HANDLE_INVENTORY_EDIT",
   SUBMIT_INVENTORY_EDIT: "SUBMIT_INVENTORY_EDIT",
@@ -44,6 +45,12 @@ const actions = {
       input: input
     };
   },
+  toggleEditMode: editMode => {
+    return {
+      type: actionTypes.TOGGLE_EDIT_MODE,
+      editMode: editMode
+    };
+  },
   toggleEdit: props => {
     let item = props.item;
     let companies = item.variants;
@@ -53,7 +60,6 @@ const actions = {
         console.log()
         return company._id == companies[i]._id;
       });
-      console.log(index);
       if (index) oldCompanies.splice(index, 1, companies[i]);
     }
 
@@ -62,6 +68,7 @@ const actions = {
 
     return {
       type: actionTypes.TOGGLE_EDIT,
+      editMode: true,
       info: info,
       companies: oldCompanies
     };

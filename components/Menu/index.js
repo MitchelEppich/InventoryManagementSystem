@@ -38,7 +38,12 @@ const index = props => {
         </Link>
 
         <Link href="/newProduct">
-          <button className="p-2 px-3 m-1 bg-teal hover:bg-teal-dark uppercase text-white">
+          <button
+            onClick={() => {
+              props.toggleEditMode(false);
+            }}
+            className="p-2 px-3 m-1 bg-teal hover:bg-teal-dark uppercase text-white"
+          >
             Add Products
           </button>
         </Link>

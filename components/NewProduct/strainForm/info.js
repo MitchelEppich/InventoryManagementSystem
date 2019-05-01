@@ -274,6 +274,7 @@ const index = props => {
           type="number"
           step="0.1"
           name="sativa"
+          min="0"
           onChange={e => {
             props.updateNewProduct({
               type: "info",
@@ -291,6 +292,7 @@ const index = props => {
           type="number"
           step="0.1"
           name="indica"
+          min="0"
           onChange={e => {
             props.updateNewProduct({
               type: "info",
@@ -308,6 +310,7 @@ const index = props => {
           type="number"
           step="0.1"
           name="ruderalis"
+          min="0"
           onChange={e => {
             props.updateNewProduct({
               type: "info",
@@ -392,6 +395,7 @@ const index = props => {
             placeholder="7"
             type="number"
             name="flowerTime"
+            min="0"
             value={props.newProduct.info.flowerTime[0] || ""}
             onChange={e => {
               let newInfo = props.newProduct.info;
@@ -416,6 +420,7 @@ const index = props => {
             placeholder="10"
             type="number"
             name="flowerTime"
+            min="0"
             value={props.newProduct.info.flowerTime[1] || ""}
             onChange={e => {
               let newInfo = props.newProduct.info;
@@ -505,6 +510,7 @@ const index = props => {
           placeholder="Amount"
           type="number"
           name="stockAmount"
+          min="0"
           value={props.newProduct.info.stockAmount}
           onChange={e => {
             let stock = props.newProduct.info.stock;
@@ -525,6 +531,7 @@ const index = props => {
           placeholder="ROP"
           value={props.newProduct.info.stockROP}
           type="number"
+          min="0"
           name="stockROP"
           onChange={e => {
             let stock = props.newProduct.info.stock;

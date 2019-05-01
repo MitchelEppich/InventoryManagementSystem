@@ -37,6 +37,7 @@ const index = props => {
           value={pack.price || ""}
           type="number"
           name="price"
+          min="0"
           onChange={e => {
             company.attributes[props.packIndex].price = parseFloat(
               e.target.value
@@ -54,6 +55,7 @@ const index = props => {
           value={pack.stock[distro].amount || ""}
           type="number"
           name="amount"
+          min="0"
           onChange={e => {
             company.attributes[props.packIndex].stock[distro].amount = parseInt(
               e.target.value
@@ -71,6 +73,7 @@ const index = props => {
           value={pack.stock[distro].rop || ""}
           type="number"
           name="rop"
+          min="0"
           onChange={e => {
             company.attributes[props.packIndex].stock[distro].rop = parseInt(
               e.target.value

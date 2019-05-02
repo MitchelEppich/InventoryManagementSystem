@@ -20,23 +20,33 @@ const index = props => {
       }}
     >
       <Info {...props} />
-      <input
-        className="rounded-lg bg-grey-light p-3 mt-8 border-white hover:bg-teal-dark w-full uppercase pl-4 text-xl  text-white cursor-pointer"
-        value={props.newProduct.editMode ? "save" : "create"}
-        type="submit"
-      />
-      {props.newProduct.editMode ? (
-        <input
-          className="rounded-lg bg-grey-light p-3 mt-8 border-white hover:bg-red-dark w-full uppercase pl-4 text-xl  text-white cursor-pointer"
-          value="Delete"
-          onClick={e => {
-            e.preventDefault();
-            props.deleteStrain({ _id: props.newProduct.info._id });
-            Router.push("/");
-          }}
-          type="button"
-        />
-      ) : null}
+      <div className="inline-flex w-full justify-between flex">
+        {props.newProduct.editMode ? (
+          <div className="w-1/2 mx-4">
+            <input
+              className="rounded-lg bg-grey-light p-3 mt-8 border-white hover:bg-red-dark w-full uppercase pl-4 text-xl text-white cursor-pointer"
+              value="Delete"
+              onClick={e => {
+                e.preventDefault();
+                props.deleteStrain({ _id: props.newProduct.info._id });
+                Router.push("/");
+              }}
+              type="button"
+            />
+          </div>
+        ) : null}
+        <div
+          className={`${
+            props.newProduct.editMode ? "w-1/2 mx-4" : "w-full justify-end flex"
+          }`}
+        >
+          <input
+            className={`rounded-lg bg-grey-light p-3 mt-8 border-white hover:bg-teal-dark w-full uppercase pl-4 text-xl text-white cursor-pointer`}
+            value={props.newProduct.editMode ? "save" : "create"}
+            type="submit"
+          />
+        </div>
+      </div>
     </form>
   );
 };

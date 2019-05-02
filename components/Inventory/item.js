@@ -333,7 +333,7 @@ const item = props => {
             }}
             className="w-32 text-center"
           >
-            <FontAwesomeIcon icon={faEdit} className="fa-lg text-red" />
+            <FontAwesomeIcon icon={faEdit} className="fa-lg text-white" />
           </div>
         ) : null}
       </div>

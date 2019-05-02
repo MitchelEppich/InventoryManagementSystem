@@ -48,14 +48,20 @@ const item = props => {
     let color = "",
       accronym;
     [
-      { name: "beaver seeds", color: "bg-green text-white", accronym: "BVR" },
       { name: "crop king seeds", color: "bg-red text-white", accronym: "CKS" },
       { name: "sonoma seeds", color: "bg-white text-grey", accronym: "SON" },
       {
         name: "sunwest genetics",
         color: "bg-yellow text-grey",
         accronym: "SWG"
-      }
+      },
+      { name: "beaver seeds", color: "bg-green text-white", accronym: "BVR" },
+      {
+        name: "mary janes garden",
+        color: "bg-orange text-white",
+        accronym: "MJG"
+      },
+      { name: "mj seeds canada", color: "bg-brown text-white", accronym: "MJS" }
     ].map((company, index) => {
       if (val.company.name.toLowerCase().includes(company.name.toLowerCase())) {
         color = company.color;

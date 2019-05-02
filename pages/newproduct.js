@@ -56,8 +56,10 @@ const mapDispatchToProps = dispatch => {
     editProduct: data => dispatch(actions.editProduct(data)),
     createNewProduct: data => dispatch(actions.createNewProduct(data)),
     resetStore: () => dispatch(actions.resetStore()),
-    deleteCompanyVariant: input => dispatch(actions.deleteCompanyVariant(input)),
-    deletePackVariant: input => dispatch(actions.deletePackVariant(input))
+    deleteCompanyVariant: input =>
+      dispatch(actions.deleteCompanyVariant(input)),
+    deletePackVariant: input => dispatch(actions.deletePackVariant(input)),
+    deleteStrain: input => dispatch(actions.deleteStrain(input))
   };
 };
 

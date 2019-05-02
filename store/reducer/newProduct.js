@@ -203,6 +203,8 @@ export default (state = initialState, action) => {
       return updateObject(state, {
         companies: action.companies
       });
+    case actionTypes.DELETE_STRAIN:
+      return updateObject(state, {});
     default:
       return state;
   }

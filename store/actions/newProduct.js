@@ -18,7 +18,8 @@ const actionTypes = {
   SUBMIT_EDIT_PRODUCT_FORM: "SUBMIT_EDIT_PRODUCT_FORM",
   RESET_STORE: "RESET_STORE",
   DELETE_COMPANY_VARIANT: "DELETE_COMPANY_VARIANT",
-  DELETE_PACK_VARIANT: "DELETE_PACK_VARIANT"
+  DELETE_PACK_VARIANT: "DELETE_PACK_VARIANT",
+  DELETE_STRAIN: "DELETE_STRAIN"
 };
 
 const getActions = uri => {
@@ -237,6 +238,23 @@ const getActions = uri => {
             dispatch({
               type: actionTypes.DELETE_PACK_VARIANT,
               companies: companies
+            });
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    deleteStrain: input => {
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: mutation.deleteStrain,
+          variables: { _id: input._id }
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            dispatch({
+              type: actionTypes.DELETE_STRAIN
             });
           })
           .catch(error => console.log(error));
@@ -481,6 +499,13 @@ const mutation = {
   deleteAttribute: gql`
     mutation($_id: String) {
       deleteAttribute(input: { _id: $_id }) {
+        _id
+      }
+    }
+  `,
+  deleteStrain: gql`
+    mutation($_id: String) {
+      deleteStrain(input: { _id: $_id }) {
         _id
       }
     }

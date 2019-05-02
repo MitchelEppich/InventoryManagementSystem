@@ -85,7 +85,7 @@ const index = props => {
             });
           }}
           name="origin"
-          value={parseInt(props.newProduct.info.origin)}
+          // value={props.newProduct.info.origin || 0}
           className="w-1/5 uppercase text-grey-light p-2 h-10 mx-1 my-2 pl-4  border-2 border-input-grey"
         >
           <option>Origin...</option>

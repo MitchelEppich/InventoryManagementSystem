@@ -21,6 +21,17 @@ const index = props => {
     >
       <Info {...props} />
       <div className="inline-flex w-full justify-between flex">
+        <div
+          className={`${
+            props.newProduct.editMode ? "w-1/2 mx-4" : "w-full justify-end flex"
+          }`}
+        >
+          <input
+            className={`rounded-lg bg-grey-light p-3 mt-8 border-white hover:bg-teal-dark w-full uppercase pl-4 text-xl text-white cursor-pointer`}
+            value={props.newProduct.editMode ? "save" : "create"}
+            type="submit"
+          />
+        </div>
         {props.newProduct.editMode ? (
           <div className="w-1/2 mx-4">
             <input
@@ -35,17 +46,6 @@ const index = props => {
             />
           </div>
         ) : null}
-        <div
-          className={`${
-            props.newProduct.editMode ? "w-1/2 mx-4" : "w-full justify-end flex"
-          }`}
-        >
-          <input
-            className={`rounded-lg bg-grey-light p-3 mt-8 border-white hover:bg-teal-dark w-full uppercase pl-4 text-xl text-white cursor-pointer`}
-            value={props.newProduct.editMode ? "save" : "create"}
-            type="submit"
-          />
-        </div>
       </div>
     </form>
   );

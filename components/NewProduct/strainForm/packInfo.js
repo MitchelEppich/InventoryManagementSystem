@@ -29,8 +29,15 @@ const index = props => {
           <option value="7">7 Packs</option>
           <option value="10">10 Packs</option>
           <option value="15">15 Packs</option>
+          <option value="20">20 Packs</option>
           <option value="25">25 Packs</option>
+          <option value="30">30 Packs</option>
+          <option value="35">35 Packs</option>
+          <option value="40">40 Packs</option>
           <option value="50">50 Packs</option>
+          <option value="100">100 Packs</option>
+          <option value="200">200 Packs</option>
+          <option value="500">500 Packs</option>
         </select>
         <input
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"

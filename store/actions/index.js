@@ -60,7 +60,7 @@ const actions = {
       let index = oldCompanies.findIndex(company => {
         return company.company._id == companies[i].company._id;
       });
-      if (index) {
+      if (index >= 0) {
         oldCompanies.splice(index, 1, companies[i]);
         variantButtons.push(companies[i].company.name);
       }

@@ -54,22 +54,24 @@ const actions = {
   toggleEdit: props => {
     let item = props.item;
     let companies = item.variants;
+    let variantButtons = [];
     let oldCompanies = props.newProduct.companies;
     for (let i = 0; i < companies.length; i++) {
       let index = oldCompanies.findIndex(company => {
         return company.company._id == companies[i].company._id;
       });
-      if (index) oldCompanies.splice(index, 1, companies[i]);
+      if (index) {
+        oldCompanies.splice(index, 1, companies[i]);
+        variantButtons.push(companies[i].company.name);
+      }
     }
-
-    // delete item.variants;
     let info = { ...item };
-
     return {
       type: actionTypes.TOGGLE_EDIT,
       editMode: true,
       info: info,
-      companies: oldCompanies
+      companies: oldCompanies,
+      variantButtons: variantButtons
     };
   },
   handleInventoryEdit: (key, value) => {

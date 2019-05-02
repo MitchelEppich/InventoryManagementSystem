@@ -6,7 +6,8 @@ import {
   faUserLock,
   faExclamationCircle,
   faAngleDown,
-  faAngleUp
+  faAngleUp,
+  faEdit
 } from "@fortawesome/free-solid-svg-icons";
 import Router from "next/router";
 import { genKey } from "../scripts";
@@ -291,7 +292,7 @@ const item = props => {
           props.toggleShowAll(id);
         }}
         className={
-          "h-auto w-full flex justify-start bg-white border border-1 border-grey-lighter py-2 uppercase hover:border-teal-light items-center "
+          "h-auto w-full flex justify-start bg-white border border-1 border-grey-lighter py-2 uppercase hover:border-teal-light items-center cursor-pointer"
         }
       >
         <div className="w-1/3 p-2 text-sm text-grey text-left">
@@ -304,17 +305,19 @@ const item = props => {
             className="fa-2x pr-2 -ml-2 mr-2"
           />
         </div>
+        {showAll ? (
+          <div onClick={() => {
+            props.toggleFormType("strain");
+            Router.push("/newProduct");
+            props.toggleEdit(props);
+          }} className="w-32 text-center">
+            <FontAwesomeIcon icon={faEdit} className="fa-lg text-red" />
+          </div>
+        ) : null}
       </div>
       {showAll ? (
         <React.Fragment>
-          <div
-            onClick={() => {
-              props.toggleFormType("strain");
-              Router.push("/newProduct");
-              props.toggleEdit(props);
-            }}
-            className="w-full flex bg-grey-lighter text-grey py-2 pl-4"
-          >
+          <div className="w-full flex bg-grey-lighter text-grey py-2 pl-4">
             {subHeadings}
           </div>
           {companyData}

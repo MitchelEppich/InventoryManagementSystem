@@ -96,11 +96,17 @@ const index = props => {
           onClick={e => {
             e.preventDefault();
             let newCompanies = props.newProduct.companies;
-            newCompanies[props.variantIndex].attributes.splice(
-              props.packIndex,
-              1
-            );
-            props.togglePackInput(newCompanies);
+            // newCompanies[props.variantIndex].attributes.splice(
+            //   props.packIndex,
+            //   1
+            // );
+            props.deletePackVariant({
+              _id: pack._id,
+              companies: newCompanies,
+              variantIndex: props.variantIndex,
+              packIndex: props.packIndex
+            });
+            // props.togglePackInput(newCompanies);
           }}
         />
       </div>

@@ -24,6 +24,21 @@ const index = props => {
       <p className="uppercase bg-teal w-full  p-2 mt-3 mb-2 text-center font-bold text-white text-xl">
         {props.variant}
       </p>
+      <div className="w-full flex justify-end">
+        <input
+          type="button"
+          className="bg-red text-white uppercase p-2 rounded border-0 hover:bg-red-dark cursor-pointer"
+          value="delete company variant"
+          onClick={e => {
+            e.preventDefault();
+            props.deleteCompanyVariant({
+              _id: companies[props.variantIndex]._id,
+              companies: companies,
+              variants: props.newProduct.variants
+            });
+          }}
+        />
+      </div>
       <div className="inline-flex w-full">
         <input
           className="w-3/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
@@ -113,9 +128,7 @@ const index = props => {
             newCompanies[props.variantIndex].attributes.push({
               size: 0,
               price: 0,
-              stock: [
-                { amount: 0, rop: 0, noe: 0, sold: 0 }
-              ]
+              stock: [{ amount: 0, rop: 0, noe: 0, sold: 0 }]
             });
             props.togglePackInput(newCompanies);
           }}

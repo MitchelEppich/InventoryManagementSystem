@@ -95,7 +95,7 @@ const resolvers = {
       let $ = {
         ...input
       };
-
+      console.log($);
       if ($._id == null) return null;
 
       let attribute = await Attribute.findOneAndDelete({ _id: $._id });

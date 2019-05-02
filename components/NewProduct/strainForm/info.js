@@ -85,7 +85,7 @@ const index = props => {
             });
           }}
           name="origin"
-          value={props.newProduct.info.origin}
+          value={parseInt(props.newProduct.info.origin)}
           className="w-1/5 uppercase text-grey-light p-2 h-10 mx-1 my-2 pl-4  border-2 border-input-grey"
         >
           <option>Origin...</option>
@@ -271,7 +271,7 @@ const index = props => {
         <input
           className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="Sativa %"
-          value={props.newProduct.info.sativa || ""}
+          // value={props.newProduct.info.sativa * 100 || ""}
           type="number"
           step="0.1"
           name="sativa"
@@ -289,7 +289,7 @@ const index = props => {
         <input
           className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="Indica %"
-          value={props.newProduct.info.indica || ""}
+          // value={props.newProduct.info.indica || ""}
           type="number"
           step="0.1"
           name="indica"
@@ -307,7 +307,7 @@ const index = props => {
         <input
           className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="Ruderalis %"
-          value={props.newProduct.info.ruderalis || ""}
+          // value={props.newProduct.info.ruderalis || ""}
           type="number"
           step="0.1"
           name="ruderalis"
@@ -556,11 +556,11 @@ const index = props => {
           placeholder="effects (use commas to separate)"
           type="text"
           name="effect"
-          value={
-            props.newProduct.info.effect
-              ? props.newProduct.info.effect.join(",")
-              : ""
-          }
+          // value={
+          // props.newProduct.info.effect
+          //   ? props.newProduct.info.effect.join(",")
+          //   : ""
+          // }
           onChange={e => {
             let newEffect = e.target.value.split(",");
             props.updateNewProduct({

@@ -16,7 +16,9 @@ const actionTypes = {
   UPDATE_NEW_PRODUCT: "UPDATE_NEW_PRODUCT",
   SUBMIT_NEW_PRODUCT_FORM: "SUBMIT_NEW_PRODUCT_FORM",
   SUBMIT_EDIT_PRODUCT_FORM: "SUBMIT_EDIT_PRODUCT_FORM",
-  RESET_STORE: "RESET_STORE"
+  RESET_STORE: "RESET_STORE",
+  DELETE_COMPANY_VARIANT: "DELETE_COMPANY_VARIANT",
+  DELETE_PACK_VARIANT: "DELETE_PACK_VARIANT"
 };
 
 const getActions = uri => {
@@ -53,7 +55,7 @@ const getActions = uri => {
     togglePackInput: newCompanies => {
       return {
         type: actionTypes.TOGGLE_PACK_INPUT,
-        newCompanies: newCompanies
+        companies: newCompanies
       };
     },
     updateNewProduct: obj => {
@@ -109,11 +111,14 @@ const getActions = uri => {
 
         await makePromise(execute(link, operation))
           .then(data => {
-            // let returnData = data.data.createStrain;
             dispatch({
               type: actionTypes.SUBMIT_EDIT_PRODUCT_FORM
-              // newStrain: returnData
             });
+            // dispatch(
+            //   objects.updateInventory({
+            //     inventory: inventory
+            //   })
+            // );
           })
           .catch(error => console.log(error));
       };
@@ -155,6 +160,83 @@ const getActions = uri => {
             dispatch({
               type: actionTypes.SUBMIT_NEW_PRODUCT_FORM,
               newStrain: returnData
+            });
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    deleteCompanyVariant: obj => {
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: mutation.deleteVariant,
+          variables: { _id: obj._id }
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            let companies = obj.companies,
+              variants = obj.variants;
+            let deleted = data.data.deleteVariant._id === obj._id;
+            if (deleted) {
+              let index = companies.findIndex(company => {
+                return company._id === obj._id;
+              });
+              let variantIndex = variants.findIndex(variant => {
+                return variant == companies[index].company.name;
+              });
+              companies.splice(index, 1, {
+                company: companies[index].company,
+                alias: "",
+                sotiId: "",
+                sttId: 0,
+                summary: "",
+                description: [],
+                attributes: [
+                  {
+                    price: 0,
+                    size: 0,
+                    stock: [{ amount: 0, rop: 0, noe: 0 }]
+                  }
+                ]
+              });
+              variants.splice(variantIndex, 1);
+            }
+            dispatch({
+              type: actionTypes.DELETE_COMPANY_VARIANT,
+              deleted: deleted,
+              companies: companies,
+              variants: variants
+            });
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    deletePackVariant: obj => {
+      let companies = obj.companies;
+      if (!obj._id) {
+        companies[obj.variantIndex].attributes.splice(obj.packIndex, 1);
+        return {
+          type: actionTypes.TOGGLE_PACK_INPUT,
+          companies: companies
+        };
+      }
+
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: mutation.deleteAttribute,
+          variables: { _id: obj._id }
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            if (data.data.deleteAttribute._id) {
+              companies[obj.variantIndex].attributes.splice(obj.packIndex, 1);
+            }
+            dispatch({
+              type: actionTypes.DELETE_PACK_VARIANT,
+              companies: companies
             });
           })
           .catch(error => console.log(error));
@@ -386,6 +468,20 @@ const mutation = {
           noe
           sold
         }
+      }
+    }
+  `,
+  deleteVariant: gql`
+    mutation($_id: String) {
+      deleteVariant(input: { _id: $_id }) {
+        _id
+      }
+    }
+  `,
+  deleteAttribute: gql`
+    mutation($_id: String) {
+      deleteAttribute(input: { _id: $_id }) {
+        _id
       }
     }
   `

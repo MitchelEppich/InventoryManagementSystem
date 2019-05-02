@@ -9,7 +9,10 @@ const index = props => {
         e.preventDefault();
         Router.push("/");
         if (props.newProduct.editMode) {
-          props.editProduct(props.newProduct);
+          props.editProduct({
+            ...props.newProduct,
+            inventory: props.misc.inventory
+          });
         } else {
           props.createNewProduct(props.newProduct);
         }

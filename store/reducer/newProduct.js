@@ -60,7 +60,6 @@ let initialCompanies = [
     alias: "",
     sotiId: "",
     sttId: 0,
-    // _id: "",
     summary: "",
     description: [],
     attributes: [
@@ -166,7 +165,7 @@ export default (state = initialState, action) => {
     case actionTypes.TOGGLE_COMPANY_VARIANT:
       return updateObject(state, { variants: action.newVariants });
     case actionTypes.TOGGLE_PACK_INPUT:
-      return updateObject(state, { companies: action.newCompanies });
+      return updateObject(state, { companies: action.companies });
     case actionTypes.UPDATE_NEW_PRODUCT:
       return updateObject(state, {
         info: action.info != null ? action.info : state.info,
@@ -176,7 +175,8 @@ export default (state = initialState, action) => {
       return updateObject(state, {
         info: action.info,
         companies: action.companies,
-        editMode: action.editMode
+        editMode: action.editMode,
+        variants: action.variantButtons
       });
     case actionTypes.TOGGLE_EDIT_MODE:
       return updateObject(state, {
@@ -192,6 +192,16 @@ export default (state = initialState, action) => {
         distro: 0,
         variants: [],
         formType: null
+      });
+    case actionTypes.DELETE_COMPANY_VARIANT:
+      return updateObject(state, {
+        deletedVariant: action.deleted,
+        companies: action.companies,
+        variants: action.variants
+      });
+    case actionTypes.DELETE_PACK_VARIANT:
+      return updateObject(state, {
+        companies: action.companies
       });
     default:
       return state;

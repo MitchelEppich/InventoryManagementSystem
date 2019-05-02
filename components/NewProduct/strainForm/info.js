@@ -38,7 +38,7 @@ const index = props => {
   });
   return (
     <React.Fragment>
-      <p className="uppercase bg-teal w-full  p-2 my-2 text-center font-bold text-white text-xl">
+      <p className="uppercase bg-teal w-full rounded p-2 my-2 text-center font-bold text-white text-xl">
         General Information
       </p>
       <div className="flex w-full ">
@@ -564,11 +564,11 @@ const index = props => {
         />
       </div>
 
-      <p className="uppercase bg-teal w-full  p-2 my-2 text-center font-bold text-white text-xl">
+      <p className="uppercase bg-teal w-full rounded p-2 my-2 text-center font-bold text-white text-xl">
         Company Variants
       </p>
       <div className="flex flex-wrap justify-around w-full mb-4">
-        <p className="w-full my-4 text-xl font-bold uppercase">
+        <p className="w-full my-4 text-xl font-bold uppercase text-center mb-6">
           Please select all that apply:
         </p>
         {companyVariantButtons}

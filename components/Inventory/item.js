@@ -245,7 +245,7 @@ const item = props => {
       case "name":
         return null;
       case "company":
-        // val = companyCircles;
+        val = companyCircles;
         break;
       case "status":
         val =

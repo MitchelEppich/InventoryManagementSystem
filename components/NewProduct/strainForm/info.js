@@ -85,6 +85,7 @@ const index = props => {
             });
           }}
           name="origin"
+          value={props.newProduct.info.origin}
           className="w-1/5 uppercase text-grey-light p-2 h-10 mx-1 my-2 pl-4  border-2 border-input-grey"
         >
           <option>Origin...</option>
@@ -104,7 +105,7 @@ const index = props => {
           <input
             className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
             placeholder="LOW"
-            // value={props.newProduct.info.thc[0] || "THC%"}
+            value={props.newProduct.info.thc[0] || ""}
             type="number"
             step="0.01"
             name="thc"
@@ -130,7 +131,7 @@ const index = props => {
           <input
             className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
             placeholder="HIGH"
-            // value={props.newProduct.info.thc[1] || "THC%"}
+            value={props.newProduct.info.thc[1] || ""}
             type="number"
             step="0.01"
             name="thc"
@@ -159,7 +160,7 @@ const index = props => {
           <input
             className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
             placeholder="LOW"
-            // value={props.newProduct.info.cbd[0] || "CBD%"}
+            value={props.newProduct.info.cbd[0] || ""}
             type="number"
             step="0.01"
             name="cbd"
@@ -185,7 +186,7 @@ const index = props => {
           <input
             className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
             placeholder="HIGH"
-            // value={props.newProduct.info.cbd[1] || "CBD%"}
+            value={props.newProduct.info.cbd[1] || ""}
             type="number"
             step="0.01"
             name="cbd"
@@ -214,7 +215,7 @@ const index = props => {
           <input
             className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
             placeholder="LOW"
-            // value={props.newProduct.info.cbn[0] || "CBN%"}
+            value={props.newProduct.info.cbn[0] || ""}
             type="number"
             step="0.01"
             name="cbn"
@@ -240,7 +241,7 @@ const index = props => {
           <input
             className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
             placeholder="HIGH"
-            // value={props.newProduct.info.cbn[1] || "CBN%"}
+            value={props.newProduct.info.cbn[1] || ""}
             type="number"
             step="0.01"
             name="cbn"
@@ -270,10 +271,11 @@ const index = props => {
         <input
           className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="Sativa %"
-          // value={props.newProduct.info.sativa || "Sativa%"}
+          value={props.newProduct.info.sativa || ""}
           type="number"
           step="0.1"
           name="sativa"
+          min="0"
           onChange={e => {
             props.updateNewProduct({
               type: "info",
@@ -287,10 +289,11 @@ const index = props => {
         <input
           className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="Indica %"
-          // value={props.newProduct.info.indica || "Indica%"}
+          value={props.newProduct.info.indica || ""}
           type="number"
           step="0.1"
           name="indica"
+          min="0"
           onChange={e => {
             props.updateNewProduct({
               type: "info",
@@ -304,10 +307,11 @@ const index = props => {
         <input
           className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
           placeholder="Ruderalis %"
-          // value={props.newProduct.info.ruderalis || "Ruderalis%"}
+          value={props.newProduct.info.ruderalis || ""}
           type="number"
           step="0.1"
           name="ruderalis"
+          min="0"
           onChange={e => {
             props.updateNewProduct({
               type: "info",
@@ -392,7 +396,8 @@ const index = props => {
             placeholder="7"
             type="number"
             name="flowerTime"
-            value={props.newProduct.info.flowerTime[0] || "FT"}
+            min="0"
+            value={props.newProduct.info.flowerTime[0] || ""}
             onChange={e => {
               let newInfo = props.newProduct.info;
               newInfo.flowerTime.splice(0, 1, parseInt(e.target.value));
@@ -416,7 +421,8 @@ const index = props => {
             placeholder="10"
             type="number"
             name="flowerTime"
-            value={props.newProduct.info.flowerTime[1] || "FT"}
+            min="0"
+            value={props.newProduct.info.flowerTime[1] || ""}
             onChange={e => {
               let newInfo = props.newProduct.info;
               newInfo.flowerTime.splice(1, 1, parseInt(e.target.value));
@@ -443,7 +449,7 @@ const index = props => {
               placeholder="Yield (Indoor)"
               type="number"
               name="yieldInside"
-              value={props.newProduct.info.yield[0] || "Yield (Indoor)"}
+              value={props.newProduct.info.yield[0] || ""}
               onChange={e => {
                 props.updateNewProduct({
                   type: "info",
@@ -464,7 +470,7 @@ const index = props => {
               placeholder="Yield (Outdoor)"
               type="number"
               name="yieldOutside"
-              value={props.newProduct.info.yield[1] || "Yield (Outdoor)"}
+              value={props.newProduct.info.yield[1] || ""}
               onChange={e => {
                 props.updateNewProduct({
                   type: "info",
@@ -489,7 +495,6 @@ const index = props => {
           name="location"
           value={props.newProduct.info.location[0].section}
           onChange={e => {
-            //TODO:check if contents exists on focus/blur!!!
             let newLocation = props.newProduct.info.location;
             newLocation[0].section = e.target.value;
             props.updateNewProduct({
@@ -506,7 +511,8 @@ const index = props => {
           placeholder="Amount"
           type="number"
           name="stockAmount"
-          value={props.newProduct.info.stockAmount}
+          min="0"
+          value={props.newProduct.info.stock[0].amount}
           onChange={e => {
             let stock = props.newProduct.info.stock;
             let newStock = stock[props.newProduct.distro];
@@ -524,8 +530,9 @@ const index = props => {
         <input
           className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
           placeholder="ROP"
-          value={props.newProduct.info.stockROP}
+          value={props.newProduct.info.stock[0].rop}
           type="number"
+          min="0"
           name="stockROP"
           onChange={e => {
             let stock = props.newProduct.info.stock;
@@ -549,7 +556,11 @@ const index = props => {
           placeholder="effects (use commas to separate)"
           type="text"
           name="effect"
-          // value={props.newProduct.info.effect.join(",") || ""}
+          value={
+            props.newProduct.info.effect
+              ? props.newProduct.info.effect.join(",")
+              : ""
+          }
           onChange={e => {
             let newEffect = e.target.value.split(",");
             props.updateNewProduct({

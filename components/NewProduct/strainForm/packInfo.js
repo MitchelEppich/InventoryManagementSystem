@@ -12,6 +12,7 @@ const index = props => {
       <div className="inline-flex w-full flex items-center justify-between">
         <select
           name="size"
+          value={pack.size}
           onChange={e => {
             company.attributes[props.packIndex].size = parseInt(e.target.value);
             companies.splice(props.variantIndex, 1, company);
@@ -34,9 +35,10 @@ const index = props => {
         <input
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"
           placeholder="price"
-          value={pack.price || "Price"}
+          value={pack.price || ""}
           type="number"
           name="price"
+          min="0"
           onChange={e => {
             company.attributes[props.packIndex].price = parseFloat(
               e.target.value
@@ -51,9 +53,10 @@ const index = props => {
         <input
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"
           placeholder="amount"
-          value={pack.stock[distro].amount || "Amount"}
+          value={pack.stock[distro].amount || ""}
           type="number"
           name="amount"
+          min="0"
           onChange={e => {
             company.attributes[props.packIndex].stock[distro].amount = parseInt(
               e.target.value
@@ -68,9 +71,10 @@ const index = props => {
         <input
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"
           placeholder="ROP"
-          value={pack.stock[distro].rop || "ROP"}
+          value={pack.stock[distro].rop || ""}
           type="number"
           name="rop"
+          min="0"
           onChange={e => {
             company.attributes[props.packIndex].stock[distro].rop = parseInt(
               e.target.value
@@ -92,7 +96,10 @@ const index = props => {
           onClick={e => {
             e.preventDefault();
             let newCompanies = props.newProduct.companies;
-            newCompanies[props.variantIndex].packs.splice(props.packIndex, 1);
+            newCompanies[props.variantIndex].attributes.splice(
+              props.packIndex,
+              1
+            );
             props.togglePackInput(newCompanies);
           }}
         />

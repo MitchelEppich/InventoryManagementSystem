@@ -57,7 +57,7 @@ const actions = {
     let oldCompanies = props.newProduct.companies;
     for (let i = 0; i < companies.length; i++) {
       let index = oldCompanies.findIndex(company => {
-        return company.id == companies[i].company._id;
+        return company.company._id == companies[i].company._id;
       });
       if (index) oldCompanies.splice(index, 1, companies[i]);
     }

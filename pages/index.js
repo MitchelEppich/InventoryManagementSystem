@@ -23,6 +23,11 @@ class Index extends Component {
           <h2 className="text-3xl font-bold uppercase text-teal">Inventory</h2>
         </div>
         <Inventory {...this.props} />
+        <div className="w-main flex justify-end mt-4 uppercase">
+          <span className="p-2 px-8 bg-teal text-white text-sm">
+            Total of {this.props.misc.inventory.length} items on the inventory
+          </span>
+        </div>
       </Layout>
     );
   }

@@ -186,32 +186,32 @@ const item = props => {
           />
         </form>
       ) : (
-        <div className="w-full inline-flex flex justify-around">
-          <div className="h-full w-1/6 py-2 text-base capitalize text-grey text-left pl-3">
+        <div className="w-full inline-flex flex p-1 items-center">
+          <div className="w-1/5 py-2 text-base capitalize text-grey text-left pl-3">
             {props.alias.toLowerCase().replace("cannabis seeds", "")}
           </div>
-          <div className="h-full w-10 pt-4 text-sm uppercase text-grey text-center">
+          <div className="w-28 px-2 text-sm uppercase text-grey text-center">
             {CompanyCircle(props.company.name)}
           </div>
-          <div className="h-full w-10 pt-4 text-sm uppercase text-grey text-center">
+          <div className="w-28 px-2 text-sm uppercase text-grey text-center">
             {props.sotiId}
           </div>
-          <div className="h-full w-10 pt-4 text-sm text-grey text-center">
+          <div className="w-28 px-2 text-sm text-grey text-center">
             {props.sttId}
           </div>
-          <div className="h-full w-48 pt-4 text-sm capitalize text-grey text-center">
+          <div className="w-48 px-2 text-sm uppercase text-grey text-center">
             {props.name}
           </div>
-          <div className="h-full w-24 pt-4 text-sm uppercase text-grey text-center">
+          <div className="w-28 px-2 text-sm uppercase text-grey text-center">
             {props.breeder}
           </div>
-          <div className="h-full w-24 pt-4 text-sm uppercase text-grey text-center">
+          <div className="w-28 px-2 text-sm uppercase text-grey text-center">
             {props.location[0].section}
           </div>
-          <div className="h-full w-24 pt-4 text-sm uppercase text-grey text-center">
+          <div className="w-28 px-2 text-sm uppercase text-grey text-center">
             {props.stock[0].sold || 0}
           </div>
-          <div className="h-full w-48 pt-4 text-sm capitalize text-grey text-center">
+          <div className="w-48 px-2 text-sm uppercase text-grey text-center">
             {moment(props.releaseDate).format("LLL")}
           </div>
           {/* <div className="h-full w-1/6 pt-4 text-sm text-grey text-center">

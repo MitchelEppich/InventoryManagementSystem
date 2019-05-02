@@ -91,16 +91,20 @@ const index = props => {
   });
 
   return (
-    <div className="h-700 w-1/2 mx-auto flex flex-wrap justify-between content-center ">
+    <div className="h-700 w-4/5 mx-auto flex flex-wrap justify-between content-center ">
+      <div className="w-full mx-auto text-center py-4 mb-4 mt-12">
+        <h2 className="text-3xl font-bold uppercase text-teal">Logs</h2>
+      </div>
       <div
         onClick={() => props.setVisibleScreen("inventoryFilters")}
         className="h-8 w-32 mx-4 cursor-pointer text-crimson unselectable "
       >
-        <h4 className="h-full uppercase leading-loose">
+        {/* <h4 className="h-full uppercase leading-loose">
           Filter By
           <FontAwesomeIcon icon={faSlidersH} className="fa-lg ml-3" />
-        </h4>
+        </h4> */}
       </div>
+
       {props.misc.visibleScreen != null &&
       props.misc.visibleScreen.includes("inventoryFilters") ? (
         <InventoryFilters {...props} />
@@ -115,6 +119,7 @@ const index = props => {
           type="text"
         />
       </div>
+
       <div className="w-full pr-4 flex flex-wrap justify-between bg-teal rounded-t-lg">
         <div
           onClick={() => {
@@ -122,7 +127,7 @@ const index = props => {
           }}
           className="h-8 w-1/6 pt-2 hover:bg-teal-dark cursor-pointer text-xs text-white text-center rounded-tl-lg"
         >
-          No
+          #
         </div>
         {tHeadings}
       </div>

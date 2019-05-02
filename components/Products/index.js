@@ -11,9 +11,13 @@ const index = props => {
       bg = "bg-teal";
     let width;
     if (heading.toLowerCase() == "alias") {
-      width = "w-1/6";
+      width = "w-1/5";
+    } else if (heading.toLowerCase() == "strain") {
+      width = "w-48";
+    } else if (heading.toLowerCase() == "release date") {
+      width = "w-48";
     } else {
-      width = "w-24";
+      width = "w-28";
     }
     if (index == props.misc.pHeadings.length - 1) {
       lastCol = "";
@@ -29,7 +33,7 @@ const index = props => {
         }}
         className={
           width +
-          " p-2 border border-salmon border-r-0 border-t-0 border-b-0 " +
+          " p-2 " +
           bg +
           " hover:bg-teal-dark cursor-pointer text-sm text-white text-center uppercase"
         }
@@ -90,30 +94,32 @@ const index = props => {
 
   return (
     <div className="h-700 w-4/5 mx-auto flex flex-wrap justify-between content-center">
-      <div
-        onClick={() => props.setVisibleScreen("inventoryFilters")}
-        className="h-8 w-32 mx-4 cursor-pointer text-crimson unselectable "
-      >
-        <h4 className="h-full uppercase leading-loose">
-          Filter By
-          <FontAwesomeIcon icon={faSlidersH} className="fa-lg ml-3" />
-        </h4>
+      <div className="fixed flex justify-between bg-white shadow-md w-4/5 pt-1">
+        <div
+          onClick={() => props.setVisibleScreen("inventoryFilters")}
+          className="h-8 w-32 mx-4 cursor-pointer text-crimson unselectable "
+        >
+          <h4 className="h-full uppercase leading-loose">
+            Filter By
+            <FontAwesomeIcon icon={faSlidersH} className="fa-lg ml-3" />
+          </h4>
+        </div>
+        {props.misc.visibleScreen != null &&
+        props.misc.visibleScreen.includes("inventoryFilters") ? (
+          <InventoryFilters {...props} />
+        ) : null}
+        <div className="h-8 w-64 mx-4 mb-2 text-grey flex">
+          <h4 className="h-full w-1/3 uppercase leading-loose">Search:</h4>
+          <input
+            onChange={e => {
+              props.search(e.target.value);
+            }}
+            className="w-2/3"
+            type="text"
+          />
+        </div>
       </div>
-      {props.misc.visibleScreen != null &&
-      props.misc.visibleScreen.includes("inventoryFilters") ? (
-        <InventoryFilters {...props} />
-      ) : null}
-      <div className="h-8 w-64 mx-4 mb-2 text-grey flex">
-        <h4 className="h-full w-1/3 uppercase leading-loose">Search:</h4>
-        <input
-          onChange={e => {
-            props.search(e.target.value);
-          }}
-          className="w-2/3"
-          type="text"
-        />
-      </div>
-      <div className="w-full pr-4 flex overflow-hidden justify-between bg-teal rounded-t-lg rounded-tl-lg">
+      <div className="w-full pr-4 mt-2 pt-2 flex overflow-hidden justify-between bg-teal rounded-t-lg rounded-tl-lg">
         {/* <div
           onClick={() => {
             props.setOrderBy(null);

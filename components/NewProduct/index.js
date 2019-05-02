@@ -25,7 +25,7 @@ const index = props => {
       <div className="w-main mx-auto justify-center flex mt-4 p-2">
         <div
           onClick={() => props.toggleFormType("strain")}
-          className="border-2 w-150 rounded border-grey-lighter scale-items mx-2 text-center"
+          className={`border-2 w-150 border-grey-lighter rounded scale-items mx-2 text-center`}
         >
           <div className="p-4">
             <FontAwesomeIcon

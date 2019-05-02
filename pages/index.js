@@ -16,6 +16,7 @@ class Index extends Component {
   componentDidMount() {
     this.props.getAllInventory();
   }
+
   render() {
     return (
       <Layout router={this.props.router}>

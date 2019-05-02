@@ -19,7 +19,8 @@ const actionTypes = {
   RESET_STORE: "RESET_STORE",
   DELETE_COMPANY_VARIANT: "DELETE_COMPANY_VARIANT",
   DELETE_PACK_VARIANT: "DELETE_PACK_VARIANT",
-  DELETE_STRAIN: "DELETE_STRAIN"
+  DELETE_STRAIN: "DELETE_STRAIN",
+  UPDATE_INVENTORY: "UPDATE_INVENTORY"
 };
 
 const getActions = uri => {
@@ -78,8 +79,8 @@ const getActions = uri => {
         type: actionTypes.RESET_STORE
       };
     },
-    editProduct: data => {
-      let newCompanies = data.companies;
+    editProduct: input => {
+      let newCompanies = input.companies;
       newCompanies = newCompanies
         .map((company, index) => {
           let newCompany = {
@@ -97,12 +98,13 @@ const getActions = uri => {
         .filter(company => {
           return company.alias != "";
         });
-      let info = data.info;
+      let info = input.info;
       info.location[0].distributor = info.location[0].distributor._id;
       let product = {
         ...info,
         variants: newCompanies
       };
+
       return async dispatch => {
         const link = new HttpLink({ uri, fetch: fetch });
         const operation = {
@@ -112,16 +114,34 @@ const getActions = uri => {
 
         await makePromise(execute(link, operation))
           .then(data => {
+            let inventory = input.inventory;
+            let index = inventory.findIndex(item => {
+              return item._id == product._id;
+            });
+            if (index >= 0) {
+              inventory.splice(index, 1, {
+                ...info,
+                variants: input.companies.filter(company => {
+                  return company.alias != "";
+                })
+              });
+              dispatch(
+                objects.updateInventory({
+                  inventory: inventory
+                })
+              );
+            }
             dispatch({
               type: actionTypes.SUBMIT_EDIT_PRODUCT_FORM
             });
-            // dispatch(
-            //   objects.updateInventory({
-            //     inventory: inventory
-            //   })
-            // );
           })
           .catch(error => console.log(error));
+      };
+    },
+    updateInventory: input => {
+      return {
+        type: actionTypes.UPDATE_INVENTORY,
+        inventory: input.inventory
       };
     },
     createNewProduct: data => {

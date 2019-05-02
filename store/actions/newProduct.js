@@ -20,7 +20,8 @@ const actionTypes = {
   DELETE_COMPANY_VARIANT: "DELETE_COMPANY_VARIANT",
   DELETE_PACK_VARIANT: "DELETE_PACK_VARIANT",
   DELETE_STRAIN: "DELETE_STRAIN",
-  UPDATE_INVENTORY: "UPDATE_INVENTORY"
+  UPDATE_INVENTORY: "UPDATE_INVENTORY",
+  DUPLICATE_STRAIN: "DUPLICATE_STRAIN"
 };
 
 const getActions = uri => {
@@ -165,6 +166,7 @@ const getActions = uri => {
 
       let newProduct = {
         ...data.info,
+        type: type,
         variants: newVariants
       };
 
@@ -185,6 +187,43 @@ const getActions = uri => {
           })
           .catch(error => console.log(error));
       };
+    },
+    duplicateStrain: data => {
+      // let strain = data.strain;
+      // strain._id = null;
+      // strain.location[0].distributor = strain.location[0].distributor._id;
+      // strain.stock = [];
+      // let newVariants = strain.variants
+      //   .map((company, index) => {
+      //     let newCompany = company;
+      //     newCompany.company = newCompany.company.name;
+      //     return newCompany;
+      //   })
+      //   .filter(company => {
+      //     return data.variants.includes(company.company);
+      //   });
+      // let newProduct = {
+      //   ...strain,
+      //   variants: [],
+      //   location: []
+      // };
+      // console.log(newProduct);
+      // return async dispatch => {
+      //   const link = new HttpLink({ uri, fetch: fetch });
+      //   const operation = {
+      //     query: mutation.createProduct,
+      //     variables: { ...newProduct }
+      //   };
+      //   await makePromise(execute(link, operation))
+      //     .then(data => {
+      //       let returnData = data;
+      //       console.log(returnData);
+      //       dispatch({
+      //         type: actionTypes.DUPLICATE_STRAIN
+      //       });
+      //     })
+      //     .catch(error => console.log(error));
+      // };
     },
     deleteCompanyVariant: obj => {
       return async dispatch => {

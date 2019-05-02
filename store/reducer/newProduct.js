@@ -205,6 +205,8 @@ export default (state = initialState, action) => {
       });
     case actionTypes.DELETE_STRAIN:
       return updateObject(state, {});
+    case actionTypes.DUPLICATE_STRAINs:
+      return updateObject(state, {});
     default:
       return state;
   }

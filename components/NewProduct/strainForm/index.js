@@ -33,18 +33,38 @@ const index = props => {
           />
         </div>
         {props.newProduct.editMode ? (
-          <div className="w-1/2 mx-4">
-            <input
-              className="rounded-lg bg-grey-light p-3 mt-8 border-white hover:bg-red-dark w-full uppercase pl-4 text-xl text-white cursor-pointer"
-              value="Delete"
-              onClick={e => {
-                e.preventDefault();
-                props.deleteStrain({ _id: props.newProduct.info._id });
-                Router.push("/");
-              }}
-              type="button"
-            />
-          </div>
+          <React.Fragment>
+            <div className="w-1/2 mx-4">
+              <input
+                className="rounded-lg bg-grey-light p-3 mt-8 border-white hover:bg-red-dark w-full uppercase pl-4 text-xl text-white cursor-pointer"
+                value="Delete"
+                onClick={e => {
+                  e.preventDefault();
+                  props.deleteStrain({ _id: props.newProduct.info._id });
+                  Router.push("/");
+                }}
+                type="button"
+              />
+            </div>
+            <div className="w-1/2 mx-4">
+              <input
+                className="rounded-lg bg-grey-light p-3 mt-8 border-white hover:bg-blue-dark w-full uppercase pl-4 text-xl text-white cursor-pointer"
+                value="Duplicate"
+                onClick={e => {
+                  e.preventDefault();
+                  // let strain = props.misc.inventory.find(item => {
+                  //   return item._id == props.newProduct.info._id;
+                  // });
+                  // props.duplicateStrain({
+                  //   strain: strain,
+                  //   variants: props.newProduct.variants
+                  // });
+                  // Router.push("/");
+                }}
+                type="button"
+              />
+            </div>
+          </React.Fragment>
         ) : null}
       </div>
     </form>

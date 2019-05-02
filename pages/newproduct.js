@@ -59,7 +59,8 @@ const mapDispatchToProps = dispatch => {
     deleteCompanyVariant: input =>
       dispatch(actions.deleteCompanyVariant(input)),
     deletePackVariant: input => dispatch(actions.deletePackVariant(input)),
-    deleteStrain: input => dispatch(actions.deleteStrain(input))
+    deleteStrain: input => dispatch(actions.deleteStrain(input)),
+    duplicateStrain: strain => dispatch(actions.duplicateStrain(strain))
   };
 };
 

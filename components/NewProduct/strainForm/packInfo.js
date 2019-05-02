@@ -6,7 +6,7 @@ const index = props => {
 
   return (
     <div className="w-full">
-      <p className="uppercase bg-grey-light w-full  p-2 mt-3 mb-2 text-center font-bold text-white text-xl">
+      <p className="uppercase bg-grey-lighter w-full p-2 mt-3 mb-2 text-center text-grey text-lg rounded">
         Pack Variant {props.packIndex + 1 + "/" + company.attributes.length}
       </p>
       <div className="inline-flex w-full flex items-center justify-between">

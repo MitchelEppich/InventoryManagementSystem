@@ -16,7 +16,12 @@ const resolvers = {
   },
   Query: {
     attribute: (_, { input }) => {
-      return Attribute.find(input);
+      let $ = { ...input };
+      let { limit, skip, cursor } = $;
+      ["limit", "skip", "cursor"].map(_ => delete $[_]);
+      return Attribute.find($)
+        .limit(limit)
+        .skip(skip || cursor);
     },
     allAttributes: _ => {
       return Attribute.find({});

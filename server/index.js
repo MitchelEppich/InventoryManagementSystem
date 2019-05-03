@@ -66,14 +66,19 @@ app
         };
       })
     );
-    server.use(
-      "/graphiql",
-      graphiqlExpress({
-        endpointURL: "/graphql",
-        subscriptionsEndpoint: subscriptionsEndpoint
-      })
-    );
+    if (process.env.NODE_ENV === "development") {
+      server.use(
+        "/graphiql",
+        graphiqlExpress({
+          endpointURL: "/graphql",
+          subscriptionsEndpoint: subscriptionsEndpoint
+        })
+      );
+    }
 
+    server.get("/graphql", (req, res) => {
+      return handle(req, res);
+    });
     server.get("*", (req, res) => {
       return handle(req, res);
     });

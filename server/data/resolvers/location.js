@@ -16,7 +16,12 @@ const resolvers = {
   },
   Query: {
     location: (_, { input }) => {
-      return Location.find(input);
+      let $ = { ...input };
+      let { limit, skip, cursor } = $;
+      ["limit", "skip", "cursor"].map(_ => delete $[_]);
+      return Location.find($)
+        .limit(limit)
+        .skip(skip || cursor);
     },
     allLocations: _ => {
       return Location.find({});

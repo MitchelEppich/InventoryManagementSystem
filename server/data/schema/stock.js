@@ -1,5 +1,5 @@
 let Query = `
-    stock(input: StockInput!): Stock
+    stock(input: StockInput!): [Stock]
     allStocks: [Stock]!
 `;
 
@@ -21,6 +21,10 @@ let Type = `
         sold: Int
         distributor: String
         updatedAt: String
+
+        limit: Int
+        skip: Int
+        cursor: Int
     }
 `;
 
@@ -32,6 +36,8 @@ let Input = `
         rop: Int
         noe: Int
         sold: Int
+        amountSold: Int
+        amountAdd: Int
         distributor: String
         updatedAt: String
     }

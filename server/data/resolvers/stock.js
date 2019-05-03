@@ -9,8 +9,13 @@ const mongoose = require("mongoose");
 const resolvers = {
   Stock: {},
   Query: {
-    stock: (_, { input }) => {
-      return Stock.find(input);
+    stock: async (_, { input }) => {
+      let $ = { ...input };
+      let { limit, skip, cursor } = $;
+      ["limit", "skip", "cursor"].map(_ => delete $[_]);
+      return Stock.find($)
+        .limit(limit)
+        .skip(skip || cursor);
     },
     allStocks: _ => {
       return Stock.find({});
@@ -20,7 +25,6 @@ const resolvers = {
     createStock: async (_, { input }) => {
       let $ = { ...input };
 
-      let parent = null;
       if ($._id != null) {
         switch ($.type) {
           case "strain":
@@ -40,10 +44,6 @@ const resolvers = {
         ...$
       });
 
-      // if (parent ! = null) {
-      //   parent.stock = [...parent.stock, stock._id]
-      // }
-
       await stock.save();
 
       return stock.toObject();
@@ -53,13 +53,16 @@ const resolvers = {
 
       if ($._id == null) $._id = new mongoose.mongo.ObjectID();
 
-      let stock = await Stock.findOneAndUpdate(
-        { _id: $._id },
-        {
-          $set: { ...$ }
-        },
-        { new: true, upsert: true }
-      );
+      let options;
+      if ($.amountSold == null)
+        options = { $set: { amount: $.amount, rop: $.rop, noe: $.noe } };
+      else options = { $inc: { sold: $.amountSold, amount: -$.amountSold } };
+      let stock = await Stock.findOneAndUpdate({ _id: $._id }, options, {
+        new: true,
+        upsert: true
+      });
+
+      console.log(stock);
 
       return stock;
     },

@@ -32,7 +32,11 @@ const resolvers = {
   },
   Query: {
     strain: (_, { input }) => {
-      return Strain.find(input);
+      let { limit, skip, cursor } = input;
+      ["limit", "skip", "cursor"].map(_ => delete input[_]);
+      return Strain.find(input)
+        .limit(limit)
+        .skip(skip || cursor);
     },
     allStrains: (_, { filter }) => {
       let query = filter ? { $or: strainFilters(filter) } : {};

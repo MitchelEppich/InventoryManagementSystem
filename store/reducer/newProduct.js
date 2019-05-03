@@ -33,7 +33,7 @@ let initialInfo = {
     }
   ]
 };
-let initialCompanies = [
+let initialVariants = [
   {
     company: {
       _id: "5cc1f75d0955774cbc422e8e",
@@ -146,8 +146,8 @@ let initialCompanies = [
 
 const initialState = {
   info: initialInfo,
-  variants: [],
-  companies: initialCompanies,
+  companies: [],
+  variants: initialVariants,
   distro: 0,
   editMode: false,
   formType: null
@@ -163,13 +163,13 @@ export default (state = initialState, action) => {
     case actionTypes.TOGGLE_ENV_INPUTS:
       return updateObject(state, { envType: action.envType });
     case actionTypes.TOGGLE_COMPANY_VARIANT:
-      return updateObject(state, { variants: action.newVariants });
+      return updateObject(state, { companies: action.newCompanies });
     case actionTypes.TOGGLE_PACK_INPUT:
-      return updateObject(state, { companies: action.companies });
+      return updateObject(state, { variants: action.variants });
     case actionTypes.UPDATE_NEW_PRODUCT:
       return updateObject(state, {
         info: action.info != null ? action.info : state.info,
-        companies: action.companies != null ? action.companies : state.companies
+        variants: action.variants != null ? action.variants : state.variants
       });
     case actionTypes.TOGGLE_EDIT:
       return updateObject(state, {
@@ -183,14 +183,14 @@ export default (state = initialState, action) => {
         editMode: action.editMode
       });
     case actionTypes.SUBMIT_EDIT_PRODUCT_FORM:
-      return updateObject(state, { companies: initialCompanies });
+      return updateObject(state, { variants: initialVariants });
     case actionTypes.RESET_STORE:
       return updateObject(state, {
-        companies: initialCompanies,
+        variants: initialVariants,
         info: initialInfo,
         editMode: false,
         distro: 0,
-        variants: [],
+        companies: [],
         formType: null
       });
     case actionTypes.DELETE_COMPANY_VARIANT:
@@ -201,7 +201,7 @@ export default (state = initialState, action) => {
       });
     case actionTypes.DELETE_PACK_VARIANT:
       return updateObject(state, {
-        companies: action.companies
+        variants: action.variants
       });
     case actionTypes.DELETE_STRAIN:
       return updateObject(state, {});

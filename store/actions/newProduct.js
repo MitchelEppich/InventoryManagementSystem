@@ -39,12 +39,12 @@ const getActions = uri => {
         envType: envType
       };
     },
-    toggleCompanyVariant: newVariantsObj => {
-      let newVariant = newVariantsObj.company,
-        oldVariants = newVariantsObj.variants,
+    toggleCompanyVariant: newCompaniesObj => {
+      let newCompanyName = newCompaniesObj.companyName,
+        oldCompanies = newCompaniesObj.companies,
         removed = false;
-      let newVariants = oldVariants.filter(variant => {
-        if (variant == newVariant) {
+      let newCompanies = oldCompanies.filter(oldCompany => {
+        if (oldCompany == newCompanyName) {
           removed = true;
           return false;
         }
@@ -52,13 +52,13 @@ const getActions = uri => {
       });
       return {
         type: actionTypes.TOGGLE_COMPANY_VARIANT,
-        newVariants: removed ? newVariants : [...newVariants, newVariant]
+        newCompanies: removed ? newCompanies : [...newCompanies, newCompanyName]
       };
     },
-    togglePackInput: newCompanies => {
+    togglePackInput: newVariants => {
       return {
         type: actionTypes.TOGGLE_PACK_INPUT,
-        companies: newCompanies
+        variants: newVariants
       };
     },
     updateNewProduct: obj => {
@@ -68,10 +68,10 @@ const getActions = uri => {
             type: actionTypes.UPDATE_NEW_PRODUCT,
             info: obj.info
           };
-        case "companies":
+        case "variants":
           return {
             type: actionTypes.UPDATE_NEW_PRODUCT,
-            companies: obj.companies
+            variants: obj.variants
           };
       }
     },
@@ -152,16 +152,16 @@ const getActions = uri => {
       type = data.info.indice < 60 ? 2 : type;
 
       //company variants
-      let newVariants = data.companies
-        .map((company, index) => {
-          let newCompany = company;
+      let newVariants = data.variants
+        .map((variant, index) => {
+          let newVariant = variant;
           return {
-            ...newCompany,
+            ...newVariant,
             releaseDate: "2018-06-01T07:00:00.000Z"
           };
         })
-        .filter(company => {
-          return data.variants.includes(company.name);
+        .filter(variant => {
+          return data.companies.includes(variant.name);
         });
 
       let newProduct = {
@@ -273,12 +273,12 @@ const getActions = uri => {
       };
     },
     deletePackVariant: obj => {
-      let companies = obj.companies;
+      let variants = obj.variants;
       if (!obj._id) {
-        companies[obj.variantIndex].attributes.splice(obj.packIndex, 1);
+        variants[obj.variantIndex].attributes.splice(obj.packIndex, 1);
         return {
           type: actionTypes.TOGGLE_PACK_INPUT,
-          companies: companies
+          variants: variants
         };
       }
 
@@ -292,11 +292,11 @@ const getActions = uri => {
         await makePromise(execute(link, operation))
           .then(data => {
             if (data.data.deleteAttribute._id) {
-              companies[obj.variantIndex].attributes.splice(obj.packIndex, 1);
+              variants[obj.variantIndex].attributes.splice(obj.packIndex, 1);
             }
             dispatch({
               type: actionTypes.DELETE_PACK_VARIANT,
-              companies: companies
+              variants: variants
             });
           })
           .catch(error => console.log(error));

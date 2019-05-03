@@ -1,40 +1,47 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-
+import { genKey } from "../../scripts";
 import Variant from "./variant";
 
 const index = props => {
   let distro = props.newProduct.distro,
     env = props.newProduct.info.environment;
-  let companyVariantButtons = props.newProduct.companies.map(
-    (company, index) => {
+  let companyVariantButtons = props.newProduct.variants.map(
+    (variant, index) => {
       return (
         <div
           onClick={() => {
             props.toggleCompanyVariant({
-              company: company.company.name,
-              variants: props.newProduct.variants
+              companyName: variant.company.name,
+              companies: props.newProduct.companies
             });
           }}
-          key={index}
+          key={genKey()}
           className={`${
-            props.newProduct.variants.includes(company.company.name)
+            props.newProduct.companies.includes(variant.company.name)
               ? "logo--" +
-                company.company.name.replace(/ /g, "").toLowerCase() +
+                variant.company.name.replace(/ /g, "").toLowerCase() +
                 ""
               : "logo--" +
-                company.company.name.replace(/ /g, "").toLowerCase() +
+                variant.company.name.replace(/ /g, "").toLowerCase() +
                 "--greyed"
           } h-150 w-150 rounded cursor-pointer`}
         />
       );
     }
   );
-  let variants = props.newProduct.variants.map((variant, index) => {
-    let i = props.newProduct.companies.findIndex((company, index) => {
-      return company.company.name == variant;
+  let variants = props.newProduct.companies.map((companyName, index) => {
+    let i = props.newProduct.variants.findIndex((variant, index) => {
+      return variant.company.name == companyName;
     });
-    return <Variant key={i} variant={variant} variantIndex={i} {...props} />;
+    return (
+      <Variant
+        key={genKey()}
+        companyName={companyName}
+        variantIndex={i}
+        {...props}
+      />
+    );
   });
   return (
     <React.Fragment>

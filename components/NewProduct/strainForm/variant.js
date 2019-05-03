@@ -4,9 +4,9 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import PackInfo from "./packInfo";
 
 const index = props => {
-  let companies = props.newProduct.companies;
-  let company = companies[props.variantIndex];
-  let attributes = company.attributes.map((pack, index) => {
+  let variants = props.newProduct.variants;
+  let variant = variants[props.variantIndex];
+  let attributes = variant.attributes.map((pack, index) => {
     return (
       <PackInfo
         key={index}
@@ -22,7 +22,7 @@ const index = props => {
   return (
     <div className="w-full shadow-md overflow-hidden rounded mt-3 mb-2">
       <p className="uppercase bg-teal w-full p-2 text-center font-bold text-white text-xl">
-        {props.variant}
+        {props.companyName}
       </p>
       <div className="p-4">
         <div className="w-full flex justify-end my-2 ">
@@ -33,9 +33,9 @@ const index = props => {
             onClick={e => {
               e.preventDefault();
               props.deleteCompanyVariant({
-                _id: companies[props.variantIndex]._id,
-                companies: companies,
-                variants: props.newProduct.variants
+                _id: variants[props.variantIndex]._id,
+                variants: variants,
+                companies: props.newProduct.companies
               });
             }}
           />
@@ -44,45 +44,45 @@ const index = props => {
           <input
             className="w-3/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
             placeholder="Alias (E.G. 'Super Silver Haze') "
-            value={company.alias}
+            value={variant.alias}
             type="text"
             name="alias"
             onChange={e => {
-              company.alias = e.target.value;
-              companies.splice(props.variantIndex, 1, company);
+              variant.alias = e.target.value;
+              variants.splice(props.variantIndex, 1, variant);
               props.updateNewProduct({
-                type: "companies",
-                companies: companies
+                type: "variants",
+                variants: variants
               });
             }}
           />
           <input
             className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
             placeholder="SOTI ID"
-            value={company.sotiId}
+            value={variant.sotiId}
             type="text"
             name="sotiId"
             onChange={e => {
-              company.sotiId = e.target.value;
-              companies.splice(props.variantIndex, 1, company);
+              variant.sotiId = e.target.value;
+              variants.splice(props.variantIndex, 1, variant);
               props.updateNewProduct({
-                type: "companies",
-                companies: companies
+                type: "variants",
+                variants: variants
               });
             }}
           />
           <input
             className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-0 text-grey"
             placeholder="STT ID"
-            value={company.sttId || ""}
+            value={variant.sttId || ""}
             name="sttId"
             type="text"
             onChange={e => {
-              company.sttId = e.target.value;
-              companies.splice(props.variantIndex, 1, company);
+              variant.sttId = e.target.value;
+              variants.splice(props.variantIndex, 1, variant);
               props.updateNewProduct({
-                type: "companies",
-                companies: companies
+                type: "variants",
+                variants: variants
               });
             }}
           />
@@ -94,13 +94,13 @@ const index = props => {
           className="w-full h-32 uppercase pl-4 py-3  my-2 text-grey border-input-grey border-2 rounded-lg overflow-y-hidden"
           placeholder="Summary"
           name="summary"
-          value={company.summary}
+          value={variant.summary}
           onChange={e => {
-            company.summary = e.target.value;
-            companies.splice(props.variantIndex, 1, company);
+            variant.summary = e.target.value;
+            variants.splice(props.variantIndex, 1, variant);
             props.updateNewProduct({
-              type: "companies",
-              companies: companies
+              type: "variants",
+              variants: variants
             });
           }}
         />
@@ -110,13 +110,13 @@ const index = props => {
           className="w-full h-32 uppercase pl-4 py-3  my-2 text-grey border-input-grey border-2 rounded-lg overflow-y-hidden"
           placeholder="description (separate paragraphs *)"
           name="description"
-          value={company.description.join("\n")}
+          value={variant.description.join("\n")}
           onChange={e => {
-            company.description = e.target.value.split("\n");
-            companies.splice(props.variantIndex, 1, company);
+            variant.description = e.target.value.split("\n");
+            variants.splice(props.variantIndex, 1, variant);
             props.updateNewProduct({
-              type: "companies",
-              companies: companies
+              type: "variants",
+              variants: variants
             });
           }}
         />
@@ -125,13 +125,13 @@ const index = props => {
           <div
             onClick={e => {
               e.preventDefault();
-              let newCompanies = props.newProduct.companies;
-              newCompanies[props.variantIndex].attributes.push({
+              let newVariants = props.newProduct.variants;
+              newVariants[props.variantIndex].attributes.push({
                 size: 0,
                 price: 0,
                 stock: [{ amount: 0, rop: 0, noe: 0, sold: 0 }]
               });
-              props.togglePackInput(newCompanies);
+              props.togglePackInput(newVariants);
             }}
             className="inline-flex items-center flex bg-grey-lighter px-6 justify-end text-right cursor-pointer scale-items mr-1"
           >

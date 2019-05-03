@@ -2,7 +2,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 
-import Item from "./item";
+import ItemRow from "./ItemRow";
 import InventoryFilters from "./inventoryFilters";
 
 const index = props => {
@@ -65,7 +65,7 @@ const index = props => {
           .includes(props.misc.searchValue.toLowerCase())
       ) {
         return (
-          <Item
+          <ItemRow
             key={index}
             productView={false}
             {...props}
@@ -78,7 +78,7 @@ const index = props => {
       }
     } else {
       return (
-        <Item
+        <ItemRow
           key={index}
           productView={false}
           {...props}

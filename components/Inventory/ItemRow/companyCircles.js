@@ -1,7 +1,8 @@
 import { genKey } from "../../scripts";
 
 const index = props => {
-  let companyCircles = props.item.variants.map((val, index) => {
+  let companyNames = props.companyNames;
+  let companyCircles = companyNames.map((val, index) => {
     let color = "",
       accronym;
     [

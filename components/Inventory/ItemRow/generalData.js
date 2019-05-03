@@ -9,7 +9,7 @@ const index = props => {
       case "name":
         return null;
       case "company":
-        val = <CompanyCircles {...props} />;
+        val = <CompanyCircles companyNames={props.item.variants} {...props} />;
         break;
       case "status":
         val =

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-import { genKey } from "../../scripts";
-import PackInfo from "./packInfo";
+import { genKey } from "../../../scripts";
+import PackInfo from "../packInfo";
 
 const index = props => {
   let variants = props.newProduct.variants;
@@ -15,6 +15,43 @@ const index = props => {
         pack={pack}
         packIndex={index}
         {...props}
+      />
+    );
+  });
+
+  let inputFields = [
+    {
+      value: "alias",
+      placeholder: "Alias (E.G. 'Super Silver Haze') ",
+      classes: "w-3/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
+    },
+    {
+      value: "sotiId",
+      placeholder: "SOTI ID",
+      classes: "w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
+    },
+    {
+      value: "sttId" || "",
+      placeholder: "STT ID",
+      classes: "w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-0 text-grey"
+    }
+  ].map((input, index) => {
+    return (
+      <input
+        key={input.value + input.placeholder}
+        className={input.classes}
+        placeholder={input.placeholder}
+        value={variant[input.value]}
+        type="text"
+        name={input.placeholder}
+        onChange={e => {
+          variant[input.value] = e.target.value;
+          variants.splice(props.variantIndex, 1, variant);
+          props.updateNewProduct({
+            type: "variants",
+            variants: variants
+          });
+        }}
       />
     );
   });
@@ -41,51 +78,8 @@ const index = props => {
           />
         </div>
         <div className="inline-flex w-full">
-          <input
-            className="w-3/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
-            placeholder="Alias (E.G. 'Super Silver Haze') "
-            value={variant.alias}
-            type="text"
-            name="alias"
-            onChange={e => {
-              variant.alias = e.target.value;
-              variants.splice(props.variantIndex, 1, variant);
-              props.updateNewProduct({
-                type: "variants",
-                variants: variants
-              });
-            }}
-          />
-          <input
-            className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
-            placeholder="SOTI ID"
-            value={variant.sotiId}
-            type="text"
-            name="sotiId"
-            onChange={e => {
-              variant.sotiId = e.target.value;
-              variants.splice(props.variantIndex, 1, variant);
-              props.updateNewProduct({
-                type: "variants",
-                variants: variants
-              });
-            }}
-          />
-          <input
-            className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-0 text-grey"
-            placeholder="STT ID"
-            value={variant.sttId || ""}
-            name="sttId"
-            type="text"
-            onChange={e => {
-              variant.sttId = e.target.value;
-              variants.splice(props.variantIndex, 1, variant);
-              props.updateNewProduct({
-                type: "variants",
-                variants: variants
-              });
-            }}
-          />
+          {inputFields}
+        
         </div>
 
         <textarea

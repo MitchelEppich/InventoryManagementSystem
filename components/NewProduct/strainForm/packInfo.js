@@ -26,23 +26,25 @@ const index = props => {
           className="w-1/5 uppercase p-2 pb-2 h-10 mx-2 pl-2 text-grey-light border-2 border-input-grey"
         >
           <option>Select a Size...</option>
-          <option value="3">3 Packs</option>
-          <option value="5">5 Packs</option>
-          <option value="7">7 Packs</option>
-          <option value="10">10 Packs</option>
-          <option value="15">15 Packs</option>
-          <option value="20">20 Packs</option>
-          <option value="25">25 Packs</option>
-          <option value="30">30 Packs</option>
-          <option value="35">35 Packs</option>
-          <option value="40">40 Packs</option>
-          <option value="50">50 Packs</option>
-          <option value="100">100 Packs</option>
-          <option value="200">200 Packs</option>
-          <option value="500">500 Packs</option>
+          {[
+            "3",
+            "5",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "50",
+            "100",
+            "200",
+            "500"
+          ].map(value => {
+            return <option value={value}>{value} Pack</option>;
+          })}
         </select>
         <input
-         
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"
           placeholder="price"
           value={pack.price || ""}
@@ -61,7 +63,6 @@ const index = props => {
           }}
         />
         <input
-         
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"
           placeholder="amount"
           value={pack.stock[distro].amount || ""}
@@ -80,7 +81,6 @@ const index = props => {
           }}
         />
         <input
-         
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"
           placeholder="ROP"
           value={pack.stock[distro].rop || ""}

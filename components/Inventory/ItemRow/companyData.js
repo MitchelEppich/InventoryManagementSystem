@@ -140,8 +140,6 @@ const index = props => {
                     {status}
                   </div>
                 );
-
-                status;
               });
               return (
                 <div key={genKey()} className="w-32">

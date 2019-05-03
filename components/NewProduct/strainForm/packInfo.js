@@ -1,3 +1,5 @@
+import { genKey } from "../../scripts";
+
 const index = props => {
   let variants = props.newProduct.variants;
   let variant = variants[props.variantIndex];
@@ -40,6 +42,7 @@ const index = props => {
           <option value="500">500 Packs</option>
         </select>
         <input
+         
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"
           placeholder="price"
           value={pack.price || ""}
@@ -58,6 +61,7 @@ const index = props => {
           }}
         />
         <input
+         
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"
           placeholder="amount"
           value={pack.stock[distro].amount || ""}
@@ -76,6 +80,7 @@ const index = props => {
           }}
         />
         <input
+         
           className="w-1/5 p-2 uppercase pl-4 m-2 text-grey"
           placeholder="ROP"
           value={pack.stock[distro].rop || ""}

@@ -53,16 +53,16 @@ const actions = {
   },
   toggleEdit: props => {
     let item = props.item;
-    let companies = item.variants;
-    let variantButtons = [];
-    let oldCompanies = props.newProduct.companies;
-    for (let i = 0; i < companies.length; i++) {
-      let index = oldCompanies.findIndex(company => {
-        return company.company._id == companies[i].company._id;
+    let itemVariants = item.variants;
+    let companyButtons = [];
+    let oldVariants = props.newProduct.variants;
+    for (let i = 0; i < itemVariants.length; i++) {
+      let index = oldVariants.findIndex(variant => {
+        return variant.company._id == itemVariants[i].company._id;
       });
       if (index >= 0) {
-        oldCompanies.splice(index, 1, companies[i]);
-        variantButtons.push(companies[i].company.name);
+        oldVariants.splice(index, 1, itemVariants[i]);
+        companyButtons.push(itemVariants[i].company.name);
       }
     }
     let info = { ...item };
@@ -70,8 +70,8 @@ const actions = {
       type: actionTypes.TOGGLE_EDIT,
       editMode: true,
       info: info,
-      companies: oldCompanies,
-      variantButtons: variantButtons
+      variants: oldVariants,
+      companyButtons: companyButtons
     };
   },
   handleInventoryEdit: (key, value) => {

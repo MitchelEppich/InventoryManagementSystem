@@ -10,13 +10,13 @@ const index = props => {
     (variant, index) => {
       return (
         <div
+          key={variant + index}
           onClick={() => {
             props.toggleCompanyVariant({
               companyName: variant.company.name,
               companies: props.newProduct.companies
             });
           }}
-          key={genKey()}
           className={`${
             props.newProduct.companies.includes(variant.company.name)
               ? "logo--" +
@@ -36,7 +36,7 @@ const index = props => {
     });
     return (
       <Variant
-        key={genKey()}
+        key={index}
         companyName={companyName}
         variantIndex={i}
         {...props}

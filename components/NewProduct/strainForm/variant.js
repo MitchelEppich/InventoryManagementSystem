@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
-
+import { genKey } from "../../scripts";
 import PackInfo from "./packInfo";
 
 const index = props => {
@@ -9,7 +9,7 @@ const index = props => {
   let attributes = variant.attributes.map((pack, index) => {
     return (
       <PackInfo
-        key={index}
+        key={index + 100}
         id={index}
         varientIndex={props.variantIndex}
         pack={pack}

@@ -81,29 +81,29 @@ const getActions = uri => {
       };
     },
     editProduct: input => {
-      let newCompanies = input.companies;
-      newCompanies = newCompanies
-        .map((company, index) => {
-          let newCompany = {
-            alias: company.alias,
-            sotiId: company.sotiId,
-            sttId: company.sttId,
-            summary: company.summary,
-            description: company.description,
-            attributes: company.attributes,
-            name: company.company.name,
-            _id: company._id ? company._id : null
+      let newVariants = input.variants;
+      newVariants = newVariants
+        .map((variant, index) => {
+          let newVariant = {
+            alias: variant.alias,
+            sotiId: variant.sotiId,
+            sttId: variant.sttId,
+            summary: variant.summary,
+            description: variant.description,
+            attributes: variant.attributes,
+            name: variant.company.name,
+            _id: variant._id ? variant._id : null
           };
-          return newCompany;
+          return newVariant;
         })
-        .filter(company => {
-          return company.alias != "";
+        .filter(variant => {
+          return variant.alias != "";
         });
       let info = input.info;
       info.location[0].distributor = info.location[0].distributor._id;
       let product = {
         ...info,
-        variants: newCompanies
+        variants: newVariants
       };
 
       return async dispatch => {
@@ -122,8 +122,8 @@ const getActions = uri => {
             if (index >= 0) {
               inventory.splice(index, 1, {
                 ...info,
-                variants: input.companies.filter(company => {
-                  return company.alias != "";
+                variants: input.variants.filter(variant => {
+                  return variant.alias != "";
                 })
               });
               dispatch(

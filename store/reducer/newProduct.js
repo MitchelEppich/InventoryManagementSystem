@@ -168,15 +168,15 @@ export default (state = initialState, action) => {
       return updateObject(state, { variants: action.variants });
     case actionTypes.UPDATE_NEW_PRODUCT:
       return updateObject(state, {
-        info: action.info != null ? action.info : state.info,
-        variants: action.variants != null ? action.variants : state.variants
+        info: action.info ? action.info : state.info,
+        variants: action.variants ? action.variants : state.variants
       });
     case actionTypes.TOGGLE_EDIT:
       return updateObject(state, {
         info: action.info,
-        companies: action.companies,
+        variants: action.variants,
         editMode: action.editMode,
-        variants: action.variantButtons
+        companies: action.companyButtons
       });
     case actionTypes.TOGGLE_EDIT_MODE:
       return updateObject(state, {

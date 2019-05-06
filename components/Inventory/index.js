@@ -116,7 +116,7 @@ const index = props => {
           />
         </div>
       </div>
-      <div className="w-full pr-4 mt-2 pt-2 flex overflow-hidden justify-between bg-teal rounded-t-lg rounded-tl-lg">
+      <div className="w-full pr-4 mt-2 pt-2 flex overflow-hidden justify-start bg-teal rounded-t-lg rounded-tl-lg">
         {/* <div className="flex w-4/5 fixed -mt-1 bg-teal pr-4"> */}
         {/* <div
             onClick={() => {

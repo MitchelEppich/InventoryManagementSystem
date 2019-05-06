@@ -8,6 +8,11 @@ const mongoose = require("mongoose");
 
 const resolvers = {
   Variant: {
+    async strain(variant) {
+      return (await require("./strain").Query.strain(null, {
+        input: { variants: variant._id }
+      }))[0];
+    },
     async company(variant) {
       return (await require("./company").Query.company(null, {
         input: { _id: variant.company }
@@ -20,8 +25,25 @@ const resolvers = {
     }
   },
   Query: {
-    variant: (_, { input }) => {
-      return Variant.find(input);
+    variant: async (_, { input }) => {
+      let $ = { ...input };
+      let { limit, skip, cursor } = $;
+      ["limit", "skip", "cursor"].map(_ => delete $[_]);
+
+      if ($.website != null) {
+        $.company = {
+          $in: (await require("./company").Query.company(null, {
+            input: {
+              website: { $in: $.website }
+            }
+          })).map(a => a._id)
+        };
+        delete $.website;
+      }
+
+      return Variant.find($)
+        .limit(limit)
+        .skip(skip || cursor);
     },
     allVariants: _ => {
       return Variant.find({});

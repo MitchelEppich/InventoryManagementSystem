@@ -1,5 +1,5 @@
 let Query = `
-    distributor(input: DistributorInput!): Distributor
+    distributor(input: DistributorInput!): [Distributor]
     allDistributors: [Distributor]!
 `;
 

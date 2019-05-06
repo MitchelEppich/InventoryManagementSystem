@@ -1,5 +1,5 @@
 let Query = `
-    company(input: CompanyInput!): Company
+    company(input: CompanyInput!): [Company]
     allCompanies: [Company]!
 `;
 

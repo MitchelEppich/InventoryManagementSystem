@@ -1,5 +1,5 @@
 let Query = `
-    attribute(input: AttributeInput!): Attribute
+    attribute(input: AttributeInput!): [Attribute]
     allAttributes: [Attribute]!
 `;
 
@@ -29,6 +29,10 @@ let Input = `
         size: Int
         stock: [StockInput]
         updatedAt: String
+
+        limit: Int
+        skip: Int
+        cursor: Int
     }
 `;
 

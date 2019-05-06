@@ -1,5 +1,5 @@
 let Query = `
-    variant(input: VariantInput!): Variant
+    variant(input: VariantInput!): [Variant]!
     allVariants: [Variant]!
 `;
 
@@ -24,6 +24,7 @@ let Type = `
         reviews: Review
         releaseDate: String
         attributes: [Attribute]
+        strain: Strain
     }
 `;
 
@@ -31,6 +32,7 @@ let Input = `
     input VariantInput {
         _id: String
         name: String
+        website: [String]
         sotiId: String
         sttId: String
         alias: String
@@ -38,7 +40,12 @@ let Input = `
         summary: String
         releaseDate: String
         attributes: [AttributeInput]
+        includeStrain: Boolean
         updatedAt: String
+
+        limit: Int
+        skip: Int
+        cursor: Int
     }
 `;
 

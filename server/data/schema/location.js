@@ -1,5 +1,5 @@
 let Query = `
-    location(input: LocationInput!): Location
+    location(input: LocationInput!): [Location]
     allLocations: [Location]!
 `;
 
@@ -20,6 +20,10 @@ let Type = `
         color: String
         section: String
         updatedAt: String
+
+        limit: Int
+        skip: Int
+        cursor: Int
     }
 `;
 

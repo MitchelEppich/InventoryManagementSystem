@@ -1,5 +1,5 @@
 let Query = `
-    strain(input: StrainInput!): Strain
+    strain(input: StrainInput!): [Strain]
     allStrains(filter: StrainFilter): [Strain]!
 `;
 
@@ -65,6 +65,10 @@ let Input = `
         stock: [StockInput]
 
         updatedAt: String
+
+        limit: Int
+        skip: Int
+        cursor: Int
     }
 `;
 

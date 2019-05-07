@@ -34,6 +34,10 @@ const resolvers = {
     strain: (_, { input }) => {
       let { limit, skip, cursor } = input;
       ["limit", "skip", "cursor"].map(_ => delete input[_]);
+      if (input.variant != null) {
+        input.variants = input.variant;
+        delete input.variant;
+      }
       return Strain.find(input)
         .limit(limit)
         .skip(skip || cursor);

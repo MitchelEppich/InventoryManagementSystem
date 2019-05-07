@@ -10,7 +10,7 @@ const resolvers = {
   Variant: {
     async strain(variant) {
       return (await require("./strain").Query.strain(null, {
-        input: { variants: variant._id }
+        input: { variant: variant._id }
       }))[0];
     },
     async company(variant) {

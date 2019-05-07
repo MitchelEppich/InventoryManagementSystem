@@ -1,6 +1,13 @@
 let express = require("express");
 const request = require("request-promise");
 
+const {
+  environment,
+  difficulty,
+  genetic,
+  country
+} = require("../../store/data/stainDataCatalgue");
+
 const uri = "http://127.0.0.1:3001/graphql";
 // const uri = "http://138.197.158.74:80/graphql";
 
@@ -190,6 +197,10 @@ let buildVariant = variant => {
   try {
     return variant.map(_ => {
       let strain = _.strain;
+      strain.environment = environment[strain.environment];
+      strain.difficulty = difficulty[strain.difficulty];
+      strain.genetic = genetic[strain.genetic];
+      strain.origin = strain.origin.map(a => country[a]);
       let variant = {
         sotiId: _.sotiId,
         sttId: _.sttId,
@@ -199,6 +210,12 @@ let buildVariant = variant => {
         releaseDate: _.releaseDate,
         company: _.company
       };
+
+      // Set Type
+      if (strain.sativa > 0.6) strain.type = "Sativa";
+      else if (strain.indica > 0.6) strain.type = "Indica";
+      else strain.type = "Hybrid";
+
       let attributes = { price: [], size: [], available: [] };
       for (let $ of _.attributes) {
         attributes.price.push($.price);

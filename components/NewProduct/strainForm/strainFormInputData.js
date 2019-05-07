@@ -1,3 +1,23 @@
+import {
+  country,
+  environment,
+  difficulty,
+  genetic
+} from "../../../store/data/stainDataCatalgue";
+
+let countryOptions = country.map((_, index) => {
+  return { value: index, content: _ };
+});
+let environmentOptions = environment.map((_, index) => {
+  return { value: index, content: _ };
+});
+let difficultyOptions = difficulty.map((_, index) => {
+  return { value: index, content: _ };
+});
+let geneticOptions = genetic.map((_, index) => {
+  return { value: index, content: _ };
+});
+
 export const div1 = [
   {
     classes: "w-3/5 p-2 mx-1 uppercase pl-4 my-2 text-grey",
@@ -47,17 +67,7 @@ export const div1 = [
         }
       });
     },
-    options: [
-      { value: null, content: "Origin..." },
-      { value: 0, content: "Canada" },
-      { value: 1, content: "USA" },
-      { value: 2, content: "Spain" },
-      { value: 3, content: "Netherlands" },
-      { value: 4, content: "United Kingdom" },
-      { value: 5, content: "South Africa" },
-      { value: 6, content: "Central America" },
-      { value: 7, content: "Varies" }
-    ]
+    options: [{ value: null, content: "Origin..." }, ...countryOptions]
   }
 ];
 export const div2 = [
@@ -308,15 +318,7 @@ export const div4 = [
         }
       });
     },
-    options: [
-      { value: null, content: "Genetics..." },
-      { value: 0, content: "Feminized" },
-      { value: 1, content: "Autoflower" },
-      { value: 2, content: "Regular" },
-      { value: 3, content: "CBD" },
-      { value: 4, content: "Dwarf" },
-      { value: 5, content: "Mix" }
-    ]
+    options: [{ value: null, content: "Genetics..." }, ...geneticOptions]
   },
   {
     classes:
@@ -332,13 +334,7 @@ export const div4 = [
         }
       });
     },
-    options: [
-      { value: null, content: "Difficulty..." },
-      { value: 0, content: "Easy" },
-      { value: 1, content: "Moderate" },
-      { value: 2, content: "Experienced" },
-      { value: 3, content: "Master" }
-    ]
+    options: [{ value: null, content: "Difficulty..." }, ...difficultyOptions]
   },
   {
     classes:
@@ -354,12 +350,7 @@ export const div4 = [
         }
       });
     },
-    options: [
-      { value: null, content: "Environment..." },
-      { value: 0, content: "Indoor / Outdoor" },
-      { value: 1, content: "Indoor" },
-      { value: 2, content: "Outdoor" }
-    ]
+    options: [{ value: null, content: "Environment..." }, ...environmentOptions]
   }
 ];
 export const div5 = [

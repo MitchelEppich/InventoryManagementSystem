@@ -230,7 +230,7 @@ let buildVariant = (variant, include) => {
       if (includeString) {
         included.sPrice = `$${attributes.price[0].toFixed(
           2
-        )} to ${attributes.price.slice(-1)[0].toFixed(2)}`;
+        )} to $${attributes.price.slice(-1)[0].toFixed(2)}`;
         included.sSize = `${attributes.size[0]} to ${
           attributes.size.slice(-1)[0]
         }`;
@@ -246,8 +246,8 @@ let buildVariant = (variant, include) => {
         included.sFlowerTime = strain.flowerTime.join(" to ") + " Weeks";
         included.sYield =
           strain.yield[0] == strain.yield[1]
-            ? strain.yield[1] + " g"
-            : strain.yield.map(a => a + " g").join(" to ");
+            ? strain.yield[1] + "g"
+            : strain.yield.map(a => a + "g").join(" to ");
       }
 
       if (includeAverage) {

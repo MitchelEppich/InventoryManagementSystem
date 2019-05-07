@@ -211,6 +211,10 @@ const indexReducer = (state = initialState, action) => {
       return updateObject(state, {
         inventory: action.inventory
       });
+    case actionTypes.UPDATE_INVENTORY:
+      return updateObject(state, {
+        inventory: action.inventory
+      });
     default:
       return state;
   }

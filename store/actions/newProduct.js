@@ -16,7 +16,12 @@ const actionTypes = {
   UPDATE_NEW_PRODUCT: "UPDATE_NEW_PRODUCT",
   SUBMIT_NEW_PRODUCT_FORM: "SUBMIT_NEW_PRODUCT_FORM",
   SUBMIT_EDIT_PRODUCT_FORM: "SUBMIT_EDIT_PRODUCT_FORM",
-  RESET_STORE: "RESET_STORE"
+  RESET_STORE: "RESET_STORE",
+  DELETE_COMPANY_VARIANT: "DELETE_COMPANY_VARIANT",
+  DELETE_PACK_VARIANT: "DELETE_PACK_VARIANT",
+  DELETE_STRAIN: "DELETE_STRAIN",
+  UPDATE_INVENTORY: "UPDATE_INVENTORY",
+  DUPLICATE_STRAIN: "DUPLICATE_STRAIN"
 };
 
 const getActions = uri => {
@@ -34,12 +39,12 @@ const getActions = uri => {
         envType: envType
       };
     },
-    toggleCompanyVariant: newVariantsObj => {
-      let newVariant = newVariantsObj.company,
-        oldVariants = newVariantsObj.variants,
+    toggleCompanyVariant: newCompaniesObj => {
+      let newCompanyName = newCompaniesObj.companyName,
+        oldCompanies = newCompaniesObj.companies,
         removed = false;
-      let newVariants = oldVariants.filter(variant => {
-        if (variant == newVariant) {
+      let newCompanies = oldCompanies.filter(oldCompany => {
+        if (oldCompany == newCompanyName) {
           removed = true;
           return false;
         }
@@ -47,13 +52,13 @@ const getActions = uri => {
       });
       return {
         type: actionTypes.TOGGLE_COMPANY_VARIANT,
-        newVariants: removed ? newVariants : [...newVariants, newVariant]
+        newCompanies: removed ? newCompanies : [...newCompanies, newCompanyName]
       };
     },
-    togglePackInput: newCompanies => {
+    togglePackInput: newVariants => {
       return {
         type: actionTypes.TOGGLE_PACK_INPUT,
-        newCompanies: newCompanies
+        variants: newVariants
       };
     },
     updateNewProduct: obj => {
@@ -63,10 +68,10 @@ const getActions = uri => {
             type: actionTypes.UPDATE_NEW_PRODUCT,
             info: obj.info
           };
-        case "companies":
+        case "variants":
           return {
             type: actionTypes.UPDATE_NEW_PRODUCT,
-            companies: obj.companies
+            variants: obj.variants
           };
       }
     },
@@ -75,31 +80,32 @@ const getActions = uri => {
         type: actionTypes.RESET_STORE
       };
     },
-    editProduct: data => {
-      let newCompanies = data.companies;
-      newCompanies = newCompanies
-        .map((company, index) => {
-          let newCompany = {
-            alias: company.alias,
-            sotiId: company.sotiId,
-            sttId: company.sttId,
-            summary: company.summary,
-            description: company.description,
-            attributes: company.attributes,
-            name: company.company.name,
-            _id: company._id ? company._id : null
+    editProduct: input => {
+      let newVariants = input.variants;
+      newVariants = newVariants
+        .map((variant, index) => {
+          let newVariant = {
+            alias: variant.alias,
+            sotiId: variant.sotiId,
+            sttId: variant.sttId,
+            summary: variant.summary,
+            description: variant.description,
+            attributes: variant.attributes,
+            name: variant.company.name,
+            _id: variant._id ? variant._id : null
           };
-          return newCompany;
+          return newVariant;
         })
-        .filter(company => {
-          return company.alias != "";
+        .filter(variant => {
+          return variant.alias != "";
         });
-      let info = data.info;
+      let info = input.info;
       info.location[0].distributor = info.location[0].distributor._id;
       let product = {
         ...info,
-        variants: newCompanies
+        variants: newVariants
       };
+
       return async dispatch => {
         const link = new HttpLink({ uri, fetch: fetch });
         const operation = {
@@ -109,13 +115,34 @@ const getActions = uri => {
 
         await makePromise(execute(link, operation))
           .then(data => {
-            // let returnData = data.data.createStrain;
+            let inventory = input.inventory;
+            let index = inventory.findIndex(item => {
+              return item._id == product._id;
+            });
+            if (index >= 0) {
+              inventory.splice(index, 1, {
+                ...info,
+                variants: input.variants.filter(variant => {
+                  return variant.alias != "";
+                })
+              });
+              dispatch(
+                objects.updateInventory({
+                  inventory: inventory
+                })
+              );
+            }
             dispatch({
               type: actionTypes.SUBMIT_EDIT_PRODUCT_FORM
-              // newStrain: returnData
             });
           })
           .catch(error => console.log(error));
+      };
+    },
+    updateInventory: input => {
+      return {
+        type: actionTypes.UPDATE_INVENTORY,
+        inventory: input.inventory
       };
     },
     createNewProduct: data => {
@@ -125,20 +152,21 @@ const getActions = uri => {
       type = data.info.indice < 60 ? 2 : type;
 
       //company variants
-      let newVariants = data.companies
-        .map((company, index) => {
-          let newCompany = company;
+      let newVariants = data.variants
+        .map((variant, index) => {
+          let newVariant = variant;
           return {
-            ...newCompany,
+            ...newVariant,
             releaseDate: "2018-06-01T07:00:00.000Z"
           };
         })
-        .filter(company => {
-          return data.variants.includes(company.name);
+        .filter(variant => {
+          return data.companies.includes(variant.name);
         });
 
       let newProduct = {
         ...data.info,
+        type: type,
         variants: newVariants
       };
 
@@ -155,6 +183,137 @@ const getActions = uri => {
             dispatch({
               type: actionTypes.SUBMIT_NEW_PRODUCT_FORM,
               newStrain: returnData
+            });
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    duplicateStrain: data => {
+      // let strain = data.strain;
+      // strain._id = null;
+      // strain.location[0].distributor = strain.location[0].distributor._id;
+      // strain.stock = [];
+      // let newVariants = strain.variants
+      //   .map((company, index) => {
+      //     let newCompany = company;
+      //     newCompany.company = newCompany.company.name;
+      //     return newCompany;
+      //   })
+      //   .filter(company => {
+      //     return data.variants.includes(company.company);
+      //   });
+      // let newProduct = {
+      //   ...strain,
+      //   variants: [],
+      //   location: []
+      // };
+      // console.log(newProduct);
+      // return async dispatch => {
+      //   const link = new HttpLink({ uri, fetch: fetch });
+      //   const operation = {
+      //     query: mutation.createProduct,
+      //     variables: { ...newProduct }
+      //   };
+      //   await makePromise(execute(link, operation))
+      //     .then(data => {
+      //       let returnData = data;
+      //       console.log(returnData);
+      //       dispatch({
+      //         type: actionTypes.DUPLICATE_STRAIN
+      //       });
+      //     })
+      //     .catch(error => console.log(error));
+      // };
+    },
+    deleteCompanyVariant: obj => {
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: mutation.deleteVariant,
+          variables: { _id: obj._id }
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            let companies = obj.companies,
+              variants = obj.variants;
+            let deleted = data.data.deleteVariant._id === obj._id;
+            if (deleted) {
+              let index = companies.findIndex(company => {
+                return company._id === obj._id;
+              });
+              let variantIndex = variants.findIndex(variant => {
+                return variant == companies[index].company.name;
+              });
+              companies.splice(index, 1, {
+                company: companies[index].company,
+                alias: "",
+                sotiId: "",
+                sttId: 0,
+                summary: "",
+                description: [],
+                attributes: [
+                  {
+                    price: 0,
+                    size: 0,
+                    stock: [{ amount: 0, rop: 0, noe: 0 }]
+                  }
+                ]
+              });
+              variants.splice(variantIndex, 1);
+            }
+            dispatch({
+              type: actionTypes.DELETE_COMPANY_VARIANT,
+              deleted: deleted,
+              companies: companies,
+              variants: variants
+            });
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    deletePackVariant: obj => {
+      let variants = obj.variants;
+      if (!obj._id) {
+        variants[obj.variantIndex].attributes.splice(obj.packIndex, 1);
+        return {
+          type: actionTypes.TOGGLE_PACK_INPUT,
+          variants: variants
+        };
+      }
+
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: mutation.deleteAttribute,
+          variables: { _id: obj._id }
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            if (data.data.deleteAttribute._id) {
+              variants[obj.variantIndex].attributes.splice(obj.packIndex, 1);
+            }
+            dispatch({
+              type: actionTypes.DELETE_PACK_VARIANT,
+              variants: variants
+            });
+          })
+          .catch(error => console.log(error));
+      };
+    },
+    deleteStrain: input => {
+      return async dispatch => {
+        const link = new HttpLink({ uri, fetch: fetch });
+        const operation = {
+          query: mutation.deleteStrain,
+          variables: { _id: input._id }
+        };
+
+        await makePromise(execute(link, operation))
+          .then(data => {
+            dispatch({
+              type: actionTypes.DELETE_STRAIN
             });
           })
           .catch(error => console.log(error));
@@ -386,6 +545,27 @@ const mutation = {
           noe
           sold
         }
+      }
+    }
+  `,
+  deleteVariant: gql`
+    mutation($_id: String) {
+      deleteVariant(input: { _id: $_id }) {
+        _id
+      }
+    }
+  `,
+  deleteAttribute: gql`
+    mutation($_id: String) {
+      deleteAttribute(input: { _id: $_id }) {
+        _id
+      }
+    }
+  `,
+  deleteStrain: gql`
+    mutation($_id: String) {
+      deleteStrain(input: { _id: $_id }) {
+        _id
       }
     }
   `

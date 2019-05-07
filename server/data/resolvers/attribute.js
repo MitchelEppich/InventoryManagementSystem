@@ -100,7 +100,6 @@ const resolvers = {
       let $ = {
         ...input
       };
-
       if ($._id == null) return null;
 
       // Find and remove from variant

@@ -1,565 +1,185 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
-
-import Variant from "./variant";
+import { genKey } from "../../scripts";
+import Variants from "./Variants";
+import VariantButtons from "./Variants/variantButtons";
+import { div1, div2, div3, div4, div5, div6 } from "./strainFormInputData";
 
 const index = props => {
-  let distro = props.newProduct.distro,
-    env = props.newProduct.info.environment;
-  let companyVariantButtons = props.newProduct.companies.map(
-    (company, index) => {
-      return (
-        <div
-          onClick={() => {
-            props.toggleCompanyVariant({
-              company: company.company.name,
-              variants: props.newProduct.variants
-            });
-          }}
-          key={index}
-          className={`${
-            props.newProduct.variants.includes(company.company.name)
-              ? "logo--" +
-                company.company.name.replace(/ /g, "").toLowerCase() +
-                ""
-              : "logo--" +
-                company.company.name.replace(/ /g, "").toLowerCase() +
-                "--greyed"
-          } h-150 w-150 rounded cursor-pointer`}
-        />
-      );
-    }
-  );
-  let variants = props.newProduct.variants.map((variant, index) => {
-    let i = props.newProduct.companies.findIndex((company, index) => {
-      return company.company.name == variant;
-    });
-    return <Variant key={i} variant={variant} variantIndex={i} {...props} />;
-  });
+  let env = props.newProduct.info.environment;
+
   return (
     <React.Fragment>
-      <p className="uppercase bg-teal w-full  p-2 my-2 text-center font-bold text-white text-xl">
+      <p className="uppercase bg-teal w-full rounded p-2 my-2 text-center font-bold text-white text-xl">
         General Information
       </p>
+      {/* DIV1 */}
       <div className="flex w-full ">
-        <input
-          className="w-3/5 p-2 mx-1 uppercase pl-4 my-2 text-grey"
-          placeholder="Strain Name"
-          value={props.newProduct.info.name}
-          name="name"
-          type="text"
-          onChange={e => {
-            props.updateNewProduct({
-              type: "info",
-              info: {
-                ...props.newProduct.info,
-                name: e.target.value
-              }
-            });
-          }}
-        />
-        <input
-          className="w-1/5 p-2 mx-1 uppercase pl-4 my-2 mr-1 text-grey"
-          placeholder="Breeder"
-          value={props.newProduct.info.breeder}
-          type="text"
-          name="breeder"
-          onChange={e => {
-            props.updateNewProduct({
-              type: "info",
-              info: {
-                ...props.newProduct.info,
-                breeder: e.target.value
-              }
-            });
-          }}
-        />
-        <select
-          onChange={e => {
-            props.updateNewProduct({
-              type: "info",
-              info: {
-                ...props.newProduct.info,
-                origin: [parseInt(e.target.value)]
-              }
-            });
-          }}
-          name="origin"
-          className="w-1/5 uppercase text-grey-light p-2 h-10 mx-1 my-2 pl-4  border-2 border-input-grey"
-        >
-          <option>Origin...</option>
-          <option value="0">Canada</option>
-          <option value="1">USA</option>
-          <option value="2">Spain</option>
-          <option value="3">Netherlands</option>
-          <option value="4">United Kingdom</option>
-          <option value="5">South Africa</option>
-          <option value="6">Central America</option>
-          <option value="7">Varies</option>
-        </select>
+        {div1.map((value, index) => {
+          if (value.type == "input") {
+            return (
+              <input
+                key={value.placeholder + index}
+                className={value.classes}
+                placeholder={value.placeholder}
+                value={props.newProduct.info[value.value]}
+                name={value.placeholder}
+                type={value.inputType}
+                onChange={e => value.handleOnChange(e, props)}
+              />
+            );
+          } else {
+            return (
+              <select
+                key={value.placeholder + index}
+                onChange={e => value.handleOnChange(e, props)}
+                name={value.placeholder}
+                className={value.classes}
+              >
+                {value.options.map(option => {
+                  return (
+                    <option key={option.content} value={option.value}>
+                      {option.content}
+                    </option>
+                  );
+                })}
+              </select>
+            );
+          }
+        })}
       </div>
+      {/* DIV2 */}
       <div className="flex w-full ">
-        <div className="bg-green w-1/3 rounded-lg mx-1">
-          <label className="w-1/3 p-2 my-2 pl-4">THC %:</label>
-          <input
-            className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
-            placeholder="LOW"
-            value={props.newProduct.info.thc[0] || ""}
-            type="number"
-            step="0.01"
-            name="thc"
-            min="0.01"
-            onChange={e => {
-              let newInfo = props.newProduct.info;
-              newInfo.thc.splice(0, 1, parseFloat(e.target.value));
-              if (
-                e.target.value == null ||
-                e.target.value == NaN ||
-                e.target.value == ""
-              ) {
-                newInfo.thc.splice(0, 1);
-              }
-              props.updateNewProduct({
-                type: "info",
-                info: {
-                  ...newInfo
+        {div2.map(section => {
+          return (
+            <div className={section.class}>
+              <label className="w-1/3 p-2 my-2 pl-4">{section.label}</label>
+              {section.inputs.map(input => {
+                return (
+                  <input
+                    className={input.classes}
+                    placeholder={input.placeholder}
+                    value={
+                      props.newProduct.info[input.value[0]][input.value[1]] ||
+                      ""
+                    }
+                    type={input.inputType}
+                    step={input.step}
+                    name={input.placeholder}
+                    min={input.min}
+                    onChange={e => input.handleOnChange(e, props)}
+                  />
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+      {/* DIV3 */}
+      <div className="w-full flex">
+        {div3.map(input => {
+          return (
+            <input
+              className={input.classes}
+              placeholder={input.placeholder}
+              // value={props.newProduct.info.sativa * 100 || ""}
+              type={input.inputType}
+              step={input.step}
+              name={input.placeholder}
+              min={input.min}
+              onChange={e => input.handleOnChange(e, props)}
+            />
+          );
+        })}
+      </div>
+      {/* DIV4 */}
+      <div className="w-full flex">
+        {div4.map(input => {
+          return (
+            <select
+              onChange={e => input.handleOnChange(e, props)}
+              name={input.name}
+              value={props.newProduct.info[input.value]}
+              className={input.classes}
+            >
+              {input.options.map(option => {
+                return (
+                  <option key={option.content} value={option.value}>
+                    {option.content}
+                  </option>
+                );
+              })}
+            </select>
+          );
+        })}
+      </div>
+      {/* DIV5 */}
+      <div className="w-full flex">
+        {div5.map(section => {
+          return (
+            <div className={section.class}>
+              {section.label ? (
+                <label className={section.labelClass}>{section.label}</label>
+              ) : null}
+              {section.inputs.map((input, index) => {
+                if (section.label == null) {
+                  if (index == 0 && (env != 1 && env != 0)) {
+                    return null;
+                  }
+                  if (index == 1 && (env != 2 && env != 0)) {
+                    return null;
+                  }
                 }
-              });
-            }}
-          />
-          <input
-            className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
-            placeholder="HIGH"
-            value={props.newProduct.info.thc[1] || ""}
-            type="number"
-            step="0.01"
-            name="thc"
-            min="0"
-            onChange={e => {
-              let newInfo = props.newProduct.info;
-              newInfo.thc.splice(1, 1, parseFloat(e.target.value));
-              if (
-                e.target.value == null ||
-                e.target.value == NaN ||
-                e.target.value == ""
-              ) {
-                newInfo.thc.splice(1, 1);
-              }
-              props.updateNewProduct({
-                type: "info",
-                info: {
-                  ...newInfo
-                }
-              });
-            }}
-          />
-        </div>
-        <div className="w-1/3 bg-orange mx-1 rounded-lg">
-          <label className="w-1/3 p-2 my-2 pl-4">CBD %:</label>
-          <input
-            className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
-            placeholder="LOW"
-            value={props.newProduct.info.cbd[0] || ""}
-            type="number"
-            step="0.01"
-            name="cbd"
-            min="0"
-            onChange={e => {
-              let newInfo = props.newProduct.info;
-              newInfo.cbd.splice(0, 1, parseFloat(e.target.value));
-              if (
-                e.target.value == null ||
-                e.target.value == NaN ||
-                e.target.value == ""
-              ) {
-                newInfo.cbd.splice(0, 1);
-              }
-              props.updateNewProduct({
-                type: "info",
-                info: {
-                  ...newInfo
-                }
-              });
-            }}
-          />
-          <input
-            className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
-            placeholder="HIGH"
-            value={props.newProduct.info.cbd[1] || ""}
-            type="number"
-            step="0.01"
-            name="cbd"
-            min="0"
-            onChange={e => {
-              let newInfo = props.newProduct.info;
-              newInfo.cbd.splice(1, 1, parseFloat(e.target.value));
-              if (
-                e.target.value == null ||
-                e.target.value == NaN ||
-                e.target.value == ""
-              ) {
-                newInfo.cbd.splice(1, 1);
-              }
-              props.updateNewProduct({
-                type: "info",
-                info: {
-                  ...newInfo
-                }
-              });
-            }}
-          />
-        </div>
-        <div className="bg-purple w-1/3 mx-1 rounded-lg">
-          <label className="w-1/3 p-2 my-2 pl-4">CBN %:</label>
-          <input
-            className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
-            placeholder="LOW"
-            value={props.newProduct.info.cbn[0] || ""}
-            type="number"
-            step="0.01"
-            name="cbn"
-            min="0"
-            onChange={e => {
-              let newInfo = props.newProduct.info;
-              newInfo.cbn.splice(0, 1, parseFloat(e.target.value));
-              if (
-                e.target.value == null ||
-                e.target.value == NaN ||
-                e.target.value == ""
-              ) {
-                newInfo.cbn.splice(0, 1);
-              }
-              props.updateNewProduct({
-                type: "info",
-                info: {
-                  ...newInfo
-                }
-              });
-            }}
-          />
-          <input
-            className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
-            placeholder="HIGH"
-            value={props.newProduct.info.cbn[1] || ""}
-            type="number"
-            step="0.01"
-            name="cbn"
-            min="0"
-            onChange={e => {
-              let newInfo = props.newProduct.info;
-              newInfo.cbn.splice(1, 1, parseFloat(e.target.value));
-              if (
-                e.target.value == null ||
-                e.target.value == NaN ||
-                e.target.value == ""
-              ) {
-                newInfo.cbn.splice(1, 1);
-              }
-              props.updateNewProduct({
-                type: "info",
-                info: {
-                  ...newInfo
-                }
-              });
-            }}
-          />
-        </div>
+                return (
+                  <input
+                    className={input.classes}
+                    placeholder={input.placeholder}
+                    type={input.inputType}
+                    name={input.placeholder}
+                    min={input.min}
+                    value={
+                      props.newProduct.info[input.value[0]][input.value[1]] ||
+                      ""
+                    }
+                    onChange={e => input.handleOnChange(e, props)}
+                  />
+                );
+              })}
+            </div>
+          );
+        })}
       </div>
 
+      {/* DIV6 */}
       <div className="w-full flex">
-        <input
-          className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
-          placeholder="Sativa %"
-          value={props.newProduct.info.sativa || ""}
-          type="number"
-          step="0.1"
-          name="sativa"
-          min="0"
-          onChange={e => {
-            props.updateNewProduct({
-              type: "info",
-              info: {
-                ...props.newProduct.info,
-                sativa: parseFloat(e.target.value) / 100
-              }
-            });
-          }}
-        />
-        <input
-          className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
-          placeholder="Indica %"
-          value={props.newProduct.info.indica || ""}
-          type="number"
-          step="0.1"
-          name="indica"
-          min="0"
-          onChange={e => {
-            props.updateNewProduct({
-              type: "info",
-              info: {
-                ...props.newProduct.info,
-                indica: parseFloat(e.target.value) / 100
-              }
-            });
-          }}
-        />
-        <input
-          className="w-1/3 p-2 mx-1 uppercase pl-4 my-2 text-grey"
-          placeholder="Ruderalis %"
-          value={props.newProduct.info.ruderalis || ""}
-          type="number"
-          step="0.1"
-          name="ruderalis"
-          min="0"
-          onChange={e => {
-            props.updateNewProduct({
-              type: "info",
-              info: {
-                ...props.newProduct.info,
-                ruderalis: parseFloat(e.target.value) / 100
-              }
-            });
-          }}
-        />
-      </div>
-      <div className="w-full flex">
-        <select
-          onChange={e => {
-            props.updateNewProduct({
-              type: "info",
-              info: {
-                ...props.newProduct.info,
-                genetic: parseFloat(e.target.value)
-              }
-            });
-          }}
-          name="genetic"
-          value={props.newProduct.info.genetic}
-          className="w-1/3 uppercase p-1 mx-1 my-2 pl-2 text-grey-light border-2 border-input-grey"
-        >
-          <option>Genetics</option>
-          <option value="0">Feminized</option>
-          <option value="1">Autoflower</option>
-          <option value="2">Regular</option>
-          <option value="3">CBD</option>
-          <option value="4">Dwarf</option>
-          <option value="5">Mix</option>
-        </select>{" "}
-        <select
-          onChange={e => {
-            props.updateNewProduct({
-              type: "info",
-              info: {
-                ...props.newProduct.info,
-                difficulty: parseInt(e.target.value)
-              }
-            });
-          }}
-          name="difficulty"
-          value={props.newProduct.info.difficulty}
-          className="w-1/3 uppercase p-1 mx-1 my-2 text-grey-light border-2 border-input-grey"
-        >
-          <option>Difficulty</option>
-          <option value="0">Easy</option>
-          <option value="1">Moderate</option>
-          <option value="2">Experienced</option>
-          <option value="3">Master</option>
-        </select>
-        <select
-          onChange={e => {
-            props.updateNewProduct({
-              type: "info",
-              info: {
-                ...props.newProduct.info,
-                environment: parseInt(e.target.value)
-              }
-            });
-          }}
-          name="environment"
-          value={props.newProduct.info.environment}
-          className="w-1/3 uppercase p-1 mx-1 my-2 pl-2 text-grey-light border-2 border-input-grey"
-        >
-          <option>Environment</option>
-          <option value="0">Indoor / Outdoor</option>
-          <option value="1">Indoor</option>
-          <option value="2">Outdoor</option>
-        </select>
-      </div>
-      <div className="w-full flex">
-        <div className="w-1/2">
-          <label className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey">
-            Flower Time:
-          </label>
-          <input
-            className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
-            placeholder="7"
-            type="number"
-            name="flowerTime"
-            min="0"
-            value={props.newProduct.info.flowerTime[0] || ""}
-            onChange={e => {
-              let newInfo = props.newProduct.info;
-              newInfo.flowerTime.splice(0, 1, parseInt(e.target.value));
-              if (
-                e.target.value == null ||
-                e.target.value == NaN ||
-                e.target.value == ""
-              ) {
-                newInfo.flowerTime.splice(0, 1);
-              }
-              props.updateNewProduct({
-                type: "info",
-                info: {
-                  ...newInfo
-                }
-              });
-            }}
-          />
-          <input
-            className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
-            placeholder="10"
-            type="number"
-            name="flowerTime"
-            min="0"
-            value={props.newProduct.info.flowerTime[1] || ""}
-            onChange={e => {
-              let newInfo = props.newProduct.info;
-              newInfo.flowerTime.splice(1, 1, parseInt(e.target.value));
-              if (
-                e.target.value == null ||
-                e.target.value == NaN ||
-                e.target.value == ""
-              ) {
-                newInfo.flowerTime.splice(1, 1);
-              }
-              props.updateNewProduct({
-                type: "info",
-                info: {
-                  ...newInfo
-                }
-              });
-            }}
-          />
-        </div>
-        <div className="w-1/2 flex">
-          {env == 1 || env == 0 ? (
+        {div6.map((input, index) => {
+          return (
             <input
-              className="w-full uppercase p-2 mx-1 my-2 text-grey border-2 border-input-grey"
-              placeholder="Yield (Indoor)"
-              type="number"
-              name="yieldInside"
-              value={props.newProduct.info.yield[0] || ""}
-              onChange={e => {
-                props.updateNewProduct({
-                  type: "info",
-                  info: {
-                    ...props.newProduct.info,
-                    yield: [
-                      parseInt(e.target.value),
-                      props.newProduct.info.yield[1]
-                    ]
-                  }
-                });
-              }}
+              className={input.classes}
+              placeholder={input.placeholder}
+              type={input.inputType}
+              name={input.name}
+              step={input.step ? input.step : null}
+              min={input.min ? input.min : null}
+              value={props.newProduct.info[input.value[0]][0][input.value[1]]}
+              onChange={e => input.handleOnChange(e, props)}
             />
-          ) : null}
-          {env == 2 || env == 0 ? (
-            <input
-              className="w-full uppercase p-2 mx-1 my-2 text-grey border-2 border-input-grey"
-              placeholder="Yield (Outdoor)"
-              type="number"
-              name="yieldOutside"
-              value={props.newProduct.info.yield[1] || ""}
-              onChange={e => {
-                props.updateNewProduct({
-                  type: "info",
-                  info: {
-                    ...props.newProduct.info,
-                    yield: [
-                      props.newProduct.info.yield[0],
-                      parseInt(e.target.value)
-                    ]
-                  }
-                });
-              }}
-            />
-          ) : null}
-        </div>
+          );
+        })}
       </div>
-      <div className="w-full flex">
-        <input
-          className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
-          placeholder="Location"
-          type="text"
-          name="location"
-          value={props.newProduct.info.location[0].section}
-          onChange={e => {
-            let newLocation = props.newProduct.info.location;
-            newLocation[0].section = e.target.value;
-            props.updateNewProduct({
-              type: "info",
-              info: {
-                ...props.newProduct.info,
-                location: newLocation
-              }
-            });
-          }}
-        />{" "}
-        <input
-          className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
-          placeholder="Amount"
-          type="number"
-          name="stockAmount"
-          min="0"
-          value={props.newProduct.info.stockAmount}
-          onChange={e => {
-            let stock = props.newProduct.info.stock;
-            let newStock = stock[props.newProduct.distro];
-            newStock.amount = parseInt(e.target.value);
-            stock.splice(props.newProduct.distro, 1, newStock);
-            props.updateNewProduct({
-              type: "info",
-              info: {
-                ...props.newProduct.info,
-                stock: stock
-              }
-            });
-          }}
-        />
-        <input
-          className="w-1/3 p-2 uppercase pl-4 mx-1 my-2 text-grey"
-          placeholder="ROP"
-          value={props.newProduct.info.stockROP}
-          type="number"
-          min="0"
-          name="stockROP"
-          onChange={e => {
-            let stock = props.newProduct.info.stock;
-            let newStock = stock[props.newProduct.distro];
-            newStock.rop = parseInt(e.target.value);
-            newStock.noe = parseInt(e.target.value);
-            stock.splice(props.newProduct.distro, 1, newStock);
-            props.updateNewProduct({
-              type: "info",
-              info: {
-                ...props.newProduct.info,
-                stock: stock
-              }
-            });
-          }}
-        />
-      </div>
+
+      {/* DIV7 */}
       <div className="w-full flex">
         <input
           className="w-full p-2 uppercase pl-4 mx-1 my-2 text-grey"
           placeholder="effects (use commas to separate)"
           type="text"
           name="effect"
-          value={
-            props.newProduct.info.effect
-              ? props.newProduct.info.effect.join(",")
-              : ""
-          }
+          // value={
+          // props.newProduct.info.effect
+          //   ? props.newProduct.info.effect.join(",")
+          //   : ""
+          // }
           onChange={e => {
             let newEffect = e.target.value.split(",");
             props.updateNewProduct({
@@ -573,17 +193,16 @@ const index = props => {
           }}
         />
       </div>
-
-      <p className="uppercase bg-teal w-full  p-2 my-2 text-center font-bold text-white text-xl">
+      <p className="uppercase bg-teal w-full rounded p-2 my-2 text-center font-bold text-white text-xl">
         Company Variants
       </p>
       <div className="flex flex-wrap justify-around w-full mb-4">
-        <p className="w-full my-4 text-xl font-bold uppercase">
+        <p className="w-full my-4 text-xl font-bold uppercase text-center mb-6">
           Please select all that apply:
         </p>
-        {companyVariantButtons}
+        <VariantButtons {...props} />
       </div>
-      {variants}
+      <Variants {...props} />
     </React.Fragment>
   );
 };

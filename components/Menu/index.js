@@ -12,10 +12,7 @@ const index = props => {
   return (
     <div className="h-24 w-full px-48 pt-2 flex justify-between bg-teal leading-normal text-white">
       <div>
-        <h1
-          onClick={() => console.log(props)}
-          className="xs:hidden sm:hidden md:hidden lg:hidden uppercase text-3xl"
-        >
+        <h1 className="xs:hidden sm:hidden md:hidden lg:hidden uppercase text-3xl">
           Inventory M. System
         </h1>
         <h1 className="xl:hidden xxl:hidden">I.M.S.</h1>

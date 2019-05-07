@@ -2,14 +2,19 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSlidersH } from "@fortawesome/free-solid-svg-icons";
 
-import Item from "./item";
+import ItemRow from "./ItemRow";
 import InventoryFilters from "./inventoryFilters";
 
 const index = props => {
   let iHeadings = props.misc.iHeadings.map((heading, index) => {
     let lastCol = "",
       bg = "bg-teal";
-    let width = heading.toLowerCase() == "name" ? "w-1/3" : "w-28";
+    let width =
+      heading.toLowerCase() == "name"
+        ? "w-1/4 text-left pl-6"
+        : heading.toLowerCase() == "company"
+        ? "w-36 text-center"
+        : "w-32 text-center";
     if (index == props.misc.iHeadings.length - 1) {
       lastCol = "";
     }
@@ -26,7 +31,7 @@ const index = props => {
           width +
           " p-2 border border-teal border-r-0 border-t-0 border-b-0 " +
           bg +
-          " hover:bg-teal-dark cursor-pointer text-xs text-white flex uppercase" +
+          " hover:bg-teal-dark  cursor-pointer text-sm text-white  uppercase" +
           lastCol
         }
       >
@@ -60,7 +65,7 @@ const index = props => {
           .includes(props.misc.searchValue.toLowerCase())
       ) {
         return (
-          <Item
+          <ItemRow
             key={index}
             productView={false}
             {...props}
@@ -73,7 +78,7 @@ const index = props => {
       }
     } else {
       return (
-        <Item
+        <ItemRow
           key={index}
           productView={false}
           {...props}
@@ -85,11 +90,11 @@ const index = props => {
   });
 
   return (
-    <div className="h-700 w-4/5 mx-auto overflow-scroll flex flex-wrap justify-between content-center">
+    <div className="h-700 w-4/5 mx-auto flex flex-wrap justify-between content-center">
       <div className="fixed flex justify-between bg-white shadow-md w-4/5 pt-1">
         <div
           onClick={() => props.setVisibleScreen("inventoryFilters")}
-          className="w-150 ml-48 cursor-pointer text-black unselectable"
+          className="h-8 w-32 mx-4 cursor-pointer text-crimson unselectable "
         >
           <h4 className="h-full uppercase leading-loose">
             Filter By
@@ -100,7 +105,7 @@ const index = props => {
         props.misc.visibleScreen.includes("inventoryFilters") ? (
           <InventoryFilters {...props} />
         ) : null}
-        <div className="w-300 mr-48 mb-2 text-grey flex">
+        <div className="h-8 w-64 mx-4 mb-2 text-grey flex">
           <h4 className="h-full w-1/3 uppercase leading-loose">Search:</h4>
           <input
             onChange={e => {
@@ -111,9 +116,9 @@ const index = props => {
           />
         </div>
       </div>
-      <div className="h-600 w-full">
-        <div className="flex w-4/5 fixed -mt-1 bg-teal pr-4">
-          {/* <div
+      <div className="w-full pr-4 mt-2 pt-2 flex overflow-hidden justify-start bg-teal rounded-t-lg rounded-tl-lg">
+        {/* <div className="flex w-4/5 fixed -mt-1 bg-teal pr-4"> */}
+        {/* <div
             onClick={() => {
               props.setOrderBy(null);
             }}
@@ -121,10 +126,10 @@ const index = props => {
           >
             No
           </div> */}
-          {iHeadings}
-        </div>
-        <div className="flex flex-wrap mt-6">{items}</div>
+        {iHeadings}
+        {/* </div> */}
       </div>
+      <div className="h-600 w-full overflow-y-scroll rounded-b-lg">{items}</div>
     </div>
   );
 };

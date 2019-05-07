@@ -48,14 +48,19 @@ const mapDispatchToProps = dispatch => {
     setVisibleScreen: input => dispatch(actions.setVisibleScreen(input)),
     toggleFormType: formType => dispatch(actions.toggleFormType(formType)),
     toggleEnvInputs: envType => dispatch(actions.toggleEnvInputs(envType)),
-    toggleCompanyVariant: newVariantsObj =>
-      dispatch(actions.toggleCompanyVariant(newVariantsObj)),
-    togglePackInput: newCompanies =>
-      dispatch(actions.togglePackInput(newCompanies)),
-    updateNewProduct: obj => dispatch(actions.updateNewProduct(obj)),
+    toggleCompanyVariant: newCompaniesObj =>
+      dispatch(actions.toggleCompanyVariant(newCompaniesObj)),
+    togglePackInput: newVariants =>
+      dispatch(actions.togglePackInput(newVariants)),
+    updateNewProduct: input => dispatch(actions.updateNewProduct(input)),
     editProduct: data => dispatch(actions.editProduct(data)),
     createNewProduct: data => dispatch(actions.createNewProduct(data)),
-    resetStore: () => dispatch(actions.resetStore())
+    resetStore: () => dispatch(actions.resetStore()),
+    deleteCompanyVariant: input =>
+      dispatch(actions.deleteCompanyVariant(input)),
+    deletePackVariant: input => dispatch(actions.deletePackVariant(input)),
+    deleteStrain: input => dispatch(actions.deleteStrain(input)),
+    duplicateStrain: strain => dispatch(actions.duplicateStrain(strain))
   };
 };
 

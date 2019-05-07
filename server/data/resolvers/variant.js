@@ -141,7 +141,6 @@ const resolvers = {
     },
     deleteVariant: async (_, { input }) => {
       let $ = { ...input };
-
       if ($._id == null) return null;
 
       let variant = await Variant.findOneAndDelete({ _id: $._id });

@@ -103,6 +103,18 @@ const resolvers = {
 
       if ($._id == null) return null;
 
+      // Find and remove from variant
+      let variant = (await require("./variant").Query.variant(null, {
+        input: { attributes: $._id }
+      }))[0];
+
+      variant.attributes = variant.attributes.filter(a => {
+        return a != $._id;
+      });
+
+      require("./variant").Mutation.updateVariant(null, { ...variant });
+
+      // Find and delete attribute
       let attribute = await Attribute.findOneAndDelete({ _id: $._id });
 
       if (attribute == null) return null;

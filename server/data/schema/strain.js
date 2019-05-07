@@ -61,6 +61,7 @@ let Input = `
         location: [LocationInput]
 
         variants: [VariantInput]
+        variants: String
 
         stock: [StockInput]
 

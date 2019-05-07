@@ -62,8 +62,6 @@ const resolvers = {
         upsert: true
       });
 
-      console.log(stock);
-
       return stock;
     },
     deleteStock: async (_, { input }) => {

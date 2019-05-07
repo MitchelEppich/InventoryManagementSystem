@@ -12,9 +12,9 @@ router.get("/", getInventory);
 router.post("/", modifyInventoryStock);
 
 async function getInventory(req, res) {
-  let { body } = req;
-
-  let { query } = body;
+  let {
+    query: { query }
+  } = req;
 
   var options = {
     method: "GET",
@@ -53,7 +53,7 @@ async function modifyInventoryStock(req, res) {
     uri:
       uri +
       "?query=" +
-      `{variant(input:{sotiId:"${sotiId}", website:["${website}"]}) {attributes {size, stock {_id}}}}`
+      `{variant(input:{sotiId:"${sotiId}", website:["${website}"]}) {_id,attributes {size, stock {_id}}}}`
   };
 
   let response = await graphqlRequest(options);
@@ -62,9 +62,10 @@ async function modifyInventoryStock(req, res) {
     return;
   }
 
-  let stockId;
+  let stockId, variant;
   try {
-    stockId = JSON.parse(response.res).data.variant[0].attributes.find(_ => {
+    variant = JSON.parse(response.res).data.variant[0];
+    stockId = variant.attributes.find(_ => {
       return _.size == size;
     });
   } catch (e) {
@@ -91,7 +92,7 @@ async function modifyInventoryStock(req, res) {
     return;
   }
 
-  var options = {
+  options = {
     method: "GET",
     uri: uri + "?query=" + `{stock(input:{_id:"${stockId}"}){_id, amount}}`
   };
@@ -119,9 +120,47 @@ async function modifyInventoryStock(req, res) {
     return;
   }
 
-  stock.amountSold = amount;
+  options = {
+    method: "GET",
+    uri:
+      uri +
+      "?query=" +
+      `{strain(input:{variants:"${variant._id}"}){stock{_id,amount}}}`
+  };
 
-  resolvers.Mutation.updateStock(null, { input: { ...stock } });
+  response = await graphqlRequest(options);
+  if (response.error != null) {
+    res.send("SERVER ERROR: " + response.error);
+    return;
+  }
+
+  let strainStock;
+  try {
+    strainStock = JSON.parse(response.res).data.strain[0].stock[0];
+  } catch (e) {
+    res.send(
+      `SERVER ERROR: Failed to get strain stock object (line: 136 path:/routes/inventory.js)`
+    );
+    return;
+  }
+
+  if (strainStock == null) {
+    res.send(
+      `SERVER ERROR: Failed to locate strain stock object, it may not exists...`
+    );
+    return;
+  }
+
+  try {
+    strainStock.amountSold = amount * size;
+    stock.amountSold = amount;
+
+    resolvers.Mutation.updateStock(null, { input: { ...strainStock } });
+    resolvers.Mutation.updateStock(null, { input: { ...stock } });
+  } catch (e) {
+    res.send(`SERVER ERROR: Failed to update stock...`);
+    return;
+  }
 
   res.send("Successfully Updated Stock Amount...");
 }
@@ -160,11 +199,11 @@ let buildVariant = variant => {
         releaseDate: _.releaseDate,
         company: _.company
       };
-      let attributes = { price: [], size: [], avaliable: [] };
+      let attributes = { price: [], size: [], available: [] };
       for (let $ of _.attributes) {
         attributes.price.push($.price);
         attributes.size.push($.size);
-        attributes.avaliable.push($.stock[0].amount);
+        attributes.available.push($.stock[0].amount);
       }
       return { ...strain, ...variant, ...attributes };
     });

@@ -20,7 +20,7 @@ router.post("/", modifyInventoryStock);
 
 async function getInventory(req, res) {
   let {
-    query: { query }
+    query: { query, include }
   } = req;
 
   var options = {
@@ -34,7 +34,7 @@ async function getInventory(req, res) {
     return;
   }
 
-  res.send(buildVariant(JSON.parse(response.res).data.variant));
+  res.send(buildVariant(JSON.parse(response.res).data.variant, include));
 }
 
 async function modifyInventoryStock(req, res) {
@@ -193,7 +193,10 @@ let graphqlRequest = async options => {
   return $;
 };
 
-let buildVariant = variant => {
+let buildVariant = (variant, include) => {
+  let includeString = include.includes("s");
+  let includeAverage = include.includes("a");
+
   try {
     return variant.map(_ => {
       let strain = _.strain;
@@ -222,7 +225,39 @@ let buildVariant = variant => {
         attributes.size.push($.size);
         attributes.available.push($.stock[0].amount);
       }
-      return { ...strain, ...variant, ...attributes };
+
+      let included = {};
+      if (includeString) {
+        included.sPrice = `$${attributes.price[0].toFixed(
+          2
+        )} to ${attributes.price.slice(-1)[0].toFixed(2)}`;
+        included.sSize = `${attributes.size[0]} to ${
+          attributes.size.slice(-1)[0]
+        }`;
+        included.sIndica = `${Math.round(strain.indica * 100)}%`;
+        included.sSativa = `${Math.round(strain.sativa * 100)}%`;
+        included.sRuderalis = `${Math.round(strain.ruderalis * 100)}%`;
+        included.sOrigin =
+          strain.origin.length > 1
+            ? strain.origin.slice(0, -1).join(", ") +
+              " and " +
+              strain.origin.slice(-1)
+            : strain.origin[0];
+        included.sFlowerTime = strain.flowerTime.join(" to ") + " Weeks";
+        included.sYield =
+          strain.yield[0] == strain.yield[1]
+            ? strain.yield[1] + " g"
+            : strain.yield.map(a => a + " g").join(" to ");
+      }
+
+      if (includeAverage) {
+        included.aYield =
+          strain.yield.length != 0
+            ? strain.yield.reduce((a, b) => (b += a)) / 2
+            : 0;
+      }
+
+      return { ...strain, ...variant, ...attributes, ...included };
     });
   } catch (e) {
     console.log(e);

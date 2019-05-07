@@ -1,6 +1,6 @@
 let country = [
   "Canada",
-  "USA",
+  "United States",
   "Spain",
   "Netherlands",
   "United Kingdom",

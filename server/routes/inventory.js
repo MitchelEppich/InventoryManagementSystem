@@ -23,6 +23,8 @@ async function getInventory(req, res) {
     query: { query, include }
   } = req;
 
+  if (include == null) include = "";
+
   var options = {
     method: "GET",
     uri: uri + "?query=" + query

@@ -216,6 +216,17 @@ let buildVariant = (variant, include) => {
         company: _.company
       };
 
+      variant.alias = variant.alias
+        .toLowerCase()
+        .replace("cannabis", "")
+        .replace("seeds", "")
+        .replace("feminized", "")
+        .replace("autoflower", "");
+      if (strain.genetic != 4)
+        variant.alias = variant.alias.replace(strain.genetic, "");
+      else variant.alias = variant.alias.replace("mix", "mixed");
+      variant.alias = variant.alias.replace(/\s+/g, " ").trim();
+
       // Set Type
       if (strain.sativa > 0.6) strain.type = "Sativa";
       else if (strain.indica > 0.6) strain.type = "Indica";

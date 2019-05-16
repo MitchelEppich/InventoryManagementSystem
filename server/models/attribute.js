@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const AttributeSchema = Schema({
   price: Number,
+  wholesale: Number,
   size: Number,
   stock: [
     {

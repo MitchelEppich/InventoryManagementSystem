@@ -256,6 +256,7 @@ const getActions = uri => {
                   {
                     price: 0,
                     size: 0,
+                    wholesale: 0,
                     stock: [{ amount: 0, rop: 0, noe: 0 }]
                   }
                 ]
@@ -416,6 +417,7 @@ const mutation = {
           attributes {
             _id
             price
+            wholesale
             size
             stock {
               _id
@@ -528,6 +530,7 @@ const mutation = {
           attributes {
             _id
             price
+            wholesale
             size
             stock {
               _id

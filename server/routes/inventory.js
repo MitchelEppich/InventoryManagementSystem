@@ -232,9 +232,10 @@ let buildVariant = (variant, include) => {
       else if (strain.indica > 0.6) strain.type = "Indica";
       else strain.type = "Hybrid";
 
-      let attributes = { price: [], size: [], available: [] };
+      let attributes = { price: [], wholesale: [], size: [], available: [] };
       for (let $ of _.attributes) {
         attributes.price.push($.price);
+        attributes.wholesale.push($.wholesale);
         attributes.size.push($.size);
         attributes.available.push($.stock[0].amount);
       }
@@ -244,6 +245,12 @@ let buildVariant = (variant, include) => {
         included.sPrice = `$${attributes.price[0].toFixed(
           2
         )} to $${attributes.price.slice(-1)[0].toFixed(2)}`;
+        included.sSize = `${attributes.size[0]} to ${
+          attributes.size.slice(-1)[0]
+        }`;
+        included.sWholesale = `$${attributes.wholesale[0].toFixed(
+          2
+        )} to $${attributes.wholesale.slice(-1)[0].toFixed(2)}`;
         included.sSize = `${attributes.size[0]} to ${
           attributes.size.slice(-1)[0]
         }`;

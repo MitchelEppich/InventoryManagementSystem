@@ -16,6 +16,7 @@ let Type = `
     type Attribute {
         _id: String
         price: Float
+        wholesale: Float
         size: Int
         stock: [Stock]
         updatedAt: String
@@ -26,6 +27,7 @@ let Input = `
     input AttributeInput {
         _id: String
         price: Float
+        wholesale: Float
         size: Int
         stock: [StockInput]
         updatedAt: String

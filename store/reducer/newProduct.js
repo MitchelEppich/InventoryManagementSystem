@@ -48,6 +48,7 @@ let initialVariants = [
       {
         price: 0,
         size: 0,
+        wholesale: 0,
         stock: [{ amount: 0, rop: 0, noe: 0 }]
       }
     ]
@@ -66,6 +67,7 @@ let initialVariants = [
       {
         price: 0,
         size: 0,
+        wholesale: 0,
         stock: [{ amount: 0, rop: 0, noe: 0 }]
       }
     ]
@@ -84,6 +86,7 @@ let initialVariants = [
       {
         price: 0,
         size: 0,
+        wholesale: 0,
         stock: [{ amount: 0, rop: 0, noe: 0 }]
       }
     ]
@@ -102,6 +105,7 @@ let initialVariants = [
       {
         price: 0,
         size: 0,
+        wholesale: 0,
         stock: [{ amount: 0, rop: 0, noe: 0 }]
       }
     ]
@@ -120,6 +124,7 @@ let initialVariants = [
       {
         price: 0,
         size: 0,
+        wholesale: 0,
         stock: [{ amount: 0, rop: 0, noe: 0 }]
       }
     ]
@@ -138,6 +143,7 @@ let initialVariants = [
       {
         price: 0,
         size: 0,
+        wholesale: 0,
         stock: [{ amount: 0, rop: 0, noe: 0 }]
       }
     ]

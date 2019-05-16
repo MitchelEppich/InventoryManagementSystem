@@ -206,6 +206,7 @@ const query = {
           attributes {
             _id
             price
+            whoelsale
             size
             stock {
               _id
@@ -231,6 +232,7 @@ const query = {
       allAttributes {
         _id
         price
+        wholesale
         size
         stock {
           _id
@@ -273,6 +275,7 @@ const query = {
         attributes {
           _id
           price
+          wholesale
           size
           updatedAt
         }

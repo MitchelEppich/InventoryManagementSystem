@@ -206,7 +206,7 @@ const query = {
           attributes {
             _id
             price
-            whoelsale
+            wholesale
             size
             stock {
               _id
